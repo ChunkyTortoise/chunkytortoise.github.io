@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Cayman Roden</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
+            <div class="flex gap-6 text-sm">
+                <a href="projects.html" class="hover:text-indigo-600">Projects</a>
+                <a href="certifications.html" class="hover:text-indigo-600">Certifications</a>
+                <a href="services.html" class="text-indigo-600 font-medium">Services</a>
+                <a href="case-studies.html" class="hover:text-indigo-600">Case Studies</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="max-w-6xl mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold mb-2">Services</h1>
+        <p class="text-gray-600 mb-8">Every service backed by a public repo with tests, CI, and a working demo.</p>
+
+        <!-- Strategic Tier -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <h2 class="text-xl font-bold">Strategic</h2>
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">$90&ndash;150/hr</span>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-2">RAG Conversational Agents</h3>
+                    <p class="text-gray-600 text-sm mb-3">Document-grounded Q&A with hybrid retrieval (BM25 + vectors), source citations, and prompt engineering lab.</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600">
+                        <span>Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/docqa-engine" class="hover:underline" target="_blank">docqa-engine</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-2">Multi-Agent Workflows</h3>
+                    <p class="text-gray-600 text-sm mb-3">Coordinated AI bot systems with cross-agent handoff, confidence-based routing, and conversation state management.</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600">
+                        <span>Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="hover:underline" target="_blank">EnterpriseHub</a>
+                        <span class="text-gray-400">+</span>
+                        <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="hover:underline" target="_blank">Jorge Bots</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-2">Prompt Engineering & Optimization</h3>
+                    <p class="text-gray-600 text-sm mb-3">A/B prompt testing, version management, evaluation scoring (faithfulness, relevance, completeness), and cost optimization.</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600">
+                        <span>Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/docqa-engine" class="hover:underline" target="_blank">docqa-engine prompt lab</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-2">Predictive Modeling & Auto-ML</h3>
+                    <p class="text-gray-600 text-sm mb-3">Upload labeled data, auto-detect task type, train classifier/regressor with feature importance (SHAP) and evaluation metrics.</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600">
+                        <span>Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/insight-engine" class="hover:underline" target="_blank">insight-engine predictor</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Implementation Tier -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <h2 class="text-xl font-bold">Implementation</h2>
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">$60&ndash;100/hr</span>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-2">Interactive BI Dashboards</h3>
+                    <p class="text-gray-600 text-sm mb-3">Auto-profiling, chart auto-selection, interactive filters. Upload CSV/Excel and get instant dashboards with Plotly.</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600">
+                        <span>Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/insight-engine" class="hover:underline" target="_blank">insight-engine</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-2">Marketing Attribution</h3>
+                    <p class="text-gray-600 text-sm mb-3">First-touch, last-touch, linear, and time-decay models. Channel-level ROI comparison with interactive visualizations.</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600">
+                        <span>Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/insight-engine" class="hover:underline" target="_blank">insight-engine attribution</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-2">Data Cleaning Pipelines</h3>
+                    <p class="text-gray-600 text-sm mb-3">Deduplication (exact + fuzzy), column standardization, missing value imputation, and automated quality reports.</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600">
+                        <span>Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/insight-engine" class="hover:underline" target="_blank">insight-engine cleaner</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-2">Automated PDF Reports</h3>
+                    <p class="text-gray-600 text-sm mb-3">Generate branded reports with charts, profiling summaries, and insights. Exportable markdown and PDF output.</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600">
+                        <span>Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/insight-engine" class="hover:underline" target="_blank">insight-engine reports</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-2">Web Scraping & Price Monitoring</h3>
+                    <p class="text-gray-600 text-sm mb-3">YAML-configurable scrapers, competitor price tracking with historical charts, change detection, and alerts.</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600">
+                        <span>Proof:</span>
+                        <span class="text-gray-400">scrape-and-serve (coming soon)</span>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-2">Excel-to-Web App Modernization</h3>
+                    <p class="text-gray-600 text-sm mb-3">Upload .xlsx, auto-detect schema, generate a Streamlit CRUD app with SQLite backend and data migration.</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600">
+                        <span>Proof:</span>
+                        <span class="text-gray-400">scrape-and-serve (coming soon)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick-Win Tier -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-6">
+                <h2 class="text-xl font-bold">Quick Wins</h2>
+                <span class="bg-yellow-100 text-yellow-700 text-xs px-3 py-1 rounded-full font-medium">Fixed Price</span>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">LLM Integration</h3>
+                    <p class="text-sm text-indigo-600 font-medium mb-2">$500&ndash;1,500</p>
+                    <p class="text-gray-600 text-sm">Add Claude/GPT/Gemini to an existing app. API integration, prompt templates, error handling, cost tracking.</p>
+                </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Dashboard MVP</h3>
+                    <p class="text-sm text-indigo-600 font-medium mb-2">$800&ndash;2,000</p>
+                    <p class="text-gray-600 text-sm">Streamlit dashboard from your data source. Auto-profiling, 3&ndash;5 interactive charts, filters, export to PDF.</p>
+                </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Chatbot Prototype</h3>
+                    <p class="text-sm text-indigo-600 font-medium mb-2">$1,000&ndash;3,000</p>
+                    <p class="text-gray-600 text-sm">Custom AI chatbot with your knowledge base. Document ingestion, retrieval, cited answers, deployed and tested.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bundles -->
+        <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-8">
+            <h2 class="text-xl font-bold mb-4">Bundle Discounts</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-medium mb-2">Data Intelligence Stack</h3>
+                    <p class="text-gray-600 text-sm mb-2">Dashboard + Cleaning + Attribution + Reports</p>
+                    <p class="text-sm text-indigo-700 font-medium">15% off hourly rate</p>
+                </div>
+                <div>
+                    <h3 class="font-medium mb-2">AI Agent Stack</h3>
+                    <p class="text-gray-600 text-sm mb-2">RAG Agent + Prompt Lab + Multi-Agent Handoff</p>
+                    <p class="text-sm text-indigo-700 font-medium">15% off hourly rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
+            <span>&copy; 2026 Cayman Roden</span>
+            <div class="flex gap-4">
+                <a href="https://github.com/ChunkyTortoise" class="hover:text-white" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

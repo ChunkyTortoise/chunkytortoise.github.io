@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Cayman Roden</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
+            <div class="flex gap-6 text-sm">
+                <a href="projects.html" class="text-indigo-600 font-medium">Projects</a>
+                <a href="certifications.html" class="hover:text-indigo-600">Certifications</a>
+                <a href="services.html" class="hover:text-indigo-600">Services</a>
+                <a href="case-studies.html" class="hover:text-indigo-600">Case Studies</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="max-w-6xl mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold mb-2">Projects</h1>
+        <p class="text-gray-600 mb-8">All repos are public on GitHub with CI, tests, and demo modes.</p>
+
+        <!-- Filter -->
+        <div class="flex gap-3 mb-8 flex-wrap">
+            <button onclick="filterProjects('all')" class="filter-btn active bg-indigo-600 text-white px-4 py-1.5 rounded-full text-sm">All</button>
+            <button onclick="filterProjects('ai')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">AI/LLM</button>
+            <button onclick="filterProjects('data')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Data/BI</button>
+            <button onclick="filterProjects('automation')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Automation</button>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6" id="project-grid">
+            <!-- EnterpriseHub -->
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <h3 class="text-lg font-bold">EnterpriseHub</h3>
+                        <p class="text-sm text-gray-500">Real Estate AI Platform</p>
+                    </div>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">CI Passing</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Three AI bots qualify leads in real time using Q0-Q4 framework. Streamlit BI dashboard with market pulse, commission tracking, and bot performance. GoHighLevel CRM integration.</p>
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">PostgreSQL</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Redis</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Docker</span>
+                </div>
+                <div class="flex gap-4 text-sm">
+                    <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
+                    <span class="text-gray-400">82+ routes | 11 CI workflows</span>
+                </div>
+            </div>
+
+            <!-- Jorge Bots -->
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <h3 class="text-lg font-bold">Jorge Bots</h3>
+                        <p class="text-sm text-gray-500">3-Bot Lead Qualification</p>
+                    </div>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">279 Tests</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Lead, Seller, and Buyer bots with structured Q0-Q4 question flows. Semantic analysis, temperature scoring, and cross-bot handoff with 0.7 confidence threshold.</p>
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">PostgreSQL</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Redis</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Docker</span>
+                </div>
+                <div class="flex gap-4 text-sm">
+                    <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
+                    <span class="text-gray-400">279 tests | CI + health endpoint</span>
+                </div>
+            </div>
+
+            <!-- AgentForge -->
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <h3 class="text-lg font-bold">AgentForge</h3>
+                        <p class="text-sm text-gray-500">Unified LLM Interface</p>
+                    </div>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">27 Tests</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Async-only LLM orchestrator. Claude + Gemini + OpenAI + Perplexity through one interface. 2 dependencies, ~15 KB. Pip-installable with CLI and benchmark command.</p>
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">httpx</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Click CLI</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Async</span>
+                </div>
+                <div class="flex gap-4 text-sm">
+                    <a href="https://github.com/ChunkyTortoise/ai-orchestrator" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
+                    <span class="text-gray-400">27 tests | pip-installable</span>
+                </div>
+            </div>
+
+            <!-- Revenue-Sprint -->
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="automation">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <h3 class="text-lg font-bold">Revenue-Sprint</h3>
+                        <p class="text-sm text-gray-500">Freelance Automation Pipeline</p>
+                    </div>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">238 Tests</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Upwork job scanner with 105-point scoring rubric, 4-agent proposal pipeline, prompt injection testing suite (60+ patterns), LinkedIn outreach engine.</p>
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">SQLite</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Click CLI</span>
+                </div>
+                <div class="flex gap-4 text-sm">
+                    <a href="https://github.com/ChunkyTortoise/Revenue-Sprint" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
+                    <span class="text-gray-400">238 tests | CI matrix 3.10-3.12</span>
+                </div>
+            </div>
+
+            <!-- Insight Engine -->
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="data">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <h3 class="text-lg font-bold">Insight Engine</h3>
+                        <p class="text-sm text-gray-500">Data Analytics Platform</p>
+                    </div>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">63 Tests</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Upload CSV/Excel for auto-profiling, interactive dashboards, marketing attribution (4 models), predictive modeling with SHAP, data cleaning, and PDF reports.</p>
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Plotly</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">scikit-learn</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">XGBoost</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">SHAP</span>
+                </div>
+                <div class="flex gap-4 text-sm">
+                    <a href="https://github.com/ChunkyTortoise/insight-engine" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
+                    <span class="text-gray-400">63 tests | 3 demo datasets</span>
+                </div>
+            </div>
+
+            <!-- DocQA Engine -->
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <h3 class="text-lg font-bold">DocQA Engine</h3>
+                        <p class="text-sm text-gray-500">RAG Document Q&A</p>
+                    </div>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">58 Tests</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Upload PDFs/DOCX, ask questions, get cited answers. Hybrid retrieval (BM25 + vectors), prompt engineering lab with A/B testing, per-query cost tracking.</p>
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">BM25</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">NumPy</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">PyPDF2</span>
+                </div>
+                <div class="flex gap-4 text-sm">
+                    <a href="https://github.com/ChunkyTortoise/docqa-engine" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
+                    <span class="text-gray-400">58 tests | mock mode</span>
+                </div>
+            </div>
+
+            <!-- Scrape-and-Serve (placeholder) -->
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 opacity-75" data-category="automation">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <h3 class="text-lg font-bold">Scrape-and-Serve</h3>
+                        <p class="text-sm text-gray-500">Web Scraping + Excel-to-Web</p>
+                    </div>
+                    <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded">Coming Soon</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">YAML-configurable web scrapers, competitor price monitoring, Excel-to-Streamlit CRUD app generator, SEO content module.</p>
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">BeautifulSoup</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Playwright</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">SQLAlchemy</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
+                </div>
+                <div class="flex gap-4 text-sm">
+                    <span class="text-gray-400">In development</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
+            <span>&copy; 2026 Cayman Roden</span>
+            <div class="flex gap-4">
+                <a href="https://github.com/ChunkyTortoise" class="hover:text-white" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    function filterProjects(category) {
+        document.querySelectorAll('.project-card').forEach(card => {
+            if (category === 'all' || card.dataset.category === category) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('bg-indigo-600', 'text-white', 'active');
+            btn.classList.add('bg-gray-200', 'text-gray-700');
+        });
+        event.target.classList.remove('bg-gray-200', 'text-gray-700');
+        event.target.classList.add('bg-indigo-600', 'text-white', 'active');
+    }
+    </script>
+</body>
+</html>
