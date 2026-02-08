@@ -175,6 +175,107 @@
                 </div>
             </div>
         </article>
+        <!-- Case Study 4: Jorge Bots -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Multi-Agent AI</span>
+                <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">3-Bot System Cuts Lead Response from Hours to Seconds</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Situation</h3>
+                    <p class="text-gray-700">A real estate team receives inbound leads from multiple sources but relies on a single agent to manually triage each one. Buyers, sellers, and unqualified browsers all enter the same queue. The agent switches context between qualification, property questions, and CMA requests dozens of times per day.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Complication</h3>
+                    <p class="text-gray-700">40% of leads go cold because response time exceeds the 5-minute window. When the agent is on a showing, leads wait hours. Handoffs between team members lose context. No data on which conversation patterns convert best.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Action</h3>
+                    <p class="text-gray-700">Built a 3-bot system: Lead Bot qualifies with structured Q0&ndash;Q4 questions, then hands off to Buyer Bot or Seller Bot at a 0.7 confidence threshold. Cross-bot handoff includes circular prevention (30-min window), rate limiting (3/hr, 10/day), and pattern learning from outcomes. A/B testing compares response strategies. GHL-enhanced intent decoders boost scoring with CRM data.</p>
+                    <div class="flex gap-2 flex-wrap mt-3">
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">PostgreSQL</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Redis</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">GoHighLevel</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">0.7</p>
+                            <p class="text-xs text-green-600 mt-1">Confidence threshold</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">279</p>
+                            <p class="text-xs text-green-600 mt-1">Automated tests</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">A/B</p>
+                            <p class="text-xs text-green-600 mt-1">Response testing</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Case Study 5: Revenue-Sprint -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Automation</span>
+                <a href="https://github.com/ChunkyTortoise/Revenue-Sprint" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">Freelancer Automates 15-Hour Weekly Prospecting Pipeline</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Situation</h3>
+                    <p class="text-gray-700">A freelance developer spends 15+ hours per week manually scanning Upwork for relevant contracts, reading job descriptions, and writing tailored proposals. Most proposals are generic because there is not enough time to customize each one.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Complication</h3>
+                    <p class="text-gray-700">High-value contracts get 50+ proposals within the first hour. By the time a manual proposal is written, the client has already shortlisted candidates. Generic proposals have a &lt;5% response rate. No way to test whether proposals are vulnerable to prompt injection attacks before deploying LLM-generated content.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Action</h3>
+                    <p class="text-gray-700">Built an end-to-end pipeline: RSS job scanner with a 105-point scoring rubric, 4-agent proposal pipeline (Prospecting, Credential Sync, Proposal Architect, Engagement), prompt injection testing suite with 60+ detection patterns across 8 MITRE ATLAS threat categories, and a LinkedIn outreach engine with prospect scoring and template generation.</p>
+                    <div class="flex gap-2 flex-wrap mt-3">
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">SQLite</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Click CLI</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">RSS</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">240</p>
+                            <p class="text-xs text-green-600 mt-1">Automated tests</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">105-pt</p>
+                            <p class="text-xs text-green-600 mt-1">Scoring rubric</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">60+</p>
+                            <p class="text-xs text-green-600 mt-1">Injection patterns</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
     </section>
 
     <footer class="bg-gray-900 text-gray-400 py-8">
@@ -182,6 +283,9 @@
             <span>&copy; 2026 Cayman Roden</span>
             <div class="flex gap-4">
                 <a href="https://github.com/ChunkyTortoise" class="hover:text-white" target="_blank">GitHub</a>
+                <a href="https://www.upwork.com/freelancers/~01ee20599d13f4c8c9" class="hover:text-white" target="_blank">Upwork</a>
+                <a href="https://linkedin.com/in/cayman-roden" class="hover:text-white" target="_blank">LinkedIn</a>
+                <a href="mailto:caymanroden@gmail.com" class="hover:text-white">Email</a>
             </div>
         </div>
     </footer>
