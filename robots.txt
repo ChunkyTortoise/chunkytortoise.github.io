@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chunkytortoise.github.io/sitemap.xml
