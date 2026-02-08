@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Cayman Roden</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
+            <div class="flex gap-6 text-sm">
+                <a href="projects.html" class="hover:text-indigo-600">Projects</a>
+                <a href="case-studies.html" class="hover:text-indigo-600">Case Studies</a>
+                <a href="benchmarks.html" class="hover:text-indigo-600">Benchmarks</a>
+                <a href="blog.html" class="text-indigo-600 font-medium">Blog</a>
+                <a href="about.html" class="hover:text-indigo-600">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="max-w-4xl mx-auto px-4 py-12">
+        <h1 class="text-3xl font-bold mb-2">Blog</h1>
+        <p class="text-gray-600 mb-10">Technical writeups from building production AI systems.</p>
+
+        <!-- Post 1 -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">LLMOps</span>
+                <span class="text-sm text-gray-400">February 2026</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">How I Reduced LLM Token Costs by 89% Without Changing Models</h2>
+
+            <div class="prose prose-gray max-w-none text-gray-700 space-y-4">
+                <p>When I started building EnterpriseHub &mdash; a real estate AI platform with 3 specialized chatbots &mdash; each lead qualification workflow consumed 93,000 tokens. At Claude's pricing, that adds up fast. After three rounds of optimization, I got it down to 7,800 tokens per workflow. Here's exactly what I did.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">The Problem: Every Call Sends Everything</h3>
+                <p>The naive approach is simple: stuff the full conversation history, system prompt, user profile, and context into every API call. It works. It's also wasteful. Most of that context is irrelevant to the specific question being answered. Worse, the same prompts get re-sent on every interaction &mdash; identical inputs producing identical outputs, billed every time.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Technique 1: Three-Tier Caching (~60% of savings)</h3>
+                <p>The single biggest win was caching. Most LLM calls in a business application are repetitive &mdash; the same classification, the same FAQ answer, the same scoring rubric applied to similar inputs.</p>
+
+                <p>I built a three-tier cache:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>L1 (In-Memory Dict)</strong> &mdash; Per-request scope. If the same prompt hits the system twice within a single request lifecycle, the second call costs zero tokens and returns in &lt;1ms. This catches the surprisingly common case of redundant calls within a single orchestration flow.</li>
+                    <li><strong>L2 (Redis with TTL)</strong> &mdash; Cross-request, shared across all bot instances. Lead qualification questions, market data lookups, and template responses all hit here. TTL tuned per query type: 5 minutes for volatile data, 1 hour for stable templates. Lookup time: ~2ms.</li>
+                    <li><strong>L3 (PostgreSQL)</strong> &mdash; Persistent fallback. When Redis is unavailable (restart, network blip), the system degrades gracefully to database-backed cache rather than hitting the API.</li>
+                </ul>
+
+                <p>The overall cache hit rate stabilized at 87%. That means 87 out of 100 LLM calls never reach the API at all.</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        # From claude_orchestrator.py<br>
+                        # In-process cache for memory context (avoids repeated fetches within a request)<br>
+                        self._memory_context_cache: Dict[str, Any] = {}<br><br>
+                        # Cache check before LLM call<br>
+                        cache_key = f"mem_ctx:{lead_id}"<br>
+                        cached = self._memory_context_cache.get(cache_key)<br>
+                        if cached is not None:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;memory_context = cached  # Zero tokens, &lt;1ms
+                    </p>
+                </div>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Technique 2: Context Window Optimization (~25% of savings)</h3>
+                <p>Instead of dumping the full conversation history into every call, I built a sliding window that keeps only what the model actually needs. The <code>ClaudeOrchestrator</code> tracks which conversation turns are relevant to the current task and trims everything else.</p>
+
+                <p>The result: 2.3x more efficient context usage. The model gets the same quality of context in less than half the tokens. This matters especially for long conversations &mdash; a 20-turn qualification flow was sending all 20 turns on every call, when typically only the last 3-5 are relevant.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Technique 3: Model Routing by Task Complexity (~15% of savings)</h3>
+                <p>Not every query needs the most capable (and expensive) model. The <code>LLMClient</code> accepts a <code>TaskComplexity</code> parameter that routes requests to the appropriate model:</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        class TaskComplexity(Enum):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;ROUTINE = "routine"      # Simple classification, template fill<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;STANDARD = "standard"    # Default complexity<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;HIGH_STAKES = "high_stakes"  # Complex reasoning, revenue-impacting<br><br>
+                        def _get_routed_model(self, complexity):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if complexity == TaskComplexity.ROUTINE:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return self.fast_model    # Cheaper, faster<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if complexity == TaskComplexity.HIGH_STAKES:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return self.premium_model  # Full capability
+                    </p>
+                </div>
+
+                <p>Simple tasks like "Is this a buyer or seller?" go to the fast model. Complex tasks like "Generate a personalized market analysis for this lead" go to the premium model. The router adds &lt;50ms of overhead.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Results</h3>
+                <div class="grid grid-cols-3 gap-4 my-6">
+                    <div class="bg-green-50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-green-700">93K &rarr; 7.8K</p>
+                        <p class="text-xs text-green-600 mt-1">Tokens per workflow</p>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-green-700">87%</p>
+                        <p class="text-xs text-green-600 mt-1">Cache hit rate</p>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-green-700">&lt;200ms</p>
+                        <p class="text-xs text-green-600 mt-1">Orchestrator overhead</p>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Limitations and Tradeoffs</h3>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>Cache invalidation is hard.</strong> Stale cached responses are worse than no cache. I use time-based TTLs rather than event-based invalidation because it's simpler and the staleness window is acceptable for my use case.</li>
+                    <li><strong>Context windowing can lose information.</strong> The sliding window occasionally drops a relevant early turn. I mitigate this with a summary of dropped context, but it's an imperfect solution.</li>
+                    <li><strong>Model routing requires maintenance.</strong> As model pricing and capabilities change, the routing logic needs updating. What was "routine" for one model version may not be for the next.</li>
+                    <li><strong>These numbers are specific to my workload.</strong> Lead qualification has high repetition (similar questions, similar leads). Applications with more unique queries will see smaller cache hit rates.</li>
+                </ul>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Try It Yourself</h3>
+                <p>The full implementation is open source. The relevant files are:</p>
+                <ul class="list-disc pl-6 space-y-1">
+                    <li><a href="https://github.com/ChunkyTortoise/EnterpriseHub/blob/main/ghl_real_estate_ai/services/claude_orchestrator.py" class="text-indigo-600 hover:underline" target="_blank"><code>services/claude_orchestrator.py</code></a> &mdash; Cache layers, context management, request orchestration</li>
+                    <li><a href="https://github.com/ChunkyTortoise/EnterpriseHub/blob/main/ghl_real_estate_ai/core/llm_client.py" class="text-indigo-600 hover:underline" target="_blank"><code>core/llm_client.py</code></a> &mdash; <code>TaskComplexity</code> routing, model selection, fallback logic</li>
+                    <li><a href="https://github.com/ChunkyTortoise/EnterpriseHub/blob/main/ghl_real_estate_ai/services/jorge/performance_tracker.py" class="text-indigo-600 hover:underline" target="_blank"><code>services/jorge/performance_tracker.py</code></a> &mdash; P50/P95/P99 latency tracking, SLA monitoring</li>
+                </ul>
+
+                <p class="mt-6">For the full benchmark data, see the <a href="benchmarks.html" class="text-indigo-600 hover:underline">benchmarks page</a>.</p>
+            </div>
+        </article>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
+            <span>&copy; 2026 Cayman Roden</span>
+            <div class="flex gap-4">
+                <a href="https://github.com/ChunkyTortoise" class="hover:text-white" target="_blank">GitHub</a>
+                <a href="https://www.upwork.com/freelancers/~01ee20599d13f4c8c9" class="hover:text-white" target="_blank">Upwork</a>
+                <a href="https://linkedin.com/in/caymanroden" class="hover:text-white" target="_blank">LinkedIn</a>
+                <a href="mailto:caymanroden@gmail.com" class="hover:text-white">Email</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
