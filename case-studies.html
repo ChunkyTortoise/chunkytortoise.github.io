@@ -136,6 +136,109 @@
             </div>
         </article>
 
+        <!-- Case Study 4: Jorge Bot Platform -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Multi-Agent AI</span>
+                <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">3-Bot Lead Qualification Platform with Cross-Bot Handoff</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
+                    <p class="text-gray-700">40% lead loss from slow manual response times averaging over 15 minutes. Leads requiring different expertise (buying vs. selling) were stuck with a single generalist response, causing drop-off and missed conversion opportunities.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
+                    <p class="text-gray-700">Built a 3-bot system (Lead/Buyer/Seller) with cross-bot handoff orchestrated by <code>JorgeHandoffService</code>. Integrated A/B testing for response strategies, GHL CRM integration for real-time lead data, and intent decoding with GHL score boosts (tag analysis, lead age, engagement recency). Shared services layer provides consistent metrics, alerting, and performance tracking across all bots.</p>
+                    <div class="flex gap-2 flex-wrap mt-3">
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">PostgreSQL</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Redis</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude API</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">GoHighLevel</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">279</p>
+                            <p class="text-xs text-green-600 mt-1">Tests passing</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">0.7</p>
+                            <p class="text-xs text-green-600 mt-1">Confidence threshold</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">3/hr, 10/day</p>
+                            <p class="text-xs text-green-600 mt-1">Rate limiting</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-sm text-gray-500">
+                    <strong>Verify:</strong> <code>services/jorge/jorge_handoff_service.py</code> (circular prevention, rate limiting), <code>services/jorge/ab_testing_service.py</code> (deterministic variant assignment).
+                </div>
+            </div>
+        </article>
+
+        <!-- Case Study 5: Revenue Sprint -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Automation</span>
+                <a href="https://github.com/ChunkyTortoise/Revenue-Sprint" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">AI-Powered Prospecting Pipeline with Security-First Design</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
+                    <p class="text-gray-700">15+ hours per week spent on manual prospecting and proposal writing. No systematic way to evaluate job fit, qualify opportunities, or detect prompt injection attacks in AI-generated content pipelines.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
+                    <p class="text-gray-700">Built 3 integrated products: an AI job scanner with a 105-point scoring rubric for automated qualification, a 4-agent proposal pipeline (Prospecting, Credential Sync, Proposal Architect, Engagement) for tailored proposal generation, and a prompt injection tester with 60+ attack patterns across 8 MITRE ATLAS threat categories. Includes a RAG Cost Optimizer for token budget management.</p>
+                    <div class="flex gap-2 flex-wrap mt-3">
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude API</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">BeautifulSoup</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Pandas</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">240</p>
+                            <p class="text-xs text-green-600 mt-1">Tests passing</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">105-pt</p>
+                            <p class="text-xs text-green-600 mt-1">Scoring rubric</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">60+</p>
+                            <p class="text-xs text-green-600 mt-1">Injection patterns</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-sm text-gray-500">
+                    <strong>Verify:</strong> <code>product_1_launch_kit/</code> (injection tester), <code>product_2_rag_cost_optimizer/</code> (cost optimization), <code>product_3_agent_orchestrator/</code> (proposal pipeline).
+                </div>
+            </div>
+        </article>
+
         <!-- Capability Demos -->
         <h2 class="text-xl font-bold mb-6 mt-12">Capability Demonstrations</h2>
         <p class="text-gray-600 mb-6">These projects demonstrate what the systems can do. Each is a fully functional, tested application you can clone and run.</p>
@@ -219,11 +322,23 @@
     <footer class="bg-gray-900 text-gray-400 py-8">
         <div class="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
             <span>&copy; 2026 Cayman Roden</span>
-            <div class="flex gap-4">
-                <a href="https://github.com/ChunkyTortoise" class="hover:text-white" target="_blank">GitHub</a>
-                <a href="https://www.upwork.com/freelancers/~01ee20599d13f4c8c9" class="hover:text-white" target="_blank">Upwork</a>
-                <a href="https://linkedin.com/in/caymanroden" class="hover:text-white" target="_blank">LinkedIn</a>
-                <a href="mailto:caymanroden@gmail.com" class="hover:text-white">Email</a>
+            <div class="flex gap-5 items-center">
+                <a href="https://github.com/ChunkyTortoise" class="hover:text-white flex items-center gap-1.5" target="_blank">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/cayman-roden" class="hover:text-white flex items-center gap-1.5" target="_blank">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://www.upwork.com/freelancers/~01ee20599d13f4c8c9" class="hover:text-white flex items-center gap-1.5" target="_blank">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+                    Upwork
+                </a>
+                <a href="mailto:caymanroden@gmail.com" class="hover:text-white flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    Email
+                </a>
             </div>
         </div>
     </footer>

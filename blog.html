@@ -36,6 +36,138 @@
         <h1 class="text-3xl font-bold mb-2">Blog</h1>
         <p class="text-gray-600 mb-10">Technical writeups from building production AI systems.</p>
 
+        <!-- Post 2 -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">RAG</span>
+                <span class="text-sm text-gray-400">February 2026</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">Why Single-Index RAG Fails and How Hybrid Retrieval Fixes It</h2>
+
+            <div class="prose prose-gray max-w-none text-gray-700 space-y-4">
+                <p>Most RAG tutorials show a simple pipeline: chunk documents, embed them, do a cosine similarity search, pass the top results to the LLM. It works for demos. It breaks in production. The problem is that a single retrieval method has systematic blind spots &mdash; dense embeddings miss exact keyword matches, and keyword search misses semantic paraphrases. I built a hybrid retrieval system that combines both, and it finds relevant documents that neither method catches alone.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">The Problem: Every Index Has Blind Spots</h3>
+                <p>Consider a document about "Section 8 housing voucher programs." A user asks: "What government rental assistance programs are available?" Dense embeddings will match the semantic meaning &mdash; "government rental assistance" is conceptually similar to "housing voucher programs." But if the user asks "Section 8 requirements," a keyword search finds it instantly while the dense index may rank it lower because "Section 8" is a proper noun with no direct semantic relationship to generic terms.</p>
+
+                <p>This is the fundamental tradeoff. Dense retrieval captures <em>meaning</em>. Keyword retrieval captures <em>specifics</em>. Production queries need both. The question is how to combine them without the scores from one method drowning out the other.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Architecture: Dual-Index with Reciprocal Rank Fusion</h3>
+                <p>The system maintains two parallel indices over the same document chunks:</p>
+
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>BM25 (Okapi)</strong> &mdash; The keyword index. Uses term frequency with saturation (k1=1.5) and document length normalization (b=0.75). IDF is calculated as <code>log((N - df + 0.5) / (df + 0.5) + 1.0)</code> to prevent zero scores on common terms. This catches exact matches, proper nouns, and technical terminology.</li>
+                    <li><strong>TF-IDF Dense Vectors</strong> &mdash; The semantic index. Scikit-learn's <code>TfidfVectorizer</code> with a vocabulary cap of 5,000 features generates dense vectors. Cosine similarity with L2 normalization handles the ranking. This catches paraphrases, synonyms, and conceptual similarity.</li>
+                </ul>
+
+                <p>Both indices return ranked results for every query. The challenge is combining them. You can't simply average the scores &mdash; BM25 scores and cosine similarities are on completely different scales with different distributions. A BM25 score of 12.7 and a cosine similarity of 0.83 aren't comparable.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Reciprocal Rank Fusion: The Key Insight</h3>
+                <p>Instead of comparing raw scores, Reciprocal Rank Fusion (RRF) compares <em>positions</em>. Each result gets a score based on where it appears in each ranked list:</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        # Reciprocal Rank Fusion<br>
+                        # k=60 balances early-rank sensitivity<br><br>
+                        def reciprocal_rank_fusion(ranked_lists, k=60, top_k=5):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;scores = {}<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;for ranked_list in ranked_lists:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for rank, (chunk_id, _) in enumerate(ranked_list):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scores[chunk_id] = scores.get(chunk_id, 0)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scores[chunk_id] += 1.0 / (k + rank)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return sorted(scores.items(), key=lambda x: x[1], reverse=True)[:top_k]
+                    </p>
+                </div>
+
+                <p>The k=60 constant controls how much an early rank matters versus a late rank. A document ranked #1 in one index gets a score of 1/61 = 0.0164. Ranked #10, it gets 1/70 = 0.0143. The falloff is gentle &mdash; being ranked 10th is only slightly worse than 1st. This means a document that ranks well in <em>both</em> indices reliably outscores a document that ranks #1 in one index but doesn't appear in the other.</p>
+
+                <p>One implementation detail that matters: each index retrieves 2x the requested number of results before fusion. If you want the top 5, each index returns 10. This ensures that a document ranked #8 in one index and #3 in the other still gets considered, rather than being cut off.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Chunking: Sentence Boundaries Over Fixed Splits</h3>
+                <p>Chunk quality directly determines retrieval quality. I use 500-character chunks with 50-character overlap and sentence-aware boundaries. The algorithm tries to break at sentence-ending periods first, then paragraph breaks, then line breaks, then spaces. It never breaks below half the chunk size to avoid creating fragments.</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        # Smart boundary detection (priority order)<br>
+                        separators = [". ", "\n\n", "\n", " "]<br>
+                        min_break = chunk_size // 2  # 250 chars minimum<br><br>
+                        for sep in separators:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;break_point = text.rfind(sep, min_break, chunk_size)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if break_point != -1:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return break_point + len(sep)
+                    </p>
+                </div>
+
+                <p>The 50-character overlap ensures that a question about content at a chunk boundary still finds both neighboring chunks. Without overlap, a sentence split across two chunks becomes invisible to retrieval.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Lazy Evaluation: Don't Re-Embed on Every Query</h3>
+                <p>A common RAG mistake is rebuilding the index on every query. The pipeline uses a dirty flag pattern: embeddings and indices are recomputed only when documents change, not when questions are asked.</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        def ask(self, question, top_k=5):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;self._ensure_fitted()  # Only rebuilds if _dirty=True<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;results = self.retriever.search(question, top_k)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;context = self._build_context(results)  # Max 4,000 chars<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return self.answer_generator.generate(question, context, results)
+                    </p>
+                </div>
+
+                <p>The first query after document ingestion pays the cost of fitting the TF-IDF vocabulary and building both indices. Every subsequent query skips straight to retrieval. On a corpus of 100 documents, this reduces query latency from ~800ms (with refitting) to ~15ms (retrieval only).</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Prompt Engineering Lab: A/B Testing for RAG Prompts</h3>
+                <p>Different prompt templates produce dramatically different answers from the same retrieved context. "Answer concisely with citations" versus "Provide a detailed analysis with supporting evidence" can change both answer quality and token consumption by 2-3x.</p>
+
+                <p>The system includes 5 built-in prompt templates and an A/B comparison mode. For any question, you can run two templates side-by-side against the same retrieval results and compare the outputs. The cost tracker records token usage per template, so you get hard numbers on the quality-cost tradeoff rather than guessing.</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        # Built-in prompt templates<br>
+                        qa_concise &nbsp;&nbsp; # Fact lookup: brief answer + citations<br>
+                        qa_detailed &nbsp; # Research: thorough analysis + sources<br>
+                        summarize &nbsp;&nbsp;&nbsp; # Key points extraction<br>
+                        extract_facts  # Structured bullet-point facts<br>
+                        compare &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # Cross-source comparison
+                    </p>
+                </div>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Results</h3>
+                <div class="grid grid-cols-3 gap-4 my-6">
+                    <div class="bg-green-50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-green-700">94</p>
+                        <p class="text-xs text-green-600 mt-1">Tests passing</p>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-green-700">5 formats</p>
+                        <p class="text-xs text-green-600 mt-1">PDF, DOCX, TXT, MD, CSV</p>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-green-700">0 LLM calls</p>
+                        <p class="text-xs text-green-600 mt-1">For ingestion &amp; retrieval</p>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Limitations and Tradeoffs</h3>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>TF-IDF is not a true embedding model.</strong> Using TF-IDF cosine similarity as the "dense" index captures more semantic signal than BM25 alone, but less than a transformer-based embedding model like <code>all-MiniLM-L6-v2</code>. The tradeoff is zero external dependencies and fast startup &mdash; no downloading 90MB models on first run.</li>
+                    <li><strong>RRF loses score magnitude.</strong> By converting to ranks, you lose how <em>much</em> better the #1 result is versus #2. If one result is overwhelmingly more relevant, RRF treats it the same as a marginal lead. For most document QA workloads this doesn't matter, but for tasks where confidence calibration is important, you'd want a learned fusion model instead.</li>
+                    <li><strong>500-character chunks are opinionated.</strong> Legal documents, code files, and scientific papers all have different optimal chunk sizes. The system uses a single chunk size across all documents, which is a simplification. Per-format chunking would improve retrieval quality for mixed corpora.</li>
+                    <li><strong>No incremental index updates.</strong> Adding one document rebuilds both indices from scratch. For corpora under 10,000 chunks this completes in under a second. Beyond that, incremental index maintenance (e.g., streaming BM25 updates) would be worth implementing.</li>
+                </ul>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Try It Yourself</h3>
+                <p>The full implementation is open source with a <a href="https://ct-document-engine.streamlit.app/" class="text-indigo-600 hover:underline" target="_blank">live demo on Streamlit Cloud</a>. The relevant files:</p>
+                <ul class="list-disc pl-6 space-y-1">
+                    <li><a href="https://github.com/ChunkyTortoise/docqa-engine/blob/main/src/retriever.py" class="text-indigo-600 hover:underline" target="_blank"><code>src/retriever.py</code></a> &mdash; BM25 index, dense index, and Reciprocal Rank Fusion</li>
+                    <li><a href="https://github.com/ChunkyTortoise/docqa-engine/blob/main/src/pipeline.py" class="text-indigo-600 hover:underline" target="_blank"><code>src/pipeline.py</code></a> &mdash; Orchestration, lazy evaluation, context building</li>
+                    <li><a href="https://github.com/ChunkyTortoise/docqa-engine/blob/main/src/ingest.py" class="text-indigo-600 hover:underline" target="_blank"><code>src/ingest.py</code></a> &mdash; Multi-format parsing and sentence-aware chunking</li>
+                    <li><a href="https://github.com/ChunkyTortoise/docqa-engine/blob/main/src/prompt_lab.py" class="text-indigo-600 hover:underline" target="_blank"><code>src/prompt_lab.py</code></a> &mdash; Template engine and A/B comparison</li>
+                </ul>
+
+                <p class="mt-6">For performance benchmarks across all projects, see the <a href="benchmarks.html" class="text-indigo-600 hover:underline">benchmarks page</a>.</p>
+            </div>
+        </article>
+
         <!-- Post 1 -->
         <article class="bg-white rounded-xl border p-8 mb-8">
             <div class="flex items-center gap-3 mb-4">
