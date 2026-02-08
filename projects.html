@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Cayman Roden</title>
-    <meta name="description" content="7 open-source AI/ML projects with green CI, working demos, and 5,300+ tests. EnterpriseHub, Jorge Bots, DocQA Engine, Insight Engine, and more.">
+    <meta name="description" content="9 open-source AI/ML projects with green CI, working demos, and 5,400+ tests. EnterpriseHub, MCP Toolkit, Jorge Bots, DocQA Engine, Insight Engine, and more.">
     <meta property="og:title" content="Projects | Cayman Roden">
-    <meta property="og:description" content="7 open-source AI/ML projects with green CI, working demos, and 5,300+ tests across Python, FastAPI, and Streamlit.">
+    <meta property="og:description" content="9 open-source AI/ML projects with green CI, working demos, and 5,400+ tests across Python, FastAPI, and Streamlit.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chunkytortoise.github.io/projects.html">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Projects | Cayman Roden">
-    <meta name="twitter:description" content="7 open-source AI/ML projects with green CI, working demos, and 5,300+ tests.">
+    <meta name="twitter:description" content="9 open-source AI/ML projects with green CI, working demos, and 5,400+ tests.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -34,7 +34,7 @@
 
     <section class="max-w-6xl mx-auto px-4 py-12">
         <h1 class="text-3xl font-bold mb-2">Projects</h1>
-        <p class="text-gray-600 mb-8">All repos are public on GitHub with CI, tests, and demo modes.</p>
+        <p class="text-gray-600 mb-8">9 repos, all public on GitHub with CI, tests, and demo modes.</p>
 
         <!-- Filter -->
         <div class="flex gap-3 mb-8 flex-wrap">
@@ -42,6 +42,7 @@
             <button onclick="filterProjects('ai')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">AI/LLM</button>
             <button onclick="filterProjects('data')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Data/BI</button>
             <button onclick="filterProjects('automation')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Automation</button>
+            <button onclick="filterProjects('tools')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Tools/MCP</button>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6" id="project-grid">
@@ -112,6 +113,29 @@
                 <div class="flex gap-4 text-sm">
                     <a href="https://github.com/ChunkyTortoise/ai-orchestrator" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
                     <span class="text-gray-400">61 tests | pip-installable</span>
+                </div>
+            </div>
+
+            <!-- MCP Toolkit -->
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="tools">
+                <div class="flex justify-between items-start mb-3">
+                    <div>
+                        <h3 class="text-lg font-bold">MCP Toolkit</h3>
+                        <p class="text-sm text-gray-500">6 MCP Servers + CLI</p>
+                    </div>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">70 Tests</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">6 production-ready Model Context Protocol servers: SQLite CRUD, file organizer, TF-IDF knowledge base, system monitor, git analytics, task tracker. Auto-discovery CLI and Streamlit playground. 32 tools total.</p>
+                <div class="flex gap-2 flex-wrap mb-4">
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastMCP v2</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Click CLI</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">scikit-learn</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">GitPython</span>
+                </div>
+                <div class="flex gap-4 text-sm">
+                    <a href="https://github.com/ChunkyTortoise/mcp-toolkit" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
+                    <span class="text-gray-400">70 tests | 6 servers | 32 tools</span>
                 </div>
             </div>
 
