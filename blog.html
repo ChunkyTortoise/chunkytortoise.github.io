@@ -36,6 +36,179 @@
         <h1 class="text-3xl font-bold mb-2">Blog</h1>
         <p class="text-gray-600 mb-10">Technical writeups from building production AI systems.</p>
 
+        <!-- Post 3 -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Multi-Agent</span>
+                <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">Architecture</span>
+                <span class="text-sm text-gray-400">February 8, 2026</span>
+                <span class="text-sm text-gray-400">&middot; 6 min read</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">Multi-Agent Orchestration: Building Reliable Cross-Bot Handoffs</h2>
+
+            <div class="prose prose-gray max-w-none text-gray-700 space-y-4">
+                <p>Everyone focuses on making individual AI bots smarter. Better prompts, finer-tuned intent detection, richer context windows. That work matters &mdash; but when you run multiple specialized bots in production, the hardest engineering problem is not inside any single bot. It is the moment one bot decides a conversation belongs to another bot and tries to hand it off mid-flow. That transition is where conversations get lost, users get confused, and your system's reliability collapses.</p>
+
+                <p>I built a handoff service for <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank">EnterpriseHub</a>, a real estate AI platform with three specialized chatbots: a Lead Bot that qualifies inbound contacts, a Buyer Bot that handles property searches and financing questions, and a Seller Bot that manages CMAs, listing prep, and home valuations. Each bot has its own personality, its own prompt engineering, and its own intent decoder. The challenge is that a lead who starts as a general inquiry might say "I want to buy a house with a $400K budget" halfway through the conversation &mdash; and the system needs to move that conversation from Lead Bot to Buyer Bot without losing context, without ping-ponging, and without triggering on noise.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">The Edge Cases That Break Naive Handoffs</h3>
+                <p>A first-pass handoff system is straightforward: detect buyer or seller intent, switch bots. In testing, three failure modes showed up immediately:</p>
+
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>Circular handoffs.</strong> Lead Bot detects buyer intent, hands off to Buyer Bot. Buyer Bot sees the contact still has seller-related tags and hands back to Lead Bot. Lead Bot re-detects buyer intent. The contact bounces endlessly between bots, generating a stream of CRM tag changes and confusing the human agent monitoring the dashboard.</li>
+                    <li><strong>Concurrent conflicts.</strong> Two webhook events fire within milliseconds of each other &mdash; one from a chatbot response, one from a CRM workflow trigger. Both attempt a handoff for the same contact simultaneously. Without coordination, the system applies contradictory tag changes, leaving the contact in an undefined state that neither bot recognizes.</li>
+                    <li><strong>False-positive intent signals.</strong> A lead says "My sister just sold her home and she recommended you." The word "sold" combined with "home" triggers the seller intent regex. The lead is not a seller. The handoff is wrong, and recovering from a bad handoff is harder than never making one &mdash; because the context window in the receiving bot starts fresh, losing the qualifying conversation so far.</li>
+                </ul>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Solution 1: Circular Prevention with Temporal Windows</h3>
+                <p>The handoff service maintains a per-contact history of every handoff that has occurred. Before executing any handoff, it checks two conditions:</p>
+
+                <ol class="list-decimal pl-6 space-y-2">
+                    <li><strong>Direct circular check:</strong> Has this exact source-to-target handoff already happened for this contact within the last 30 minutes? If Lead already handed to Buyer 10 minutes ago, a second Lead-to-Buyer handoff is blocked.</li>
+                    <li><strong>Chain cycle detection:</strong> Does the proposed handoff complete a loop in the handoff chain? If the chain is Lead &rarr; Buyer &rarr; Seller and the proposed handoff is Seller &rarr; Lead, the system detects the cycle and blocks it.</li>
+                </ol>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        CIRCULAR_WINDOW_SECONDS = 30 * 60  # 30-minute lookback<br><br>
+                        def _check_circular_prevention(cls, contact_id, source_bot, target_bot):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;now = time.time()<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;cutoff = now - cls.CIRCULAR_WINDOW_SECONDS<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;history = cls._handoff_history.get(contact_id, [])<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;# Check 1: Same source->target within window<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;for entry in history:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if entry["from"] == source_bot and entry["to"] == target_bot<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and entry["timestamp"] > cutoff:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return (True, "blocked within 30-min window")<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;# Check 2: Chain cycle detection<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;chain = [e["to"] for e in reversed(history) if e["timestamp"] > cutoff]<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if target_bot in chain:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return (True, "would create cycle in handoff chain")
+                    </p>
+                </div>
+
+                <p>The 30-minute window is deliberate. Too short (5 minutes) and a fast-talking lead can still trigger a loop. Too long (hours) and you block legitimate re-routes &mdash; a contact might genuinely shift from buyer mode to seller mode over the course of a longer conversation. Thirty minutes covers the realistic conversation cycle without being overly restrictive.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Solution 2: Rate Limiting per Contact</h3>
+                <p>Even with circular prevention, a pathological pattern can generate excessive handoffs: a confused contact who alternates between buyer and seller language, or a bad actor probing the system. The service enforces two rate limits:</p>
+
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>3 handoffs per hour</strong> per contact. No legitimate conversation needs more than 3 bot transitions in 60 minutes. If this limit is hit, the contact stays with the current bot until the window clears.</li>
+                    <li><strong>10 handoffs per day</strong> per contact. This catches slower-burn abuse or stuck automation loops that fire once every few minutes for hours.</li>
+                </ul>
+
+                <p>Both limits are checked before every handoff execution. When a rate limit blocks a handoff, the event is recorded in analytics so ops teams can investigate.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Solution 3: Contact-Level Locking for Concurrent Conflicts</h3>
+                <p>When two handoff requests arrive for the same contact within milliseconds, the system needs to serialize them. The service uses a lightweight in-memory lock with a 30-second timeout:</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        HANDOFF_LOCK_TIMEOUT = 30  # seconds<br><br>
+                        def _acquire_handoff_lock(cls, contact_id):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;now = time.time()<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if contact_id in cls._active_handoffs:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lock_time = cls._active_handoffs[contact_id]<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if now - lock_time < cls.HANDOFF_LOCK_TIMEOUT:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return False  # Another handoff in progress<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;cls._active_handoffs[contact_id] = now<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return True
+                    </p>
+                </div>
+
+                <p>The lock is acquired at the start of <code>execute_handoff()</code> and released in a <code>finally</code> block, ensuring cleanup even if the handoff fails. The 30-second timeout acts as a safety valve &mdash; if the lock holder crashes, the lock auto-expires rather than permanently blocking the contact.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">The Confidence Threshold System</h3>
+                <p>Not all handoff directions are equally risky. Handing a lead to the wrong buyer specialist wastes expensive buyer-bot context. Handing a seller inquiry to the buyer bot could lose a listing. The system uses asymmetric confidence thresholds tuned to the cost of each mistake:</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        # Confidence thresholds per handoff direction<br>
+                        THRESHOLDS = {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;("lead", "buyer"):&nbsp;&nbsp; 0.7,&nbsp; # Standard: clear buyer signals needed<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;("lead", "seller"):&nbsp; 0.7,&nbsp; # Standard: clear seller signals needed<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;("buyer", "seller"): 0.8,&nbsp; # High bar: buyer already in pipeline<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;("seller", "buyer"): 0.6,&nbsp; # Lower bar: sellers often also buy<br>
+                        }
+                    </p>
+                </div>
+
+                <p>The reasoning: buyer-to-seller handoffs get a 0.8 threshold because a contact already in the buyer pipeline has real momentum &mdash; they are looking at properties, discussing financing, building rapport with the buyer bot. Incorrectly rerouting them to the seller bot disrupts that flow. Conversely, seller-to-buyer gets a 0.6 threshold because sellers frequently also need to buy their next home. The "sell first, then buy" pattern is so common in residential real estate that a lower bar is justified.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Solution 4: Pattern Learning with Dynamic Thresholds</h3>
+                <p>Static thresholds are a starting point, not an endpoint. The system records the outcome of every handoff &mdash; successful, failed, reverted, or timed out &mdash; and uses that data to adjust thresholds dynamically:</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        MIN_LEARNING_SAMPLES = 10  # Don't adjust until enough data<br><br>
+                        def get_learned_adjustments(cls, source_bot, target_bot):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;outcomes = cls._handoff_outcomes.get(f"{source_bot}->{target_bot}", [])<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if len(outcomes) < cls.MIN_LEARNING_SAMPLES:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return {"adjustment": 0.0}  # Not enough data<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;success_rate = sum(1 for o in outcomes<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if o["outcome"] == "successful") / len(outcomes)<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if success_rate > 0.8:&nbsp;&nbsp; return {"adjustment": -0.05}  # Lower bar<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if success_rate < 0.5:&nbsp;&nbsp; return {"adjustment": +0.10}  # Raise bar<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return {"adjustment": 0.0}  # Keep current threshold
+                    </p>
+                </div>
+
+                <p>The minimum sample size of 10 prevents over-fitting to early data. The adjustment magnitudes are intentionally conservative: -0.05 for high success, +0.10 for low success. The asymmetry reflects that raising the bar (being more cautious) is safer than lowering it. Over time, each handoff route converges to its natural threshold based on real conversion data rather than guesses.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Intent Signal Extraction: Two Layers Deep</h3>
+                <p>The handoff decision is only as good as the intent signals feeding it. The system extracts signals at two levels:</p>
+
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>Single-message analysis:</strong> Regex patterns match buyer phrases ("I want to buy," "budget $X," "pre-approval," "FHA," "VA loan") and seller phrases ("sell my house," "what's my home worth," "CMA," "listing my property"). Each pattern match adds 0.3 to the intent score, capped at 1.0.</li>
+                    <li><strong>Conversation history scan:</strong> The last 5 messages are analyzed for the same patterns. History signals are blended at 50% weight: <code>buyer_score = min(1.0, current_score + history_signal * 0.5)</code>. This prevents a single ambiguous message from triggering a handoff while rewarding sustained intent across multiple turns.</li>
+                </ul>
+
+                <p>The blending ratio matters. At 100%, history would dominate and stale signals would persist too long. At 0%, only the latest message counts and the system loses the ability to detect gradually building intent. The 50% blend captures the pattern where a lead mentions buying once, then again two messages later &mdash; each mention individually might not cross the threshold, but together they do.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Results</h3>
+                <div class="grid grid-cols-3 gap-4 my-6">
+                    <div class="bg-green-50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-green-700">0</p>
+                        <p class="text-xs text-green-600 mt-1">Circular handoffs in production</p>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-green-700">12</p>
+                        <p class="text-xs text-green-600 mt-1">False positives caught (week 1)</p>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-green-700">4 layers</p>
+                        <p class="text-xs text-green-600 mt-1">Safety checks per handoff</p>
+                    </div>
+                </div>
+
+                <p>The 12 false positives in the first week were almost all from the same pattern: leads mentioning selling in the context of a relative's experience rather than their own intent. Adding the conversation history scan and the 0.7 confidence threshold together filter these out &mdash; a single passing mention of "sold" scores around 0.3, well below the threshold, while genuine seller intent across multiple turns reliably crosses it.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Limitations and Tradeoffs</h3>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>In-memory state is single-process.</strong> The handoff history, locks, and analytics live in class-level dicts. This works for a single-server deployment but would need Redis-backed state for horizontal scaling. The tradeoff is simplicity and zero-latency lookups versus multi-instance support.</li>
+                    <li><strong>Regex intent detection has a ceiling.</strong> Pattern matching catches explicit phrases but misses implicit intent. A lead who says "We're outgrowing our current place and exploring options" is likely a buyer, but no regex pattern matches. Moving to LLM-based intent classification would improve recall at the cost of latency and token spend.</li>
+                    <li><strong>The 30-minute circular window is domain-specific.</strong> Real estate conversations move at a particular pace. A customer support bot handling rapid-fire technical issues might need a 5-minute window. An insurance bot with multi-day workflows might need 24 hours. The constant is easy to change, but there is no auto-tuning for it.</li>
+                    <li><strong>Pattern learning requires outcome data.</strong> The dynamic threshold adjustment only kicks in after 10 data points per route. In a new deployment, you are running on static thresholds for the first several days. If those thresholds are wrong, you accumulate bad handoffs before the system self-corrects.</li>
+                </ul>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">The Key Lesson</h3>
+                <p>The hard part of multi-agent AI is not building individual bots. Each of the three Jorge bots is a straightforward system: a prompt template, an intent decoder, a set of CRM integrations. The hard part is the transitions. When Bot A hands to Bot B, you are transferring not just a conversation thread but an entire context of qualification state, rapport, and user expectations. Getting this wrong is worse than never doing it &mdash; a misrouted contact is more frustrated than one who waited in the wrong queue.</p>
+
+                <p>Every production multi-agent system I have seen underestimates this. The bot logic gets 90% of the engineering attention, and the handoff logic gets 10%. In practice, the ratio should be closer to 60/40. The handoff service in EnterpriseHub is ~350 lines of Python with no AI calls at all &mdash; it is pure control flow, state management, and safety checks. That unglamorous code is what makes the system reliable.</p>
+
+                <h3 class="text-xl font-bold mt-8 mb-3">Try It Yourself</h3>
+                <p>The full implementation is open source. The relevant files:</p>
+                <ul class="list-disc pl-6 space-y-1">
+                    <li><a href="https://github.com/ChunkyTortoise/EnterpriseHub/blob/main/ghl_real_estate_ai/services/jorge/jorge_handoff_service.py" class="text-indigo-600 hover:underline" target="_blank"><code>services/jorge/jorge_handoff_service.py</code></a> &mdash; Circular prevention, rate limiting, contact locking, pattern learning</li>
+                    <li><a href="https://github.com/ChunkyTortoise/EnterpriseHub/blob/main/ghl_real_estate_ai/services/jorge/bot_metrics_collector.py" class="text-indigo-600 hover:underline" target="_blank"><code>services/jorge/bot_metrics_collector.py</code></a> &mdash; Per-bot stats, cache hits, alerting integration</li>
+                    <li><a href="https://github.com/ChunkyTortoise/EnterpriseHub/blob/main/ghl_real_estate_ai/services/jorge/alerting_service.py" class="text-indigo-600 hover:underline" target="_blank"><code>services/jorge/alerting_service.py</code></a> &mdash; Configurable alert rules with cooldown periods</li>
+                    <li><a href="https://github.com/ChunkyTortoise/EnterpriseHub/blob/main/ghl_real_estate_ai/services/jorge/ab_testing_service.py" class="text-indigo-600 hover:underline" target="_blank"><code>services/jorge/ab_testing_service.py</code></a> &mdash; A/B experiment management for handoff threshold tuning</li>
+                </ul>
+
+                <p class="mt-6">For the full performance metrics, see the <a href="benchmarks.html" class="text-indigo-600 hover:underline">benchmarks page</a>.</p>
+            </div>
+        </article>
+
         <!-- Post 2 -->
         <article class="bg-white rounded-xl border p-8 mb-8">
             <div class="flex items-center gap-3 mb-4">
