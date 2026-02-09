@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Certifications | Cayman Roden</title>
-    <meta name="description" content="21 completed certifications from 10 providers including Google, IBM, Microsoft, DeepLearning.AI, and Anthropic. 1,850+ hours of structured coursework.">
+    <meta name="description" content="19 completed certifications from 9 providers including Vanderbilt, IBM, Google, Microsoft, Duke, Meta, DeepLearning.AI, and University of Michigan. 1,768 hours of structured coursework.">
     <meta property="og:title" content="Certifications | Cayman Roden">
-    <meta property="og:description" content="21 completed certifications from 10 providers. 1,850+ hours covering deep learning, GenAI, MLOps, data analytics, and software engineering.">
+    <meta property="og:description" content="19 completed certifications from 9 providers. 1,768 hours covering deep learning, GenAI, LLMOps, data analytics, and BI.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chunkytortoise.github.io/certifications.html">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Certifications | Cayman Roden">
-    <meta name="twitter:description" content="21 completed certifications from 10 providers. 1,850+ hours of structured coursework.">
+    <meta name="twitter:description" content="19 completed certifications from 9 providers. 1,768 hours of structured coursework.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -34,14 +34,14 @@
 
     <section class="max-w-6xl mx-auto px-4 py-12">
         <h1 class="text-3xl font-bold mb-2">Certifications</h1>
-        <p class="text-gray-600 mb-2">21 certifications across 10 providers. All completed, all verifiable.</p>
+        <p class="text-gray-600 mb-2">19 certifications across 9 providers. All completed, all verifiable.</p>
         <div class="flex items-center gap-6 mb-6">
             <div class="bg-indigo-50 border border-indigo-200 rounded-lg px-4 py-3 inline-block">
-                <span class="text-2xl font-bold text-indigo-600">1,850+</span>
+                <span class="text-2xl font-bold text-indigo-600">1,768</span>
                 <span class="text-indigo-700 ml-2">total hours</span>
             </div>
             <div class="bg-gray-50 border border-gray-200 rounded-lg px-4 py-3 inline-block">
-                <span class="text-2xl font-bold text-gray-700">10</span>
+                <span class="text-2xl font-bold text-gray-700">9</span>
                 <span class="text-gray-600 ml-2">providers</span>
             </div>
         </div>
@@ -49,6 +49,7 @@
         <!-- Provider logos -->
         <div class="flex flex-wrap gap-4 mb-6 text-sm font-medium text-gray-500">
             <span class="bg-white border rounded-full px-3 py-1">Google</span>
+            <span class="bg-white border rounded-full px-3 py-1">Google Cloud</span>
             <span class="bg-white border rounded-full px-3 py-1">IBM</span>
             <span class="bg-white border rounded-full px-3 py-1">Microsoft</span>
             <span class="bg-white border rounded-full px-3 py-1">DeepLearning.AI</span>
@@ -56,94 +57,22 @@
             <span class="bg-white border rounded-full px-3 py-1">Duke</span>
             <span class="bg-white border rounded-full px-3 py-1">Meta</span>
             <span class="bg-white border rounded-full px-3 py-1">U of Michigan</span>
-            <span class="bg-white border rounded-full px-3 py-1">Linux Foundation</span>
-            <span class="bg-white border rounded-full px-3 py-1">Anthropic</span>
         </div>
 
         <!-- Filter buttons -->
         <div class="flex gap-3 mb-8 flex-wrap">
-            <button onclick="filterCerts('all')" class="cert-filter-btn active bg-indigo-600 text-white px-4 py-1.5 rounded-full text-sm">All (21)</button>
-            <button onclick="filterCerts('ai')" class="cert-filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">AI & ML (4)</button>
-            <button onclick="filterCerts('genai')" class="cert-filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">GenAI & Strategy (5)</button>
-            <button onclick="filterCerts('data')" class="cert-filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Data & BI (7)</button>
-            <button onclick="filterCerts('swe')" class="cert-filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Software Engineering (3)</button>
-            <button onclick="filterCerts('marketing')" class="cert-filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Marketing (2)</button>
+            <button onclick="filterCerts('all')" class="cert-filter-btn active bg-indigo-600 text-white px-4 py-1.5 rounded-full text-sm">All (19)</button>
+            <button onclick="filterCerts('genai')" class="cert-filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">GenAI &amp; LLMOps (7)</button>
+            <button onclick="filterCerts('data-analytics')" class="cert-filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Data Analytics (3)</button>
+            <button onclick="filterCerts('bi')" class="cert-filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Business Intelligence (3)</button>
+            <button onclick="filterCerts('data-science')" class="cert-filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Data Science (2)</button>
+            <button onclick="filterCerts('ai-ml')" class="cert-filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Deep Learning &amp; ML (2)</button>
+            <button onclick="filterCerts('marketing')" class="cert-filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Marketing &amp; Growth (2)</button>
         </div>
 
-        <!-- AI & ML -->
-        <div class="cert-section mb-10" data-category="ai">
-            <h2 class="text-xl font-bold mb-4 border-b pb-2">AI & Machine Learning <span class="text-sm font-normal text-gray-500">386 hours</span></h2>
-            <div class="grid md:grid-cols-2 gap-4">
-                <div class="bg-white rounded-lg border p-4">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="font-medium"><a href="https://www.coursera.org/specializations/deep-learning" target="_blank" class="hover:text-indigo-600">Deep Learning Specialization</a></h3>
-                            <p class="text-sm text-gray-500">DeepLearning.AI &middot; 120h</p>
-                        </div>
-                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
-                    </div>
-                    <div class="flex gap-1.5 flex-wrap mb-2">
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Python</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">TensorFlow</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Neural Networks</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">CNNs</span>
-                    </div>
-                    <p class="text-xs text-gray-400">Backs: <a href="services.html#predictive" class="text-indigo-500 hover:underline">Predictive Modeling</a></p>
-                </div>
-                <div class="bg-white rounded-lg border p-4">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/ibm-generative-ai-engineering" target="_blank" class="hover:text-indigo-600">IBM GenAI Engineering</a></h3>
-                            <p class="text-sm text-gray-500">IBM &middot; 90h</p>
-                        </div>
-                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
-                    </div>
-                    <div class="flex gap-1.5 flex-wrap mb-2">
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Generative AI</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">LLMs</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Prompt Engineering</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Python</span>
-                    </div>
-                    <p class="text-xs text-gray-400">Backs: <a href="services.html#rag" class="text-indigo-500 hover:underline">RAG Agents</a>, <a href="services.html#llmops" class="text-indigo-500 hover:underline">LLMOps</a></p>
-                </div>
-                <div class="bg-white rounded-lg border p-4">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/ibm-rag-and-agentic-ai" target="_blank" class="hover:text-indigo-600">IBM RAG and Agentic AI</a></h3>
-                            <p class="text-sm text-gray-500">IBM &middot; 80h</p>
-                        </div>
-                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
-                    </div>
-                    <div class="flex gap-1.5 flex-wrap mb-2">
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">RAG</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Agentic AI</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Vector Search</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">LangChain</span>
-                    </div>
-                    <p class="text-xs text-gray-400">Backs: <a href="services.html#rag" class="text-indigo-500 hover:underline">RAG Agents</a>, <a href="services.html#multi-agent" class="text-indigo-500 hover:underline">Multi-Agent Workflows</a></p>
-                </div>
-                <div class="bg-white rounded-lg border p-4">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/microsoft-ai-and-ml-engineering" target="_blank" class="hover:text-indigo-600">AI &amp; ML Engineering</a></h3>
-                            <p class="text-sm text-gray-500">Microsoft &middot; 96h</p>
-                        </div>
-                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
-                    </div>
-                    <div class="flex gap-1.5 flex-wrap mb-2">
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Python</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">ML Pipelines</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Azure AI</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">MLOps</span>
-                    </div>
-                    <p class="text-xs text-gray-400">Backs: <a href="services.html#predictive" class="text-indigo-500 hover:underline">Predictive Modeling</a>, <a href="services.html#llmops" class="text-indigo-500 hover:underline">LLMOps</a></p>
-                </div>
-            </div>
-        </div>
-
-        <!-- GenAI & Strategy -->
+        <!-- GenAI & LLMOps -->
         <div class="cert-section mb-10" data-category="genai">
-            <h2 class="text-xl font-bold mb-4 border-b pb-2">Generative AI & Strategy <span class="text-sm font-normal text-gray-500">109 hours</span></h2>
+            <h2 class="text-xl font-bold mb-4 border-b pb-2">GenAI &amp; LLMOps <span class="text-sm font-normal text-gray-500">323 hours</span></h2>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="bg-white rounded-lg border p-4">
                     <div class="flex justify-between items-start mb-2">
@@ -158,42 +87,13 @@
                         <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Business AI</span>
                         <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">GenAI Adoption</span>
                     </div>
-                    <p class="text-xs text-gray-400">Backs: <a href="services.html#llmops" class="text-indigo-500 hover:underline">LLMOps & Cost Optimization</a></p>
-                </div>
-                <div class="bg-white rounded-lg border p-4">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="font-medium"><a href="https://www.coursera.org/specializations/large-language-model-operations" target="_blank" class="hover:text-indigo-600">LLMOps</a></h3>
-                            <p class="text-sm text-gray-500">Duke University &middot; 30h</p>
-                        </div>
-                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
-                    </div>
-                    <div class="flex gap-1.5 flex-wrap mb-2">
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">LLMOps</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Deployment</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Monitoring</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">MLflow</span>
-                    </div>
-                    <p class="text-xs text-gray-400">Backs: <a href="services.html#llmops" class="text-indigo-500 hover:underline">LLMOps & Cost Optimization</a></p>
-                </div>
-                <div class="bg-white rounded-lg border p-4">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/generative-ai-for-leaders" target="_blank" class="hover:text-indigo-600">Google Cloud Generative AI Leader</a></h3>
-                            <p class="text-sm text-gray-500">Google Cloud &middot; 8h</p>
-                        </div>
-                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
-                    </div>
-                    <div class="flex gap-1.5 flex-wrap mb-2">
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Google Cloud</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">GenAI</span>
-                    </div>
+                    <p class="text-xs text-gray-400">Backs: <a href="services.html#llmops" class="text-indigo-500 hover:underline">LLMOps &amp; Cost Optimization</a></p>
                 </div>
                 <div class="bg-white rounded-lg border p-4">
                     <div class="flex justify-between items-start mb-2">
                         <div>
                             <h3 class="font-medium"><a href="https://www.coursera.org/specializations/chatgpt-gpt-zapier-excel-at-automation" target="_blank" class="hover:text-indigo-600">ChatGPT Personal Automation</a></h3>
-                            <p class="text-sm text-gray-500">Vanderbilt &middot; 24h</p>
+                            <p class="text-sm text-gray-500">Vanderbilt &middot; 30h</p>
                         </div>
                         <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
                     </div>
@@ -207,8 +107,69 @@
                 <div class="bg-white rounded-lg border p-4">
                     <div class="flex justify-between items-start mb-2">
                         <div>
+                            <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/ibm-generative-ai-engineering" target="_blank" class="hover:text-indigo-600">IBM GenAI Engineering</a></h3>
+                            <p class="text-sm text-gray-500">IBM &middot; 144h</p>
+                        </div>
+                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
+                    </div>
+                    <div class="flex gap-1.5 flex-wrap mb-2">
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Generative AI</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">LLMs</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">LangChain</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">RAG</span>
+                    </div>
+                    <p class="text-xs text-gray-400">Backs: <a href="services.html#rag" class="text-indigo-500 hover:underline">RAG Agents</a>, <a href="services.html#llmops" class="text-indigo-500 hover:underline">LLMOps</a></p>
+                </div>
+                <div class="bg-white rounded-lg border p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/ibm-rag-and-agentic-ai" target="_blank" class="hover:text-indigo-600">IBM RAG and Agentic AI</a></h3>
+                            <p class="text-sm text-gray-500">IBM &middot; 24h</p>
+                        </div>
+                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
+                    </div>
+                    <div class="flex gap-1.5 flex-wrap mb-2">
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">RAG</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Agentic AI</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Vector Search</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">LangChain</span>
+                    </div>
+                    <p class="text-xs text-gray-400">Backs: <a href="services.html#rag" class="text-indigo-500 hover:underline">RAG Agents</a>, <a href="services.html#multi-agent" class="text-indigo-500 hover:underline">Multi-Agent Workflows</a></p>
+                </div>
+                <div class="bg-white rounded-lg border p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="font-medium"><a href="https://www.coursera.org/specializations/large-language-model-operations" target="_blank" class="hover:text-indigo-600">LLMOps</a></h3>
+                            <p class="text-sm text-gray-500">Duke University &middot; 48h</p>
+                        </div>
+                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
+                    </div>
+                    <div class="flex gap-1.5 flex-wrap mb-2">
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">LLMOps</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Deployment</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Monitoring</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">MLflow</span>
+                    </div>
+                    <p class="text-xs text-gray-400">Backs: <a href="services.html#llmops" class="text-indigo-500 hover:underline">LLMOps &amp; Cost Optimization</a></p>
+                </div>
+                <div class="bg-white rounded-lg border p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/generative-ai-for-leaders" target="_blank" class="hover:text-indigo-600">Google Cloud Generative AI Leader</a></h3>
+                            <p class="text-sm text-gray-500">Google Cloud &middot; 25h</p>
+                        </div>
+                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
+                    </div>
+                    <div class="flex gap-1.5 flex-wrap mb-2">
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Google Cloud</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">GenAI</span>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg border p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
                             <h3 class="font-medium"><a href="https://www.coursera.org/learn/ai-for-everyone" target="_blank" class="hover:text-indigo-600">AI For Everyone</a></h3>
-                            <p class="text-sm text-gray-500">DeepLearning.AI &middot; 7h</p>
+                            <p class="text-sm text-gray-500">DeepLearning.AI &middot; 12h</p>
                         </div>
                         <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
                     </div>
@@ -219,9 +180,9 @@
             </div>
         </div>
 
-        <!-- Data Analytics & BI -->
-        <div class="cert-section mb-10" data-category="data">
-            <h2 class="text-xl font-bold mb-4 border-b pb-2">Data Analytics & Business Intelligence <span class="text-sm font-normal text-gray-500">820 hours</span></h2>
+        <!-- Data Analytics -->
+        <div class="cert-section mb-10" data-category="data-analytics">
+            <h2 class="text-xl font-bold mb-4 border-b pb-2">Data Analytics <span class="text-sm font-normal text-gray-500">409 hours</span></h2>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="bg-white rounded-lg border p-4">
                     <div class="flex justify-between items-start mb-2">
@@ -242,19 +203,42 @@
                 <div class="bg-white rounded-lg border p-4">
                     <div class="flex justify-between items-start mb-2">
                         <div>
-                            <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/google-advanced-data-analytics" target="_blank" class="hover:text-indigo-600">Google Advanced Data Analytics</a></h3>
-                            <p class="text-sm text-gray-500">Google &middot; 160h</p>
+                            <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/microsoft-genai-for-data-analysis" target="_blank" class="hover:text-indigo-600">GenAI for Data Analysis</a></h3>
+                            <p class="text-sm text-gray-500">Microsoft &middot; 108h</p>
                         </div>
                         <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
                     </div>
                     <div class="flex gap-1.5 flex-wrap mb-2">
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">GenAI</span>
                         <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Python</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Statistics</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Regression</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">ML</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Data Analysis</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Copilot</span>
                     </div>
-                    <p class="text-xs text-gray-400">Backs: <a href="services.html#predictive" class="text-indigo-500 hover:underline">Predictive Modeling</a>, <a href="services.html#attribution" class="text-indigo-500 hover:underline">Attribution</a></p>
+                    <p class="text-xs text-gray-400">Backs: <a href="services.html#dashboards" class="text-indigo-500 hover:underline">BI Dashboards</a></p>
                 </div>
+                <div class="bg-white rounded-lg border p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="font-medium"><a href="https://www.coursera.org/specializations/microsoft-ai-enhanced-data-analysis" target="_blank" class="hover:text-indigo-600">AI-Enhanced Data Analysis</a></h3>
+                            <p class="text-sm text-gray-500">Microsoft &middot; 120h</p>
+                        </div>
+                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
+                    </div>
+                    <div class="flex gap-1.5 flex-wrap mb-2">
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Excel</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Python</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Power BI</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Copilot</span>
+                    </div>
+                    <p class="text-xs text-gray-400">Backs: <a href="services.html#dashboards" class="text-indigo-500 hover:underline">BI Dashboards</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Intelligence -->
+        <div class="cert-section mb-10" data-category="bi">
+            <h2 class="text-xl font-bold mb-4 border-b pb-2">Business Intelligence <span class="text-sm font-normal text-gray-500">308 hours</span></h2>
+            <div class="grid md:grid-cols-2 gap-4">
                 <div class="bg-white rounded-lg border p-4">
                     <div class="flex justify-between items-start mb-2">
                         <div>
@@ -274,40 +258,8 @@
                 <div class="bg-white rounded-lg border p-4">
                     <div class="flex justify-between items-start mb-2">
                         <div>
-                            <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/google-business-intelligence" target="_blank" class="hover:text-indigo-600">Google Business Intelligence</a></h3>
-                            <p class="text-sm text-gray-500">Google &middot; 110h</p>
-                        </div>
-                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
-                    </div>
-                    <div class="flex gap-1.5 flex-wrap mb-2">
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">SQL</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Dashboards</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Data Models</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">ETL</span>
-                    </div>
-                    <p class="text-xs text-gray-400">Backs: <a href="services.html#dashboards" class="text-indigo-500 hover:underline">BI Dashboards</a></p>
-                </div>
-                <div class="bg-white rounded-lg border p-4">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
-                            <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/microsoft-genai-for-data-analysis" target="_blank" class="hover:text-indigo-600">GenAI for Data Analysis</a></h3>
-                            <p class="text-sm text-gray-500">Microsoft &middot; 108h</p>
-                        </div>
-                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
-                    </div>
-                    <div class="flex gap-1.5 flex-wrap mb-2">
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">GenAI</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Python</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Data Analysis</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Copilot</span>
-                    </div>
-                    <p class="text-xs text-gray-400">Backs: <a href="services.html#dashboards" class="text-indigo-500 hover:underline">BI Dashboards</a></p>
-                </div>
-                <div class="bg-white rounded-lg border p-4">
-                    <div class="flex justify-between items-start mb-2">
-                        <div>
                             <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/microsoft-data-visualization" target="_blank" class="hover:text-indigo-600">Data Visualization</a></h3>
-                            <p class="text-sm text-gray-500">Microsoft &middot; 72h</p>
+                            <p class="text-sm text-gray-500">Microsoft &middot; 87h</p>
                         </div>
                         <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
                     </div>
@@ -321,30 +273,31 @@
                 <div class="bg-white rounded-lg border p-4">
                     <div class="flex justify-between items-start mb-2">
                         <div>
-                            <h3 class="font-medium"><a href="https://www.coursera.org/specializations/microsoft-ai-enhanced-data-analysis" target="_blank" class="hover:text-indigo-600">AI-Enhanced Data Analysis</a></h3>
-                            <p class="text-sm text-gray-500">Microsoft &middot; 48h</p>
+                            <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/google-business-intelligence" target="_blank" class="hover:text-indigo-600">Google Business Intelligence</a></h3>
+                            <p class="text-sm text-gray-500">Google &middot; 80h</p>
                         </div>
                         <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
                     </div>
                     <div class="flex gap-1.5 flex-wrap mb-2">
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">AI</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Python</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Data Analysis</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">SQL</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Dashboards</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Data Models</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">ETL</span>
                     </div>
                     <p class="text-xs text-gray-400">Backs: <a href="services.html#dashboards" class="text-indigo-500 hover:underline">BI Dashboards</a></p>
                 </div>
             </div>
         </div>
 
-        <!-- Software Engineering -->
-        <div class="cert-section mb-10" data-category="swe">
-            <h2 class="text-xl font-bold mb-4 border-b pb-2">Software Engineering <span class="text-sm font-normal text-gray-500">153 hours</span></h2>
+        <!-- Data Science -->
+        <div class="cert-section mb-10" data-category="data-science">
+            <h2 class="text-xl font-bold mb-4 border-b pb-2">Data Science <span class="text-sm font-normal text-gray-500">260 hours</span></h2>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="bg-white rounded-lg border p-4">
                     <div class="flex justify-between items-start mb-2">
                         <div>
                             <h3 class="font-medium"><a href="https://www.coursera.org/specializations/python" target="_blank" class="hover:text-indigo-600">Python for Everybody</a></h3>
-                            <p class="text-sm text-gray-500">University of Michigan &middot; 80h</p>
+                            <p class="text-sm text-gray-500">University of Michigan &middot; 60h</p>
                         </div>
                         <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
                     </div>
@@ -359,45 +312,70 @@
                 <div class="bg-white rounded-lg border p-4">
                     <div class="flex justify-between items-start mb-2">
                         <div>
-                            <h3 class="font-medium"><a href="https://www.coursera.org/specializations/oss-development-linux-git" target="_blank" class="hover:text-indigo-600">Open Source Software Development, Linux and Git</a></h3>
-                            <p class="text-sm text-gray-500">The Linux Foundation &middot; 70h</p>
+                            <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/google-advanced-data-analytics" target="_blank" class="hover:text-indigo-600">Google Advanced Data Analytics</a></h3>
+                            <p class="text-sm text-gray-500">Google &middot; 200h</p>
                         </div>
                         <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
                     </div>
                     <div class="flex gap-1.5 flex-wrap mb-2">
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Linux</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Git</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Open Source</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">CI/CD</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Python</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Statistics</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Regression</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">ML</span>
                     </div>
-                    <p class="text-xs text-gray-400">Foundation for all services</p>
+                    <p class="text-xs text-gray-400">Backs: <a href="services.html#predictive" class="text-indigo-500 hover:underline">Predictive Modeling</a>, <a href="services.html#attribution" class="text-indigo-500 hover:underline">Attribution</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deep Learning & ML -->
+        <div class="cert-section mb-10" data-category="ai-ml">
+            <h2 class="text-xl font-bold mb-4 border-b pb-2">Deep Learning &amp; ML <span class="text-sm font-normal text-gray-500">195 hours</span></h2>
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="bg-white rounded-lg border p-4">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="font-medium"><a href="https://www.coursera.org/specializations/deep-learning" target="_blank" class="hover:text-indigo-600">Deep Learning Specialization</a></h3>
+                            <p class="text-sm text-gray-500">DeepLearning.AI &middot; 120h</p>
+                        </div>
+                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
+                    </div>
+                    <div class="flex gap-1.5 flex-wrap mb-2">
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Python</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">TensorFlow</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Neural Networks</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">CNNs</span>
+                    </div>
+                    <p class="text-xs text-gray-400">Backs: <a href="services.html#predictive" class="text-indigo-500 hover:underline">Predictive Modeling</a></p>
                 </div>
                 <div class="bg-white rounded-lg border p-4">
                     <div class="flex justify-between items-start mb-2">
                         <div>
-                            <h3 class="font-medium"><a href="https://www.coursera.org/learn/claude-code-in-action" target="_blank" class="hover:text-indigo-600">Claude Code in Action</a></h3>
-                            <p class="text-sm text-gray-500">Anthropic &middot; 3h</p>
+                            <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/microsoft-ai-and-ml-engineering" target="_blank" class="hover:text-indigo-600">AI &amp; ML Engineering</a></h3>
+                            <p class="text-sm text-gray-500">Microsoft &middot; 75h</p>
                         </div>
                         <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
                     </div>
                     <div class="flex gap-1.5 flex-wrap mb-2">
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Claude API</span>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">AI Dev Tools</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Python</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">ML Pipelines</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Azure AI</span>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">MLOps</span>
                     </div>
-                    <p class="text-xs text-gray-400">Backs: <a href="services.html#llmops" class="text-indigo-500 hover:underline">LLMOps</a></p>
+                    <p class="text-xs text-gray-400">Backs: <a href="services.html#predictive" class="text-indigo-500 hover:underline">Predictive Modeling</a>, <a href="services.html#llmops" class="text-indigo-500 hover:underline">LLMOps</a></p>
                 </div>
             </div>
         </div>
 
         <!-- Marketing -->
         <div class="cert-section mb-10" data-category="marketing">
-            <h2 class="text-xl font-bold mb-4 border-b pb-2">Marketing & Digital <span class="text-sm font-normal text-gray-500">188 hours</span></h2>
+            <h2 class="text-xl font-bold mb-4 border-b pb-2">Marketing &amp; Growth <span class="text-sm font-normal text-gray-500">273 hours</span></h2>
             <div class="grid md:grid-cols-2 gap-4">
                 <div class="bg-white rounded-lg border p-4">
                     <div class="flex justify-between items-start mb-2">
                         <div>
                             <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/google-digital-marketing-ecommerce" target="_blank" class="hover:text-indigo-600">Google Digital Marketing &amp; E-commerce</a></h3>
-                            <p class="text-sm text-gray-500">Google &middot; 120h</p>
+                            <p class="text-sm text-gray-500">Google &middot; 190h</p>
                         </div>
                         <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
                     </div>
@@ -407,13 +385,13 @@
                         <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">E-commerce</span>
                         <span class="bg-indigo-50 text-indigo-600 text-xs px-2 py-0.5 rounded">Marketing</span>
                     </div>
-                    <p class="text-xs text-gray-400">Backs: <a href="services.html#scraping" class="text-indigo-500 hover:underline">Web Scraping & SEO</a>, <a href="services.html#attribution" class="text-indigo-500 hover:underline">Marketing Attribution</a></p>
+                    <p class="text-xs text-gray-400">Backs: <a href="services.html#scraping" class="text-indigo-500 hover:underline">Web Scraping &amp; SEO</a>, <a href="services.html#attribution" class="text-indigo-500 hover:underline">Marketing Attribution</a></p>
                 </div>
                 <div class="bg-white rounded-lg border p-4">
                     <div class="flex justify-between items-start mb-2">
                         <div>
                             <h3 class="font-medium"><a href="https://www.coursera.org/professional-certificates/facebook-social-media-marketing" target="_blank" class="hover:text-indigo-600">Meta Social Media Marketing</a></h3>
-                            <p class="text-sm text-gray-500">Meta &middot; 68h</p>
+                            <p class="text-sm text-gray-500">Meta &middot; 83h</p>
                         </div>
                         <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Completed</span>
                     </div>
@@ -444,32 +422,32 @@
                         <tr class="border-b">
                             <td class="py-3 pr-4 font-medium"><a href="services.html#rag" class="text-indigo-600 hover:underline">RAG Agents</a></td>
                             <td class="py-3 pr-4 text-gray-600">IBM RAG and Agentic AI, IBM GenAI Engineering</td>
-                            <td class="py-3 text-gray-600">170h</td>
+                            <td class="py-3 text-gray-600">168h</td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-3 pr-4 font-medium"><a href="services.html#multi-agent" class="text-indigo-600 hover:underline">Multi-Agent Workflows</a></td>
-                            <td class="py-3 pr-4 text-gray-600">IBM RAG and Agentic AI, Deep Learning Specialization</td>
-                            <td class="py-3 text-gray-600">200h</td>
+                            <td class="py-3 pr-4 text-gray-600">IBM RAG and Agentic AI, IBM GenAI Engineering, Vanderbilt ChatGPT Personal Automation</td>
+                            <td class="py-3 text-gray-600">198h</td>
                         </tr>
                         <tr class="border-b">
-                            <td class="py-3 pr-4 font-medium"><a href="services.html#llmops" class="text-indigo-600 hover:underline">LLMOps & Cost Optimization</a></td>
-                            <td class="py-3 pr-4 text-gray-600">LLMOps (Duke), GenAI Strategic Leader, AI & ML Engineering</td>
-                            <td class="py-3 text-gray-600">166h</td>
+                            <td class="py-3 pr-4 font-medium"><a href="services.html#llmops" class="text-indigo-600 hover:underline">LLMOps &amp; Cost Optimization</a></td>
+                            <td class="py-3 pr-4 text-gray-600">LLMOps (Duke), GenAI Strategic Leader, AI &amp; ML Engineering</td>
+                            <td class="py-3 text-gray-600">163h</td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-3 pr-4 font-medium"><a href="services.html#dashboards" class="text-indigo-600 hover:underline">BI Dashboards</a></td>
-                            <td class="py-3 pr-4 text-gray-600">Google Data Analytics, Google BI, IBM BI Analyst, Data Visualization</td>
-                            <td class="py-3 text-gray-600">504h</td>
+                            <td class="py-3 pr-4 text-gray-600">Google Data Analytics, IBM BI Analyst, Data Visualization</td>
+                            <td class="py-3 text-gray-600">409h</td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-3 pr-4 font-medium"><a href="services.html#predictive" class="text-indigo-600 hover:underline">Predictive Modeling</a></td>
-                            <td class="py-3 pr-4 text-gray-600">Deep Learning Specialization, Google Advanced Analytics, AI & ML Engineering</td>
-                            <td class="py-3 text-gray-600">376h</td>
+                            <td class="py-3 pr-4 text-gray-600">Deep Learning Specialization, Google Advanced Analytics, AI &amp; ML Engineering</td>
+                            <td class="py-3 text-gray-600">395h</td>
                         </tr>
                         <tr>
                             <td class="py-3 pr-4 font-medium"><a href="services.html#attribution" class="text-indigo-600 hover:underline">Marketing Attribution</a></td>
-                            <td class="py-3 pr-4 text-gray-600">Google Digital Marketing, Meta Social Media, Google Advanced Analytics</td>
-                            <td class="py-3 text-gray-600">348h</td>
+                            <td class="py-3 pr-4 text-gray-600">Google Digital Marketing, Meta Social Media</td>
+                            <td class="py-3 text-gray-600">273h</td>
                         </tr>
                     </tbody>
                 </table>
@@ -479,6 +457,7 @@
             </p>
         </div>
     </section>
+
 
     <footer class="bg-gray-900 text-gray-400 py-8">
         <div class="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
