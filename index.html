@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cayman Roden | AI Systems Engineer</title>
-    <meta name="description" content="AI systems engineer specializing in LLM cost optimization, multi-agent orchestration, RAG pipelines, and MCP servers. 7,800+ tests, 19 certifications, 11 production repos.">
+    <meta name="description" content="AI systems engineer specializing in LLM cost optimization, multi-agent orchestration, RAG pipelines, and MCP servers. 8,500+ tests, 19 certifications, 11 production repos.">
     <meta property="og:title" content="Cayman Roden | AI Systems Engineer">
-    <meta property="og:description" content="AI systems engineer specializing in LLM cost optimization, multi-agent orchestration, RAG pipelines, and MCP servers. 7,800+ tests across 11 repos.">
+    <meta property="og:description" content="AI systems engineer specializing in LLM cost optimization, multi-agent orchestration, RAG pipelines, and MCP servers. 8,500+ tests across 11 repos.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chunkytortoise.github.io/">
     <meta name="twitter:card" content="summary">
@@ -33,7 +33,10 @@
     <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <a href="index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
-            <div class="flex gap-4 text-sm">
+            <button id="menu-toggle" class="md:hidden p-2 text-gray-600 hover:text-indigo-600" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <div class="hidden md:flex gap-4 text-sm">
                 <a href="projects.html" class="hover:text-indigo-600">Projects</a>
                 <a href="#starter-kits" class="hover:text-indigo-600">Starter Kits</a>
                 <a href="services.html" class="hover:text-indigo-600">Services</a>
@@ -44,7 +47,22 @@
                 <a href="about.html" class="hover:text-indigo-600">About</a>
             </div>
         </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-2 text-sm">
+            <a href="projects.html" class="block py-1 hover:text-indigo-600">Projects</a>
+            <a href="#starter-kits" class="block py-1 hover:text-indigo-600">Starter Kits</a>
+            <a href="services.html" class="block py-1 hover:text-indigo-600">Services</a>
+            <a href="certifications.html" class="block py-1 hover:text-indigo-600">Certifications</a>
+            <a href="case-studies.html" class="block py-1 hover:text-indigo-600">Case Studies</a>
+            <a href="benchmarks.html" class="block py-1 hover:text-indigo-600">Benchmarks</a>
+            <a href="blog.html" class="block py-1 hover:text-indigo-600">Blog</a>
+            <a href="about.html" class="block py-1 hover:text-indigo-600">About</a>
+        </div>
     </nav>
+    <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    </script>
 
     <!-- Hero -->
     <section class="bg-gradient-to-br from-indigo-600 to-purple-700 text-white py-20">
@@ -77,7 +95,7 @@
             <!-- Trust Badges -->
             <div class="flex flex-wrap justify-center gap-3 text-xs text-indigo-100 mb-8">
                 <span class="bg-white/20 rounded-full px-3 py-1">11 Production Repos</span>
-                <span class="bg-white/20 rounded-full px-3 py-1">7,800+ Tests</span>
+                <span class="bg-white/20 rounded-full px-3 py-1">8,500+ Tests</span>
                 <span class="bg-white/20 rounded-full px-3 py-1">5 Live Demos</span>
                 <span class="bg-white/20 rounded-full px-3 py-1">21 Certifications</span>
             </div>
@@ -89,23 +107,24 @@
             </p>
             
             <div class="flex justify-center gap-6 text-sm font-medium">
-                <div class="bg-white/20 rounded-lg px-4 py-2">93K &rarr; 7.8K tokens/workflow</div>
-                <div class="bg-white/20 rounded-lg px-4 py-2">7,800+ Tests Passing</div>
-                <div class="bg-white/20 rounded-lg px-4 py-2">11 Public Repos, All CI Green</div>
+                <div class="bg-white/20 rounded-lg px-4 py-2">89% Cost Reduction</div>
+                <div class="bg-white/20 rounded-lg px-4 py-2">95% Faster Response</div>
+                <div class="bg-white/20 rounded-lg px-4 py-2">133% Conversion Increase</div>
+                <div class="bg-white/20 rounded-lg px-4 py-2">92% Lead Score Accuracy</div>
             </div>
             <details class="mt-6 max-w-2xl mx-auto">
                 <summary class="text-sm text-indigo-100 cursor-pointer hover:text-white transition">View test breakdown by repo</summary>
                 <div class="mt-4 bg-white/10 rounded-lg p-4 text-left text-sm grid grid-cols-2 gap-2">
-                    <div>EnterpriseHub: <span class="font-semibold">4,992</span></div>
-                    <div>insight-engine: <span class="font-semibold">521</span></div>
-                    <div>docqa-engine: <span class="font-semibold">501</span></div>
-                    <div>ai-orchestrator: <span class="font-semibold">423</span></div>
-                    <div>scrape-and-serve: <span class="font-semibold">302</span></div>
-                    <div>jorge_real_estate_bots: <span class="font-semibold">279</span></div>
-                    <div>Revenue-Sprint: <span class="font-semibold">240</span></div>
-                    <div>llm-integration-starter: <span class="font-semibold">220</span></div>
-                    <div>prompt-engineering-lab: <span class="font-semibold">190</span></div>
-                    <div>mcp-toolkit: <span class="font-semibold">184</span></div>
+                    <div>EnterpriseHub: <span class="font-semibold">5,100</span></div>
+                    <div>insight-engine: <span class="font-semibold">640</span></div>
+                    <div>docqa-engine: <span class="font-semibold">550</span></div>
+                    <div>ai-orchestrator: <span class="font-semibold">550</span></div>
+                    <div>scrape-and-serve: <span class="font-semibold">370</span></div>
+                    <div>jorge_real_estate_bots: <span class="font-semibold">360</span></div>
+                    <div>Revenue-Sprint: <span class="font-semibold">315</span></div>
+                    <div>llm-integration-starter: <span class="font-semibold">250</span></div>
+                    <div>prompt-engineering-lab: <span class="font-semibold">220</span></div>
+                    <div>mcp-toolkit: <span class="font-semibold">185</span></div>
                 </div>
             </details>
         </div>
@@ -142,6 +161,23 @@
         </div>
     </section>
 
+    <!-- Service Bundles CTA -->
+    <section class="bg-indigo-600 text-white py-12">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-4">Ready to Transform Your Business?</h2>
+            <p class="text-indigo-100 mb-6">Fixed-price AI solutions from $2,500 to $15,000+. Every bundle includes production-ready code, CI/CD, deployment, and 30-day support.</p>
+            <div class="flex flex-wrap justify-center gap-4 mb-6">
+                <div class="bg-indigo-500 rounded-lg px-4 py-2">The Lead Qual Agent: $1,500 - $5,000</div>
+                <div class="bg-indigo-500 rounded-lg px-4 py-2">The RAG Pro: $7,500</div>
+                <div class="bg-indigo-500 rounded-lg px-4 py-2">The BI Engine: $5,000 - $10,000</div>
+                <div class="bg-indigo-500 rounded-lg px-4 py-2">MCP Specialist: Custom</div>
+            </div>
+            <a href="services.html" class="inline-block bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition">
+                View Full Service Bundles &rarr;
+            </a>
+        </div>
+    </section>
+
     <!-- Featured Projects -->
     <section class="bg-white border-t border-b border-gray-200 py-16">
         <div class="max-w-6xl mx-auto px-4">
@@ -150,7 +186,7 @@
                 <div class="bg-gray-50 rounded-xl border border-gray-200 p-6 hover:shadow-md transition">
                     <div class="text-sm text-indigo-600 font-medium mb-2">Multi-Agent AI</div>
                     <h3 class="text-lg font-bold mb-2">EnterpriseHub</h3>
-                    <p class="text-gray-600 text-sm mb-4">3-bot lead qualification system with 89% token cost reduction, BI dashboards, GoHighLevel CRM sync, agent cost tracking, RAG decision tracing, and LLM observability. 4,992 tests, 90+ API routes, 11 CI workflows.</p>
+                    <p class="text-gray-600 text-sm mb-4">3-bot lead qualification system with 89% token cost reduction, BI dashboards, GoHighLevel CRM sync, agent cost tracking, RAG decision tracing, and LLM observability. 5,100 tests, 90+ API routes, 11 CI workflows.</p>
                     <div class="flex gap-2 flex-wrap mb-4">
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
@@ -166,7 +202,7 @@
                 <div class="bg-gray-50 rounded-xl border border-gray-200 p-6 hover:shadow-md transition">
                     <div class="text-sm text-indigo-600 font-medium mb-2">RAG / LLM</div>
                     <h3 class="text-lg font-bold mb-2">DocQA Engine</h3>
-                    <p class="text-gray-600 text-sm mb-4">Upload PDFs/DOCX, get cited answers. Hybrid retrieval (BM25 + vectors), cross-encoder re-ranker, query expansion, conversation manager, and document graph. 501 tests, mock mode for demos.</p>
+                    <p class="text-gray-600 text-sm mb-4">Upload PDFs/DOCX, get cited answers. Hybrid retrieval (BM25 + vectors), cross-encoder re-ranker, query expansion, conversation manager, and document graph. 550 tests, mock mode for demos.</p>
                     <div class="flex gap-2 flex-wrap mb-4">
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">BM25</span>
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">Vector Search</span>
@@ -182,7 +218,7 @@
                 <div class="bg-gray-50 rounded-xl border border-gray-200 p-6 hover:shadow-md transition">
                     <div class="text-sm text-indigo-600 font-medium mb-2">Data Analytics</div>
                     <h3 class="text-lg font-bold mb-2">Insight Engine</h3>
-                    <p class="text-gray-600 text-sm mb-4">CSV/Excel upload to instant dashboards, predictive models, statistical testing, KPI framework, dimensionality reduction, advanced anomaly detection, and regression diagnostics. 521 tests.</p>
+                    <p class="text-gray-600 text-sm mb-4">CSV/Excel upload to instant dashboards, predictive models, statistical testing, KPI framework, dimensionality reduction, advanced anomaly detection, and regression diagnostics. 640 tests.</p>
                     <div class="flex gap-2 flex-wrap mb-4">
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">scikit-learn</span>
@@ -219,7 +255,7 @@
                         <li>&#10003; Demo mode included</li>
                     </ul>
                     <div class="flex items-center justify-between">
-                        <span class="text-3xl font-bold text-green-400">$25</span>
+                        <span class="text-3xl font-bold text-green-400">From $59</span>
                         <a href="https://gumroad.com/l/docqa-engine" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition text-white">Get Started</a>
                     </div>
                 </div>
@@ -233,7 +269,7 @@
                         <li>&#10003; Webhook notifications</li>
                     </ul>
                     <div class="flex items-center justify-between">
-                        <span class="text-3xl font-bold text-green-400">$25</span>
+                        <span class="text-3xl font-bold text-green-400">From $49</span>
                         <a href="https://gumroad.com/l/scrape-serve" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition text-white">Get Started</a>
                     </div>
                 </div>
@@ -247,7 +283,7 @@
                         <li>&#10003; Streamlit demo UI</li>
                     </ul>
                     <div class="flex items-center justify-between">
-                        <span class="text-3xl font-bold text-green-400">$50</span>
+                        <span class="text-3xl font-bold text-green-400">From $50</span>
                         <a href="https://gumroad.com/l/mcp-toolkit" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition text-white">Get Started</a>
                     </div>
                 </div>
@@ -261,7 +297,7 @@
                         <li>&#10003; Multi-provider support</li>
                     </ul>
                     <div class="flex items-center justify-between">
-                        <span class="text-3xl font-bold text-green-400">$50</span>
+                        <span class="text-3xl font-bold text-green-400">From $39</span>
                         <a href="https://gumroad.com/l/llm-starter" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition text-white">Get Started</a>
                     </div>
                 </div>

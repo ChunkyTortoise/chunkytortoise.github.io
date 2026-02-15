@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Cayman Roden</title>
-    <meta name="description" content="11 open-source AI/ML projects with green CI, working demos, and 7,700+ tests. EnterpriseHub, MCP Toolkit, Jorge Bots, DocQA Engine, Insight Engine, and more.">
+    <meta name="description" content="11 open-source AI/ML projects with green CI, working demos, and 8,500+ tests. EnterpriseHub, MCP Toolkit, Jorge Bots, DocQA Engine, Insight Engine, and more.">
     <meta property="og:title" content="Projects | Cayman Roden">
-    <meta property="og:description" content="11 open-source AI/ML projects with green CI, working demos, and 7,700+ tests across Python, FastAPI, and Streamlit.">
+    <meta property="og:description" content="11 open-source AI/ML projects with green CI, working demos, and 8,500+ tests across Python, FastAPI, and Streamlit.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chunkytortoise.github.io/projects.html">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Projects | Cayman Roden">
-    <meta name="twitter:description" content="11 open-source AI/ML projects with green CI, working demos, and 7,700+ tests.">
+    <meta name="twitter:description" content="11 open-source AI/ML projects with green CI, working demos, and 8,500+ tests.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -20,7 +20,10 @@
     <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <a href="index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
-            <div class="flex gap-4 text-sm">
+            <button id="menu-toggle" class="md:hidden p-2 text-gray-600 hover:text-indigo-600" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <div class="hidden md:flex gap-4 text-sm">
                 <a href="projects.html" class="text-indigo-600 font-medium">Projects</a>
                 <a href="services.html" class="hover:text-indigo-600">Services</a>
                 <a href="certifications.html" class="hover:text-indigo-600">Certifications</a>
@@ -30,11 +33,25 @@
                 <a href="about.html" class="hover:text-indigo-600">About</a>
             </div>
         </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-2 text-sm">
+            <a href="projects.html" class="block py-1 text-indigo-600 font-medium">Projects</a>
+            <a href="services.html" class="block py-1 hover:text-indigo-600">Services</a>
+            <a href="certifications.html" class="block py-1 hover:text-indigo-600">Certifications</a>
+            <a href="case-studies.html" class="block py-1 hover:text-indigo-600">Case Studies</a>
+            <a href="benchmarks.html" class="block py-1 hover:text-indigo-600">Benchmarks</a>
+            <a href="blog.html" class="block py-1 hover:text-indigo-600">Blog</a>
+            <a href="about.html" class="block py-1 hover:text-indigo-600">About</a>
+        </div>
     </nav>
+    <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    </script>
 
     <section class="max-w-6xl mx-auto px-4 py-12">
         <h1 class="text-3xl font-bold mb-2">Projects</h1>
-        <p class="text-gray-600 mb-8">11 repos, all public on GitHub with CI, tests, and demo modes. 7,700+ tests passing.</p>
+        <p class="text-gray-600 mb-8">11 repos, all public on GitHub with CI, tests, and demo modes. 8,500+ tests passing.</p>
 
         <div class="bg-white border border-gray-200 rounded-xl p-5 mb-8">
             <h2 class="text-lg font-semibold mb-3">Certification Badges (19)</h2>
@@ -79,7 +96,7 @@
                         <h3 class="text-lg font-bold">EnterpriseHub</h3>
                         <p class="text-sm text-gray-500">Real Estate AI Platform</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">4,532 Tests</span>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">5,100 Tests</span>
                 </div>
                 <p class="text-gray-600 text-sm mb-4">Three AI bots qualify leads in real time using Q0-Q4 framework. API health dashboard, token usage analytics, and OpenAPI docs. Streamlit BI dashboard with market pulse, commission tracking, and bot performance. GoHighLevel CRM integration. Agent cost tracker, RAG decision tracer, LLM observability, and conversation analytics.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
@@ -97,7 +114,7 @@
                     <a href="https://ct-enterprise-ai.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo &rarr;</a>
                     <a href="https://github.com/ChunkyTortoise/EnterpriseHub/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline" target="_blank">Benchmarks</a>
                     <a href="https://github.com/ChunkyTortoise/EnterpriseHub/tree/main/docs/adr" class="text-purple-600 hover:underline" target="_blank">ADRs</a>
-                    <span class="text-gray-400">4,532 tests | 90+ routes | 11 CI workflows</span>
+                    <span class="text-gray-400">5,100 tests | 90+ routes | 11 CI workflows</span>
                 </div>
             </div>
 
@@ -108,7 +125,7 @@
                         <h3 class="text-lg font-bold">Jorge Bots</h3>
                         <p class="text-sm text-gray-500">3-Bot Lead Qualification</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">356 Tests</span>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">360 Tests</span>
                 </div>
                 <p class="text-gray-600 text-sm mb-4">Lead, Seller, and Buyer bots with structured Q0-Q4 question flows. Semantic analysis, temperature scoring, and cross-bot handoff with 0.7 confidence threshold.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
@@ -122,7 +139,7 @@
                     <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
                     <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline" target="_blank">Benchmarks</a>
                     <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots/tree/main/docs/adr" class="text-purple-600 hover:underline" target="_blank">ADRs</a>
-                    <span class="text-gray-400">356 tests | CI + health endpoint</span>
+                    <span class="text-gray-400">360 tests | CI + health endpoint</span>
                 </div>
             </div>
 
@@ -133,7 +150,7 @@
                         <h3 class="text-lg font-bold">AgentForge</h3>
                         <p class="text-sm text-gray-500">Unified LLM Interface</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">494 Tests</span>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">550 Tests</span>
                 </div>
                 <p class="text-gray-600 text-sm mb-4">Async-only LLM orchestrator with retry/backoff, per-request cost tracking, and structured JSON output. Claude + Gemini + OpenAI + Perplexity through one interface. ReAct agent loop, evaluation framework, model registry, agent memory, and multi-agent mesh. Tool registry with provider-format conversion, prompt template engine, token-bucket rate limiting. Pip-installable with CLI.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
@@ -146,10 +163,11 @@
                     <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Eval Framework</span>
                 </div>
                 <div class="flex gap-4 text-sm">
+                    <a href="https://ct-agentforge.streamlit.app" class="text-green-600 hover:underline font-semibold" target="_blank">🚀 Live Demo</a>
                     <a href="https://github.com/ChunkyTortoise/ai-orchestrator" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
                     <a href="https://github.com/ChunkyTortoise/ai-orchestrator/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline" target="_blank">Benchmarks</a>
                     <a href="https://github.com/ChunkyTortoise/ai-orchestrator/tree/main/docs/adr" class="text-purple-600 hover:underline" target="_blank">ADRs</a>
-                    <span class="text-gray-400">494 tests | pip-installable</span>
+                    <span class="text-gray-400">550 tests | pip-installable</span>
                 </div>
             </div>
 
@@ -160,7 +178,7 @@
                         <h3 class="text-lg font-bold">MCP Toolkit</h3>
                         <p class="text-sm text-gray-500">6 MCP Servers + CLI</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">184 Tests</span>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">185 Tests</span>
                 </div>
                 <p class="text-gray-600 text-sm mb-4">6 production-ready Model Context Protocol servers: SQLite CRUD, file organizer, TF-IDF knowledge base, system monitor, git analytics, task tracker. Analytics and cost tracking server. Auto-discovery CLI and Streamlit playground. 32 tools total.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
@@ -176,7 +194,7 @@
                     <a href="https://ct-mcp-toolkit.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo &rarr;</a>
                     <a href="https://github.com/ChunkyTortoise/mcp-toolkit/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline" target="_blank">Benchmarks</a>
                     <a href="https://github.com/ChunkyTortoise/mcp-toolkit/tree/main/docs/adr" class="text-purple-600 hover:underline" target="_blank">ADRs</a>
-                    <span class="text-gray-400">184 tests | 6 servers | 32 tools</span>
+                    <span class="text-gray-400">185 tests | 6 servers | 32 tools</span>
                 </div>
             </div>
 
@@ -188,7 +206,7 @@
                         <h3 class="text-lg font-bold">Revenue-Sprint</h3>
                         <p class="text-sm text-gray-500">Freelance Automation Pipeline</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">314 Tests</span>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">315 Tests</span>
                 </div>
                 <p class="text-gray-600 text-sm mb-4">Upwork job scanner with 105-point scoring rubric, 4-agent proposal pipeline, prompt injection testing suite (60+ patterns), LinkedIn outreach engine.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
@@ -201,7 +219,7 @@
                     <a href="https://github.com/ChunkyTortoise/Revenue-Sprint" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
                     <a href="https://github.com/ChunkyTortoise/Revenue-Sprint/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline" target="_blank">Benchmarks</a>
                     <a href="https://github.com/ChunkyTortoise/Revenue-Sprint/tree/main/docs/adr" class="text-purple-600 hover:underline" target="_blank">ADRs</a>
-                    <span class="text-gray-400">314 tests | CI matrix 3.10-3.12</span>
+                    <span class="text-gray-400">315 tests | CI matrix 3.10-3.12</span>
                 </div>
             </div>
 
@@ -213,7 +231,7 @@
                         <h3 class="text-lg font-bold">Insight Engine</h3>
                         <p class="text-sm text-gray-500">Data Analytics Platform</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">521 Tests</span>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">640 Tests</span>
                 </div>
                 <p class="text-gray-600 text-sm mb-4">Upload CSV/Excel for auto-profiling, interactive dashboards, marketing attribution (4 models), anomaly detection (Z-score/IQR), predictive modeling with SHAP, time-series forecasting, K-means/DBSCAN clustering, feature engineering lab, model observatory (5 models), hyperparameter tuning, statistical testing, KPI framework, dimensionality reduction, advanced anomaly detection, and regression diagnostics.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
@@ -230,7 +248,7 @@
                     <a href="https://ct-insight-engine.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo &rarr;</a>
                     <a href="https://github.com/ChunkyTortoise/insight-engine/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline" target="_blank">Benchmarks</a>
                     <a href="https://github.com/ChunkyTortoise/insight-engine/tree/main/docs/adr" class="text-purple-600 hover:underline" target="_blank">ADRs</a>
-                    <span class="text-gray-400">521 tests | 3 demo datasets</span>
+                    <span class="text-gray-400">640 tests | 3 demo datasets</span>
                 </div>
             </div>
 
@@ -242,7 +260,7 @@
                         <h3 class="text-lg font-bold">DocQA Engine</h3>
                         <p class="text-sm text-gray-500">RAG Document Q&A</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">557 Tests</span>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">550 Tests</span>
                 </div>
                 <p class="text-gray-600 text-sm mb-4">Upload PDFs/DOCX, ask questions, get cited answers. Hybrid retrieval (BM25 + vectors), cross-encoder re-ranker, query expansion, retrieval evaluation (MRR, NDCG@K), 5 chunking strategies with comparison, citation quality scoring, redundancy detection, RAGAS-style evaluation, conversation manager, document graph, batch processing, JSON/CSV export.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
@@ -259,7 +277,7 @@
                     <a href="https://ct-document-engine.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo &rarr;</a>
                     <a href="https://github.com/ChunkyTortoise/docqa-engine/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline" target="_blank">Benchmarks</a>
                     <a href="https://github.com/ChunkyTortoise/docqa-engine/tree/main/docs/adr" class="text-purple-600 hover:underline" target="_blank">ADRs</a>
-                    <span class="text-gray-400">557 tests | mock mode</span>
+                    <span class="text-gray-400">550 tests | mock mode</span>
                 </div>
             </div>
 
@@ -295,7 +313,7 @@
                         <h3 class="text-lg font-bold">Scrape-and-Serve</h3>
                         <p class="text-sm text-gray-500">Web Scraping + Excel-to-Web</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">302 Tests</span>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">370 Tests</span>
                 </div>
                 <p class="text-gray-600 text-sm mb-4">YAML-configurable web scrapers, competitor SEO analysis with gap detection, asyncio scheduler with change callbacks, backlink estimation, data validation rules engine, diff visualization, keyword extraction (TF-IDF n-grams), content scoring, data quality profiler, content intelligence, and data pipeline.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
@@ -311,7 +329,7 @@
                     <a href="https://ct-scrape-and-serve.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo &rarr;</a>
                     <a href="https://github.com/ChunkyTortoise/scrape-and-serve/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline" target="_blank">Benchmarks</a>
                     <a href="https://github.com/ChunkyTortoise/scrape-and-serve/tree/main/docs/adr" class="text-purple-600 hover:underline" target="_blank">ADRs</a>
-                    <span class="text-gray-400">302 tests | 11 modules</span>
+                    <span class="text-gray-400">370 tests | 11 modules</span>
                 </div>
             </div>
 
@@ -322,7 +340,7 @@
                         <h3 class="text-lg font-bold">Prompt Engineering Lab</h3>
                         <p class="text-sm text-gray-500">Prompt Patterns & Evaluation</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">190 Tests</span>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">220 Tests</span>
                 </div>
                 <p class="text-gray-600 text-sm mb-4">8 built-in prompt patterns (CoT, few-shot, RAG, decomposition), TF-IDF evaluation (faithfulness, relevance, completeness), z-test A/B comparison with statistical significance, reproducible benchmark runner, 7 business categories with 35 sample tasks. Prompt evaluator with ROUGE and semantic similarity, prompt versioning, and safety checker.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
@@ -334,10 +352,11 @@
                     <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Safety Checker</span>
                 </div>
                 <div class="flex gap-4 text-sm">
+                    <a href="https://ct-prompt-lab.streamlit.app" class="text-green-600 hover:underline font-semibold" target="_blank">🚀 Live Demo</a>
                     <a href="https://github.com/ChunkyTortoise/prompt-engineering-lab" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
                     <a href="https://github.com/ChunkyTortoise/prompt-engineering-lab/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline" target="_blank">Benchmarks</a>
                     <a href="https://github.com/ChunkyTortoise/prompt-engineering-lab/tree/main/docs/adr" class="text-purple-600 hover:underline" target="_blank">ADRs</a>
-                    <span class="text-gray-400">190 tests | 7 modules</span>
+                    <span class="text-gray-400">220 tests | 7 modules</span>
                 </div>
             </div>
 
@@ -348,7 +367,7 @@
                         <h3 class="text-lg font-bold">LLM Integration Starter</h3>
                         <p class="text-sm text-gray-500">Production LLM Patterns</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">220 Tests</span>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">250 Tests</span>
                 </div>
                 <p class="text-gray-600 text-sm mb-4">Copy-pasteable LLM recipes: completion with FastAPI endpoint factory, SSE streaming, function calling with 3 demo tools, TF-IDF RAG pipeline, circuit breaker + retry hardening, per-request cost tracking, P50/P95/P99 latency measurement. Guardrails engine with injection detection, PII redaction, observability, and batch processor.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
@@ -361,10 +380,11 @@
                     <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Batch Processor</span>
                 </div>
                 <div class="flex gap-4 text-sm">
+                    <a href="https://ct-llm-starter.streamlit.app" class="text-green-600 hover:underline font-semibold" target="_blank">🚀 Live Demo</a>
                     <a href="https://github.com/ChunkyTortoise/llm-integration-starter" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
                     <a href="https://github.com/ChunkyTortoise/llm-integration-starter/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline" target="_blank">Benchmarks</a>
                     <a href="https://github.com/ChunkyTortoise/llm-integration-starter/tree/main/docs/adr" class="text-purple-600 hover:underline" target="_blank">ADRs</a>
-                    <span class="text-gray-400">220 tests | 8 modules</span>
+                    <span class="text-gray-400">250 tests | 8 modules</span>
                 </div>
             </div>
         </div>

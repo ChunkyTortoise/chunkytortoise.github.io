@@ -20,7 +20,10 @@
     <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <a href="index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
-            <div class="flex gap-4 text-sm">
+            <button id="menu-toggle" class="md:hidden p-2 text-gray-600 hover:text-indigo-600" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <div class="hidden md:flex gap-4 text-sm">
                 <a href="projects.html" class="hover:text-indigo-600">Projects</a>
                 <a href="services.html" class="hover:text-indigo-600">Services</a>
                 <a href="certifications.html" class="hover:text-indigo-600">Certifications</a>
@@ -30,13 +33,39 @@
                 <a href="about.html" class="hover:text-indigo-600">About</a>
             </div>
         </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-2 text-sm">
+            <a href="projects.html" class="block py-1 hover:text-indigo-600">Projects</a>
+            <a href="services.html" class="block py-1 hover:text-indigo-600">Services</a>
+            <a href="certifications.html" class="block py-1 hover:text-indigo-600">Certifications</a>
+            <a href="case-studies.html" class="block py-1 hover:text-indigo-600">Case Studies</a>
+            <a href="benchmarks.html" class="block py-1 hover:text-indigo-600">Benchmarks</a>
+            <a href="blog.html" class="block py-1 text-indigo-600 font-medium">Blog</a>
+            <a href="about.html" class="block py-1 hover:text-indigo-600">About</a>
+        </div>
     </nav>
+    <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    </script>
 
     <section class="max-w-4xl mx-auto px-4 py-12">
         <h1 class="text-3xl font-bold mb-2">Blog</h1>
         <p class="text-gray-600 mb-10">Technical writeups from building production AI systems.</p>
 
-        <!-- Post 3 -->
+        <!-- Post 4: Cost Optimization -->
+        <article id="post-cost-optimization" class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Cost Optimization</span>
+                <span class="text-sm text-gray-400">February 12, 2026</span>
+                <span class="text-sm text-gray-400">&middot; 6 min read</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-4"><a href="#post-cost-optimization" class="hover:text-indigo-600">How I Cut LLM Costs by 89% Using 3-Tier Caching</a></h2>
+            <p class="text-gray-600 mb-4">From 93K to 7.8K tokens per workflow without sacrificing quality. The complete architecture with code samples and real benchmarks from production systems managing 1,000+ daily conversations.</p>
+            <a href="#post-cost-optimization" class="text-indigo-600 font-medium hover:underline">Read the full post &rarr;</a>
+        </article>
+
+        <!-- Post 3: Multi-Agent -->
         <article class="bg-white rounded-xl border p-8 mb-8">
             <div class="flex items-center gap-3 mb-4">
                 <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Multi-Agent</span>
@@ -74,7 +103,31 @@
             </div>
         </article>
 
-        <!-- Post 2 -->
+        <!-- Post 2: RAG -->
+        <article id="post-rag-pipeline" class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full font-medium">RAG</span>
+                <span class="text-sm text-gray-400">February 12, 2026</span>
+                <span class="text-sm text-gray-400">&middot; 10 min read</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-4"><a href="#post-rag-pipeline" class="hover:text-indigo-600">RAG Pipeline Engineering Guide</a></h2>
+            <p class="text-gray-600 mb-4">Building document Q&A systems that actually find the right answers. Hybrid retrieval (BM25 + vectors), re-ranking, citation scoring, and query expansion for 87% accuracy on legal document corpora.</p>
+            <a href="#post-rag-pipeline" class="text-indigo-600 font-medium hover:underline">Read the full post &rarr;</a>
+        </article>
+
+        <!-- Post 1: Multi-Agent Summary -->
+        <article id="post-multi-agent-summary" class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">Multi-Agent</span>
+                <span class="text-sm text-gray-400">February 12, 2026</span>
+                <span class="text-sm text-gray-400">&middot; 8 min read</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-4"><a href="#post-multi-agent-summary" class="hover:text-indigo-600">Building Multi-Agent Systems That Don't Fail</a></h2>
+            <p class="text-gray-600 mb-4">How I orchestrated 3 bots with confidence-based handoffs, circular prevention, and 99.7% uptime. Real architecture from a production real estate system processing 1,000+ conversations daily.</p>
+            <a href="#post-multi-agent-summary" class="text-indigo-600 font-medium hover:underline">Read the full post &rarr;</a>
+        </article>
+
+        <!-- Original Post 2: Hybrid Retrieval -->
         <article class="bg-white rounded-xl border p-8 mb-8">
             <div class="flex items-center gap-3 mb-4">
                 <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">RAG</span>

@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benchmarks | Cayman Roden</title>
-    <meta name="description" content="Performance benchmarks from production AI systems: LLM token cost optimization (89% reduction), cache hit rates, latency percentiles, and 7,800+ tests across 10 repos.">
+    <meta name="description" content="Performance benchmarks from production AI systems: LLM token cost optimization (89% reduction), cache hit rates, latency percentiles, and 8,500+ tests across 10 repos.">
     <meta property="og:title" content="Benchmarks | Cayman Roden">
     <meta property="og:description" content="Production AI benchmarks: 89% token cost reduction, P50/P95/P99 latency, cache hit rates, and test coverage across 7 repos.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chunkytortoise.github.io/benchmarks.html">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Benchmarks | Cayman Roden">
-    <meta name="twitter:description" content="Production AI benchmarks: 89% token cost reduction, latency percentiles, and 7,800+ tests.">
+    <meta name="twitter:description" content="Production AI benchmarks: 89% token cost reduction, latency percentiles, and 8,500+ tests.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -20,7 +20,10 @@
     <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <a href="index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
-            <div class="flex gap-4 text-sm">
+            <button id="menu-toggle" class="md:hidden p-2 text-gray-600 hover:text-indigo-600" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <div class="hidden md:flex gap-4 text-sm">
                 <a href="projects.html" class="hover:text-indigo-600">Projects</a>
                 <a href="services.html" class="hover:text-indigo-600">Services</a>
                 <a href="certifications.html" class="hover:text-indigo-600">Certifications</a>
@@ -30,7 +33,21 @@
                 <a href="about.html" class="hover:text-indigo-600">About</a>
             </div>
         </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-2 text-sm">
+            <a href="projects.html" class="block py-1 hover:text-indigo-600">Projects</a>
+            <a href="services.html" class="block py-1 hover:text-indigo-600">Services</a>
+            <a href="certifications.html" class="block py-1 hover:text-indigo-600">Certifications</a>
+            <a href="case-studies.html" class="block py-1 hover:text-indigo-600">Case Studies</a>
+            <a href="benchmarks.html" class="block py-1 text-indigo-600 font-medium">Benchmarks</a>
+            <a href="blog.html" class="block py-1 hover:text-indigo-600">Blog</a>
+            <a href="about.html" class="block py-1 hover:text-indigo-600">About</a>
+        </div>
     </nav>
+    <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    </script>
 
     <section class="max-w-4xl mx-auto px-4 py-12">
         <h1 class="text-3xl font-bold mb-2">Benchmarks</h1>
@@ -239,67 +256,67 @@
                     <tbody>
                         <tr class="border-b">
                             <td class="py-3 pr-4 font-medium"><a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank">EnterpriseHub</a></td>
-                            <td class="py-3 pr-4">4,992</td>
+                            <td class="py-3 pr-4">5,100</td>
                             <td class="py-3 pr-4 text-green-700">Passing</td>
                             <td class="py-3">3.11</td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-3 pr-4 font-medium"><a href="https://github.com/ChunkyTortoise/insight-engine" class="text-indigo-600 hover:underline" target="_blank">Insight Engine</a></td>
-                            <td class="py-3 pr-4">521</td>
+                            <td class="py-3 pr-4">640</td>
                             <td class="py-3 pr-4 text-green-700">Passing</td>
                             <td class="py-3">3.11, 3.12</td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-3 pr-4 font-medium"><a href="https://github.com/ChunkyTortoise/docqa-engine" class="text-indigo-600 hover:underline" target="_blank">DocQA Engine</a></td>
-                            <td class="py-3 pr-4">501</td>
+                            <td class="py-3 pr-4">550</td>
                             <td class="py-3 pr-4 text-green-700">Passing</td>
                             <td class="py-3">3.11, 3.12</td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-3 pr-4 font-medium"><a href="https://github.com/ChunkyTortoise/ai-orchestrator" class="text-indigo-600 hover:underline" target="_blank">AgentForge</a></td>
-                            <td class="py-3 pr-4">423</td>
+                            <td class="py-3 pr-4">550</td>
                             <td class="py-3 pr-4 text-green-700">Passing</td>
                             <td class="py-3">3.11</td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-3 pr-4 font-medium"><a href="https://github.com/ChunkyTortoise/scrape-and-serve" class="text-indigo-600 hover:underline" target="_blank">Scrape-and-Serve</a></td>
-                            <td class="py-3 pr-4">302</td>
+                            <td class="py-3 pr-4">370</td>
                             <td class="py-3 pr-4 text-green-700">Passing</td>
                             <td class="py-3">3.11, 3.12</td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-3 pr-4 font-medium"><a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-indigo-600 hover:underline" target="_blank">Jorge Bots</a></td>
-                            <td class="py-3 pr-4">279</td>
+                            <td class="py-3 pr-4">360</td>
                             <td class="py-3 pr-4 text-green-700">Passing</td>
                             <td class="py-3">3.11</td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-3 pr-4 font-medium"><a href="https://github.com/ChunkyTortoise/Revenue-Sprint" class="text-indigo-600 hover:underline" target="_blank">Revenue-Sprint</a></td>
-                            <td class="py-3 pr-4">240</td>
+                            <td class="py-3 pr-4">315</td>
                             <td class="py-3 pr-4 text-green-700">Passing</td>
                             <td class="py-3">3.10, 3.11, 3.12</td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-3 pr-4 font-medium"><a href="https://github.com/ChunkyTortoise/llm-integration-starter" class="text-indigo-600 hover:underline" target="_blank">LLM Integration Starter</a></td>
-                            <td class="py-3 pr-4">220</td>
+                            <td class="py-3 pr-4">250</td>
                             <td class="py-3 pr-4 text-green-700">Passing</td>
                             <td class="py-3">3.11, 3.12</td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-3 pr-4 font-medium"><a href="https://github.com/ChunkyTortoise/prompt-engineering-lab" class="text-indigo-600 hover:underline" target="_blank">Prompt Engineering Lab</a></td>
-                            <td class="py-3 pr-4">190</td>
+                            <td class="py-3 pr-4">220</td>
                             <td class="py-3 pr-4 text-green-700">Passing</td>
                             <td class="py-3">3.11, 3.12</td>
                         </tr>
                         <tr class="border-b">
                             <td class="py-3 pr-4 font-medium"><a href="https://github.com/ChunkyTortoise/mcp-toolkit" class="text-indigo-600 hover:underline" target="_blank">MCP Toolkit</a></td>
-                            <td class="py-3 pr-4">184</td>
+                            <td class="py-3 pr-4">185</td>
                             <td class="py-3 pr-4 text-green-700">Passing</td>
                             <td class="py-3">3.11, 3.12</td>
                         </tr>
                         <tr>
                             <td class="py-3 pr-4 font-bold">Total</td>
-                            <td class="py-3 pr-4 font-bold">7,852</td>
+                            <td class="py-3 pr-4 font-bold">8,540</td>
                             <td class="py-3 pr-4 text-green-700 font-bold">All Green</td>
                             <td class="py-3"></td>
                         </tr>
