@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Agent Orchestration — Live Cohort | Cayman Roden</title>
+    <meta name="description" content="4-week live cohort: build multi-agent pipelines with DAG orchestration, human-in-the-loop approval gates, agentic RAG, and eval-driven CI. $697 early bird.">
+    <meta property="og:title" content="Production Agent Orchestration — Live Cohort | Cayman Roden">
+    <meta property="og:description" content="Go from isolated LLM calls to orchestrated agent pipelines in 4 weeks. Ship real code every week. $697 early bird.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chunkytortoise.github.io/cohort.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Production Agent Orchestration — Live Cohort">
+    <meta name="twitter:description" content="4-week live cohort: DAG orchestration, HITL approval gates, agentic RAG, eval-driven CI. $697 early bird.">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Nav -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
+            <button id="menu-toggle" class="md:hidden p-2 text-gray-600 hover:text-indigo-600" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <div class="hidden md:flex gap-4 text-sm">
+                <a href="projects.html" class="hover:text-indigo-600">Projects</a>
+                <a href="store.html" class="hover:text-indigo-600">Store</a>
+                <a href="services.html" class="hover:text-indigo-600">Services</a>
+                <a href="certifications.html" class="hover:text-indigo-600">Certifications</a>
+                <a href="case-studies.html" class="hover:text-indigo-600">Case Studies</a>
+                <a href="benchmarks.html" class="hover:text-indigo-600">Benchmarks</a>
+                <a href="blog.html" class="hover:text-indigo-600">Blog</a>
+                <a href="about.html" class="hover:text-indigo-600">About</a>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-2 text-sm">
+            <a href="projects.html" class="block py-1 hover:text-indigo-600">Projects</a>
+            <a href="store.html" class="block py-1 hover:text-indigo-600">Store</a>
+            <a href="services.html" class="block py-1 hover:text-indigo-600">Services</a>
+            <a href="certifications.html" class="block py-1 hover:text-indigo-600">Certifications</a>
+            <a href="case-studies.html" class="block py-1 hover:text-indigo-600">Case Studies</a>
+            <a href="benchmarks.html" class="block py-1 hover:text-indigo-600">Benchmarks</a>
+            <a href="blog.html" class="block py-1 hover:text-indigo-600">Blog</a>
+            <a href="about.html" class="block py-1 hover:text-indigo-600">About</a>
+        </div>
+    </nav>
+    <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    </script>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-br from-indigo-600 to-purple-700 text-white py-20">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-block bg-white/20 rounded-full px-4 py-1 text-sm font-medium mb-6">Live Cohort &mdash; 30 Seats</div>
+            <h1 class="text-4xl font-bold mb-4">Production Agent Orchestration</h1>
+            <p class="text-xl text-indigo-100 mb-6">Build multi-agent systems that survive production. In 4 weeks, go from isolated LLM calls to orchestrated agent pipelines with human approval gates, self-correcting RAG, and eval-driven deployment. You ship real code every week.</p>
+
+            <!-- Pricing badges -->
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <div class="bg-white text-indigo-700 rounded-lg px-6 py-3 font-bold text-lg shadow-lg">
+                    <span class="block text-sm font-normal text-indigo-500 mb-0.5">Early Bird &mdash; First 20 seats</span>
+                    $697
+                </div>
+                <div class="bg-white/20 text-white rounded-lg px-6 py-3 font-bold text-lg border border-white/30">
+                    <span class="block text-sm font-normal text-indigo-200 mb-0.5">Standard</span>
+                    $997
+                </div>
+            </div>
+
+            <!-- Primary CTA -->
+            <a href="mailto:caymanroden@gmail.com?subject=Cohort%20Waitlist&body=Hi%20Cayman%2C%0A%0AI'd%20like%20to%20join%20the%20waitlist%20for%20the%20Production%20Agent%20Orchestration%20cohort.%0A%0AName%3A%20%0AEmail%3A%20%0ABackground%20(optional)%3A%20"
+               class="inline-block bg-white text-indigo-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-indigo-50 transition shadow-lg mb-4">
+                Reserve My Seat &mdash; $697 Early Bird
+            </a>
+            <p class="text-sm text-indigo-200">30-day refund policy &middot; Team pricing available (3+ seats at $799/seat)</p>
+        </div>
+    </section>
+
+    <!-- Selling Points -->
+    <section class="max-w-4xl mx-auto px-4 py-16">
+        <h2 class="text-2xl font-bold mb-8 text-center">What You'll Build</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <h3 class="font-bold mb-2">DAG-Orchestrated Agent Pipelines</h3>
+                <p class="text-gray-600 text-sm">Design multi-agent systems with explicit dependency management, topological execution, retry policies, and graceful degradation &mdash; no framework lock-in, pure Python.</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <h3 class="font-bold mb-2">Human-in-the-Loop Approval Gates</h3>
+                <p class="text-gray-600 text-sm">Add webhook-based approval gates that pause execution at critical decisions &mdash; with Slack integration, audit trails, rejection propagation, and escalation chains.</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                </div>
+                <h3 class="font-bold mb-2">Self-Correcting Agentic RAG</h3>
+                <p class="text-gray-600 text-sm">Build a RAG agent that queries multiple knowledge bases, self-corrects on low-confidence retrievals, validates answers for groundedness, and attributes sources.</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                </div>
+                <h3 class="font-bold mb-2">Eval-Driven CI Deployment</h3>
+                <p class="text-gray-600 text-sm">Gate production deploys on benchmark results &mdash; P50/P95/P99 latency, pass rate, agent-vs-agent comparison &mdash; exported to JSON and wired into GitHub Actions.</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm md:col-span-2">
+                <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center mb-3">
+                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                </div>
+                <h3 class="font-bold mb-2">Zero Framework Lock-In</h3>
+                <p class="text-gray-600 text-sm">Every component is pure Python with zero heavyweight dependencies (only Pydantic). You understand every line. Plug in Claude, GPT-4, or Gemini wherever you're ready &mdash; the architecture is provider-agnostic. Python 3.11+ required.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Syllabus -->
+    <section class="bg-white border-t border-b border-gray-200 py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-8 text-center">4-Week Syllabus</h2>
+            <div class="space-y-4">
+                <div class="flex gap-4 p-5 bg-gray-50 rounded-xl border border-gray-200">
+                    <div class="flex-shrink-0 w-14 h-14 bg-indigo-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">W1</div>
+                    <div>
+                        <h3 class="font-bold mb-1">DAG Orchestration Fundamentals</h3>
+                        <p class="text-gray-600 text-sm">Build a 3-agent research pipeline from scratch: <code class="bg-gray-200 px-1 rounded text-xs">BaseAgent</code> primitives, topological execution, retry/backoff, graceful degradation, and ASCII monitoring with JSON export.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 p-5 bg-gray-50 rounded-xl border border-gray-200">
+                    <div class="flex-shrink-0 w-14 h-14 bg-indigo-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">W2</div>
+                    <div>
+                        <h3 class="font-bold mb-1">Human-in-the-Loop Approval Gates</h3>
+                        <p class="text-gray-600 text-sm">Add blocking gates to any pipeline: webhook-based approve/reject, Slack integration, rejection propagation, audit trails, and multi-gate escalation chains.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 p-5 bg-gray-50 rounded-xl border border-gray-200">
+                    <div class="flex-shrink-0 w-14 h-14 bg-indigo-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">W3</div>
+                    <div>
+                        <h3 class="font-bold mb-1">Agentic RAG</h3>
+                        <p class="text-gray-600 text-sm">Multi-KB retrieval with TF-IDF scoring, self-correction on low-confidence results, answer groundedness validation, and source attribution across knowledge bases.</p>
+                    </div>
+                </div>
+                <div class="flex gap-4 p-5 bg-gray-50 rounded-xl border border-gray-200">
+                    <div class="flex-shrink-0 w-14 h-14 bg-indigo-600 text-white rounded-lg flex items-center justify-center font-bold text-lg">W4</div>
+                    <div>
+                        <h3 class="font-bold mb-1">Eval, Benchmarking &amp; CI Integration</h3>
+                        <p class="text-gray-600 text-sm">Test suites with custom judges, P50/P95/P99 latency benchmarks, agent-vs-agent leaderboards, and a CI gate script that fails the build when quality drops.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What's included -->
+            <div class="mt-10 bg-indigo-50 border border-indigo-100 rounded-xl p-6">
+                <h3 class="font-bold mb-4">Everything Included</h3>
+                <div class="grid md:grid-cols-2 gap-2 text-sm text-gray-700">
+                    <div class="flex items-start gap-2"><span class="text-green-500 mt-0.5">&#10003;</span> 8 live sessions (2/week, 90 min each) &mdash; recorded</div>
+                    <div class="flex items-start gap-2"><span class="text-green-500 mt-0.5">&#10003;</span> 4 hands-on labs with starter code and solution branches</div>
+                    <div class="flex items-start gap-2"><span class="text-green-500 mt-0.5">&#10003;</span> Weekly 60-min office hours &mdash; bring your own codebase</div>
+                    <div class="flex items-start gap-2"><span class="text-green-500 mt-0.5">&#10003;</span> Private Slack community + direct instructor access</div>
+                    <div class="flex items-start gap-2"><span class="text-green-500 mt-0.5">&#10003;</span> Full source code (101-test MIT-licensed starter kit)</div>
+                    <div class="flex items-start gap-2"><span class="text-green-500 mt-0.5">&#10003;</span> Written code review on lab submissions</div>
+                    <div class="flex items-start gap-2"><span class="text-green-500 mt-0.5">&#10003;</span> Lifetime access to recordings and future kit updates</div>
+                    <div class="flex items-start gap-2"><span class="text-green-500 mt-0.5">&#10003;</span> 30-day refund if Week 1 labs don't deliver</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor -->
+    <section class="py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-8 text-center">Instructor</h2>
+            <div class="bg-white rounded-xl border border-gray-200 p-8 shadow-sm">
+                <div class="flex flex-col md:flex-row gap-6 items-start">
+                    <div class="flex-shrink-0">
+                        <div class="w-20 h-20 bg-indigo-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">CR</div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">Cayman Roden</h3>
+                        <p class="text-indigo-600 text-sm font-medium mb-3">AI Systems Engineer &mdash; Palm Springs, CA</p>
+                        <p class="text-gray-600 text-sm mb-4">Cayman builds production AI systems. He works daily with Claude, GPT-4, Gemini, FastAPI, PostgreSQL, Redis, and Docker, and has managed a $50M+ real estate pipeline using multi-agent AI.</p>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-2 text-center">
+                                <div class="text-xl font-bold text-indigo-600">8,500+</div>
+                                <div class="text-xs text-gray-600">automated tests</div>
+                            </div>
+                            <div class="bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-2 text-center">
+                                <div class="text-xl font-bold text-indigo-600">89%</div>
+                                <div class="text-xs text-gray-600">AI cost reduction</div>
+                            </div>
+                            <div class="bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-2 text-center">
+                                <div class="text-xl font-bold text-indigo-600">4.3M</div>
+                                <div class="text-xs text-gray-600">dispatches/sec</div>
+                            </div>
+                            <div class="bg-indigo-50 border border-indigo-100 rounded-lg px-4 py-2 text-center">
+                                <div class="text-xl font-bold text-indigo-600">19</div>
+                                <div class="text-xs text-gray-600">certifications</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist / CTA -->
+    <section id="waitlist" class="bg-gradient-to-br from-indigo-600 to-purple-700 text-white py-16">
+        <div class="max-w-2xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-3">Join the Waitlist</h2>
+            <p class="text-indigo-100 mb-2">Cohort cap: 30 seats. First 20 lock in the early-bird rate of <strong>$697</strong>. Standard price is $997.</p>
+            <p class="text-indigo-200 text-sm mb-8">Sessions are US-friendly hours (Pacific), all recorded. When this cohort fills, the next opens 8 weeks later.</p>
+            <a href="mailto:caymanroden@gmail.com?subject=Cohort%20Waitlist&body=Hi%20Cayman%2C%0A%0AI'd%20like%20to%20join%20the%20waitlist%20for%20the%20Production%20Agent%20Orchestration%20cohort.%0A%0AName%3A%20%0AEmail%3A%20%0ABackground%20(optional)%3A%20"
+               class="inline-block bg-white text-indigo-600 px-10 py-4 rounded-lg font-bold text-lg hover:bg-indigo-50 transition shadow-lg mb-4">
+                Reserve My Seat &mdash; $697 Early Bird
+            </a>
+            <p class="text-indigo-200 text-sm">Clicking opens your email client pre-filled with the waitlist request. You'll hear back within 24 hours.</p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="bg-white border-t border-gray-200 py-16">
+        <div class="max-w-3xl mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-8 text-center">FAQ</h2>
+            <div class="space-y-6">
+                <div class="border-b border-gray-200 pb-6">
+                    <h3 class="font-bold mb-2">Do I need a specific LLM provider?</h3>
+                    <p class="text-gray-600 text-sm">No. All labs run with mock agents and local logic. When you're ready to add real LLM calls (Claude, GPT-4, Gemini), the course shows you exactly where to plug them in. The architecture is provider-agnostic by design.</p>
+                </div>
+                <div class="border-b border-gray-200 pb-6">
+                    <h3 class="font-bold mb-2">How much time should I expect per week?</h3>
+                    <p class="text-gray-600 text-sm">Plan for 6&ndash;8 hours: 3 hours of live sessions and 3&ndash;5 hours on labs and reading. Labs have stretch goals if you want to go deeper. All sessions are recorded within 24 hours for async viewing.</p>
+                </div>
+                <div class="border-b border-gray-200 pb-6">
+                    <h3 class="font-bold mb-2">Is this the same content as the open-source starter kit?</h3>
+                    <p class="text-gray-600 text-sm">The <a href="https://github.com/ChunkyTortoise/multi-agent-starter-kit" class="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">multi-agent-starter-kit</a> is the foundation. The course adds 4 extended labs, live instruction, written code review, architecture deep-dives, production deployment patterns, and CI integration that go well beyond the README examples.</p>
+                </div>
+                <div class="pb-2">
+                    <h3 class="font-bold mb-2">Do I need to know a specific AI framework (LangChain, CrewAI, etc.)?</h3>
+                    <p class="text-gray-600 text-sm">No. This course is framework-independent by design. The orchestration layer is pure Python with only Pydantic as a dependency. If you use a framework at work, you'll learn the primitives underneath it &mdash; making you better at using the framework too.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="bg-white border-t border-gray-200 py-12">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-xl font-bold mb-3">Ready to build agent systems that ship?</h2>
+            <p class="text-gray-600 mb-6 text-sm">Questions before joining? <a href="mailto:caymanroden@gmail.com" class="text-indigo-600 hover:underline">Email Cayman directly</a> or <a href="https://calendly.com/caymanroden/discovery-call" class="text-indigo-600 hover:underline" target="_blank" rel="noopener noreferrer">book a 15-min call</a>.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="mailto:caymanroden@gmail.com?subject=Cohort%20Waitlist&body=Hi%20Cayman%2C%0A%0AI'd%20like%20to%20join%20the%20waitlist%20for%20the%20Production%20Agent%20Orchestration%20cohort.%0A%0AName%3A%20%0AEmail%3A%20%0ABackground%20(optional)%3A%20"
+                   class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">
+                    Join Waitlist &mdash; $697 Early Bird
+                </a>
+                <a href="store.html" class="inline-block bg-white text-indigo-600 border border-indigo-600 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition">
+                    Browse Starter Kits
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
+            <span>&copy; 2026 Cayman Roden</span>
+            <div class="flex gap-5 items-center">
+                <a href="https://github.com/ChunkyTortoise" class="hover:text-white flex items-center gap-1.5" target="_blank">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/cayman-roden" class="hover:text-white flex items-center gap-1.5" target="_blank">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://www.upwork.com/freelancers/~01ee20599d13f4c8c9" class="hover:text-white flex items-center gap-1.5" target="_blank">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+                    Upwork
+                </a>
+                <a href="mailto:caymanroden@gmail.com" class="hover:text-white flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    Email
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
