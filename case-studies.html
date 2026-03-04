@@ -266,6 +266,162 @@
             </div>
         </article>
 
+        <!-- Case Study: Embeddable AI Chatbot Widget -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">RAG / Embeddable AI</span>
+                <a href="https://github.com/ChunkyTortoise/chatbot-widget" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">From Idea to Embeddable AI Product in One Sprint</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
+                    <p class="text-gray-700">Businesses want AI chat on their websites but SaaS chatbot platforms charge $100&ndash;500/month, lock you into their ecosystem, and give limited control over the AI behavior. Self-hosting typically requires a full engineering team. Small businesses running 5 sites pay $6,000&ndash;12,000/year for basic chat widgets.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
+                    <p class="text-gray-700">Built a self-hosted AI chatbot that embeds on any website with a single <code>&lt;script&gt;</code> tag. No npm install, no build step, no framework dependency. The ~14KB vanilla JS widget runs inside a Shadow DOM for CSS isolation. The backend uses FastAPI with pgvector for RAG-based knowledge retrieval, Redis for session state, and Claude for response generation via WebSocket streaming.</p>
+                    <div class="flex gap-2 flex-wrap mt-3">
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">pgvector</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">sentence-transformers</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Shadow DOM</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">WebSocket</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">38</p>
+                            <p class="text-xs text-green-600 mt-1">Tests passing</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">&lt;2s</p>
+                            <p class="text-xs text-green-600 mt-1">RAG response time</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">$1.2&ndash;6K/yr</p>
+                            <p class="text-xs text-green-600 mt-1">Saved vs SaaS</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-sm text-gray-500">
+                    <strong>Verify:</strong> <code>api/</code> (FastAPI backend), <code>widget/</code> (Shadow DOM embed), <code>tests/</code> (38 tests). <a href="#" class="text-indigo-600 hover:underline">Read full case study &rarr;</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Case Study: TechNova Voice Bot -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Voice AI</span>
+                <a href="https://github.com/ChunkyTortoise/technova-voice-bot" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">Real-Time Voice AI with Sub-3-Second End-to-End Latency</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
+                    <p class="text-gray-700">Most voice AI demos fake latency by pre-loading responses or measuring from text input. A real production pipeline &mdash; audio capture, voice activity detection, speech-to-text, LLM reasoning, text-to-speech, and playback &mdash; has six stages of compounding latency. Without careful engineering, round-trips exceed 5&ndash;10 seconds, which is unusable for conversation.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
+                    <p class="text-gray-700">Built a complete voice pipeline over WebSocket: OGG/Opus from the browser, FFmpeg transcoding to PCM16, Silero VAD (ONNX, ~20MB vs ~400MB PyTorch) for speech endpoint detection, Deepgram Nova-3 for streaming STT, Claude Sonnet for reasoning, sentence-level buffering with 500ms flush timeout, and Deepgram Aura-2 TTS back to the browser. 16 architectural fixes address production issues from OOM prevention to WebSocket keepalive.</p>
+                    <div class="flex gap-2 flex-wrap mt-3">
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">WebSocket</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">FFmpeg</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Silero VAD</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Deepgram</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">&lt;3s</p>
+                            <p class="text-xs text-green-600 mt-1">End-to-end latency</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">20MB</p>
+                            <p class="text-xs text-green-600 mt-1">VAD model (ONNX)</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">16</p>
+                            <p class="text-xs text-green-600 mt-1">Arch fixes applied</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-sm text-gray-500">
+                    <strong>Verify:</strong> <code>app/</code> (full pipeline), README.md (latency budget table, 16 architecture fixes). <a href="#" class="text-indigo-600 hover:underline">Read full case study &rarr;</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Case Study: Jorge Bots — Production GHL Lead Qualification -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Production AI / CRM</span>
+                <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">AI Lead Qualification Bot Deployed to Production GoHighLevel</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
+                    <p class="text-gray-700">40% of real estate leads go cold because agents take over 5 minutes to respond. Leads arriving overnight or on weekends went unanswered until the next morning. Manual qualification was slow, inconsistent, and there was no way to distinguish buyers from sellers in the CRM pipeline.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
+                    <p class="text-gray-700">Built three specialized AI bots (Lead, Buyer, Seller) that plug into GoHighLevel via webhooks. Each bot runs a structured Q0&ndash;Q4 qualification flow via SMS, scores leads as hot/warm/cold, and books appointments directly on the agent's GHL calendar. Claude Haiku handles fast qualification; Sonnet handles complex analysis. Cross-bot handoff with 0.7 confidence threshold, circular prevention, and rate limiting routes leads to the right specialist automatically.</p>
+                    <div class="flex gap-2 flex-wrap mt-3">
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">GoHighLevel</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Redis</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">PostgreSQL</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">701</p>
+                            <p class="text-xs text-green-600 mt-1">Tests passing</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">24/7</p>
+                            <p class="text-xs text-green-600 mt-1">Lead response</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">&lt;$0.50/day</p>
+                            <p class="text-xs text-green-600 mt-1">AI cost</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-sm text-gray-500">
+                    <strong>Verify:</strong> <code>bots/</code> (3 specialized bots), <code>agents/</code> (intent + handoff), <code>services/</code> (GHL integration). <a href="#" class="text-indigo-600 hover:underline">Read full case study &rarr;</a>
+                </div>
+            </div>
+        </article>
+
         <!-- Capability Demos -->
         <h2 class="text-xl font-bold mb-6 mt-12">Capability Demonstrations</h2>
         <p class="text-gray-600 mb-6">These projects demonstrate what the systems can do. Each is a fully functional, tested application you can clone and run.</p>
