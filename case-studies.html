@@ -422,6 +422,60 @@
             </div>
         </article>
 
+        <!-- Case Study: DocExtract AI — Production RAG Pipeline -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">RAG / MLOps</span>
+                <a href="https://github.com/ChunkyTortoise/docextract" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
+                <a href="https://docextract-frontend.onrender.com" class="text-sm text-green-600 hover:underline" target="_blank">Live Demo</a>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">92.6% Extraction Accuracy on 16 Document Types with Hybrid RAG</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
+                    <p class="text-gray-700">Pure vector search fails on structured documents. An invoice number like <code>INV-2024-0047</code> has no semantic relationship to the query "what is the invoice number?" &mdash; it's a lexical match. Naive RAG pipelines using only cosine similarity miss exact-field lookups, causing extraction failures on the documents that matter most: invoices, contracts, medical records, and identity documents.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
+                    <p class="text-gray-700">Built a 12-step async document extraction pipeline: upload &rarr; format detection &rarr; OCR/text extraction &rarr; document classification &rarr; type-aware chunking &rarr; pgvector embedding &rarr; hybrid retrieval (BM25 keyword + cosine similarity + Reciprocal Rank Fusion) &rarr; citation-aware LLM generation. Added production-grade reliability: AsyncCircuitBreaker model fallback (Sonnet &rarr; Haiku), OpenTelemetry + Prometheus metrics, LangSmith tracing per pipeline step, and a golden evaluation CI gate that blocks deploys if accuracy regresses below 92.6%.</p>
+                    <div class="flex gap-2 flex-wrap mt-3">
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">pgvector</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">BM25 + RRF</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">ARQ Workers</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">LangSmith</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude API</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Terraform / AWS</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">92.6%</p>
+                            <p class="text-xs text-green-600 mt-1">Extraction accuracy (16 doc types)</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">446</p>
+                            <p class="text-xs text-green-600 mt-1">Automated tests, 80%+ coverage</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">12%</p>
+                            <p class="text-xs text-green-600 mt-1">Retrieval gain vs. pure vector</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-sm text-gray-500">
+                    <strong>Verify:</strong> <code>app/services/retrieval.py</code> (hybrid RRF), <code>app/langsmith_tracing.py</code> (observability), <code>deploy/aws/</code> (Terraform IaC), <code>tests/golden/</code> (accuracy gate). <a href="https://docextract-frontend.onrender.com" class="text-indigo-600 hover:underline" target="_blank">Try it live &rarr;</a>
+                </div>
+            </div>
+        </article>
+
         <!-- Capability Demos -->
         <h2 class="text-xl font-bold mb-6 mt-12">Capability Demonstrations</h2>
         <p class="text-gray-600 mb-6">These projects demonstrate what the systems can do. Each is a fully functional, tested application you can clone and run.</p>
