@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI for B2B SaaS | Cayman Roden</title>
+    <meta name="description" content="AI systems for SaaS companies. RAG support agents, churn prediction, lead scoring, unit economics dashboards, and multi-agent workflows.">
+    <meta property="og:title" content="AI for B2B SaaS | Cayman Roden">
+    <meta property="og:description" content="AI systems for SaaS companies. RAG support agents, churn prediction, lead scoring, unit economics dashboards, and multi-agent workflows.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chunkytortoise.github.io/verticals/saas.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="AI for B2B SaaS | Cayman Roden">
+    <meta name="twitter:description" content="AI systems for SaaS companies. RAG support agents, churn prediction, lead scoring, unit economics dashboards, and multi-agent workflows.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QNBBCMHX7Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QNBBCMHX7Q');
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Nav -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="../index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
+            <button id="menu-toggle" class="md:hidden p-2 text-gray-600 hover:text-indigo-600" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <div class="hidden md:flex gap-4 text-sm">
+                <a href="../projects.html" class="hover:text-indigo-600">Projects</a>
+                <a href="../store.html" class="hover:text-indigo-600">Store</a>
+                <a href="../services.html" class="hover:text-indigo-600">Services</a>
+                <a href="../verticals/" class="text-indigo-600 font-medium">Industries</a>
+                <a href="../certifications.html" class="hover:text-indigo-600">Certifications</a>
+                <a href="../case-studies.html" class="hover:text-indigo-600">Case Studies</a>
+                <a href="../benchmarks.html" class="hover:text-indigo-600">Benchmarks</a>
+                <a href="../blog.html" class="hover:text-indigo-600">Blog</a>
+                <a href="../about.html" class="hover:text-indigo-600">About</a>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-2 text-sm">
+            <a href="../projects.html" class="block py-1 hover:text-indigo-600">Projects</a>
+            <a href="../store.html" class="block py-1 hover:text-indigo-600">Store</a>
+            <a href="../services.html" class="block py-1 hover:text-indigo-600">Services</a>
+            <a href="../verticals/" class="block py-1 text-indigo-600 font-medium">Industries</a>
+            <a href="../certifications.html" class="block py-1 hover:text-indigo-600">Certifications</a>
+            <a href="../case-studies.html" class="block py-1 hover:text-indigo-600">Case Studies</a>
+            <a href="../benchmarks.html" class="block py-1 hover:text-indigo-600">Benchmarks</a>
+            <a href="../blog.html" class="block py-1 hover:text-indigo-600">Blog</a>
+            <a href="../about.html" class="block py-1 hover:text-indigo-600">About</a>
+        </div>
+    </nav>
+    <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    </script>
+
+    <!-- Hero -->
+    <section class="bg-indigo-600 text-white py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h1 class="text-4xl font-bold mb-4">AI Systems for B2B SaaS</h1>
+            <p class="text-xl text-indigo-100 mb-8">Cut support costs, predict churn before it happens, and give your sales team ML-powered lead scoring.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="mailto:caymanroden@gmail.com" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition shadow-lg">Email Me Directly</a>
+                <a href="../projects.html" class="bg-indigo-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-400 transition border border-indigo-400">See Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Where SaaS Teams Lose Time and Money -->
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-2 text-center">Where SaaS Teams Lose Time and Money</h2>
+            <p class="text-gray-500 text-center mb-10">Three problems that compound as you scale.</p>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h3 class="font-bold mb-2">Support costs scale with users</h3>
+                    <p class="text-gray-600 text-sm">Repetitive questions answered by expensive human agents eat margin as you grow. The same 20 questions account for 60%+ of tickets in most SaaS products.</p>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6"/></svg>
+                    </div>
+                    <h3 class="font-bold mb-2">Churn happens 30 days before the cancellation</h3>
+                    <p class="text-gray-600 text-sm">By the time an account cancels, the decision was made weeks earlier. Usage drop-off, support ticket frequency, and login patterns all signal what's coming.</p>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h3 class="font-bold mb-2">Sales teams chase low-probability leads</h3>
+                    <p class="text-gray-600 text-sm">Without scoring, sales effort is distributed equally across leads with very different close probabilities. High-fit accounts wait while reps work cold contacts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recommended Services -->
+    <section class="bg-gray-100 py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-2 text-center">Recommended Services</h2>
+            <p class="text-gray-500 text-center mb-8">Each one targets a specific margin leak in the SaaS model.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-bold text-lg">RAG Conversational Agents</h3>
+                        <span class="text-indigo-600 font-medium text-sm whitespace-nowrap ml-4">$3,600 - $5,200</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">Train on your docs and answer support questions with citations. Handles 60%+ of tickets automatically, with source links so users can verify answers.</p>
+                    <a href="../services.html#rag-agents" class="text-indigo-600 text-sm font-medium hover:underline">View service details &rarr;</a>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-bold text-lg">Multi-Agent Workflows</h3>
+                        <span class="text-indigo-600 font-medium text-sm whitespace-nowrap ml-4">$5,200 - $8,000</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">Lead enrichment, qualification, and outreach coordination across multiple specialized agents. Each agent handles one task and passes structured data to the next.</p>
+                    <a href="../services.html#multi-agent" class="text-indigo-600 text-sm font-medium hover:underline">View service details &rarr;</a>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-bold text-lg">Predictive Analytics and Churn Detection</h3>
+                        <span class="text-indigo-600 font-medium text-sm whitespace-nowrap ml-4">$4,400 - $6,400</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">Identify at-risk accounts 30 days before cancellation. Integrates with your CRM so your CS team sees a prioritized list of accounts that need attention today.</p>
+                    <a href="../services.html#predictive-analytics" class="text-indigo-600 text-sm font-medium hover:underline">View service details &rarr;</a>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-200 p-6">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-bold text-lg">BI and Unit Economics Dashboard</h3>
+                        <span class="text-indigo-600 font-medium text-sm whitespace-nowrap ml-4">$3,200 - $5,200</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">CAC, LTV, churn, NRR, and cohort analysis in real time. Built on your data warehouse so the numbers always match what your finance team sees.</p>
+                    <a href="../services.html#bi-dashboard" class="text-indigo-600 text-sm font-medium hover:underline">View service details &rarr;</a>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-200 p-6 md:col-span-2">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-bold text-lg">Fractional AI Leadership</h3>
+                        <span class="text-indigo-600 font-medium text-sm whitespace-nowrap ml-4">$8,000 - $15,000/mo</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">Strategic AI guidance for your product roadmap and infrastructure decisions. Weekly calls, architecture reviews, vendor evaluation, and hands-on implementation support.</p>
+                    <a href="../services.html#fractional-ai" class="text-indigo-600 text-sm font-medium hover:underline">View service details &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Ships With Every Project -->
+    <section class="py-16">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-2 text-center">What Ships With Every Project</h2>
+            <p class="text-gray-500 text-center mb-10">Not just code — a system you can actually operate and maintain.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-8">
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-600 font-bold text-lg mt-0.5">&#10003;</span>
+                            <div>
+                                <div class="font-semibold">Full test suite</div>
+                                <div class="text-gray-600 text-sm">The docextract project ships with 1,148 tests and 94.6% accuracy. Test count is a deliverable, not an afterthought.</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-600 font-bold text-lg mt-0.5">&#10003;</span>
+                            <div>
+                                <div class="font-semibold">CI/CD pipeline with automated quality gates</div>
+                                <div class="text-gray-600 text-sm">Every commit runs tests, linting, and security checks. Broken builds don't reach production.</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-600 font-bold text-lg mt-0.5">&#10003;</span>
+                            <div>
+                                <div class="font-semibold">Deployed demo or production endpoint</div>
+                                <div class="text-gray-600 text-sm">Something live you can show your team on day one. Not a local Docker container that only works on my machine.</div>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-indigo-600 font-bold text-lg mt-0.5">&#10003;</span>
+                            <div>
+                                <div class="font-semibold">Architecture documentation</div>
+                                <div class="text-gray-600 text-sm">Written decision log, data flow diagrams, and runbooks. Your engineering team can take over without a knowledge transfer call.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-200 p-8">
+                    <h3 class="font-bold text-lg mb-4">Recent project stats</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center py-3 border-b border-gray-100">
+                            <span class="text-gray-700 text-sm">docextract (RAG pipeline)</span>
+                            <span class="font-semibold text-sm">1,148 tests, 94.6% accuracy</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 border-b border-gray-100">
+                            <span class="text-gray-700 text-sm">EnterpriseHub (multi-agent)</span>
+                            <span class="font-semibold text-sm">7,678 collectible tests</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3 border-b border-gray-100">
+                            <span class="text-gray-700 text-sm">jorge bots (qualification)</span>
+                            <span class="font-semibold text-sm">1,790 tests, live since Jan 2026</span>
+                        </div>
+                        <div class="flex justify-between items-center py-3">
+                            <span class="text-gray-700 text-sm">finance-analytics-portfolio</span>
+                            <span class="font-semibold text-sm">1,347 pytest + 33 dbt tests</span>
+                        </div>
+                    </div>
+                    <a href="../projects.html" class="inline-block mt-4 text-indigo-600 text-sm font-medium hover:underline">See all projects &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gray-100">
+        <div class="max-w-2xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-4">Let's scope your project</h2>
+            <p class="text-gray-600 mb-8">Tell me which problem is costing you the most right now. Fixed-price quotes with a clear scope, no vague retainers.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="mailto:caymanroden@gmail.com" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">Email Me Directly</a>
+                <a href="https://www.upwork.com/freelancers/~01ee20599d13f4c8c9" target="_blank" class="bg-white text-indigo-600 border border-indigo-300 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition">Hire on Upwork</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
+            <span>&copy; 2026 Cayman Roden</span>
+            <div class="flex gap-5 items-center">
+                <a href="https://github.com/ChunkyTortoise" class="hover:text-white flex items-center gap-1.5" target="_blank">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/cayman-roden" class="hover:text-white flex items-center gap-1.5" target="_blank">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://www.upwork.com/freelancers/~01ee20599d13f4c8c9" class="hover:text-white flex items-center gap-1.5" target="_blank">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+                    Upwork
+                </a>
+                <a href="mailto:caymanroden@gmail.com" class="hover:text-white flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    Email
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

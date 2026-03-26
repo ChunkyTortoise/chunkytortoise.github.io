@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services | Cayman Roden</title>
-    <meta name="description" content="AI engineering services: GoHighLevel bots, RAG pipelines, FastAPI, multi-agent workflows, Voice AI, dashboards. Fixed-price for scoped projects, $45/hr for ongoing work.">
+    <meta name="description" content="31 AI engineering services: RAG agents, multi-agent workflows, BI dashboards, AI strategy, compliance consulting, and more. Fixed-price with proof repos. 1,768 hours certified.">
     <meta property="og:title" content="Services | Cayman Roden">
-    <meta property="og:description" content="AI engineering services backed by public repos with tests, CI, and working demos. RAG agents, LLMOps, dashboards, and more.">
+    <meta property="og:description" content="31 AI services backed by public repos with tests, CI, and working demos. RAG agents, LLMOps, dashboards, advisory, and more.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chunkytortoise.github.io/services.html">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Services | Cayman Roden">
-    <meta name="twitter:description" content="AI engineering services backed by public repos. RAG agents, LLMOps, dashboards, and more.">
+    <meta name="twitter:description" content="31 AI engineering services backed by public repos. RAG agents, LLMOps, dashboards, advisory, and more.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -35,6 +35,7 @@
                 <a href="projects.html" class="hover:text-indigo-600">Projects</a>
                 <a href="store.html" class="hover:text-indigo-600">Store</a>
                 <a href="services.html" class="text-indigo-600 font-medium">Services</a>
+                <a href="verticals/" class="hover:text-indigo-600">Industries</a>
                 <a href="certifications.html" class="hover:text-indigo-600">Certifications</a>
                 <a href="case-studies.html" class="hover:text-indigo-600">Case Studies</a>
                 <a href="benchmarks.html" class="hover:text-indigo-600">Benchmarks</a>
@@ -46,6 +47,7 @@
             <a href="projects.html" class="block py-1 hover:text-indigo-600">Projects</a>
             <a href="store.html" class="block py-1 hover:text-indigo-600">Store</a>
             <a href="services.html" class="block py-1 text-indigo-600 font-medium">Services</a>
+            <a href="verticals/" class="block py-1 hover:text-indigo-600">Industries</a>
             <a href="certifications.html" class="block py-1 hover:text-indigo-600">Certifications</a>
             <a href="case-studies.html" class="block py-1 hover:text-indigo-600">Case Studies</a>
             <a href="benchmarks.html" class="block py-1 hover:text-indigo-600">Benchmarks</a>
@@ -53,23 +55,29 @@
             <a href="about.html" class="block py-1 hover:text-indigo-600">About</a>
         </div>
     </nav>
-    <script>
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-        document.getElementById('mobile-menu').classList.toggle('hidden');
-    });
-    </script>
 
     <section class="max-w-6xl mx-auto px-4 py-12">
         <h1 class="text-3xl font-bold mb-2">Services</h1>
-        <p class="text-gray-600 mb-8">Every service backed by a public repo with tests, CI, and a working demo. Every service backed by <a href="certifications.html" class="text-indigo-600 hover:underline">1,768 hours of certifications</a>.</p>
+        <p class="text-gray-600 mb-6">31 services across AI automation, data intelligence, marketing, infrastructure, and strategic advisory. Every technical service backed by a public repo with tests and CI. Every service backed by <a href="certifications.html" class="text-indigo-600 hover:underline">1,768 hours of certifications</a> from Vanderbilt, IBM, Google, Microsoft, Duke, Meta, and DeepLearning.AI.</p>
 
-        <!-- Signature Solutions -->
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap gap-2 mb-10">
+            <button onclick="filterServices('all', this)" class="service-tab bg-indigo-600 text-white text-sm px-4 py-1.5 rounded-full font-medium transition">All</button>
+            <button onclick="filterServices('advisory', this)" class="service-tab bg-gray-100 text-gray-700 text-sm px-4 py-1.5 rounded-full font-medium transition hover:bg-gray-200">Advisory</button>
+            <button onclick="filterServices('automation', this)" class="service-tab bg-gray-100 text-gray-700 text-sm px-4 py-1.5 rounded-full font-medium transition hover:bg-gray-200">AI Automation</button>
+            <button onclick="filterServices('data', this)" class="service-tab bg-gray-100 text-gray-700 text-sm px-4 py-1.5 rounded-full font-medium transition hover:bg-gray-200">Data &amp; BI</button>
+            <button onclick="filterServices('marketing', this)" class="service-tab bg-gray-100 text-gray-700 text-sm px-4 py-1.5 rounded-full font-medium transition hover:bg-gray-200">Marketing</button>
+            <button onclick="filterServices('infrastructure', this)" class="service-tab bg-gray-100 text-gray-700 text-sm px-4 py-1.5 rounded-full font-medium transition hover:bg-gray-200">Infrastructure</button>
+            <button onclick="filterServices('quickwins', this)" class="service-tab bg-gray-100 text-gray-700 text-sm px-4 py-1.5 rounded-full font-medium transition hover:bg-gray-200">Quick Wins</button>
+        </div>
+
+        <!-- ===== SIGNATURE SOLUTIONS (always visible) ===== -->
         <div class="mb-12">
             <div class="flex items-center gap-3 mb-6">
                 <h2 class="text-xl font-bold">Signature Solutions</h2>
                 <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">Fixed Price</span>
             </div>
-            <p class="text-gray-600 mb-6">Production-ready AI systems backed by real projects. One live client system running 24/7 since January 2026. 16 open-source projects with 11,000+ tests across all repos.</p>
+            <p class="text-gray-600 mb-6">Production-ready AI systems backed by real projects. One live client system running 24/7 since January 2026. 16 open-source projects with 11,700+ tests across all repos.</p>
             <div class="grid md:grid-cols-2 gap-6">
                 <div id="lead-qual" class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border-2 border-indigo-200 p-6">
                     <div class="flex items-center justify-between mb-3">
@@ -77,17 +85,17 @@
                         <span class="bg-indigo-600 text-white text-sm font-bold px-3 py-1 rounded">EnterpriseHub</span>
                     </div>
                     <p class="text-gray-600 text-sm mb-3">Multi-bot lead qualification system with Lead, Buyer, and Seller agents. Confidence-based handoff, CRM sync. Running 24/7 since January 2026 for a real estate client.</p>
-                    <p class="text-2xl font-bold text-indigo-600 mb-3">$1,500 - $3,000</p>
+                    <p class="text-2xl font-bold text-indigo-600 mb-3">$1,500 &ndash; $3,000</p>
                     <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                        <li>✓ 3 specialized bots (Lead/Buyer/Seller)</li>
-                        <li>✓ GoHighLevel CRM integration</li>
-                        <li>✓ Webhook sig verification + Redis dedup</li>
-                        <li>✓ BI dashboard included</li>
-                        <li>✓ 6,282 tests</li>
+                        <li>&#10003; 3 specialized bots (Lead/Buyer/Seller)</li>
+                        <li>&#10003; GoHighLevel CRM integration</li>
+                        <li>&#10003; Webhook sig verification + Redis dedup</li>
+                        <li>&#10003; BI dashboard included</li>
+                        <li>&#10003; 6,282 tests</li>
                     </ul>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-3">
                         <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="hover:underline" target="_blank">View on GitHub</a>
-                        <span class="text-gray-400">•</span>
+                        <span class="text-gray-400">&bull;</span>
                         <a href="https://ct-enterprise-ai.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo</a>
                     </div>
                     <a href="mailto:caymanroden@gmail.com?subject=The%20Lead%20Qual%20Agent" class="inline-block bg-indigo-600 text-white text-sm px-4 py-2 rounded hover:bg-indigo-700 transition w-full text-center">Get Started</a>
@@ -95,340 +103,809 @@
                 <div id="rag-pro" class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border-2 border-indigo-200 p-6">
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="font-bold text-lg">The RAG Pro</h3>
-                        <span class="bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded">docqa-engine</span>
+                        <span class="bg-blue-600 text-white text-sm font-bold px-3 py-1 rounded">docextract</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-3">Document intelligence with hybrid retrieval (BM25 + vectors + RRF), citation scoring, and source tracing. Upload PDFs, get cited answers via REST API.</p>
+                    <p class="text-gray-600 text-sm mb-3">Document intelligence with hybrid retrieval (BM25 + vectors + RRF), citation scoring, and source tracing. Upload PDFs, get cited answers via REST API. 94.6% extraction accuracy on 28 test fixtures.</p>
                     <p class="text-2xl font-bold text-indigo-600 mb-3">$7,500</p>
                     <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                        <li>✓ Hybrid retrieval (BM25 + vectors)</li>
-                        <li>✓ Citation accuracy scoring</li>
-                        <li>✓ PDF, DOCX, TXT ingestion</li>
-                        <li>✓ REST API included</li>
-                        <li>✓ 501+ tests</li>
+                        <li>&#10003; Hybrid retrieval (BM25 + vectors)</li>
+                        <li>&#10003; Citation accuracy scoring</li>
+                        <li>&#10003; PDF, DOCX, TXT ingestion</li>
+                        <li>&#10003; REST API + streaming agents</li>
+                        <li>&#10003; 1,148 tests, 94.6% accuracy</li>
                     </ul>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-3">
-                        <a href="https://github.com/ChunkyTortoise/docqa-engine" class="hover:underline" target="_blank">View on GitHub</a>
-                        <span class="text-gray-400">•</span>
-                        <a href="https://ct-document-engine.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo</a>
+                        <a href="https://github.com/ChunkyTortoise/docextract" class="hover:underline" target="_blank">View on GitHub</a>
+                        <span class="text-gray-400">&bull;</span>
+                        <a href="case-studies.html" class="hover:underline">Case Study</a>
                     </div>
                     <a href="mailto:caymanroden@gmail.com?subject=The%20RAG%20Pro" class="inline-block bg-indigo-600 text-white text-sm px-4 py-2 rounded hover:bg-indigo-700 transition w-full text-center">Get Started</a>
                 </div>
                 <div id="bi-engine" class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border-2 border-indigo-200 p-6">
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="font-bold text-lg">The BI Engine</h3>
-                        <span class="bg-green-600 text-white text-sm font-bold px-3 py-1 rounded">insight-engine</span>
+                        <span class="bg-green-600 text-white text-sm font-bold px-3 py-1 rounded">finance-analytics</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-3">Predictive analytics dashboards with auto-ML, attribution modeling, churn detection, and KPI frameworks. Turn data into decisions.</p>
-                    <p class="text-2xl font-bold text-indigo-600 mb-3">$5,000 - $10,000</p>
+                    <p class="text-gray-600 text-sm mb-3">Predictive analytics dashboards with ML models, attribution modeling, churn detection, and KPI frameworks. 21-page dashboard with NL-to-SQL and downloadable decision memos.</p>
+                    <p class="text-2xl font-bold text-indigo-600 mb-3">$5,000 &ndash; $10,000</p>
                     <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                        <li>✓ Auto-ML prediction models</li>
-                        <li>✓ Marketing attribution</li>
-                        <li>✓ Interactive Plotly dashboards</li>
-                        <li>✓ Export to PDF/CSV</li>
-                        <li>✓ 521+ tests</li>
+                        <li>&#10003; ML prediction models (scikit-learn, Prophet)</li>
+                        <li>&#10003; Marketing attribution modeling</li>
+                        <li>&#10003; Interactive Plotly dashboards</li>
+                        <li>&#10003; PDF Decision Memo export</li>
+                        <li>&#10003; 1,347 tests + 33 dbt tests</li>
                     </ul>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-3">
-                        <a href="https://github.com/ChunkyTortoise/insight-engine" class="hover:underline" target="_blank">View on GitHub</a>
-                        <span class="text-gray-400">•</span>
-                        <a href="https://ct-insight-engine.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo</a>
+                        <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="hover:underline" target="_blank">View on GitHub</a>
                     </div>
                     <a href="mailto:caymanroden@gmail.com?subject=The%20BI%20Engine" class="inline-block bg-indigo-600 text-white text-sm px-4 py-2 rounded hover:bg-indigo-700 transition w-full text-center">Get Started</a>
                 </div>
                 <div id="mcp-specialist" class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border-2 border-indigo-200 p-6">
                     <div class="flex items-center justify-between mb-3">
                         <h3 class="font-bold text-lg">The MCP Specialist</h3>
-                        <span class="bg-orange-600 text-white text-sm font-bold px-3 py-1 rounded">mcp-toolkit</span>
+                        <span class="bg-orange-600 text-white text-sm font-bold px-3 py-1 rounded">mcp-server-toolkit</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-3">Custom MCP servers for Claude Desktop integration. Build tools that connect AI to your workflows: calendar, email, Slack, GitHub, and more.</p>
+                    <p class="text-gray-600 text-sm mb-3">Custom MCP servers for Claude Desktop integration. Build tools that connect AI to your workflows: calendar, email, Slack, GitHub, and more. Published on PyPI.</p>
                     <p class="text-2xl font-bold text-indigo-600 mb-3">Custom Pricing</p>
                     <ul class="text-sm text-gray-600 space-y-1 mb-4">
-                        <li>✓ Custom MCP server development</li>
-                        <li>✓ Toolchain integration</li>
-                        <li>✓ FastMCP v2 templates</li>
-                        <li>✓ CLI with auto-generated docs</li>
-                        <li>✓ 184+ tests</li>
+                        <li>&#10003; Custom MCP server development</li>
+                        <li>&#10003; Toolchain integration</li>
+                        <li>&#10003; FastMCP v2 templates</li>
+                        <li>&#10003; CLI with auto-generated docs</li>
+                        <li>&#10003; 412 tests &bull; PyPI published</li>
                     </ul>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-3">
-                        <a href="https://github.com/ChunkyTortoise/mcp-toolkit" class="hover:underline" target="_blank">View on GitHub</a>
+                        <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="hover:underline" target="_blank">View on GitHub</a>
                     </div>
                     <a href="mailto:caymanroden@gmail.com?subject=The%20MCP%20Specialist" class="inline-block bg-indigo-600 text-white text-sm px-4 py-2 rounded hover:bg-indigo-700 transition w-full text-center">Discuss Your Needs</a>
                 </div>
             </div>
-            <p class="text-sm text-gray-500 mt-4 text-center">
-                <a href="https://github.com/ChunkyTortoise/EnterpriseHub/blob/main/SERVICE_BUNDLES.md" class="text-indigo-600 hover:underline" target="_blank">View full SERVICE_BUNDLES.md documentation &rarr;</a>
-            </p>
         </div>
 
-        <!-- Strategic Tier -->
-        <div class="mb-12">
+        <!-- ===== STRATEGIC ADVISORY ===== -->
+        <div class="service-section mb-12" data-category="advisory">
             <div class="flex items-center gap-3 mb-6">
-                <h2 class="text-xl font-bold">Custom Development</h2>
-                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">$45/hr or fixed-price</span>
+                <h2 class="text-xl font-bold">Strategic Advisory</h2>
+                <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">Fixed Price</span>
+            </div>
+            <p class="text-gray-600 mb-6">Consulting engagements backed by 1,768 hours of institutional-grade training. Structured deliverables, fixed pricing, and no billable-hour uncertainty.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">AI Strategy &amp; Readiness Assessment</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$6,400 &ndash; $12,000</p>
+                    <p class="text-gray-600 text-sm mb-3">Identify the highest-ROI AI opportunities in your business before spending a dollar on implementation. Receive a prioritized roadmap, cost-benefit analysis, and 90-day action plan.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 10&ndash;14 days &middot; <strong>Deliverables:</strong> 30-50 page report, roadmap, financial models, executive presentation</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>&#10003; Current state audit + opportunity analysis (5-10 use cases ranked by ROI)</li>
+                        <li>&#10003; Investment estimates, ROI projections, payback periods</li>
+                        <li>&#10003; Phased implementation roadmap + risk assessment</li>
+                        <li>&#10003; Vendor evaluation framework + executive presentation</li>
+                        <li>&#10003; 90-day action plan with owners, timelines, success metrics</li>
+                    </ul>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Vanderbilt GenAI Strategic Leader (40h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Google Cloud GenAI Leader (25h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Duke LLMOps (48h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=AI%20Strategy%20Assessment" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Get Your Assessment</a>
+                </div>
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Technical Due Diligence for AI Systems</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$8,000 &ndash; $35,000</p>
+                    <p class="text-gray-600 text-sm mb-3">Know what you're buying, building, or inheriting. Rigorous evaluation of AI systems for technical debt, hidden costs, security vulnerabilities, and valuation impact. Built for VCs, PE firms, and M&amp;A teams.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 15&ndash;25 days &middot; <strong>Deliverables:</strong> 40-70 page audit, risk register, valuation impact report</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>&#10003; Architecture review, code quality, model performance audit</li>
+                        <li>&#10003; Data infrastructure + compliance (GDPR, HIPAA, SOC2) assessment</li>
+                        <li>&#10003; Cost analysis including hidden API costs and scaling projections</li>
+                        <li>&#10003; Security audit + IP and ownership review</li>
+                        <li>&#10003; Risk register + remediation roadmap + valuation impact</li>
+                    </ul>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">IBM GenAI Engineering (144h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Duke LLMOps (48h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">AI &amp; ML Engineering (75h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Technical%20Due%20Diligence" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Request Audit</a>
+                </div>
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">AI Team Training &amp; Capability Building</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$2,400 &ndash; $6,400</p>
+                    <p class="text-gray-600 text-sm mb-3">Customized workshops teaching your team to build and use AI systems. Hands-on labs with your actual business problems, from 1-day executive sessions to 3-day technical deep dives.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 2&ndash;4 weeks (includes discovery, delivery, follow-up) &middot; <strong>Deliverables:</strong> Curriculum, materials, reference guides, 30-day support</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>&#10003; Executive (1-day), Operational (2-day), or Technical (3-day) tracks</li>
+                        <li>&#10003; Hands-on labs using your actual business problems</li>
+                        <li>&#10003; Tools training (Claude, ChatGPT, specialized AI platforms)</li>
+                        <li>&#10003; Participant materials + reference guides</li>
+                        <li>&#10003; 30-day post-training support for implementation questions</li>
+                    </ul>
+                    <div class="flex items-center gap-2 text-sm mb-2">
+                        <span class="text-gray-500 text-xs">Also see:</span>
+                        <a href="cohort.html" class="text-indigo-600 text-xs hover:underline">4-Week Live Cohort ($697)</a>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">All 19 certifications (1,768h total)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=AI%20Team%20Training" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss Training</a>
+                </div>
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">AI Compliance &amp; Governance Consulting</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$4,000 &ndash; $9,600</p>
+                    <p class="text-gray-600 text-sm mb-3">Audit your AI systems against HIPAA, SOC 2, GDPR, and the EU AI Act. Identify compliance gaps, document remediation steps, and prepare audit-ready materials.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 5&ndash;10 days &middot; <strong>Deliverables:</strong> Gap analysis, compliance documentation, data handling framework, remediation roadmap</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>&#10003; Current AI audit against HIPAA, SOC 2, GDPR, EU AI Act</li>
+                        <li>&#10003; Gap identification + risk assessment with severity ratings</li>
+                        <li>&#10003; Compliance documentation for auditors</li>
+                        <li>&#10003; Model governance + explainability documentation</li>
+                        <li>&#10003; Vendor compliance verification checklist</li>
+                    </ul>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
+                        <span class="text-gray-500 text-xs">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/docextract" class="text-xs hover:underline" target="_blank">docextract COMPLIANCE.md</a>
+                        <span class="text-gray-400 text-xs">&middot; PII detection + HIPAA guardrails</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">IBM GenAI Engineering (144h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Duke LLMOps (48h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=AI%20Compliance%20Consulting" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Request Audit</a>
+                </div>
+
+                <div class="bg-white rounded-xl border border-purple-200 p-6 md:col-span-2">
+                    <div class="flex items-start justify-between mb-3">
+                        <div>
+                            <h3 class="font-bold mb-1">Fractional AI Leadership</h3>
+                            <p class="text-sm font-medium text-indigo-600 mb-2">$8,000 &ndash; $15,000/month &middot; 3-month minimum</p>
+                        </div>
+                        <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium whitespace-nowrap ml-4">Part-Time CAO</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">Part-time Chief AI Officer for your company. Strategic AI guidance, vendor evaluation, project prioritization, and implementation oversight at a fraction of a full-time hire ($250K+/yr).</p>
+                    <div class="grid md:grid-cols-2 gap-4 mb-3">
+                        <ul class="text-xs text-gray-600 space-y-0.5">
+                            <li>&#10003; Quarterly strategy sessions with leadership team</li>
+                            <li>&#10003; Monthly advisory calls + ongoing Slack availability</li>
+                            <li>&#10003; Project oversight + vendor evaluation support</li>
+                        </ul>
+                        <ul class="text-xs text-gray-600 space-y-0.5">
+                            <li>&#10003; AI governance framework + policy development</li>
+                            <li>&#10003; Market trends + competitive intelligence briefings</li>
+                            <li>&#10003; Monthly strategy report + board presentation support</li>
+                        </ul>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Backed by: 19 certifications (1,768h) + production AI systems + 1 live client deployment since Jan 2026</p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Fractional%20AI%20Leadership" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Schedule Discovery Call</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== AI AUTOMATION ===== -->
+        <div class="service-section mb-12" data-category="automation">
+            <div class="flex items-center gap-3 mb-6">
+                <h2 class="text-xl font-bold">AI Automation</h2>
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Fixed Price</span>
             </div>
             <div class="grid md:grid-cols-2 gap-6">
+
                 <div id="rag" class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">RAG Conversational Agents</h3>
-                    <p class="text-gray-600 text-sm mb-3">Document-grounded Q&A with hybrid retrieval (BM25 + vectors), source citations, and prompt engineering lab.</p>
-                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 1&ndash;3 weeks &middot; <strong>Deliverables:</strong> Deployed RAG app, ingestion pipeline, evaluation report</p>
+                    <h3 class="font-bold mb-1">RAG Conversational Agents</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$3,600 &ndash; $5,200</p>
+                    <p class="text-gray-600 text-sm mb-3">Document-grounded Q&amp;A with hybrid retrieval (BM25 + vectors + RRF), source citations, and conversation continuity. Integrates with GHL, HubSpot, Salesforce, Slack, and Teams via webhook.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 3&ndash;5 days &middot; <strong>Deliverables:</strong> Deployed agent, ingestion pipeline, admin dashboard, evaluation report</p>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
-                        <span>Proof:</span>
-                        <a href="https://github.com/ChunkyTortoise/docqa-engine" class="hover:underline" target="_blank">docqa-engine</a>
-                        <span class="text-gray-400">&middot;</span>
-                        <a href="case-studies.html" class="hover:underline">Case Study</a>
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/docextract" class="text-xs hover:underline" target="_blank">docextract</a>
+                        <span class="text-gray-400 text-xs">&middot;</span>
+                        <a href="case-studies.html" class="text-xs hover:underline">Case Study</a>
                     </div>
-                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">IBM RAG & Agentic AI (24h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">IBM GenAI Engineering (144h)</a></p>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">IBM RAG &amp; Agentic AI (24h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">IBM GenAI Engineering (144h)</a></p>
                     <a href="mailto:caymanroden@gmail.com?subject=RAG%20Agent%20Project" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss This Service</a>
                 </div>
+
                 <div id="multi-agent" class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">Multi-Agent Workflows</h3>
-                    <p class="text-gray-600 text-sm mb-3">Coordinated AI bot systems with cross-agent handoff, confidence-based routing, and conversation state management.</p>
-                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 2&ndash;4 weeks &middot; <strong>Deliverables:</strong> Agent system, handoff logic, monitoring dashboard</p>
+                    <h3 class="font-bold mb-1">Multi-Agent Workflows</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$5,200 &ndash; $8,000</p>
+                    <p class="text-gray-600 text-sm mb-3">Coordinated AI bot systems with cross-agent handoff, confidence-based routing, and conversation state management. Human-in-the-loop checkpoints for high-stakes decisions.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 5&ndash;7 days &middot; <strong>Deliverables:</strong> Agent system, handoff logic, monitoring dashboard, audit trail</p>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
-                        <span>Proof:</span>
-                        <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="hover:underline" target="_blank">EnterpriseHub</a>
-                        <span class="text-gray-400">+</span>
-                        <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="hover:underline" target="_blank">Jorge Bots</a>
-                        <span class="text-gray-400">&middot;</span>
-                        <a href="case-studies.html" class="hover:underline">Case Study</a>
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-xs hover:underline" target="_blank">EnterpriseHub</a>
+                        <span class="text-gray-400 text-xs">+</span>
+                        <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-xs hover:underline" target="_blank">Jorge Bots</a>
+                        <span class="text-gray-400 text-xs">&middot;</span>
+                        <a href="case-studies.html" class="text-xs hover:underline">Case Study</a>
                     </div>
-                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">IBM RAG & Agentic AI (24h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Deep Learning (120h)</a></p>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">IBM RAG &amp; Agentic AI (24h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Vanderbilt Agentic AI</a></p>
                     <a href="mailto:caymanroden@gmail.com?subject=Multi-Agent%20Workflow%20Project" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss This Service</a>
                 </div>
+
                 <div id="llmops" class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">LLMOps & Cost Optimization</h3>
-                    <p class="text-gray-600 text-sm mb-3">Cache layer design (L1 in-memory, L2 Redis, L3 PostgreSQL), prompt optimization and model routing, multi-provider orchestration. Measured on test workloads — your production gains will vary.</p>
+                    <h3 class="font-bold mb-1">LLMOps &amp; Cost Optimization</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$1,200 &ndash; $2,000</p>
+                    <p class="text-gray-600 text-sm mb-3">Cache layer design (L1 in-memory, L2 Redis, L3 PostgreSQL), prompt optimization, model routing, and multi-provider orchestration. Audit existing systems and cut API costs.</p>
                     <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 1&ndash;2 weeks &middot; <strong>Deliverables:</strong> Cost audit, cache implementation, before/after metrics</p>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
-                        <span>Proof:</span>
-                        <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="hover:underline" target="_blank">EnterpriseHub</a>
-                        <span class="text-gray-400">&middot;</span>
-                        <a href="benchmarks.html" class="hover:underline">Benchmarks</a>
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-xs hover:underline" target="_blank">EnterpriseHub</a>
+                        <span class="text-gray-400 text-xs">&middot;</span>
+                        <a href="benchmarks.html" class="text-xs hover:underline">Benchmarks</a>
                     </div>
-                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">LLMOps &mdash; Duke (48h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">GenAI Strategic Leader (40h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">AI & ML Engineering (75h)</a></p>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Duke LLMOps (48h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">GenAI Strategic Leader (40h)</a></p>
                     <a href="mailto:caymanroden@gmail.com?subject=LLMOps%20Cost%20Optimization" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss This Service</a>
                 </div>
+
                 <div id="prompt" class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">Prompt Engineering & Optimization</h3>
-                    <p class="text-gray-600 text-sm mb-3">A/B prompt testing, version management, evaluation scoring (faithfulness, relevance, completeness), and cost optimization.</p>
-                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 3&ndash;5 days &middot; <strong>Deliverables:</strong> Prompt library, A/B test results, evaluation framework</p>
+                    <h3 class="font-bold mb-1">Prompt Engineering &amp; Optimization</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$1,200 &ndash; $2,000</p>
+                    <p class="text-gray-600 text-sm mb-3">A/B prompt testing, version management, evaluation scoring (faithfulness, relevance, completeness), and cost optimization. Fix underperforming AI systems and cut hallucination rates.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 1&ndash;2 days &middot; <strong>Deliverables:</strong> Prompt library (10-15 prompts), A/B results, evaluation framework</p>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
-                        <span>Proof:</span>
-                        <a href="https://github.com/ChunkyTortoise/docqa-engine" class="hover:underline" target="_blank">docqa-engine prompt lab</a>
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/docextract" class="text-xs hover:underline" target="_blank">docextract prompt lab</a>
                     </div>
-                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">IBM GenAI Engineering (144h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">ChatGPT Automation (30h)</a></p>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">IBM GenAI Engineering (144h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Vanderbilt Prompt Engineering (18h)</a></p>
                     <a href="mailto:caymanroden@gmail.com?subject=Prompt%20Engineering%20Project" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss This Service</a>
                 </div>
-                <div id="predictive" class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">Predictive Modeling & Auto-ML</h3>
-                    <p class="text-gray-600 text-sm mb-3">Upload labeled data, auto-detect task type, train classifier/regressor with feature importance (SHAP) and evaluation metrics.</p>
-                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 1&ndash;2 weeks &middot; <strong>Deliverables:</strong> Trained model, SHAP report, prediction API endpoint</p>
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Deep Learning Custom ML Models</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$6,400 &ndash; $12,000</p>
+                    <p class="text-gray-600 text-sm mb-3">Custom neural networks trained on your data for computer vision, NLP, demand forecasting, or recommendations. Deployed to production with versioning and retraining pipelines.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 7&ndash;10 days &middot; <strong>Deliverables:</strong> Trained model, SHAP explainability report, prediction API, retraining instructions</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>&#10003; Custom PyTorch or TensorFlow architecture</li>
+                        <li>&#10003; Training pipeline + hyperparameter optimization</li>
+                        <li>&#10003; Model evaluation metrics + explainability (SHAP)</li>
+                        <li>&#10003; 60-day free model tuning</li>
+                    </ul>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
-                        <span>Proof:</span>
-                        <a href="https://github.com/ChunkyTortoise/insight-engine" class="hover:underline" target="_blank">insight-engine predictor</a>
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-xs hover:underline" target="_blank">finance-analytics (scikit-learn, Prophet, SHAP)</a>
                     </div>
-                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Deep Learning (120h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Google Adv. Analytics (200h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">AI & ML Engineering (75h)</a></p>
-                    <a href="mailto:caymanroden@gmail.com?subject=Predictive%20Modeling%20Project" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss This Service</a>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Deep Learning Specialization (120h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">AI &amp; ML Engineering (75h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Custom%20ML%20Model%20Project" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss This Service</a>
                 </div>
-                <div id="voice-ai" class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">Voice AI Systems</h3>
-                    <p class="text-gray-600 text-sm mb-3">End-to-end voice pipelines: VAD, STT, LLM, TTS. Sub-3s latency. WebSocket streaming, Silero-ONNX voice activity detection, Deepgram integration.</p>
-                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 2&ndash;4 weeks &middot; <strong>Deliverables:</strong> Voice pipeline, WebSocket API, deployed demo</p>
+
+                <div id="workflow-automation" class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">AI-Powered Business Automation</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$1,400 &ndash; $2,400</p>
+                    <p class="text-gray-600 text-sm mb-3">YAML-driven async pipelines and no-code workflows (Zapier, n8n) that handle repetitive business processes automatically. Webhooks to AI processing to actions, with SSE progress streaming.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 2&ndash;3 days &middot; <strong>Deliverables:</strong> Workflow configs, SSE dashboard, documentation, 30-day support</p>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
-                        <span>Proof:</span>
-                        <a href="https://github.com/ChunkyTortoise/technova-voice-bot" class="hover:underline" target="_blank">TechNova Voice Bot</a>
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/ai-workflow-api" class="text-xs hover:underline" target="_blank">ai-workflow-api</a>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Vanderbilt ChatGPT Automation (30h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">AI-Enhanced Data Analysis (120h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Workflow%20Automation%20Project" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss This Service</a>
+                </div>
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">AI Workflow Optimization</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$3,200 &ndash; $5,200</p>
+                    <p class="text-gray-600 text-sm mb-3">AI-powered analysis of your existing workflows to identify bottlenecks and automation opportunities. Specific recommendations with implementation roadmaps and projected improvement metrics.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 5&ndash;7 days &middot; <strong>Deliverables:</strong> Process maps, bottleneck analysis, optimization roadmap, 30-day support</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>&#10003; Current state process mapping + bottleneck identification</li>
+                        <li>&#10003; Quick wins + strategic optimization recommendations</li>
+                        <li>&#10003; Implementation roadmap with effort estimates</li>
+                        <li>&#10003; Expected improvement projections + change management guidance</li>
+                    </ul>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/ai-workflow-api" class="text-xs hover:underline" target="_blank">ai-workflow-api (148 tests, YAML pipelines)</a>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Vanderbilt GenAI Strategic Leader (40h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Duke LLMOps (48h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Workflow%20Optimization%20Project" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss This Service</a>
+                </div>
+
+                <div id="voice-ai" class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Voice AI Systems</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">Custom Pricing</p>
+                    <p class="text-gray-600 text-sm mb-3">End-to-end voice pipelines: VAD, STT, LLM, TTS. Sub-3s end-to-end latency. WebSocket streaming, Silero-ONNX voice activity detection, Deepgram integration, function calling.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 2&ndash;4 weeks &middot; <strong>Deliverables:</strong> Voice pipeline, WebSocket API, latency benchmarks, deployed demo</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/technova-voice-bot" class="text-xs hover:underline" target="_blank">TechNova Voice Bot (171 tests)</a>
                     </div>
                     <a href="mailto:caymanroden@gmail.com?subject=Voice%20AI%20Project" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss This Service</a>
                 </div>
-                <div id="typescript-nextjs" class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">TypeScript / Next.js Dashboards</h3>
-                    <p class="text-gray-600 text-sm mb-3">Full-stack AI dashboards with Next.js App Router, shadcn/ui, Recharts. TypeScript strict mode, server components, and Vercel deployment.</p>
-                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 1&ndash;2 weeks &middot; <strong>Deliverables:</strong> Next.js app, Vercel deployment, responsive dark-mode UI</p>
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">AI Knowledge Management System</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$6,400 &ndash; $16,000</p>
+                    <p class="text-gray-600 text-sm mb-3">Centralize your company's knowledge with AI-powered semantic search and a chatbot trained on your documents. New employees get up to speed faster, questions get answered instantly.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 3&ndash;5 weeks &middot; <strong>Deliverables:</strong> Knowledge repository, document ingestion pipeline, semantic search, AI chatbot, analytics</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>&#10003; Document ingestion from PDFs, Word, web, databases</li>
+                        <li>&#10003; Semantic search across entire knowledge base</li>
+                        <li>&#10003; AI chatbot with cited answers</li>
+                        <li>&#10003; Knowledge gap analytics + 30-day optimization</li>
+                    </ul>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
-                        <span>Proof:</span>
-                        <a href="https://ai-dashboard-rust.vercel.app" class="hover:underline" target="_blank">AI Dashboard</a>
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/docextract" class="text-xs hover:underline" target="_blank">docextract</a>
+                        <span class="text-gray-400 text-xs">+</span>
+                        <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-xs hover:underline" target="_blank">EnterpriseHub</a>
                     </div>
-                    <a href="mailto:caymanroden@gmail.com?subject=TypeScript%20Dashboard%20Project" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss This Service</a>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">IBM RAG &amp; Agentic AI (24h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">IBM GenAI Engineering (144h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Knowledge%20Management%20System" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss This Service</a>
                 </div>
-                <div id="workflow-automation" class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">AI Workflow Automation</h3>
-                    <p class="text-gray-600 text-sm mb-3">YAML-driven async pipelines: webhooks to AI processing to actions. SSE progress streaming, background task queues, and configurable workflow steps.</p>
-                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 1&ndash;3 weeks &middot; <strong>Deliverables:</strong> Workflow API, YAML configs, SSE dashboard</p>
-                    <a href="mailto:caymanroden@gmail.com?subject=Workflow%20Automation%20Project" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss This Service</a>
-                </div>
+
             </div>
         </div>
 
-        <!-- Implementation Tier -->
-        <div class="mb-12">
+        <!-- ===== DATA & BI ===== -->
+        <div class="service-section mb-12" data-category="data">
             <div class="flex items-center gap-3 mb-6">
-                <h2 class="text-xl font-bold">Data & Analytics</h2>
-                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">$45/hr or fixed-price</span>
+                <h2 class="text-xl font-bold">Data &amp; Business Intelligence</h2>
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Fixed Price</span>
             </div>
             <div class="grid md:grid-cols-2 gap-6">
+
                 <div id="dashboards" class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">Interactive BI Dashboards</h3>
-                    <p class="text-gray-600 text-sm mb-3">Auto-profiling, chart auto-selection, interactive filters. Upload CSV/Excel and get instant dashboards with Plotly.</p>
-                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 3&ndash;5 days &middot; <strong>Deliverables:</strong> Streamlit app, deployed dashboard, data profiling report</p>
+                    <h3 class="font-bold mb-1">Interactive BI Dashboards</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$3,200 &ndash; $5,200</p>
+                    <p class="text-gray-600 text-sm mb-3">Custom data visualization connecting to live data sources. Not a template&mdash;a system optimized for your specific KPIs with interactive filters, drill-downs, and automated stakeholder reporting.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 3&ndash;5 days &middot; <strong>Deliverables:</strong> Streamlit or Power BI app, live data connections, role-based access, 30-day updates</p>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
-                        <span>Proof:</span>
-                        <a href="https://github.com/ChunkyTortoise/insight-engine" class="hover:underline" target="_blank">insight-engine</a>
-                        <span class="text-gray-400">&middot;</span>
-                        <a href="https://ct-insight-engine.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo</a>
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-xs hover:underline" target="_blank">finance-analytics (21 pages)</a>
                     </div>
-                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Google Data Analytics (181h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Google BI (80h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">IBM BI Analyst (141h)</a></p>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Google Data Analytics (181h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">IBM BI Analyst (141h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Google BI (80h)</a></p>
                     <a href="mailto:caymanroden@gmail.com?subject=BI%20Dashboard%20Project" class="inline-block bg-green-600 text-white text-xs px-4 py-1.5 rounded hover:bg-green-700 transition">Discuss This Service</a>
                 </div>
-                <div id="attribution" class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">Marketing Attribution</h3>
-                    <p class="text-gray-600 text-sm mb-3">First-touch, last-touch, linear, and time-decay models. Channel-level ROI comparison with interactive visualizations.</p>
-                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 3&ndash;5 days &middot; <strong>Deliverables:</strong> Attribution model, channel comparison dashboard, CSV export</p>
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Automated Reporting Pipelines</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$2,200 &ndash; $3,200</p>
+                    <p class="text-gray-600 text-sm mb-3">Fully automated Python pipelines that clean, transform, and email polished reports to stakeholders on schedule. Set once, never touch again. Slack integration and error notifications if data sources fail.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 2&ndash;3 days &middot; <strong>Deliverables:</strong> Automated pipeline, email delivery, Slack integration, audit logging</p>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
-                        <span>Proof:</span>
-                        <a href="https://github.com/ChunkyTortoise/insight-engine" class="hover:underline" target="_blank">insight-engine attribution</a>
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-xs hover:underline" target="_blank">finance-analytics (PDF Decision Memo export)</a>
                     </div>
-                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Google Digital Marketing (190h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Google Adv. Analytics (200h)</a></p>
-                    <a href="mailto:caymanroden@gmail.com?subject=Marketing%20Attribution%20Project" class="inline-block bg-green-600 text-white text-xs px-4 py-1.5 rounded hover:bg-green-700 transition">Discuss This Service</a>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Google Data Analytics (181h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">IBM BI Analyst (141h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Automated%20Reporting%20Project" class="inline-block bg-green-600 text-white text-xs px-4 py-1.5 rounded hover:bg-green-700 transition">Discuss This Service</a>
                 </div>
-                <div id="cleaning" class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">Data Cleaning Pipelines</h3>
-                    <p class="text-gray-600 text-sm mb-3">Deduplication (exact + fuzzy), column standardization, missing value imputation, and automated quality reports.</p>
-                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 2&ndash;4 days &middot; <strong>Deliverables:</strong> Cleaning pipeline, quality report, cleaned dataset</p>
+
+                <div id="predictive" class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Predictive Analytics &amp; Lead Scoring</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$4,400 &ndash; $6,400</p>
+                    <p class="text-gray-600 text-sm mb-3">ML models predicting lead conversion, customer churn, or demand. Trained on your historical data, deployed to score new records continuously, with CRM integration for automatic field updates.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 5&ndash;7 days &middot; <strong>Deliverables:</strong> Trained model, SHAP explainability, prediction API, CRM integration, 30-day tuning</p>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
-                        <span>Proof:</span>
-                        <a href="https://github.com/ChunkyTortoise/insight-engine" class="hover:underline" target="_blank">insight-engine cleaner</a>
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-xs hover:underline" target="_blank">finance-analytics predictor</a>
                     </div>
-                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Google Data Analytics (181h)</a></p>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Google Adv. Analytics (200h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">IBM BI Analyst (141h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">AI &amp; ML Engineering (75h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Predictive%20Analytics%20Project" class="inline-block bg-green-600 text-white text-xs px-4 py-1.5 rounded hover:bg-green-700 transition">Discuss This Service</a>
+                </div>
+
+                <div id="cleaning" class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Data Cleaning &amp; Migration</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$960 &ndash; $1,600</p>
+                    <p class="text-gray-600 text-sm mb-3">Transform inconsistent, duplicate-ridden datasets into clean, standardized, analysis-ready data. CRM migrations, contact list preparation, and multi-source consolidations.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 1&ndash;2 days &middot; <strong>Deliverables:</strong> Cleaned dataset, transformation log, quality report, repeatable pipeline</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-xs hover:underline" target="_blank">finance-analytics data pipeline</a>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Google Data Analytics (181h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">AI-Enhanced Data Analysis (120h)</a></p>
                     <a href="mailto:caymanroden@gmail.com?subject=Data%20Cleaning%20Project" class="inline-block bg-green-600 text-white text-xs px-4 py-1.5 rounded hover:bg-green-700 transition">Discuss This Service</a>
                 </div>
-                <div id="reports" class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">Automated PDF Reports</h3>
-                    <p class="text-gray-600 text-sm mb-3">Generate branded reports with charts, profiling summaries, and insights. Exportable markdown and PDF output.</p>
-                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 2&ndash;3 days &middot; <strong>Deliverables:</strong> Report template, generation pipeline, sample outputs</p>
+
+                <div id="excel" class="bg-white rounded-xl border p-6 md:col-span-2">
+                    <h3 class="font-bold mb-1">Excel-to-Web App Modernization</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$6,400 &ndash; $12,000</p>
+                    <p class="text-gray-600 text-sm mb-3">Replace fragile shared spreadsheets with a modern web application. Proper database, user authentication, role-based permissions, and data migration from existing Excel files. Includes team training.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 4&ndash;7 days &middot; <strong>Deliverables:</strong> Web application, PostgreSQL database, data migration, 1-hour team training, 30-day support</p>
                     <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
-                        <span>Proof:</span>
-                        <a href="https://github.com/ChunkyTortoise/insight-engine" class="hover:underline" target="_blank">insight-engine reports</a>
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-xs hover:underline" target="_blank">finance-analytics (dashboard replacing Excel workflows)</a>
                     </div>
-                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">IBM BI Analyst (141h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Data Visualization (87h)</a></p>
-                    <a href="mailto:caymanroden@gmail.com?subject=Automated%20Reports%20Project" class="inline-block bg-green-600 text-white text-xs px-4 py-1.5 rounded hover:bg-green-700 transition">Discuss This Service</a>
-                </div>
-                <div id="scraping" class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">Web Scraping & Price Monitoring</h3>
-                    <p class="text-gray-600 text-sm mb-3">YAML-configurable scrapers, competitor price tracking with historical charts, change detection, alerts, and SEO content scoring.</p>
-                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 3&ndash;5 days &middot; <strong>Deliverables:</strong> Scraper config, monitoring dashboard, alert setup, SEO reports</p>
-                    <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
-                        <span>Proof:</span>
-                        <a href="https://github.com/ChunkyTortoise/scrape-and-serve" class="hover:underline" target="_blank">scrape-and-serve</a>
-                        <span class="text-gray-400">&middot;</span>
-                        <a href="https://ct-scrape-and-serve.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo</a>
-                    </div>
-                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Google Digital Marketing (190h)</a></p>
-                    <a href="mailto:caymanroden@gmail.com?subject=Web%20Scraping%20Project" class="inline-block bg-green-600 text-white text-xs px-4 py-1.5 rounded hover:bg-green-700 transition">Discuss This Service</a>
-                </div>
-                <div id="excel" class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">Excel-to-Web App Modernization</h3>
-                    <p class="text-gray-600 text-sm mb-3">Upload .xlsx, auto-detect schema, generate a Streamlit CRUD app with SQLite backend and data migration.</p>
-                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 3&ndash;5 days &middot; <strong>Deliverables:</strong> Streamlit CRUD app, SQLite database, data migration script</p>
-                    <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
-                        <span>Proof:</span>
-                        <a href="https://github.com/ChunkyTortoise/scrape-and-serve" class="hover:underline" target="_blank">scrape-and-serve converter</a>
-                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Python for Everybody (60h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">AI-Enhanced Data Analysis (120h)</a></p>
                     <a href="mailto:caymanroden@gmail.com?subject=Excel%20to%20Web%20App%20Project" class="inline-block bg-green-600 text-white text-xs px-4 py-1.5 rounded hover:bg-green-700 transition">Discuss This Service</a>
                 </div>
+
             </div>
         </div>
 
-        <!-- Quick-Win Tier -->
-        <div class="mb-12">
+        <!-- ===== MARKETING & GROWTH ===== -->
+        <div class="service-section mb-12" data-category="marketing">
+            <div class="flex items-center gap-3 mb-6">
+                <h2 class="text-xl font-bold">Marketing &amp; Growth</h2>
+                <span class="bg-rose-100 text-rose-700 text-xs px-3 py-1 rounded-full font-medium">Fixed Price</span>
+            </div>
+            <p class="text-gray-600 mb-6">Marketing services backed by Google Digital Marketing (190h) and Meta Social Media Marketing (83h) certifications. Technical execution combined with strategic marketing expertise.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Programmatic SEO Content Engine</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$4,400 &ndash; $6,800</p>
+                    <p class="text-gray-600 text-sm mb-3">Automated system that researches, writes, and publishes SEO-optimized content at scale. Not generic AI output&mdash;researched articles with citations in your brand voice, bulk-published to WordPress or Substack.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 3&ndash;5 days &middot; <strong>Deliverables:</strong> Python content system, article templates, bulk publishing setup, performance tracking</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>&#10003; Automated topic research using live APIs</li>
+                        <li>&#10003; SEO-optimized articles in your brand voice</li>
+                        <li>&#10003; Automatic keyword integration + meta tag generation</li>
+                        <li>&#10003; Bulk publishing to WordPress or direct file export</li>
+                        <li>&#10003; Performance tracking by article (impressions, CTR, conversions)</li>
+                    </ul>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Google Digital Marketing (190h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">IBM GenAI Engineering (144h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=SEO%20Content%20Engine" class="inline-block bg-rose-600 text-white text-xs px-4 py-1.5 rounded hover:bg-rose-700 transition">Discuss This Service</a>
+                </div>
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Email Marketing Automation</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$2,000 &ndash; $3,200</p>
+                    <p class="text-gray-600 text-sm mb-3">Strategic email sequences with automation, segmentation, and optimization. Welcome series, nurture campaigns, abandoned cart recovery, and win-back sequences&mdash;set up, tested, and handed off.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 3&ndash;4 days &middot; <strong>Deliverables:</strong> Sequence strategy, email copywriting (5-10 per sequence), ESP setup, A/B test plan</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>&#10003; Strategy for welcome, nurture, conversion, and retention sequences</li>
+                        <li>&#10003; Setup in Mailchimp, ConvertKit, ActiveCampaign, or Klaviyo</li>
+                        <li>&#10003; Segmentation rules + automation triggers</li>
+                        <li>&#10003; A/B test recommendations + performance dashboard</li>
+                        <li>&#10003; 30-day optimization support</li>
+                    </ul>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Google Digital Marketing (190h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Meta Social Media Marketing (83h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Email%20Marketing%20Automation" class="inline-block bg-rose-600 text-white text-xs px-4 py-1.5 rounded hover:bg-rose-700 transition">Discuss This Service</a>
+                </div>
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Social Media Campaign Management</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$2,400 &ndash; $4,000/month</p>
+                    <p class="text-gray-600 text-sm mb-3">End-to-end social campaign strategy, content creation, and performance optimization. Content calendar, professional graphics, copywriting, ad campaign setup, and weekly performance reports.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 3&ndash;4 days setup, then ongoing &middot; <strong>Deliverables:</strong> Strategy, 4-week content calendar, graphics, ad setup, weekly reports</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>&#10003; Campaign strategy aligned with business goals</li>
+                        <li>&#10003; Graphic design + copywriting for posts</li>
+                        <li>&#10003; Ad campaign setup + optimization (Meta, LinkedIn)</li>
+                        <li>&#10003; Audience targeting + segmentation</li>
+                        <li>&#10003; Weekly performance reports</li>
+                    </ul>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Meta Social Media Marketing (83h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Google Digital Marketing (190h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Social%20Media%20Campaign" class="inline-block bg-rose-600 text-white text-xs px-4 py-1.5 rounded hover:bg-rose-700 transition">Discuss This Service</a>
+                </div>
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Social Sentiment Brand Monitoring</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$3,200 &ndash; $4,800</p>
+                    <p class="text-gray-600 text-sm mb-3">Automated monitoring of customer sentiment across Reddit, news sites, and review platforms with instant Slack alerts. Real-time dashboard with sentiment scoring and weekly digest reports.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 3&ndash;4 days &middot; <strong>Deliverables:</strong> Monitoring system, real-time dashboard, Slack alerts, weekly digest</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>&#10003; Automated scraping across multiple platforms</li>
+                        <li>&#10003; Real-time sentiment dashboard with alert thresholds</li>
+                        <li>&#10003; Sentiment scoring (Positive / Negative / Neutral / Mixed)</li>
+                        <li>&#10003; Trending topics + keyword analysis</li>
+                        <li>&#10003; Weekly digest reports + crisis detection</li>
+                    </ul>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Meta Social Media Marketing (83h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Python for Everybody (60h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Brand%20Sentiment%20Monitoring" class="inline-block bg-rose-600 text-white text-xs px-4 py-1.5 rounded hover:bg-rose-700 transition">Discuss This Service</a>
+                </div>
+
+                <div id="attribution" class="bg-white rounded-xl border p-6 md:col-span-2">
+                    <h3 class="font-bold mb-1">Marketing Attribution &amp; ROI Analysis</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$2,800 &ndash; $4,400</p>
+                    <p class="text-gray-600 text-sm mb-3">Deep-dive analysis revealing which channels, campaigns, and tactics actually drive revenue. First-touch, last-touch, linear, and time-decay models. Channel-level ROI comparison with board-ready visualizations.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 3&ndash;4 days &middot; <strong>Deliverables:</strong> Attribution model, channel comparison dashboard, CAC by channel, reallocation recommendations</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-xs hover:underline" target="_blank">finance-analytics attribution models</a>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Google Digital Marketing (190h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">Google Adv. Analytics (200h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">IBM BI Analyst (141h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Marketing%20Attribution%20Analysis" class="inline-block bg-rose-600 text-white text-xs px-4 py-1.5 rounded hover:bg-rose-700 transition">Discuss This Service</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== INFRASTRUCTURE ===== -->
+        <div class="service-section mb-12" data-category="infrastructure">
+            <div class="flex items-center gap-3 mb-6">
+                <h2 class="text-xl font-bold">Infrastructure &amp; Integration</h2>
+                <span class="bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full font-medium">Fixed Price</span>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Cloud Infrastructure Setup &amp; Migration</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$4,000 &ndash; $6,800</p>
+                    <p class="text-gray-600 text-sm mb-3">Production-ready cloud infrastructure on AWS, GCP, or Azure with security, monitoring, and cost optimization. Infrastructure-as-Code for repeatability, CI/CD pipelines, and auto-scaling for AI workloads.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 4&ndash;6 days &middot; <strong>Deliverables:</strong> Terraform/CloudFormation IaC, CI/CD setup, monitoring, security config, runbooks</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/docextract" class="text-xs hover:underline" target="_blank">docextract K8s + Terraform + AWS RDS + ElastiCache</a>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Google Cloud GenAI Leader (25h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">AI &amp; ML Engineering (75h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Cloud%20Infrastructure%20Setup" class="inline-block bg-gray-700 text-white text-xs px-4 py-1.5 rounded hover:bg-gray-800 transition">Discuss This Service</a>
+                </div>
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">MLOps Model Deployment Pipeline</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$5,200 &ndash; $8,000</p>
+                    <p class="text-gray-600 text-sm mb-3">End-to-end infrastructure for deploying and monitoring ML models in production. Model versioning, drift detection, automated retraining workflows, and A/B testing. Get models out of notebooks and into production.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 5&ndash;7 days &middot; <strong>Deliverables:</strong> Deployment pipeline, monitoring, drift detection, A/B testing infra, observability</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/docextract" class="text-xs hover:underline" target="_blank">docextract eval pipeline (94.6% accuracy, automated eval gate)</a>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Duke LLMOps (48h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">IBM GenAI Engineering (144h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">AI &amp; ML Engineering (75h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=MLOps%20Pipeline%20Project" class="inline-block bg-gray-700 text-white text-xs px-4 py-1.5 rounded hover:bg-gray-800 transition">Discuss This Service</a>
+                </div>
+
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Custom API Development &amp; Integration</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$4,000 &ndash; $12,000</p>
+                    <p class="text-gray-600 text-sm mb-3">Custom RESTful APIs connecting your systems. Eliminate manual data entry between platforms, enable automation workflows, and create a single source of truth across your tech stack.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 5&ndash;10 days &middot; <strong>Deliverables:</strong> API design + implementation, auth, documentation, monitoring, 30-day maintenance</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/ai-workflow-api" class="text-xs hover:underline" target="_blank">ai-workflow-api</a>
+                        <span class="text-gray-400 text-xs">+</span>
+                        <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="text-xs hover:underline" target="_blank">mcp-server-toolkit</a>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-3">Certified: <a href="certifications.html" class="text-indigo-500 hover:underline">Python for Everybody (60h)</a>, <a href="certifications.html" class="text-indigo-500 hover:underline">IBM GenAI Engineering (144h)</a></p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Custom%20API%20Development" class="inline-block bg-gray-700 text-white text-xs px-4 py-1.5 rounded hover:bg-gray-800 transition">Discuss This Service</a>
+                </div>
+
+                <div id="typescript-nextjs" class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">TypeScript / Next.js Dashboards</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">Custom Pricing</p>
+                    <p class="text-gray-600 text-sm mb-3">Full-stack AI dashboards with Next.js 15 App Router, shadcn/ui, Recharts. TypeScript strict mode, server components, and Vercel deployment. Integrates with Claude API via streaming.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 1&ndash;2 weeks &middot; <strong>Deliverables:</strong> Next.js app, Vercel deployment, responsive dark-mode UI</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://ai-dashboard-rust.vercel.app" class="text-xs hover:underline" target="_blank">AI Dashboard (live demo)</a>
+                    </div>
+                    <a href="mailto:caymanroden@gmail.com?subject=TypeScript%20Dashboard%20Project" class="inline-block bg-gray-700 text-white text-xs px-4 py-1.5 rounded hover:bg-gray-800 transition">Discuss This Service</a>
+                </div>
+
+                <div id="scraping" class="bg-white rounded-xl border p-6 md:col-span-2">
+                    <h3 class="font-bold mb-1">Competitor Intelligence &amp; Web Scraping</h3>
+                    <p class="text-sm font-medium text-indigo-600 mb-2">$1,500 setup + $50/month</p>
+                    <p class="text-gray-600 text-sm mb-3">Automated bots monitoring competitor pricing, product changes, and availability in real time. Instant Slack/email alerts for significant changes. Historical trend dashboard with CSV export.</p>
+                    <p class="text-xs text-gray-500 mb-2"><strong>Timeline:</strong> 2&ndash;3 days &middot; <strong>Deliverables:</strong> Scraper system, price history database, alert system, monitoring dashboard</p>
+                    <div class="flex items-center gap-2 text-sm text-indigo-600 mb-2">
+                        <span class="text-xs text-gray-500">Proof:</span>
+                        <a href="https://github.com/ChunkyTortoise/scrape-and-serve" class="text-xs hover:underline" target="_blank">scrape-and-serve</a>
+                        <span class="text-gray-400 text-xs">&middot;</span>
+                        <a href="https://ct-scrape-and-serve.streamlit.app" class="text-green-600 text-xs hover:underline" target="_blank">Live Demo</a>
+                    </div>
+                    <a href="mailto:caymanroden@gmail.com?subject=Competitor%20Intelligence%20Project" class="inline-block bg-gray-700 text-white text-xs px-4 py-1.5 rounded hover:bg-gray-800 transition">Discuss This Service</a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ===== QUICK WINS ===== -->
+        <div class="service-section mb-12" data-category="quickwins">
             <div class="flex items-center gap-3 mb-6">
                 <h2 class="text-xl font-bold">Quick Wins</h2>
-                <span class="bg-yellow-100 text-yellow-700 text-xs px-3 py-1 rounded-full font-medium">Fixed Price</span>
+                <span class="bg-yellow-100 text-yellow-700 text-xs px-3 py-1 rounded-full font-medium">Fixed Price &middot; 1&ndash;2 Days</span>
             </div>
+            <p class="text-gray-600 mb-6">Start small, see results fast. Perfect for testing the working relationship before a larger project.</p>
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="bg-white rounded-xl border p-6">
                     <h3 class="font-bold mb-1">LLM Integration</h3>
-                    <p class="text-sm text-indigo-600 font-medium mb-2">$500&ndash;1,500</p>
-                    <p class="text-gray-600 text-sm mb-2">Add Claude/GPT/Gemini to an existing app. API integration, prompt templates, error handling, cost tracking.</p>
+                    <p class="text-sm text-indigo-600 font-medium mb-2">$500 &ndash; $1,500</p>
+                    <p class="text-gray-600 text-sm mb-2">Add Claude, GPT, or Gemini to an existing app. API integration, prompt templates, error handling, cost tracking.</p>
                     <p class="text-xs text-gray-500 mb-3"><strong>Timeline:</strong> 2&ndash;5 days</p>
                     <a href="mailto:caymanroden@gmail.com?subject=LLM%20Integration" class="inline-block bg-yellow-500 text-white text-xs px-4 py-1.5 rounded hover:bg-yellow-600 transition">Get Started</a>
                 </div>
                 <div class="bg-white rounded-xl border p-6">
                     <h3 class="font-bold mb-1">Dashboard MVP</h3>
-                    <p class="text-sm text-indigo-600 font-medium mb-2">$800&ndash;2,000</p>
+                    <p class="text-sm text-indigo-600 font-medium mb-2">$800 &ndash; $2,000</p>
                     <p class="text-gray-600 text-sm mb-2">Streamlit dashboard from your data source. Auto-profiling, 3&ndash;5 interactive charts, filters, export to PDF.</p>
                     <p class="text-xs text-gray-500 mb-3"><strong>Timeline:</strong> 3&ndash;5 days</p>
                     <a href="mailto:caymanroden@gmail.com?subject=Dashboard%20MVP" class="inline-block bg-yellow-500 text-white text-xs px-4 py-1.5 rounded hover:bg-yellow-600 transition">Get Started</a>
                 </div>
                 <div class="bg-white rounded-xl border p-6">
                     <h3 class="font-bold mb-1">Chatbot Prototype</h3>
-                    <p class="text-sm text-indigo-600 font-medium mb-2">$1,000&ndash;3,000</p>
+                    <p class="text-sm text-indigo-600 font-medium mb-2">$1,000 &ndash; $3,000</p>
                     <p class="text-gray-600 text-sm mb-2">Custom AI chatbot with your knowledge base. Document ingestion, retrieval, cited answers, deployed and tested.</p>
                     <p class="text-xs text-gray-500 mb-3"><strong>Timeline:</strong> 5&ndash;7 days</p>
                     <a href="mailto:caymanroden@gmail.com?subject=Chatbot%20Prototype" class="inline-block bg-yellow-500 text-white text-xs px-4 py-1.5 rounded hover:bg-yellow-600 transition">Get Started</a>
                 </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Prompt Library Creation</h3>
+                    <p class="text-sm text-indigo-600 font-medium mb-2">$600</p>
+                    <p class="text-gray-600 text-sm mb-2">10&ndash;15 custom prompts for your specific use case with usage documentation, examples, and best practices guide.</p>
+                    <p class="text-xs text-gray-500 mb-3"><strong>Timeline:</strong> 1 day</p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Prompt%20Library" class="inline-block bg-yellow-500 text-white text-xs px-4 py-1.5 rounded hover:bg-yellow-600 transition">Get Started</a>
+                </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Data Cleanup (Small Dataset)</h3>
+                    <p class="text-sm text-indigo-600 font-medium mb-2">$500</p>
+                    <p class="text-gray-600 text-sm mb-2">Clean one dataset (up to 10,000 rows): remove duplicates, standardize formatting, validate quality. Cleaned CSV + transformation log delivered same day.</p>
+                    <p class="text-xs text-gray-500 mb-3"><strong>Timeline:</strong> 1 day</p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Data%20Cleanup" class="inline-block bg-yellow-500 text-white text-xs px-4 py-1.5 rounded hover:bg-yellow-600 transition">Get Started</a>
+                </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Website Analytics Audit</h3>
+                    <p class="text-sm text-indigo-600 font-medium mb-2">$700</p>
+                    <p class="text-gray-600 text-sm mb-2">Comprehensive review of your GA4 setup with actionable recommendations. Tracking gaps, attribution issues, and priority fixes. 10-page report delivered next business day.</p>
+                    <p class="text-xs text-gray-500 mb-3"><strong>Timeline:</strong> 1 day</p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Analytics%20Audit" class="inline-block bg-yellow-500 text-white text-xs px-4 py-1.5 rounded hover:bg-yellow-600 transition">Get Started</a>
+                </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-1">Lead Scoring Model (Basic)</h3>
+                    <p class="text-sm text-indigo-600 font-medium mb-2">$1,200</p>
+                    <p class="text-gray-600 text-sm mb-2">Simple ML lead scoring system based on your CRM data. Scoring algorithm, integration guide, and test results. Delivered in 2 days.</p>
+                    <p class="text-xs text-gray-500 mb-3"><strong>Timeline:</strong> 2 days</p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Lead%20Scoring%20Model" class="inline-block bg-yellow-500 text-white text-xs px-4 py-1.5 rounded hover:bg-yellow-600 transition">Get Started</a>
+                </div>
             </div>
         </div>
 
-        <!-- Bundles -->
+        <!-- ===== BUNDLES (always visible) ===== -->
         <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-8 mb-12">
-            <h2 class="text-xl font-bold mb-4">Bundle Discounts</h2>
+            <div class="flex items-center gap-3 mb-2">
+                <h2 class="text-xl font-bold">Bundle Discounts</h2>
+                <span class="bg-indigo-600 text-white text-xs px-3 py-1 rounded-full font-medium">25% Off</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-6">Combine services for significant savings. All bundles include extended 60-day support.</p>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="bg-white rounded-lg p-6">
-                    <h3 class="font-bold mb-2">Data Intelligence Stack</h3>
-                    <p class="text-gray-600 text-sm mb-3">Complete analytics pipeline from raw data to executive reports.</p>
-                    <ul class="text-sm text-gray-600 space-y-1 mb-3">
-                        <li>Interactive BI Dashboard</li>
-                        <li>Data Cleaning Pipeline</li>
-                        <li>Marketing Attribution</li>
-                        <li>Automated PDF Reports</li>
+                    <h3 class="font-bold mb-1">AI-Powered Operations</h3>
+                    <p class="text-gray-600 text-sm mb-3">For sales teams and lead-driven businesses.</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>RAG Conversational Agent</li>
+                        <li>Multi-Agent Workflows</li>
+                        <li>Predictive Analytics (Lead Scoring)</li>
+                        <li>60-day free support</li>
                     </ul>
-                    <p class="text-sm text-indigo-700 font-medium mb-3">15% off hourly rate &middot; ~2 weeks</p>
-                    <a href="mailto:caymanroden@gmail.com?subject=Data%20Intelligence%20Stack" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss Bundle</a>
+                    <p class="text-xs text-gray-500 mb-1">Individual: $13,200&ndash;$19,600</p>
+                    <p class="text-sm text-indigo-700 font-medium mb-3">Bundle Price: $9,900&ndash;$14,700</p>
+                    <a href="mailto:caymanroden@gmail.com?subject=AI-Powered%20Operations%20Bundle" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss Bundle</a>
                 </div>
                 <div class="bg-white rounded-lg p-6">
-                    <h3 class="font-bold mb-2">AI Agent Stack</h3>
-                    <p class="text-gray-600 text-sm mb-3">End-to-end AI agent system with evaluation and optimization.</p>
-                    <ul class="text-sm text-gray-600 space-y-1 mb-3">
-                        <li>RAG Conversational Agent</li>
-                        <li>Prompt Engineering Lab</li>
-                        <li>Multi-Agent Handoff</li>
+                    <h3 class="font-bold mb-1">BI &amp; Growth Stack</h3>
+                    <p class="text-gray-600 text-sm mb-3">For growth-stage companies and agencies.</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>Interactive BI Dashboard</li>
+                        <li>Automated Reporting Pipeline</li>
+                        <li>Marketing Attribution &amp; ROI Analysis</li>
+                        <li>60-day support + 3 monthly optimization calls</li>
                     </ul>
-                    <p class="text-sm text-indigo-700 font-medium mb-3">15% off hourly rate &middot; ~3 weeks</p>
-                    <a href="mailto:caymanroden@gmail.com?subject=AI%20Agent%20Stack" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss Bundle</a>
+                    <p class="text-xs text-gray-500 mb-1">Individual: $8,200&ndash;$12,800</p>
+                    <p class="text-sm text-indigo-700 font-medium mb-3">Bundle Price: $6,150&ndash;$9,600</p>
+                    <a href="mailto:caymanroden@gmail.com?subject=BI%20Growth%20Stack%20Bundle" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss Bundle</a>
+                </div>
+                <div class="bg-white rounded-lg p-6">
+                    <h3 class="font-bold mb-1">Data Modernization Suite</h3>
+                    <p class="text-gray-600 text-sm mb-3">For companies with legacy systems and Excel workflows.</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>Excel-to-Web App Modernization</li>
+                        <li>Automated Reporting Pipeline</li>
+                        <li>Predictive Analytics</li>
+                        <li>3-hour team training + 90-day support</li>
+                    </ul>
+                    <p class="text-xs text-gray-500 mb-1">Individual: $13,000&ndash;$21,200</p>
+                    <p class="text-sm text-indigo-700 font-medium mb-3">Bundle Price: $9,750&ndash;$15,900</p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Data%20Modernization%20Bundle" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss Bundle</a>
+                </div>
+                <div class="bg-white rounded-lg p-6">
+                    <h3 class="font-bold mb-1">Marketing Growth Engine</h3>
+                    <p class="text-gray-600 text-sm mb-3">For e-commerce and content-driven businesses.</p>
+                    <ul class="text-xs text-gray-600 space-y-0.5 mb-3">
+                        <li>Programmatic SEO Content Engine</li>
+                        <li>Email Marketing Automation</li>
+                        <li>Marketing Attribution Analysis</li>
+                        <li>60-day optimization support</li>
+                    </ul>
+                    <p class="text-xs text-gray-500 mb-1">Individual: $9,200&ndash;$14,400</p>
+                    <p class="text-sm text-indigo-700 font-medium mb-3">Bundle Price: $6,900&ndash;$10,800</p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Marketing%20Growth%20Engine%20Bundle" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss Bundle</a>
+                </div>
+                <div class="bg-white rounded-lg p-6 md:col-span-2 border-2 border-indigo-200">
+                    <div class="flex items-center gap-3 mb-1">
+                        <h3 class="font-bold">Healthcare AI Transformation</h3>
+                        <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">HIPAA-Compliant</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-3">For healthcare providers and medical practices. Full HIPAA compliance documentation included.</p>
+                    <div class="grid md:grid-cols-2 gap-3 mb-3">
+                        <ul class="text-xs text-gray-600 space-y-0.5">
+                            <li>RAG Agent for patient inquiries (HIPAA-compliant)</li>
+                            <li>AI Compliance &amp; Governance (HIPAA-specific)</li>
+                        </ul>
+                        <ul class="text-xs text-gray-600 space-y-0.5">
+                            <li>AI Workflow Optimization</li>
+                            <li>AI Knowledge Management + 90-day support</li>
+                        </ul>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-1">Individual: $17,000&ndash;$31,000</p>
+                    <p class="text-sm text-indigo-700 font-medium mb-3">Bundle Price: $11,250&ndash;$20,250</p>
+                    <a href="mailto:caymanroden@gmail.com?subject=Healthcare%20AI%20Bundle" class="inline-block bg-indigo-600 text-white text-xs px-4 py-1.5 rounded hover:bg-indigo-700 transition">Discuss Bundle</a>
                 </div>
             </div>
         </div>
 
-        <!-- FAQ -->
+        <!-- ===== RETAINERS (always visible) ===== -->
+        <div class="mb-12">
+            <div class="flex items-center gap-3 mb-2">
+                <h2 class="text-xl font-bold">Ongoing Retainers</h2>
+                <span class="bg-gray-200 text-gray-700 text-xs px-3 py-1 rounded-full font-medium">Monthly</span>
+            </div>
+            <p class="text-gray-600 text-sm mb-6">Ongoing support, optimization, and strategic partnership. All retainers include priority response times and monthly performance reviews.</p>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm border border-gray-200 rounded-xl overflow-hidden">
+                    <thead>
+                        <tr class="bg-gray-50 border-b border-gray-200">
+                            <th class="text-left px-4 py-3 font-semibold text-gray-700">Tier</th>
+                            <th class="text-left px-4 py-3 font-semibold text-gray-700">Monthly</th>
+                            <th class="text-left px-4 py-3 font-semibold text-gray-700 hidden sm:table-cell">Hours</th>
+                            <th class="text-left px-4 py-3 font-semibold text-gray-700 hidden md:table-cell">Support</th>
+                            <th class="text-left px-4 py-3 font-semibold text-gray-700 hidden md:table-cell">Best For</th>
+                            <th class="px-4 py-3"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr class="bg-white">
+                            <td class="px-4 py-3 font-medium">Maintenance</td>
+                            <td class="px-4 py-3 text-indigo-600 font-medium">$500&ndash;$1,000</td>
+                            <td class="px-4 py-3 text-gray-600 hidden sm:table-cell">20 hrs</td>
+                            <td class="px-4 py-3 text-gray-600 hidden md:table-cell">24hr response</td>
+                            <td class="px-4 py-3 text-gray-500 text-xs hidden md:table-cell">1&ndash;2 deployed systems</td>
+                            <td class="px-4 py-3"><a href="mailto:caymanroden@gmail.com?subject=Maintenance%20Retainer" class="text-indigo-600 text-xs hover:underline whitespace-nowrap">Get Started</a></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="px-4 py-3 font-medium">Growth</td>
+                            <td class="px-4 py-3 text-indigo-600 font-medium">$1,500&ndash;$3,000</td>
+                            <td class="px-4 py-3 text-gray-600 hidden sm:table-cell">30 hrs</td>
+                            <td class="px-4 py-3 text-gray-600 hidden md:table-cell">Priority + A/B testing</td>
+                            <td class="px-4 py-3 text-gray-500 text-xs hidden md:table-cell">Growth-stage, multiple systems</td>
+                            <td class="px-4 py-3"><a href="mailto:caymanroden@gmail.com?subject=Growth%20Retainer" class="text-indigo-600 text-xs hover:underline whitespace-nowrap">Get Started</a></td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="px-4 py-3 font-medium">Advisory</td>
+                            <td class="px-4 py-3 text-indigo-600 font-medium">$3,000&ndash;$6,000</td>
+                            <td class="px-4 py-3 text-gray-600 hidden sm:table-cell">40 hrs</td>
+                            <td class="px-4 py-3 text-gray-600 hidden md:table-cell">Same-day + monthly strategy call</td>
+                            <td class="px-4 py-3 text-gray-500 text-xs hidden md:table-cell">Mid-market AI strategy</td>
+                            <td class="px-4 py-3"><a href="mailto:caymanroden@gmail.com?subject=Advisory%20Retainer" class="text-indigo-600 text-xs hover:underline whitespace-nowrap">Get Started</a></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="px-4 py-3 font-medium">Managed Partnership</td>
+                            <td class="px-4 py-3 text-indigo-600 font-medium">$6,000&ndash;$12,000</td>
+                            <td class="px-4 py-3 text-gray-600 hidden sm:table-cell">60 hrs</td>
+                            <td class="px-4 py-3 text-gray-600 hidden md:table-cell">Dedicated Slack + daily standups</td>
+                            <td class="px-4 py-3 text-gray-500 text-xs hidden md:table-cell">Enterprise AI capability building</td>
+                            <td class="px-4 py-3"><a href="mailto:caymanroden@gmail.com?subject=Managed%20Partnership%20Retainer" class="text-indigo-600 text-xs hover:underline whitespace-nowrap">Get Started</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-xs text-gray-400 mt-3">Hourly rate for ad-hoc work outside retainer scope: $80&ndash;$120/hr depending on complexity.</p>
+        </div>
+
+        <!-- ===== FAQ ===== -->
         <div class="mb-12">
             <h2 class="text-xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4">
                 <div class="bg-white rounded-xl border p-6">
                     <h3 class="font-bold mb-2">How do we get started?</h3>
-                    <p class="text-gray-600 text-sm">Email me or reach out on Upwork with a brief description of your project. I'll respond within 24 hours with questions and a rough scope estimate. First 30-minute discovery call is free.</p>
+                    <p class="text-gray-600 text-sm">Email me with a brief description of your project. I'll respond within 24 hours with questions and a rough scope estimate. First 30-minute discovery call is free.</p>
                 </div>
                 <div class="bg-white rounded-xl border p-6">
                     <h3 class="font-bold mb-2">What's your typical process?</h3>
-                    <p class="text-gray-600 text-sm">Discovery (understand your requirements) &rarr; Architecture (design document for your review) &rarr; TDD Build (tests first, CI on every push) &rarr; Delivery (deployed, documented, with demo mode). You have visibility into progress via GitHub throughout.</p>
+                    <p class="text-gray-600 text-sm">Discovery (understand requirements) &rarr; Architecture (design document for your review) &rarr; Build (tests first, CI on every push) &rarr; Delivery (deployed, documented, with demo mode). Milestone billing: 40% upfront, 30% at staging, 30% at delivery.</p>
                 </div>
                 <div class="bg-white rounded-xl border p-6">
                     <h3 class="font-bold mb-2">Do you work with existing codebases?</h3>
-                    <p class="text-gray-600 text-sm">Yes. Most of my work involves integrating AI capabilities into existing systems. I'll start with a codebase review and propose changes before writing any code.</p>
+                    <p class="text-gray-600 text-sm">Yes. Most work involves integrating AI capabilities into existing systems. I start with a codebase review and propose changes before writing any code.</p>
                 </div>
                 <div class="bg-white rounded-xl border p-6">
-                    <h3 class="font-bold mb-2">What about revisions?</h3>
-                    <p class="text-gray-600 text-sm">Architecture-level changes are discussed before implementation starts. Once we agree on the design, implementation follows TDD so changes are safe to make. Scope changes mid-project are handled transparently with updated estimates.</p>
+                    <h3 class="font-bold mb-2">Is there a guarantee?</h3>
+                    <p class="text-gray-600 text-sm">Yes. If the work doesn't meet the agreed specifications in the project proposal, I'll make reasonable revisions at no additional cost. If issues can't be resolved, the final 30% payment is refunded.</p>
                 </div>
                 <div class="bg-white rounded-xl border p-6">
                     <h3 class="font-bold mb-2">Can I try before committing to a large project?</h3>
-                    <p class="text-gray-600 text-sm">Absolutely. The Quick Wins tier ($500&ndash;$3,000 fixed price) is designed for exactly this. Start with an LLM Integration or Dashboard MVP and scale up from there.</p>
+                    <p class="text-gray-600 text-sm">Absolutely. The Quick Wins tier ($500&ndash;$3,000 fixed price) is designed for exactly this. Start with a Prompt Library or Dashboard MVP and scale up from there.</p>
+                </div>
+                <div class="bg-white rounded-xl border p-6">
+                    <h3 class="font-bold mb-2">Do you work with agencies or white-label?</h3>
+                    <p class="text-gray-600 text-sm">Yes. Agencies get a 10% referral fee for bringing projects. White-label partnerships available for ongoing client work.</p>
                 </div>
             </div>
         </div>
 
-        <!-- CTA -->
+        <!-- ===== CTA ===== -->
         <div class="bg-white border rounded-xl p-8 text-center">
             <h2 class="text-xl font-bold mb-3">Ready to Start?</h2>
-            <p class="text-gray-600 mb-6 text-sm">Browse the <a href="certifications.html" class="text-indigo-600 hover:underline">19 certifications</a> and <a href="projects.html" class="text-indigo-600 hover:underline">15 public repos</a> that back these services, then reach out.</p>
+            <p class="text-gray-600 mb-6 text-sm">Browse the <a href="certifications.html" class="text-indigo-600 hover:underline">19 certifications</a> and <a href="projects.html" class="text-indigo-600 hover:underline">public repos</a> that back these services, then reach out.</p>
             <div class="flex justify-center gap-4">
                 <a href="https://www.upwork.com/freelancers/~01ee20599d13f4c8c9" class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition text-sm" target="_blank">Hire on Upwork</a>
                 <a href="mailto:caymanroden@gmail.com" class="inline-block bg-white text-indigo-600 border border-indigo-600 px-6 py-2 rounded-lg hover:bg-indigo-50 transition text-sm">Email Directly</a>
@@ -459,5 +936,28 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    function filterServices(category, btn) {
+        document.querySelectorAll('.service-tab').forEach(function(t) {
+            t.classList.remove('bg-indigo-600', 'text-white');
+            t.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-indigo-600', 'text-white');
+
+        document.querySelectorAll('.service-section').forEach(function(section) {
+            if (category === 'all' || section.dataset.category === category) {
+                section.classList.remove('hidden');
+            } else {
+                section.classList.add('hidden');
+            }
+        });
+    }
+
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    </script>
 </body>
 </html>

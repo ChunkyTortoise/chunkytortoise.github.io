@@ -35,6 +35,7 @@
                 <a href="projects.html" class="hover:text-indigo-600">Projects</a>
                 <a href="store.html" class="hover:text-indigo-600">Store</a>
                 <a href="services.html" class="hover:text-indigo-600">Services</a>
+                <a href="verticals/" class="hover:text-indigo-600">Industries</a>
                 <a href="certifications.html" class="hover:text-indigo-600">Certifications</a>
                 <a href="case-studies.html" class="text-indigo-600 font-medium">Case Studies</a>
                 <a href="benchmarks.html" class="hover:text-indigo-600">Benchmarks</a>
@@ -46,6 +47,7 @@
             <a href="projects.html" class="block py-1 hover:text-indigo-600">Projects</a>
             <a href="store.html" class="block py-1 hover:text-indigo-600">Store</a>
             <a href="services.html" class="block py-1 hover:text-indigo-600">Services</a>
+            <a href="verticals/" class="block py-1 hover:text-indigo-600">Industries</a>
             <a href="certifications.html" class="block py-1 hover:text-indigo-600">Certifications</a>
             <a href="case-studies.html" class="block py-1 text-indigo-600 font-medium">Case Studies</a>
             <a href="benchmarks.html" class="block py-1 hover:text-indigo-600">Benchmarks</a>
@@ -472,6 +474,223 @@
 
                 <div class="text-sm text-gray-500">
                     <strong>Verify:</strong> <code>app/services/retrieval.py</code> (hybrid RRF), <code>app/langsmith_tracing.py</code> (observability), <code>deploy/aws/</code> (Terraform IaC), <code>tests/golden/</code> (accuracy gate). <a href="https://docextract-frontend.onrender.com" class="text-indigo-600 hover:underline" target="_blank">Try it live &rarr;</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Case Study: Finance Analytics Dashboard -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Data &amp; BI</span>
+                <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">21-Page Analytics Dashboard Replacing Manual Excel Workflows</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
+                    <p class="text-gray-700">Finance teams rely on shared Excel files for business intelligence. At scale, these files break, create version conflicts, and can't connect to live data. Reporting takes hours each week, and by the time stakeholders see the numbers, the data is already stale.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
+                    <p class="text-gray-700">Built a 21-page Streamlit analytics dashboard on top of a DuckDB + dbt-core analytics layer. The dashboard connects to live data, generates decision memos automatically, and supports natural language SQL queries so non-technical stakeholders can explore data without writing code. Key pages include credit risk analysis, stress testing, VaR modeling, model comparison with profit-vs-threshold curves, and a threshold sensitivity table with row-level highlighting. A downloadable PDF/Markdown Decision Memo from the Validation tab makes the output board-ready.</p>
+                    <div class="flex gap-2 flex-wrap mt-3">
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">DuckDB</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">dbt-core</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">scikit-learn</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Prophet</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Plotly</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">pandas</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">1,347</p>
+                            <p class="text-xs text-green-600 mt-1">Pytest tests passing</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">33</p>
+                            <p class="text-xs text-green-600 mt-1">dbt data quality tests</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">21</p>
+                            <p class="text-xs text-green-600 mt-1">Dashboard pages</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-sm text-gray-500">
+                    <strong>Verify:</strong> <code>dashboard/export_decision_memo.py</code> (PDF export), <code>dbt/models/</code> (analytics layer), <code>dashboard/pages/</code> (21 dashboard pages), <code>tests/</code> (1,347 tests)
+                </div>
+            </div>
+        </article>
+
+        <!-- Case Study: DocExtract HIPAA Compliance -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Compliance &amp; Security</span>
+                <a href="https://github.com/ChunkyTortoise/docextract" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">HIPAA-Ready Document Processing Pipeline with PII Detection and Audit Trails</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
+                    <p class="text-gray-700">AI document processing systems often handle sensitive data without proper controls. Patient records, insurance documents, and medical forms contain PHI that must be detected, logged, and handled according to HIPAA requirements. Most AI implementations skip this layer entirely, creating regulatory risk that gets discovered during audits.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
+                    <p class="text-gray-700">Built compliance controls directly into the extraction pipeline. PII detection runs on every document before processing, flagging SSNs, phone numbers, email addresses, and health record numbers. All processing events are written to an audit trail with timestamps, user IDs, and data lineage. The system includes a <code>COMPLIANCE.md</code> covering HIPAA requirements, SOC 2 considerations, data retention policies, and encryption at rest and in transit. An automated eval gate blocks deployments that regress below 94.6% accuracy on the 28-fixture test suite, including 4 prompt injection adversarial tests.</p>
+                    <div class="flex gap-2 flex-wrap mt-3">
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude API</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">pgvector</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Redis</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">ARQ Workers</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">OpenTelemetry</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Prometheus</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">4</p>
+                            <p class="text-xs text-green-600 mt-1">PII types detected (SSN, phone, email, health IDs)</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">94.6%</p>
+                            <p class="text-xs text-green-600 mt-1">Extraction accuracy (28-fixture eval)</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">12</p>
+                            <p class="text-xs text-green-600 mt-1">Adversarial test cases (incl. 4 prompt injection)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-sm text-gray-500">
+                    <strong>Verify:</strong> <code>app/guardrails/</code> (PII detection), <code>COMPLIANCE.md</code> (HIPAA documentation), <code>tests/golden/</code> (accuracy gate), <code>app/langsmith_tracing.py</code> (audit trail)
+                </div>
+            </div>
+        </article>
+
+        <!-- Case Study: Kubernetes + Terraform Infrastructure -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Cloud Infrastructure</span>
+                <a href="https://github.com/ChunkyTortoise/docextract" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">Production Kubernetes Deployment for a 3-Service AI Platform</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
+                    <p class="text-gray-700">AI applications have different infrastructure needs than standard web apps. Background document processing workers need different scaling rules than API servers. Vector database queries need low-latency storage. LLM API calls need circuit breakers to handle provider outages without cascading failures. Standard deployment patterns don't account for these requirements.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
+                    <p class="text-gray-700">Designed a 3-service Kubernetes deployment: API server, ARQ background worker, and Streamlit frontend. Each service has its own Horizontal Pod Autoscaler with independent scaling rules. AWS RDS (PostgreSQL + pgvector) handles persistent storage with automated backups. ElastiCache Redis handles the task queue and semantic cache. Terraform provisions all infrastructure reproducibly. Prometheus and Grafana provide observability across all 3 services, with 9 dashboard panels tracking request latency, queue depth, cache hit rate, and LLM API costs. An <code>AsyncCircuitBreaker</code> handles model fallback from Sonnet to Haiku when the primary provider is slow.</p>
+                    <div class="flex gap-2 flex-wrap mt-3">
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Kubernetes (Kustomize)</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Terraform</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">AWS RDS</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">ElastiCache</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Prometheus</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Grafana</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Docker</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">GitHub Actions</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">3</p>
+                            <p class="text-xs text-green-600 mt-1">Kubernetes services with independent HPA</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">9</p>
+                            <p class="text-xs text-green-600 mt-1">Grafana dashboard panels</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">2</p>
+                            <p class="text-xs text-green-600 mt-1">Cloud providers (AWS RDS + ElastiCache)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-sm text-gray-500">
+                    <strong>Verify:</strong> <code>deploy/k8s/</code> (Kubernetes manifests), <code>deploy/aws/</code> (Terraform IaC), <code>deploy/grafana/</code> (dashboard configs), <code>app/circuit_breaker.py</code> (model fallback)
+                </div>
+            </div>
+        </article>
+
+        <!-- Case Study: YAML-Driven Workflow Automation -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Automation</span>
+                <a href="https://github.com/ChunkyTortoise/ai-workflow-api" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo (ai-workflow-api)</a>
+                <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo (mcp-server-toolkit)</a>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">YAML-Driven AI Workflow Engine with SSE Streaming and 9 MCP Servers</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
+                    <p class="text-gray-700">AI automation tools often require code changes to add new workflow steps. Business teams can't modify Python code, so every workflow change requires a developer. Meanwhile, connecting AI workflows to external tools (calendar, email, Slack, GitHub) requires building custom integrations for each use case.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
+                    <p class="text-gray-700">Built two complementary systems. The AI Workflow API uses YAML configuration files to define multi-step pipelines: each step specifies an action type (LLM call, webhook, data transform, notification), its inputs, and its success conditions. Non-technical users can add new workflow steps without touching code. Server-Sent Events (SSE) stream progress updates to the client in real time so long-running workflows don't appear to hang. The MCP Server Toolkit extends this to Claude Desktop: 9 custom MCP servers connect AI to calendar, email, Slack, GitHub, and custom business tools. Published on PyPI as <code>mcp-server-toolkit==0.2.0</code>.</p>
+                    <div class="flex gap-2 flex-wrap mt-3">
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">ARQ Workers</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Redis</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">SSE Streaming</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">YAML Config</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">MCP (Model Context Protocol)</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">PyPI</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">148 + 412</p>
+                            <p class="text-xs text-green-600 mt-1">Tests (ai-workflow-api + mcp-server-toolkit)</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">9</p>
+                            <p class="text-xs text-green-600 mt-1">MCP servers</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">1</p>
+                            <p class="text-xs text-green-600 mt-1">PyPI package (mcp-server-toolkit 0.2.0)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-sm text-gray-500">
+                    <strong>Verify:</strong> <code>app/workflows/</code> (YAML pipeline engine), <code>app/streaming/</code> (SSE implementation), <code>src/tools/</code> (9 MCP servers)
                 </div>
             </div>
         </article>
