@@ -75,14 +75,14 @@
                 <span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">Duke LLMOps</span>
                 <span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">Google Cloud GenAI Leader</span>
                 <span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">DeepLearning.AI AI For Everyone</span>
-                <span class="bg-gray-50 text-gray-700 px-2.5 py-1 rounded-full">Google Data Analytics</span>
-                <span class="bg-gray-50 text-gray-700 px-2.5 py-1 rounded-full">Microsoft GenAI for Data Analysis</span>
-                <span class="bg-gray-50 text-gray-700 px-2.5 py-1 rounded-full">Microsoft AI-Enhanced Data Analysis</span>
-                <span class="bg-gray-50 text-gray-700 px-2.5 py-1 rounded-full">IBM BI Analyst</span>
-                <span class="bg-gray-50 text-gray-700 px-2.5 py-1 rounded-full">Microsoft Data Visualization</span>
-                <span class="bg-gray-50 text-gray-700 px-2.5 py-1 rounded-full">Google BI</span>
+                <span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">Google Data Analytics</span>
+                <span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">Microsoft GenAI for Data Analysis</span>
+                <span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">Microsoft AI-Enhanced Data Analysis</span>
+                <span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">IBM BI Analyst</span>
+                <span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">Microsoft Data Visualization</span>
+                <span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">Google BI</span>
                 <span class="bg-gray-50 text-gray-700 px-2.5 py-1 rounded-full">Michigan Python for Everybody</span>
-                <span class="bg-gray-50 text-gray-700 px-2.5 py-1 rounded-full">Google Advanced Data Analytics</span>
+                <span class="bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full">Google Advanced Data Analytics</span>
                 <span class="bg-gray-50 text-gray-700 px-2.5 py-1 rounded-full">DeepLearning.AI Deep Learning</span>
                 <span class="bg-gray-50 text-gray-700 px-2.5 py-1 rounded-full">Microsoft AI & ML Engineering</span>
                 <span class="bg-emerald-50 text-emerald-700 px-2.5 py-1 rounded-full">Google Digital Marketing & E-commerce</span>
@@ -93,8 +93,8 @@
         <!-- Filter -->
         <div class="flex gap-3 mb-8 flex-wrap">
             <button onclick="filterProjects('all')" class="filter-btn active bg-indigo-600 text-white px-4 py-1.5 rounded-full text-sm">All</button>
-            <button onclick="filterProjects('ai')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">AI/LLM</button>
             <button onclick="filterProjects('data')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Data/BI</button>
+            <button onclick="filterProjects('ai')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">AI/LLM</button>
             <button onclick="filterProjects('automation')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Automation</button>
             <button onclick="filterProjects('tools')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Tools/MCP</button>
         </div>
@@ -102,7 +102,12 @@
         <div class="grid md:grid-cols-2 gap-6" id="project-grid">
             <!-- EnterpriseHub -->
             <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
-                <img src="assets/projects/enterprisehub-demo.png" alt="EnterpriseHub demo" class="w-full h-40 object-cover rounded-lg border mb-4">
+                <div class="w-full h-40 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-br from-indigo-500 to-purple-600">
+                    <div class="text-center">
+                        <svg class="w-10 h-10 mx-auto text-white/80 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        <span class="text-white font-semibold text-sm">EnterpriseHub</span>
+                    </div>
+                </div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">EnterpriseHub</h3>
@@ -131,7 +136,8 @@
             </div>
 
             <!-- Jorge Bots -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="ai">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">Jorge Bots</h3>
@@ -156,7 +162,8 @@
             </div>
 
             <!-- AgentForge -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="ai">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">AgentForge</h3>
@@ -184,7 +191,8 @@
             </div>
 
             <!-- MCP Toolkit -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="tools">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="tools">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-amber-500 to-orange-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">MCP Toolkit</h3>
@@ -212,7 +220,12 @@
 
             <!-- Revenue-Sprint -->
             <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="automation">
-                <img src="assets/projects/revenue-sprint-demo.gif" alt="Revenue-Sprint demo" class="w-full h-40 object-cover rounded-lg border mb-4">
+                <div class="w-full h-40 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-br from-emerald-500 to-teal-600">
+                    <div class="text-center">
+                        <svg class="w-10 h-10 mx-auto text-white/80 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <span class="text-white font-semibold text-sm">Revenue-Sprint</span>
+                    </div>
+                </div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">Revenue-Sprint</h3>
@@ -237,7 +250,12 @@
 
             <!-- Insight Engine -->
             <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="data">
-                <img src="assets/projects/insight-demo.png" alt="Insight Engine demo" class="w-full h-40 object-cover rounded-lg border mb-4">
+                <div class="w-full h-40 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-br from-blue-500 to-cyan-600">
+                    <div class="text-center">
+                        <svg class="w-10 h-10 mx-auto text-white/80 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        <span class="text-white font-semibold text-sm">Insight Engine</span>
+                    </div>
+                </div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">Insight Engine</h3>
@@ -265,35 +283,63 @@
                 </div>
             </div>
 
-            <!-- Finance Analytics Portfolio -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="data">
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="text-lg font-bold">Finance Analytics Portfolio</h3>
-                        <p class="text-sm text-gray-500">End-to-End Financial Data Pipeline</p>
+            <!-- Finance Analytics Portfolio — Flagship -->
+            <div class="project-card md:col-span-2 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl shadow-md border-2 border-blue-400 ring-2 ring-blue-100 p-6" data-category="data">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">Flagship DA/BI Project</span>
+                </div>
+                <div class="md:flex gap-6">
+                    <!-- Decorative mini-dashboard visual -->
+                    <div class="w-full md:w-64 h-40 rounded-lg mb-4 md:mb-0 flex-shrink-0 bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center p-4">
+                        <div class="text-center">
+                            <svg class="w-16 h-16 mx-auto text-white/70 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <rect x="3" y="14" width="3" height="7" rx="0.5" stroke-width="1.5" fill="currentColor" opacity="0.3"/>
+                                <rect x="8" y="10" width="3" height="11" rx="0.5" stroke-width="1.5" fill="currentColor" opacity="0.5"/>
+                                <rect x="13" y="6" width="3" height="15" rx="0.5" stroke-width="1.5" fill="currentColor" opacity="0.7"/>
+                                <rect x="18" y="3" width="3" height="18" rx="0.5" stroke-width="1.5" fill="currentColor" opacity="0.9"/>
+                                <path d="M3 17 L8 13 L13 9 L18 5" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                            </svg>
+                            <div class="text-white font-bold text-lg">1.2M Rows</div>
+                            <div class="text-blue-200 text-xs">25 Dashboard Pages</div>
+                        </div>
                     </div>
-                    <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">1,522 Tests</span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">25-page interactive finance dashboard answering 17 business questions: credit risk modeling (SHAP/RF), stress testing (CCAR/DFAST), VaR analysis, A/B testing, fair lending geography (real CFPB HMDA data), causal inference, and more. Delivered as dashboard, 8-tab Excel workbook, 11 SQL query templates, 15 Jupyter notebooks, and a written business memo. dbt analytics layer (DuckDB + Snowflake).</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">pandas</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">scikit-learn</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">DuckDB</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">dbt</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">SHAP</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <a href="https://finance-analytics-portfolio.streamlit.app" class="text-indigo-600 hover:underline" target="_blank">Live Demo</a>
-                    <span class="text-gray-400">1,522 tests | real HMDA data | 25 pages | 15 notebooks</span>
+                    <div class="flex-1">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <h3 class="text-xl font-bold">Finance Analytics Portfolio</h3>
+                                <p class="text-sm text-gray-500">End-to-End Financial Data Pipeline</p>
+                            </div>
+                            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">1,522 Tests</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">25-page interactive finance dashboard answering 17 business questions: credit risk modeling (SHAP/RF), stress testing (CCAR/DFAST), VaR analysis, A/B testing, fair lending geography (real CFPB HMDA data), causal inference, and more. Delivered as dashboard, 8-tab Excel workbook, 11 SQL query templates, 15 Jupyter notebooks, and a written business memo. dbt analytics layer (DuckDB + Snowflake).</p>
+                        <div class="flex gap-2 flex-wrap mb-4">
+                            <span class="bg-white text-xs px-2 py-1 rounded border">SQL</span>
+                            <span class="bg-white text-xs px-2 py-1 rounded border">Python</span>
+                            <span class="bg-white text-xs px-2 py-1 rounded border">pandas</span>
+                            <span class="bg-white text-xs px-2 py-1 rounded border">scikit-learn</span>
+                            <span class="bg-white text-xs px-2 py-1 rounded border">DuckDB</span>
+                            <span class="bg-white text-xs px-2 py-1 rounded border">Streamlit</span>
+                            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">dbt</span>
+                            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">Excel</span>
+                            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">SHAP</span>
+                        </div>
+                        <div class="flex gap-4 text-sm">
+                            <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-indigo-600 hover:underline font-semibold" target="_blank">GitHub</a>
+                            <a href="https://finance-analytics-portfolio.streamlit.app" class="text-green-600 hover:underline font-semibold" target="_blank">Live Demo &rarr;</a>
+                            <span class="text-gray-400">1,522 tests | real HMDA data | 25 pages | 15 notebooks</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- DocQA Engine -->
             <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
-                <img src="assets/projects/docqa-demo.png" alt="DocQA Engine demo" class="w-full h-40 object-cover rounded-lg border mb-4">
+                <div class="w-full h-40 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-br from-violet-500 to-indigo-600">
+                    <div class="text-center">
+                        <svg class="w-10 h-10 mx-auto text-white/80 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 21h7a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v11m0 5l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z"/></svg>
+                        <span class="text-white font-semibold text-sm">DocQA Engine</span>
+                    </div>
+                </div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">DocQA Engine</h3>
@@ -321,7 +367,8 @@
             </div>
 
             <!-- Advanced RAG System -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="ai">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">Advanced RAG System</h3>
@@ -346,7 +393,8 @@
             </div>
 
             <!-- Multi-Agent Starter Kit -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="ai">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">Multi-Agent Starter Kit</h3>
@@ -371,7 +419,12 @@
 
             <!-- Scrape-and-Serve -->
             <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="automation">
-                <img src="assets/projects/scrape-demo.png" alt="Scrape-and-Serve demo" class="w-full h-40 object-cover rounded-lg border mb-4">
+                <div class="w-full h-40 rounded-lg mb-4 flex items-center justify-center bg-gradient-to-br from-amber-500 to-orange-600">
+                    <div class="text-center">
+                        <svg class="w-10 h-10 mx-auto text-white/80 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                        <span class="text-white font-semibold text-sm">Scrape-and-Serve</span>
+                    </div>
+                </div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">Scrape-and-Serve</h3>
@@ -398,7 +451,8 @@
             </div>
 
             <!-- Prompt Engineering Lab -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="ai">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">Prompt Engineering Lab</h3>
@@ -425,7 +479,8 @@
             </div>
 
             <!-- LLM Integration Starter -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="ai">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">LLM Integration Starter</h3>
@@ -453,7 +508,8 @@
             </div>
 
             <!-- Next.js AI Dashboard -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="ai">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">Next.js AI Dashboard</h3>
@@ -477,7 +533,8 @@
             </div>
 
             <!-- GHL Multi-Vertical AI Kit -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="ai">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">GHL Multi-Vertical AI Kit</h3>
@@ -501,7 +558,8 @@
             </div>
 
             <!-- AI Workflow Automation API -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="automation">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="automation">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-emerald-500 to-teal-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">AI Workflow Automation API</h3>
@@ -525,7 +583,8 @@
             </div>
 
             <!-- TechNova Voice Bot -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="ai">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">TechNova Voice Bot</h3>
@@ -550,7 +609,8 @@
             </div>
 
             <!-- Chatbot Widget SaaS -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="ai">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">Chatbot Widget SaaS</h3>
@@ -575,7 +635,8 @@
             </div>
 
             <!-- SaaS Starter Kit -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="tools">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="tools">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-amber-500 to-orange-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">SaaS Starter Kit</h3>
@@ -599,7 +660,8 @@
             </div>
 
             <!-- DocExtract AI -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="ai">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">DocExtract AI</h3>
@@ -623,7 +685,8 @@
             </div>
 
             <!-- GraphRAG Demo -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 overflow-hidden" data-category="ai">
+                <div class="h-1.5 rounded-full -mx-6 -mt-6 mb-4 bg-gradient-to-r from-indigo-500 to-purple-500"></div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
                         <h3 class="text-lg font-bold">GraphRAG Demo</h3>
