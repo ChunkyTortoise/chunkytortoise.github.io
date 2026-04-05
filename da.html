@@ -15,6 +15,9 @@
     <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <a href="index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
+            <button id="menu-toggle" class="md:hidden p-2 text-gray-600 hover:text-indigo-600" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
             <div class="hidden md:flex gap-4 text-sm">
                 <a href="projects.html" class="hover:text-indigo-600">Portfolio</a>
                 <a href="case-studies.html" class="hover:text-indigo-600">Case Studies</a>
@@ -22,7 +25,18 @@
                 <a href="about.html" class="hover:text-indigo-600">About</a>
             </div>
         </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-2 text-sm">
+            <a href="projects.html" class="block py-1 hover:text-indigo-600">Portfolio</a>
+            <a href="case-studies.html" class="block py-1 hover:text-indigo-600">Case Studies</a>
+            <a href="certifications.html" class="block py-1 hover:text-indigo-600">Certifications</a>
+            <a href="about.html" class="block py-1 hover:text-indigo-600">About</a>
+        </div>
     </nav>
+    <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    </script>
 
     <!-- Hero -->
     <section class="bg-gradient-to-br from-indigo-600 to-purple-700 text-white py-20">
@@ -43,7 +57,7 @@
             </div>
             <div class="flex flex-wrap justify-center gap-3 text-xs text-indigo-100">
                 <span class="bg-white/20 rounded-full px-3 py-1">1.2M+ Rows Analyzed</span>
-                <span class="bg-white/20 rounded-full px-3 py-1">21-Page Dashboard</span>
+                <span class="bg-white/20 rounded-full px-3 py-1">25-Page Dashboard</span>
                 <span class="bg-white/20 rounded-full px-3 py-1">7 DA/BI Certifications</span>
                 <span class="bg-white/20 rounded-full px-3 py-1">11 SQL Case Studies</span>
                 <span class="bg-white/20 rounded-full px-3 py-1">Power BI (14 DAX Measures)</span>
@@ -85,7 +99,7 @@
                     <div>
                         <p class="font-medium mb-2">Deliverables</p>
                         <ul class="space-y-1">
-                            <li>21-page interactive Streamlit dashboard</li>
+                            <li>25-page interactive Streamlit dashboard</li>
                             <li>8-tab Excel workbook</li>
                             <li>Power BI report with 14 DAX measures</li>
                             <li>11 standalone SQL case studies</li>
@@ -205,5 +219,13 @@
             </a>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-4xl mx-auto px-4 text-center text-sm">
+            <p class="mb-2">Cayman Roden &middot; <a href="https://github.com/ChunkyTortoise" class="hover:text-white" target="_blank" rel="noopener noreferrer">GitHub</a> &middot; <a href="https://linkedin.com/in/caymanroden" class="hover:text-white" target="_blank" rel="noopener noreferrer">LinkedIn</a> &middot; <a href="mailto:caymanroden@gmail.com" class="hover:text-white">caymanroden@gmail.com</a></p>
+            <p class="text-xs text-gray-600">&copy; 2026 Cayman Roden</p>
+        </div>
+    </footer>
 </body>
 </html>
