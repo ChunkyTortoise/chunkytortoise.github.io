@@ -192,16 +192,7 @@
     <section class="max-w-4xl mx-auto px-4 py-12">
         <h2 class="text-2xl font-bold mb-2 text-center">Open Source Test Contributions</h2>
         <p class="text-gray-500 text-sm text-center mb-8">Writing tests for codebases I didn't build &mdash; the clearest signal of test-first thinking.</p>
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition">
-                <div class="flex items-center gap-2 mb-2">
-                    <span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-medium">PR #5000 &middot; Open</span>
-                    <span class="text-gray-400 text-xs">14K+ stars</span>
-                </div>
-                <h3 class="font-bold text-gray-900 mb-2">pydantic-ai</h3>
-                <p class="text-sm text-gray-600 mb-3">Identified gap in OpenTelemetry deferral span tests: no negative-case coverage for v5 instrumentation. Added 2 tests verifying that <code class="text-xs bg-gray-100 px-1 rounded">ModelRetry</code> and unexpected exceptions still record <code class="text-xs bg-gray-100 px-1 rounded">ERROR</code> span status on v5 (not incorrectly treated as deferred). Narrowed exception assertion to <code class="text-xs bg-gray-100 px-1 rounded">pytest.raises(ValueError)</code> per reviewer feedback.</p>
-                <a href="https://github.com/pydantic/pydantic-ai/pull/5000" class="text-indigo-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">View PR #5000 &rarr;</a>
-            </div>
+        <div class="max-w-lg mx-auto">
             <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition">
                 <div class="flex items-center gap-2 mb-2">
                     <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-medium">PR #24551 &middot; Open</span>
