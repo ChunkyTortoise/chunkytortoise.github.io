@@ -130,14 +130,36 @@
                 </div>
                 <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">0 failures in production</span>
             </div>
-            <p class="text-gray-500 text-xs mb-3">pytest &middot; pytest-asyncio &middot; GitHub Actions</p>
+            <p class="text-gray-500 text-xs mb-3">pytest &middot; pytest-asyncio &middot; Pact v3 &middot; Locust &middot; GitHub Actions</p>
             <ul class="space-y-2 text-sm text-gray-700">
                 <li>Multi-turn conversation flow verification: 3 bots, bilingual routing (EN/ES), qualification logic, temperature scoring, admin handoff edge cases</li>
                 <li>Webhook security: dual-scheme signature verification (HMAC + RSA), request replay prevention, malformed payload handling</li>
                 <li>Integration: Redis rate limiting (60 req/min enforcement), atomic session locks, conversation state persistence and recovery</li>
-                <li>Zero test failures across the full 3-month production run (January - March 2026)</li>
+                <li><span class="font-medium text-indigo-700">Consumer-driven contract tests (Pact v3):</span> 5 contracts on the GoHighLevel API v2 boundary &mdash; contact lookup, SMS dispatch, opportunity creation, tag management, 404 error handling. Pact JSON generated and versioned.</li>
+                <li><span class="font-medium text-indigo-700">Load tested against production:</span> 20 concurrent users (Locust) &mdash; p50=130ms, p95=250ms, p99=400ms at 5.54 req/s. Rate limiting and auth enforcement verified under concurrent load. Zero 5xx errors.</li>
+                <li>Zero test failures across the full 3-month production run (January &ndash; March 2026)</li>
             </ul>
             <span class="text-gray-500 text-sm italic mt-4 block">Private client project &mdash; code available on request</span>
+        </div>
+
+        <!-- Jewkes Playwright -->
+        <div class="bg-white rounded-xl border border-gray-200 p-6 mb-6 hover:shadow-md transition">
+            <div class="flex justify-between items-start mb-3">
+                <div>
+                    <div class="text-sm text-indigo-600 font-medium mb-1">E2E &middot; Visual Regression &middot; Performance</div>
+                    <h3 class="text-lg font-bold">Jewkes Consulting &mdash; 37 Playwright Tests</h3>
+                </div>
+                <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">TypeScript &middot; Next.js 14</span>
+            </div>
+            <p class="text-gray-500 text-xs mb-3">Playwright &middot; TypeScript &middot; 4 viewport breakpoints</p>
+            <ul class="space-y-2 text-sm text-gray-700">
+                <li>Business content integrity: heading hierarchy, CTA visibility, pricing presence, contact info, footer structure</li>
+                <li>Link integrity: internal anchor target validation, external link <code class="text-xs bg-gray-100 px-1 rounded">rel=noopener</code> enforcement, mailto format validation</li>
+                <li>Visual regression: screenshot comparisons at 3 viewports (375px mobile, 768px tablet, 1024px desktop) with per-pixel threshold</li>
+                <li>Performance: DOM load under 3s, above-the-fold content in viewport, zero JS runtime errors, image dimension attributes (CLS prevention)</li>
+                <li>Viewport responsiveness: 4 breakpoints, horizontal overflow detection with 5px tolerance</li>
+            </ul>
+            <a href="https://github.com/ChunkyTortoise/jewkes-consulting-redesign" class="text-indigo-600 text-sm hover:underline mt-4 block" target="_blank" rel="noopener noreferrer">View on GitHub &rarr;</a>
         </div>
 
         <!-- Finance Portfolio -->
@@ -160,6 +182,32 @@
         </div>
     </section>
 
+    <!-- OSS Contributions -->
+    <section class="max-w-4xl mx-auto px-4 py-12">
+        <h2 class="text-2xl font-bold mb-2 text-center">Open Source Test Contributions</h2>
+        <p class="text-gray-500 text-sm text-center mb-8">Writing tests for codebases I didn't build &mdash; the clearest signal of test-first thinking.</p>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-medium">PR #4993 &middot; Open</span>
+                    <span class="text-gray-400 text-xs">14K+ stars</span>
+                </div>
+                <h3 class="font-bold text-gray-900 mb-2">pydantic-ai</h3>
+                <p class="text-sm text-gray-600 mb-3">Identified gap in OpenTelemetry deferral span tests: no negative-case coverage for v5 instrumentation. Added 2 tests verifying that <code class="text-xs bg-gray-100 px-1 rounded">ModelRetry</code> and unexpected exceptions still record <code class="text-xs bg-gray-100 px-1 rounded">ERROR</code> span status on v5 (not incorrectly treated as deferred). All 8 related tests pass.</p>
+                <a href="https://github.com/pydantic/pydantic-ai/pull/4993" class="text-indigo-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">View PR #4993 &rarr;</a>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-md transition">
+                <div class="flex items-center gap-2 mb-2">
+                    <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-medium">PR #24551 &middot; Open</span>
+                    <span class="text-gray-400 text-xs">27K+ stars</span>
+                </div>
+                <h3 class="font-bold text-gray-900 mb-2">LiteLLM</h3>
+                <p class="text-sm text-gray-600 mb-3">Typed exception mapping for <code class="text-xs bg-gray-100 px-1 rounded">BaseLLMHTTPHandler._handle_error</code> on Anthropic messages API. 6 tests covering RateLimitError, ContextWindowExceededError, AuthenticationError, InternalServerError, no-model backward compatibility, and already-typed pass-through. Eliminates silent failure in Router fallback chains.</p>
+                <a href="https://github.com/BerriAI/litellm/pull/24551" class="text-indigo-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">View PR #24551 &rarr;</a>
+            </div>
+        </div>
+    </section>
+
     <!-- CI/CD & Methodology -->
     <section class="bg-white border-t border-b border-gray-200 py-16">
         <div class="max-w-4xl mx-auto px-4">
@@ -179,7 +227,9 @@
                     <h3 class="font-bold mb-3 text-gray-900">Test Methodology</h3>
                     <ul class="space-y-2">
                         <li><span class="font-medium">TDD-first:</span> Failing test written before any implementation code. Zero tests written retroactively.</li>
-                        <li><span class="font-medium">Test pyramid:</span> Unit + integration + E2E + API contract layers per project</li>
+                        <li><span class="font-medium">Test pyramid:</span> Unit + integration + E2E + API contract + consumer-driven contract (Pact) layers per project</li>
+                        <li><span class="font-medium">Load testing:</span> Locust — p50/p95/p99 latency, req/s, error rate, concurrency under load</li>
+                        <li><span class="font-medium">Contract testing:</span> Pact v3 consumer contracts on third-party API boundaries; pact JSON versioned in repo</li>
                         <li><span class="font-medium">Adversarial fixtures:</span> Contradictory inputs, truncated data, multi-language edge cases</li>
                         <li><span class="font-medium">LLM eval:</span> RAGAS scoring, LLM-as-judge rubrics, Brier score calibration</li>
                     </ul>
