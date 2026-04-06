@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consumer-Driven Contract Testing with pact-python v3 | Cayman Roden</title>
+    <meta name="description" content="How to write consumer-driven contract tests for third-party APIs using pact-python v3, including the FFI limitation and per-test merge pattern.">
+    <meta property="og:title" content="Consumer-Driven Contract Testing with pact-python v3">
+    <meta property="og:description" content="How to write consumer-driven contract tests for third-party APIs using pact-python v3, including the FFI limitation and per-test merge pattern.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://chunkytortoise.github.io/blog/pact-contract-testing.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Consumer-Driven Contract Testing with pact-python v3">
+    <meta name="twitter:description" content="How to write consumer-driven contract tests for third-party APIs using pact-python v3, including the FFI limitation and per-test merge pattern.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QNBBCMHX7Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QNBBCMHX7Q');
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="../index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
+            <div class="flex gap-4 text-sm">
+                <a href="../projects.html" class="hover:text-indigo-600">Portfolio</a>
+                <a href="../certifications.html" class="hover:text-indigo-600">Certifications</a>
+                <a href="../case-studies.html" class="hover:text-indigo-600">Case Studies</a>
+                <a href="../benchmarks.html" class="hover:text-indigo-600">Benchmarks</a>
+                <a href="../blog.html" class="text-indigo-600 font-medium">Blog</a>
+                <a href="../about.html" class="hover:text-indigo-600">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <article class="max-w-4xl mx-auto px-4 py-12">
+        <a href="../blog.html" class="text-sm text-indigo-600 hover:underline mb-6 inline-block">&larr; Back to Blog</a>
+
+        <div class="bg-white rounded-xl border p-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Contract Testing</span>
+                <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">QA</span>
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Python</span>
+                <span class="text-sm text-gray-400">April 6, 2026</span>
+                <span class="text-sm text-gray-400">&middot; 8 min read</span>
+            </div>
+            <h1 class="text-3xl font-bold mb-6">Consumer-Driven Contract Testing with pact-python v3</h1>
+
+            <div class="prose prose-gray max-w-none text-gray-700 space-y-4">
+                <p>Third-party API boundaries are where integrations silently break. The SaaS vendor ships a new release, a field gets renamed, a previously optional key becomes required, and your system starts failing in production before any test catches it. Unit tests mock the HTTP layer entirely, so they cannot detect this. End-to-end tests hit the real API, but they are slow, flaky, and do not run in CI without live credentials. Contract testing sits between these two extremes: it verifies the shape of the API your code depends on, without making a live network call, and it produces a machine-readable artifact that the provider can run against their own implementation.</p>
+
+                <p>This post walks through consumer-driven contract testing using <strong>pact-python v3</strong>, the Python binding for the Pact specification. The examples come from real test code I wrote for a production integration against the GoHighLevel (GHL) CRM API v2. The consumer is a Python bot application; the provider is a third-party SaaS that we do not control. This is the exact scenario where contract testing pays off most.</p>
+
+                <h2 class="text-2xl font-bold mt-10 mb-4">What Contract Testing Is (and Why It Matters)</h2>
+
+                <p>A contract is a record of what interactions the consumer expects from the provider: which endpoints it calls, what request shape it sends, and what response shape it needs back. The consumer owns the contract definition. The provider verifies it. Neither side needs the other to be running during their respective test runs.</p>
+
+                <p>This matters most at third-party boundaries for a specific reason: you cannot add a test to the vendor's CI pipeline. You can only write tests on your side. Contract testing gives you a way to express those expectations precisely and replay them cheaply, and it gives you a portable artifact you can re-run whenever the provider pushes an update, with or without live credentials.</p>
+
+                <p>The failure mode it prevents is subtle: a provider changes a response field from <code>"contactId"</code> to <code>"contact_id"</code>. Your integration code references the old key. Nothing raises an exception &mdash; you just get <code>None</code> where you expected a string, and a downstream database write silently stores a null. Contract tests catch this at the shape-verification stage, not in production.</p>
+
+                <h2 class="text-2xl font-bold mt-10 mb-4">Consumer vs Provider Contracts</h2>
+
+                <p>The Pact model has two distinct phases:</p>
+
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>Consumer phase.</strong> The consumer team writes tests that define the expected interactions. Pact spins up a mock server that replays those interactions, and the real consumer code runs against it. If the code works against the mock, the interaction is recorded to a pact JSON file.</li>
+                    <li><strong>Provider phase.</strong> The provider team (or you, if you own both sides) takes the pact JSON, replays each interaction against the real provider implementation, and verifies that the responses match. For a third-party API like GHL, you run this step against a sandbox environment or in a separate scheduled job, not in your main CI.</li>
+                </ul>
+
+                <p>This post focuses on the consumer phase, because that is what you control when integrating against a third-party SaaS.</p>
+
+                <h2 class="text-2xl font-bold mt-10 mb-4">The pact-python v3 API</h2>
+
+                <p>The v3 API introduced a fluent builder pattern that is more explicit than the v2 decorator-based style. The core flow is four steps: create a <code>Pact</code> instance, define the interaction with the builder chain, run your real code against the mock server with <code>pact.serve()</code>, then write the interaction to disk with <code>pact.write_file()</code>.</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        from pact import Pact<br>
+                        from pathlib import Path<br><br>
+                        PACTS_DIR = Path(__file__).parent / "pacts"<br>
+                        PACTS_DIR.mkdir(exist_ok=True)<br><br>
+                        pact = Pact("my-consumer", "my-provider")<br><br>
+                        (<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;pact.upon_receiving("a request to get resource 123")<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.given("resource 123 exists")<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.with_request("GET", "/resources/123")<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.will_respond_with(200)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.with_body({"id": "123", "name": "Widget"}, "application/json")<br>
+                        )<br><br>
+                        with pact.serve() as srv:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;# Point your real client code at srv.url<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;result = await my_client.get_resource("123")<br><br>
+                        pact.write_file(PACTS_DIR)  # appends/merges into the pact JSON
+                    </p>
+                </div>
+
+                <p>The builder chain reads like a sentence: "upon receiving this description, given this provider state, with this request, the provider will respond with this status and this body." The <code>given()</code> call specifies the provider state &mdash; a string that tells the provider verification step what precondition to set up before replaying the interaction.</p>
+
+                <p>The <code>with_body()</code> method on the response side specifies exact match by default. Pact v3 also supports matchers (regex, type, like) if you need to handle dynamic values, but exact match is appropriate for the fields your code actually reads.</p>
+
+                <h2 class="text-2xl font-bold mt-10 mb-4">A Real Example: GET /contacts/{id}</h2>
+
+                <p>Here is the full contract test for fetching a contact from the GHL API. The client code under test wraps every response in an envelope: <code>{"success": True, "data": &lt;ghl_json&gt;, "status_code": N}</code>. This is an implementation detail of the client, not the API &mdash; understanding the distinction is important for writing correct assertions.</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        @pytest.mark.asyncio<br>
+                        async def test_get_contact_contract(pact, ghl_client):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;"""Contract: GET /contacts/{id} &mdash; GHL returns contact; client wraps in data envelope."""<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;contact_id = "contact_abc_123"<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;ghl_response_body = {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "contact_abc_123",<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"email": "lead@example.com",<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"firstName": "John",<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"lastName": "Doe",<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"phone": "+15550001234",<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"locationId": MOCK_LOCATION,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"tags": ["Dallas", "buyer"],<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;(<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pact.upon_receiving("a request to get contact contact_abc_123")<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.given("contact contact_abc_123 exists")<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.with_request("GET", f"/contacts/{contact_id}")<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.will_respond_with(200)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.with_body(ghl_response_body, "application/json")<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;)<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;with pact.serve() as srv:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ghl_client.BASE_URL = str(srv.url).rstrip("/")<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = await ghl_client.get_contact(contact_id)<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;pact.write_file(PACTS_DIR)  # merge into shared pact file<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;# _make_request wraps response: {"success": True, "data": &lt;ghl_json&gt;, "status_code": 200}<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;assert result["success"] is True<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;assert result["data"]["id"] == contact_id<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;assert result["data"]["email"] == "lead@example.com"<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;assert "firstName" in result["data"]<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;assert "tags" in result["data"]
+                    </p>
+                </div>
+
+                <p>A few details worth noting. The mock server URL comes from <code>srv.url</code> inside the context manager, and you point your client at it by overriding its base URL. The test uses <code>MOCK_TOKEN</code> and <code>MOCK_LOCATION</code> constants (patched into settings) rather than real credentials &mdash; the mock server does not validate authentication headers, so the client never needs a real token. The assertions check the envelope fields (<code>result["success"]</code>, <code>result["data"]</code>) rather than the raw HTTP response, because that is what the calling code actually consumes.</p>
+
+                <h2 class="text-2xl font-bold mt-10 mb-4">An Interesting Edge Case: Testing Error Envelopes</h2>
+
+                <p>When the GHL API returns a 404, most HTTP clients raise an exception. The GHL client in this codebase does not &mdash; it catches non-retryable <code>HTTPStatusError</code> and converts it into an error envelope: <code>{"success": False, "error": ..., "status_code": 404}</code>. This is a deliberate design choice that makes the calling code simpler: every response has the same shape, and you check <code>result["success"]</code> rather than catching exceptions everywhere.</p>
+
+                <p>Contract testing this behavior requires you to contract the provider-side 404 response <em>and</em> assert the client-side envelope transformation separately:</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        @pytest.mark.asyncio<br>
+                        async def test_get_contact_not_found_contract(pact, ghl_client):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;"""Contract: GET /contacts/{id} &mdash; GHL returns 404; client returns error envelope (no raise)."""<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;contact_id = "contact_does_not_exist"<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;(<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pact.upon_receiving("a request to get a nonexistent contact")<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.given("contact contact_does_not_exist does not exist")<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.with_request("GET", f"/contacts/{contact_id}")<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.will_respond_with(404)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.with_body({"message": "Contact not found", "code": 404}, "application/json")<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;)<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;with pact.serve() as srv:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ghl_client.BASE_URL = str(srv.url).rstrip("/")<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# _make_request catches non-retryable HTTPStatusError and returns error dict<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;result = await ghl_client.get_contact(contact_id)<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;pact.write_file(PACTS_DIR)<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;assert result["success"] is False<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;assert result["status_code"] == 404
+                    </p>
+                </div>
+
+                <p>Notice that we do not write <code>with pytest.raises(HTTPStatusError)</code>. If the client's error-handling contract is "never raise on 4xx, always return an envelope," then testing for a raised exception would be testing the wrong behavior. The contract test forces you to be explicit about whether errors surface as exceptions or as data. That clarity is valuable beyond the test itself &mdash; it documents the integration contract for every future engineer who touches this code.</p>
+
+                <p>The same pattern applies to the POST contracts that encode client-side transformations. The <code>send_message</code> contract specifies <code>disclosed_message = input_message + "\n[AI-assisted message]"</code> as the request body, because the client appends a disclosure footer before sending. The <code>create_opportunity</code> contract specifies an <code>expected_request_body</code> that includes <code>"locationId": MOCK_LOCATION</code>, because the client injects the location ID from settings before the request goes out. The contract captures what actually hits the wire, not what the caller passed in.</p>
+
+                <h2 class="text-2xl font-bold mt-10 mb-4">The FFI Limitation and the Per-Test Merge Pattern</h2>
+
+                <p>pact-python v3 is built on the Pact FFI (foreign function interface), a Rust-based shared library that handles the mock server lifecycle. The FFI has a constraint: you cannot safely reuse a single <code>Pact</code> instance across multiple test functions. Attempting to define a second interaction on an already-served pact produces undefined behavior or silently overwrites the previous interaction, depending on the FFI version.</p>
+
+                <p>The naive workaround is to create one large pact file with all interactions pre-defined before any test runs. This forces you to define every interaction in one place and makes tests harder to read and isolate.</p>
+
+                <p>The pattern that works cleanly is: create a fresh <code>Pact</code> instance per test, then call <code>pact.write_file()</code> at the end of each test with the same output directory. The FFI merges interactions into the existing file rather than overwriting it. Combined with a session-scoped fixture that deletes any stale file before the test run begins, you get a clean accumulated pact JSON at the end of the session.</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        PACTS_DIR = Path(__file__).parent / "pacts"<br>
+                        PACTS_DIR.mkdir(exist_ok=True)<br><br>
+                        @pytest.fixture(scope="session", autouse=True)<br>
+                        def clear_pact_file():<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;"""Remove stale pact file before session so interactions accumulate cleanly."""<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;pact_file = PACTS_DIR / "jorge-bots-ghl-api-v2.json"<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if pact_file.exists():<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pact_file.unlink()<br><br>
+                        @pytest.fixture<br>
+                        def pact():<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;"""Fresh Pact instance per test; writes merge into a shared pact file."""<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;if not PACT_AVAILABLE:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pytest.skip("pact-python not installed")<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return Pact("jorge-bots", "ghl-api-v2")<br><br>
+                        # Each test function receives a fresh pact, defines one interaction,<br>
+                        # and calls pact.write_file(PACTS_DIR) at the end.<br>
+                        # After 5 tests, the file contains all 5 interactions.
+                    </p>
+                </div>
+
+                <p>The naming convention for the pact file (<code>jorge-bots-ghl-api-v2.json</code>) matches the consumer and provider names passed to <code>Pact()</code> &mdash; that is how the FFI determines which file to merge into. If you change the consumer or provider name between tests, you get separate files. This is usually a bug, not a feature, so keeping the names consistent across all tests in a module is important.</p>
+
+                <p>The <code>PACT_AVAILABLE</code> guard around the import is worth keeping. pact-python requires the FFI shared library to be present, which is not always true in minimal CI environments. Guarding with a skip rather than a hard import failure lets the rest of the test suite run without pact-python installed.</p>
+
+                <h2 class="text-2xl font-bold mt-10 mb-4">How the Pact JSON Fits Into CI</h2>
+
+                <p>After the consumer tests pass, you have a pact JSON file in <code>tests/contract/pacts/</code>. This file is the artifact that makes contract testing useful beyond the current run.</p>
+
+                <p>Two practices make this work in CI:</p>
+
+                <p><strong>Version the pact file in source control.</strong> Commit the generated JSON alongside the test code. When a test changes the expected contract &mdash; because your code now reads a new field, or because the provider changed a field name &mdash; the diff in the pact JSON is visible in code review. This creates an explicit audit trail of contract changes. Reviewers can see exactly which fields were added, removed, or renamed, not just that "some tests were updated."</p>
+
+                <p><strong>Run provider verification separately.</strong> Consumer tests run in your main CI on every pull request. Provider verification runs in a separate job &mdash; ideally triggered by the provider's release pipeline, or on a schedule, or both. For a third-party API like GHL, provider verification requires a sandbox environment and a real (non-mock) token scoped to that sandbox. Running it on a schedule (daily or on every consumer release) catches breaking changes without blocking your main CI on live network availability.</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        # .github/workflows/contract-verify.yml (provider verification job)<br>
+                        # Runs on schedule or workflow_dispatch; not on every PR<br><br>
+                        - name: Run consumer contract tests<br>
+                        &nbsp;&nbsp;run: pytest tests/contract/ -m contract -v<br><br>
+                        - name: Verify pact file is committed<br>
+                        &nbsp;&nbsp;run: git diff --exit-code tests/contract/pacts/<br><br>
+                        # Separate job, separate credentials:<br>
+                        - name: Provider verification (against GHL sandbox)<br>
+                        &nbsp;&nbsp;run: pytest tests/contract/test_ghl_provider.py -v<br>
+                        &nbsp;&nbsp;env:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;GHL_API_KEY: ${{ secrets.GHL_SANDBOX_API_KEY }}<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;GHL_LOCATION_ID: ${{ secrets.GHL_SANDBOX_LOCATION_ID }}
+                    </p>
+                </div>
+
+                <p>The <code>git diff --exit-code</code> step is a lightweight safeguard: it fails the build if a developer ran the tests locally, the pact JSON changed, but the updated file was not staged. This prevents the common failure mode where the pact file on disk diverges from the committed version.</p>
+
+                <p>For teams using the Pact Broker, the pact JSON can be published there instead of committed directly to source control. The broker adds can-i-deploy gates, webhook triggers, and interaction history. For a small team or a third-party-only integration, committing the file directly is simpler and sufficient.</p>
+
+                <h2 class="text-2xl font-bold mt-10 mb-4">Summary</h2>
+
+                <p>Consumer-driven contract testing fills a gap that neither unit tests nor end-to-end tests cover: verifying the exact shape of a third-party API dependency without live credentials or network access. The pact-python v3 API is more verbose than earlier versions but more explicit about what is being contracted. The per-test Pact instance plus <code>write_file()</code> merge pattern works around the FFI limitation cleanly. And versioning the pact JSON as a build artifact gives you a diff-visible record of every contract change across your API integration's history.</p>
+
+                <p>For more on how this fits into a broader QA automation strategy &mdash; including end-to-end tests, performance benchmarks, and the full CI pipeline &mdash; see the <a href="../qa.html" class="text-indigo-600 hover:underline">QA portfolio page</a>.</p>
+            </div>
+        </div>
+    </article>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
+            <span>&copy; 2026 Cayman Roden</span>
+            <div class="flex gap-4">
+                <a href="https://github.com/ChunkyTortoise" class="hover:text-white" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/caymanroden" class="hover:text-white" target="_blank">LinkedIn</a>
+                <a href="mailto:caymanroden@gmail.com" class="hover:text-white">Email</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
