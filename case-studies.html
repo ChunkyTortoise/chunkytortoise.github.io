@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case Studies | Cayman Roden</title>
-    <meta name="description" content="AI engineering case studies: 89% token cost reduction, 3-bot lead qualification, RAG document Q&A, and automated data pipelines. Each backed by a public repo.">
+    <meta name="description" content="Engineering and analytics case studies: 500+ leads qualified with zero downtime, 12,000+ TDD tests across 15 repos, $600K-$900K lending risk finding on 1.2M+ CFPB records. Each backed by a public repo.">
     <meta property="og:title" content="Case Studies | Cayman Roden">
     <meta property="og:description" content="Real-world AI case studies with measurable results. 89% token cost reduction, multi-agent orchestration, RAG pipelines, and more.">
     <meta property="og:type" content="website">
@@ -33,7 +33,6 @@
             </button>
             <div class="hidden md:flex gap-4 text-sm">
                 <a href="projects.html" class="hover:text-indigo-600">Portfolio</a>
-                <a href="verticals/" class="hover:text-indigo-600">Industries</a>
                 <a href="certifications.html" class="hover:text-indigo-600">Certifications</a>
                 <a href="case-studies.html" class="text-indigo-600 font-medium">Case Studies</a>
                 <a href="benchmarks.html" class="hover:text-indigo-600">Benchmarks</a>
@@ -43,7 +42,6 @@
         </div>
         <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-2 text-sm">
             <a href="projects.html" class="block py-1 hover:text-indigo-600">Portfolio</a>
-            <a href="verticals/" class="block py-1 hover:text-indigo-600">Industries</a>
             <a href="certifications.html" class="block py-1 hover:text-indigo-600">Certifications</a>
             <a href="case-studies.html" class="block py-1 text-indigo-600 font-medium">Case Studies</a>
             <a href="benchmarks.html" class="block py-1 hover:text-indigo-600">Benchmarks</a>
@@ -111,29 +109,31 @@
             </div>
         </article>
 
-        <!-- Case Study 2: Multi-Agent Handoff (REAL — from Jorge Bots) -->
+        <!-- Case Study: Jorge Real Estate AI — Production Lead Qualification -->
         <article class="bg-white rounded-xl border p-8 mb-8">
             <div class="flex items-center gap-3 mb-4">
-                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
-                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Multi-Agent AI</span>
-                <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Production &middot; Delivered &middot; Closed</span>
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Solutions Engineering</span>
+                <span class="text-sm text-gray-500 italic">Private client &mdash; code on request</span>
             </div>
-            <h2 class="text-2xl font-bold mb-6">3-Bot Cross-Agent Handoff System with Safeguards</h2>
+            <h2 class="text-2xl font-bold mb-6">Production AI Lead Qualification: 500+ Leads, Zero Downtime, 3 Months</h2>
 
             <div class="space-y-6">
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
-                    <p class="text-gray-700">Three specialized chatbots needed to seamlessly transfer conversations based on detected intent. A lead saying "I want to buy a house" to the lead bot needs to end up with the buyer bot &mdash; with full conversation context preserved. Initial implementation had circular handoff loops, race conditions when two bots tried to claim the same contact, and no way to learn from handoff outcomes.</p>
+                    <p class="text-gray-700">Real estate leads go cold fast &mdash; 40% are lost when response time exceeds 5 minutes. A firm's agents were responding manually, with overnight and weekend leads going unanswered. No way to distinguish buyers from sellers in the CRM or automatically route conversations to the right specialist.</p>
                 </div>
 
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
-                    <p class="text-gray-700">Built <code>JorgeHandoffService</code> with 5 safeguards: 0.7 confidence threshold (tested against 200+ transcripts), circular prevention (30-minute window blocks same source&rarr;target), rate limiting (3/hr, 10/day per contact), contact-level locking (prevents concurrent handoff race conditions), and pattern learning (dynamic threshold adjustment after 10+ data points). GHL-enhanced intent decoders boost scoring with CRM data (tags, lead age, engagement recency).</p>
+                    <p class="text-gray-700">Sole technical point of contact from requirements through production deployment. Built 3 specialized SMS bots (Lead Intake, Buyer Qualification, Seller Qualification) integrated into GoHighLevel CRM via dual-scheme webhook verification (HMAC + RSA). Each bot runs a structured Q0&ndash;Q4 qualification flow, scores leads hot/warm/cold, and books appointments on the agent's GHL calendar. Cross-bot handoff with 0.7 confidence threshold, 30-minute circular prevention window, contact-level locking to prevent race conditions, and 3/hr rate limiting routes leads to the right specialist without loops or errors. Bilingual EN/ES throughout.</p>
                     <div class="flex gap-2 flex-wrap mt-3">
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">GoHighLevel</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">A/B Testing</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude API</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">GoHighLevel CRM</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Redis</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">PostgreSQL</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">EN/ES</span>
                     </div>
                 </div>
 
@@ -141,74 +141,22 @@
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
                     <div class="grid grid-cols-3 gap-4">
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">279</p>
-                            <p class="text-xs text-green-600 mt-1">Automated tests</p>
+                            <p class="text-2xl font-bold text-green-700">500+</p>
+                            <p class="text-xs text-green-600 mt-1">Leads qualified (Jan&ndash;Mar 2026)</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">5</p>
-                            <p class="text-xs text-green-600 mt-1">Handoff safeguards</p>
+                            <p class="text-2xl font-bold text-green-700">0</p>
+                            <p class="text-xs text-green-600 mt-1">Downtime events, 3-month run</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
                             <p class="text-2xl font-bold text-green-700">&lt;500ms</p>
-                            <p class="text-xs text-green-600 mt-1">Handoff P95 latency</p>
+                            <p class="text-xs text-green-600 mt-1">Response time</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="text-sm text-gray-500">
-                    <strong>Verify:</strong> <code>services/jorge/jorge_handoff_service.py</code> (all safeguards), <code>agents/jorge_*_bot.py</code> (public APIs). <a href="benchmarks.html" class="text-indigo-600 hover:underline">Full benchmarks &rarr;</a>
-                </div>
-            </div>
-        </article>
-
-        <!-- Case Study 4: Jorge Bot Platform -->
-        <article class="bg-white rounded-xl border p-8 mb-8">
-            <div class="flex items-center gap-3 mb-4">
-                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
-                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Multi-Agent AI</span>
-                <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
-            </div>
-            <h2 class="text-2xl font-bold mb-6">3-Bot Lead Qualification Platform with Cross-Bot Handoff</h2>
-
-            <div class="space-y-6">
-                <div>
-                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
-                    <p class="text-gray-700">40% lead loss from slow manual response times averaging over 15 minutes. Leads requiring different expertise (buying vs. selling) were stuck with a single generalist response, causing drop-off and missed conversion opportunities.</p>
-                </div>
-
-                <div>
-                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
-                    <p class="text-gray-700">Built a 3-bot system (Lead/Buyer/Seller) with cross-bot handoff orchestrated by <code>JorgeHandoffService</code>. Integrated A/B testing for response strategies, GHL CRM integration for real-time lead data, and intent decoding with GHL score boosts (tag analysis, lead age, engagement recency). Shared services layer provides consistent metrics, alerting, and performance tracking across all bots.</p>
-                    <div class="flex gap-2 flex-wrap mt-3">
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">PostgreSQL</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Redis</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude API</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">GoHighLevel</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
-                    <div class="grid grid-cols-3 gap-4">
-                        <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">279</p>
-                            <p class="text-xs text-green-600 mt-1">Tests passing</p>
-                        </div>
-                        <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">0.7</p>
-                            <p class="text-xs text-green-600 mt-1">Confidence threshold</p>
-                        </div>
-                        <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">3/hr, 10/day</p>
-                            <p class="text-xs text-green-600 mt-1">Rate limiting</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-sm text-gray-500">
-                    <strong>Verify:</strong> <code>services/jorge/jorge_handoff_service.py</code> (circular prevention, rate limiting), <code>services/jorge/ab_testing_service.py</code> (deterministic variant assignment).
+                    <strong>Delivered:</strong> 3 production bots, GoHighLevel CRM integration, 1,824 automated tests, full handoff documentation and runbooks. Sole technical lead &mdash; requirements through deployment.
                 </div>
             </div>
         </article>
@@ -368,58 +316,6 @@
             </div>
         </article>
 
-        <!-- Case Study: Jorge Bots — Production GHL Lead Qualification -->
-        <article class="bg-white rounded-xl border p-8 mb-8">
-            <div class="flex items-center gap-3 mb-4">
-                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
-                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Production AI / CRM</span>
-                <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
-            </div>
-            <h2 class="text-2xl font-bold mb-6">AI Lead Qualification Bot Deployed to Production GoHighLevel</h2>
-
-            <div class="space-y-6">
-                <div>
-                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
-                    <p class="text-gray-700">40% of real estate leads go cold because agents take over 5 minutes to respond. Leads arriving overnight or on weekends went unanswered until the next morning. Manual qualification was slow, inconsistent, and there was no way to distinguish buyers from sellers in the CRM pipeline.</p>
-                </div>
-
-                <div>
-                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
-                    <p class="text-gray-700">Built three specialized AI bots (Lead, Buyer, Seller) that plug into GoHighLevel via webhooks. Each bot runs a structured Q0&ndash;Q4 qualification flow via SMS, scores leads as hot/warm/cold, and books appointments directly on the agent's GHL calendar. Claude Haiku handles fast qualification; Sonnet handles complex analysis. Cross-bot handoff with 0.7 confidence threshold, circular prevention, and rate limiting routes leads to the right specialist automatically.</p>
-                    <div class="flex gap-2 flex-wrap mt-3">
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">GoHighLevel</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Redis</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">PostgreSQL</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
-                    <div class="grid grid-cols-3 gap-4">
-                        <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">1,790</p>
-                            <p class="text-xs text-green-600 mt-1">Tests passing</p>
-                        </div>
-                        <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">24/7</p>
-                            <p class="text-xs text-green-600 mt-1">Lead response</p>
-                        </div>
-                        <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">&lt;$0.50/day</p>
-                            <p class="text-xs text-green-600 mt-1">AI cost</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-sm text-gray-500">
-                    <strong>Verify:</strong> <code>bots/</code> (3 specialized bots), <code>agents/</code> (intent + handoff), <code>services/</code> (GHL integration). <a href="#" class="text-indigo-600 hover:underline">Read full case study &rarr;</a>
-                </div>
-            </div>
-        </article>
-
         <!-- Case Study: DocExtract AI — Production RAG Pipeline -->
         <article class="bg-white rounded-xl border p-8 mb-8">
             <div class="flex items-center gap-3 mb-4">
@@ -428,7 +324,7 @@
                 <a href="https://github.com/ChunkyTortoise/docextract" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
                 <a href="https://docextract-demo.streamlit.app" class="text-sm text-green-600 hover:underline" target="_blank">Live Demo</a>
             </div>
-            <h2 class="text-2xl font-bold mb-6">92.6% Extraction Accuracy on 16 Document Types with Hybrid RAG</h2>
+            <h2 class="text-2xl font-bold mb-6">94.6% Extraction Accuracy on 16 Document Types with Hybrid RAG</h2>
 
             <div class="space-y-6">
                 <div>
@@ -438,7 +334,7 @@
 
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
-                    <p class="text-gray-700">Built a 12-step async document extraction pipeline: upload &rarr; format detection &rarr; OCR/text extraction &rarr; document classification &rarr; type-aware chunking &rarr; pgvector embedding &rarr; hybrid retrieval (BM25 keyword + cosine similarity + Reciprocal Rank Fusion) &rarr; citation-aware LLM generation. Added production-grade reliability: AsyncCircuitBreaker model fallback (Sonnet &rarr; Haiku), OpenTelemetry + Prometheus metrics, LangSmith tracing per pipeline step, and a golden evaluation CI gate that blocks deploys if accuracy regresses below 92.6%.</p>
+                    <p class="text-gray-700">Built a 12-step async document extraction pipeline: upload &rarr; format detection &rarr; OCR/text extraction &rarr; document classification &rarr; type-aware chunking &rarr; pgvector embedding &rarr; hybrid retrieval (BM25 keyword + cosine similarity + Reciprocal Rank Fusion) &rarr; citation-aware LLM generation. Added production-grade reliability: AsyncCircuitBreaker model fallback (Sonnet &rarr; Haiku), OpenTelemetry + Prometheus metrics, LangSmith tracing per pipeline step, and a golden evaluation CI gate that blocks deploys if accuracy regresses below 94.6%.</p>
                     <div class="flex gap-2 flex-wrap mt-3">
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">pgvector</span>
@@ -454,11 +350,11 @@
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
                     <div class="grid grid-cols-3 gap-4">
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">92.6%</p>
+                            <p class="text-2xl font-bold text-green-700">94.6%</p>
                             <p class="text-xs text-green-600 mt-1">Extraction accuracy (16 doc types)</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">1,060</p>
+                            <p class="text-2xl font-bold text-green-700">1,183</p>
                             <p class="text-xs text-green-600 mt-1">Automated tests, 90%+ coverage</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
@@ -474,33 +370,41 @@
             </div>
         </article>
 
-        <!-- Case Study: Finance Analytics Dashboard -->
+        <!-- Case Study: Finance Analytics Portfolio — Lending Risk & Fair Lending -->
         <article class="bg-white rounded-xl border p-8 mb-8">
             <div class="flex items-center gap-3 mb-4">
                 <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
                 <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Data &amp; BI</span>
                 <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
+                <a href="https://finance-analytics-portfolio.streamlit.app" class="text-sm text-green-600 hover:underline" target="_blank">Live Demo</a>
             </div>
-            <h2 class="text-2xl font-bold mb-6">21-Page Analytics Dashboard Replacing Manual Excel Workflows</h2>
+            <h2 class="text-2xl font-bold mb-6">Five Lending Risk Findings That Would Change a Credit Committee's Decisions</h2>
 
             <div class="space-y-6">
                 <div>
-                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
-                    <p class="text-gray-700">Finance teams rely on shared Excel files for business intelligence. At scale, these files break, create version conflicts, and can't connect to live data. Reporting takes hours each week, and by the time stakeholders see the numbers, the data is already stale.</p>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Context</h3>
+                    <p class="text-gray-700">SQL and Python analysis on 1.2M+ real 2022 CFPB HMDA mortgage records covering credit risk, fair lending, and market risk. Deliverables in the formats a finance team actually opens: interactive dashboard, Excel workbook, Power BI report, SQL case studies, and written business memos with prioritized recommendations.</p>
                 </div>
 
                 <div>
-                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
-                    <p class="text-gray-700">Built a 21-page Streamlit analytics dashboard on top of a DuckDB + dbt-core analytics layer. The dashboard connects to live data, generates decision memos automatically, and supports natural language SQL queries so non-technical stakeholders can explore data without writing code. Key pages include credit risk analysis, stress testing, VaR modeling, model comparison with profit-vs-threshold curves, and a threshold sensitivity table with row-level highlighting. A downloadable PDF/Markdown Decision Memo from the Validation tab makes the output board-ready.</p>
-                    <div class="flex gap-2 flex-wrap mt-3">
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">DuckDB</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">dbt-core</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">scikit-learn</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Prophet</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Plotly</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">pandas</span>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Key Findings</h3>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li><span class="font-medium text-gray-900">DTI beats FICO among prime borrowers.</span> Among 720+ FICO borrowers, DTI ratio explains ~38% of default variance. Tightening DTI thresholds in the 720&ndash;760 band reduces expected losses by <span class="font-semibold text-green-700">$600K&ndash;$900K per $100M</span> with no impact on approval volume.</li>
+                        <li><span class="font-medium text-gray-900">Grade B, not Grade G, is the true loss concentration.</span> ~35% of exposure, ~42% of stressed expected loss under severe recession. Misallocation: <span class="font-semibold text-green-700">~$35M per $500M portfolio</span> if capital is sized by per-loan PD rather than volume-weighted loss.</li>
+                        <li><span class="font-medium text-gray-900">Parametric VaR understates tail risk by 12&ndash;18%.</span> For a $1B equity portfolio: <span class="font-semibold text-green-700">$12&ndash;18M in unhedged tail exposure</span> invisible in the daily risk report.</li>
+                        <li><span class="font-medium text-gray-900">Geographic fair lending risk is invisible in flat-file analysis.</span> County-level HMDA data shows 20+ percentage point approval rate gaps. Regulatory exposure: <span class="font-semibold text-green-700">$5&ndash;15M per fair lending consent order</span>.</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Deliverables</h3>
+                    <div class="flex gap-2 flex-wrap">
+                        <span class="bg-indigo-50 text-indigo-700 text-xs px-2 py-1 rounded">25-page Streamlit dashboard</span>
+                        <span class="bg-indigo-50 text-indigo-700 text-xs px-2 py-1 rounded">8-tab Excel workbook</span>
+                        <span class="bg-indigo-50 text-indigo-700 text-xs px-2 py-1 rounded">Power BI (14 DAX measures)</span>
+                        <span class="bg-indigo-50 text-indigo-700 text-xs px-2 py-1 rounded">11 SQL case studies</span>
+                        <span class="bg-indigo-50 text-indigo-700 text-xs px-2 py-1 rounded">Written business memos</span>
+                        <span class="bg-indigo-50 text-indigo-700 text-xs px-2 py-1 rounded">Tableau Public dashboard</span>
                     </div>
                 </div>
 
@@ -508,22 +412,74 @@
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
                     <div class="grid grid-cols-3 gap-4">
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">1,347</p>
-                            <p class="text-xs text-green-600 mt-1">Pytest tests passing</p>
+                            <p class="text-2xl font-bold text-green-700">1.2M+</p>
+                            <p class="text-xs text-green-600 mt-1">Real CFPB HMDA records</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">33</p>
-                            <p class="text-xs text-green-600 mt-1">dbt data quality tests</p>
-                        </div>
-                        <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">21</p>
+                            <p class="text-2xl font-bold text-green-700">25</p>
                             <p class="text-xs text-green-600 mt-1">Dashboard pages</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">17</p>
+                            <p class="text-xs text-green-600 mt-1">Business questions answered</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="text-sm text-gray-500">
-                    <strong>Verify:</strong> <code>dashboard/export_decision_memo.py</code> (PDF export), <code>dbt/models/</code> (analytics layer), <code>dashboard/pages/</code> (21 dashboard pages), <code>tests/</code> (1,347 tests)
+                    <strong>Verify:</strong> <code>analysis/</code> (26 modules), <code>sql/</code> (11 DuckDB case studies), <code>dashboard/pages/</code> (25 pages), <code>notebooks/13_real_data_hmda.ipynb</code> (real HMDA cleaning walkthrough). <a href="https://finance-analytics-portfolio.streamlit.app" class="text-indigo-600 hover:underline" target="_blank">Live dashboard &rarr;</a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Case Study: QA Automation — 12,000+ Tests, TDD-First -->
+        <article class="bg-white rounded-xl border p-8 mb-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
+                <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">QA Automation</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-6">12,000+ Tests Across 15 Repos: Test Architecture Designed From Day One</h2>
+
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
+                    <p class="text-gray-700">Every production system in this portfolio handles async state machines, third-party webhooks, or LLM outputs &mdash; categories where a production bug has no safe rollback. Retroactive test coverage misses the edge cases that actually fail: race conditions on concurrent webhook delivery, Redis TTL boundary conditions, LLM responses that are fluent but factually wrong. The constraint: every repo had to be designed for testability from the first commit.</p>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Approach</h3>
+                    <p class="text-gray-700">TDD-first across all 15 repos: failing test written before any implementation code. Framework selection per project type: pytest-asyncio for async event loops (Jorge bots, EnterpriseHub), Playwright for E2E, Vitest for frontend components, dbt schema tests for data model integrity. CI gates on every repo block merge on SAST failure (bandit), CVE detection (pip-audit), type errors (mypy strict), and coverage regression. For LLM outputs: 24-fixture golden evaluation set with 8 adversarial cases (contradictory inputs, truncated documents, multi-language, high-noise OCR) &mdash; CI blocks any accuracy drop below 94.6% baseline before merge.</p>
+                    <div class="flex gap-2 flex-wrap mt-3">
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">pytest</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">pytest-asyncio</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Playwright</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">RAGAS</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">GitHub Actions</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">bandit</span>
+                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">mypy strict</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">12,000+</p>
+                            <p class="text-xs text-green-600 mt-1">Tests across 15 repos</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">94.6%</p>
+                            <p class="text-xs text-green-600 mt-1">LLM eval accuracy (24-fixture golden set)</p>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4 text-center">
+                            <p class="text-2xl font-bold text-green-700">0</p>
+                            <p class="text-xs text-green-600 mt-1">Production regressions (Jan&ndash;Mar 2026)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-sm text-gray-500">
+                    <strong>Verify:</strong> <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank">EnterpriseHub</a> (7,678 tests, CI gate), <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 hover:underline" target="_blank">DocExtract</a> (1,183 tests, RAGAS eval), <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-indigo-600 hover:underline" target="_blank">Finance Analytics</a> (1,611 tests, 4 test layers)
                 </div>
             </div>
         </article>

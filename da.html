@@ -9,6 +9,14 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QNBBCMHX7Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QNBBCMHX7Q');
+    </script>
 </head>
 <body class="bg-gray-50 text-gray-900">
     <!-- Nav -->
@@ -62,6 +70,8 @@
                 <span class="bg-white/20 rounded-full px-3 py-1">11 SQL Case Studies</span>
                 <span class="bg-white/20 rounded-full px-3 py-1">Power BI (14 DAX Measures)</span>
                 <span class="bg-white/20 rounded-full px-3 py-1">Tableau</span>
+                <span class="bg-white/20 rounded-full px-3 py-1">dbt + Airflow Pipeline</span>
+                <span class="bg-white/20 rounded-full px-3 py-1">Evidence.dev BI Report</span>
             </div>
         </div>
     </section>
@@ -86,6 +96,52 @@
         </div>
     </section>
 
+    <!-- Tools & Pipeline -->
+    <section class="bg-white border-t border-gray-200 py-16">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-2xl font-bold mb-2 text-center">Tools &amp; Pipeline</h2>
+            <p class="text-gray-500 text-center text-sm mb-8">Full analytics stack &mdash; from raw data to boardroom-ready deliverables</p>
+            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                <div class="bg-gray-50 rounded-xl border border-gray-200 p-5">
+                    <div class="text-xs font-semibold text-indigo-600 uppercase tracking-wide mb-3">Data Pipeline</div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><span class="font-medium">SQL</span> &mdash; PostgreSQL, DuckDB, Snowflake</li>
+                        <li><span class="font-medium">dbt</span> &mdash; 8 models, 33 schema tests, dual-target (DuckDB / Snowflake)</li>
+                        <li><span class="font-medium">Airflow</span> &mdash; 5-step TaskFlow DAG (ETL &rarr; GX &rarr; dbt &rarr; test &rarr; export)</li>
+                        <li><span class="font-medium">Great Expectations</span> &mdash; 3 validation suites, 26 expectations</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 rounded-xl border border-gray-200 p-5">
+                    <div class="text-xs font-semibold text-indigo-600 uppercase tracking-wide mb-3">BI &amp; Visualization</div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><span class="font-medium">Tableau</span> &mdash; published dashboards (Public)</li>
+                        <li><span class="font-medium">Power BI</span> &mdash; 14 DAX measures, 3 report pages (PBIP)</li>
+                        <li><span class="font-medium">Evidence.dev</span> &mdash; 6-page BI report deployed on Vercel</li>
+                        <li><span class="font-medium">LookML</span> &mdash; 3 views, 3 explores, 30+ dimensions</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 rounded-xl border border-gray-200 p-5">
+                    <div class="text-xs font-semibold text-indigo-600 uppercase tracking-wide mb-3">Analysis &amp; Python</div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><span class="font-medium">Python</span> &mdash; pandas, NumPy, scikit-learn, matplotlib, seaborn</li>
+                        <li><span class="font-medium">Streamlit</span> &mdash; 25-page interactive dashboard</li>
+                        <li><span class="font-medium">A/B Testing</span> &mdash; power analysis, z-test, Bonferroni, Bayesian</li>
+                        <li><span class="font-medium">ML</span> &mdash; Random Forest, K-Means clustering, SHAP</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 rounded-xl border border-gray-200 p-5">
+                    <div class="text-xs font-semibold text-indigo-600 uppercase tracking-wide mb-3">Reporting &amp; Delivery</div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li><span class="font-medium">Excel</span> &mdash; Pivot Tables, What-If, embedded charts, data validation</li>
+                        <li><span class="font-medium">Google Sheets</span> &mdash; collaborative reporting</li>
+                        <li><span class="font-medium">Business Memos</span> &mdash; findings framed as decisions with dollar amounts</li>
+                        <li><span class="font-medium">SQL Case Studies</span> &mdash; 11 standalone DuckDB query sets</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Primary Project -->
     <section class="bg-white border-t border-b border-gray-200 py-16">
         <div class="max-w-4xl mx-auto px-4">
@@ -101,27 +157,31 @@
                         <p class="font-medium mb-2">Deliverables</p>
                         <ul class="space-y-1">
                             <li>25-page interactive Streamlit dashboard</li>
-                            <li>8-tab Excel workbook</li>
+                            <li>8-tab Excel workbook (pivot tables, What-If, charts)</li>
                             <li>Power BI report with 14 DAX measures</li>
+                            <li>Evidence.dev 6-page BI report (deployed on Vercel)</li>
                             <li>11 standalone SQL case studies</li>
-                            <li>Written business memos with recommendations</li>
+                            <li>Written business memos with dollar-denominated recommendations</li>
                         </ul>
                     </div>
                     <div>
                         <p class="font-medium mb-2">Tools</p>
                         <ul class="space-y-1">
-                            <li>SQL (PostgreSQL, DuckDB)</li>
+                            <li>SQL (PostgreSQL, DuckDB, Snowflake)</li>
+                            <li>dbt (8 models, 33 tests) &middot; Airflow (5-step DAG)</li>
+                            <li>Great Expectations (3 suites, 26 expectations)</li>
                             <li>Python (pandas, NumPy, scikit-learn)</li>
                             <li>Excel (Pivot Tables, VLOOKUP, What-If)</li>
-                            <li>Power BI (DAX)</li>
-                            <li>Tableau</li>
+                            <li>Power BI (DAX) &middot; Tableau &middot; Evidence.dev &middot; LookML</li>
                         </ul>
                     </div>
                 </div>
-                <div class="flex gap-4">
+                <div class="flex flex-wrap gap-4">
                     <a href="https://finance-analytics-portfolio.streamlit.app" class="text-green-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">Live Dashboard &rarr;</a>
                     <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-indigo-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
                     <a href="https://public.tableau.com/app/profile/cayman.roden/viz/MortgageCreditRiskCFPBHMDAAnalysis/Dashboard1" class="text-purple-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">Tableau &rarr;</a>
+                    <a href="https://evidence-report.vercel.app" class="text-emerald-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">Evidence.dev Report &rarr;</a>
+                    <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio/tree/main/powerbi" class="text-gray-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">Power BI DAX &rarr;</a>
                 </div>
             </div>
 
