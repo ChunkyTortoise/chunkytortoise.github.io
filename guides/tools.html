@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tools Guide | Cayman Roden</title>
+    <meta name="description" content="A practical guide to the MCP servers, CLI tools, and developer utilities built by Cayman Roden. Covers MCP Toolkit (6 servers, 32 tools), MCP Server Toolkit (9 servers, PyPI), AgentForge CLI, and SaaS Starter Kit.">
+    <meta property="og:title" content="Tools Guide | Cayman Roden">
+    <meta property="og:description" content="Practical guide to MCP servers, CLI tools, and developer utilities. 15 servers, 32+ tools, all open-source with tests and demos.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://chunkytortoise.github.io/guides/tools.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Tools Guide | Cayman Roden">
+    <meta name="twitter:description" content="Practical guide to MCP servers, CLI tools, and developer utilities.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css">
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QNBBCMHX7Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QNBBCMHX7Q');
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="../index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
+            <button id="menu-toggle" class="md:hidden p-2 text-gray-600 hover:text-indigo-600" aria-label="Toggle menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <div class="hidden md:flex gap-4 text-sm">
+                <a href="../projects.html" class="hover:text-indigo-600">Projects</a>
+                <a href="../store.html" class="hover:text-indigo-600">Store</a>
+                <a href="../services.html" class="hover:text-indigo-600">Services</a>
+                <a href="../verticals/" class="hover:text-indigo-600">Industries</a>
+                <a href="../certifications.html" class="hover:text-indigo-600">Certifications</a>
+                <a href="../case-studies.html" class="hover:text-indigo-600">Case Studies</a>
+                <a href="../benchmarks.html" class="hover:text-indigo-600">Benchmarks</a>
+                <a href="../blog.html" class="hover:text-indigo-600">Blog</a>
+                <a href="../about.html" class="hover:text-indigo-600">About</a>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-2 text-sm">
+            <a href="../projects.html" class="block py-1 hover:text-indigo-600">Projects</a>
+            <a href="../store.html" class="block py-1 hover:text-indigo-600">Store</a>
+            <a href="../services.html" class="block py-1 hover:text-indigo-600">Services</a>
+            <a href="../verticals/" class="block py-1 hover:text-indigo-600">Industries</a>
+            <a href="../certifications.html" class="block py-1 hover:text-indigo-600">Certifications</a>
+            <a href="../case-studies.html" class="block py-1 hover:text-indigo-600">Case Studies</a>
+            <a href="../benchmarks.html" class="block py-1 hover:text-indigo-600">Benchmarks</a>
+            <a href="../blog.html" class="block py-1 hover:text-indigo-600">Blog</a>
+            <a href="../about.html" class="block py-1 hover:text-indigo-600">About</a>
+        </div>
+    </nav>
+    <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+    </script>
+
+    <article class="max-w-4xl mx-auto px-4 py-12">
+        <a href="../projects.html" class="text-sm text-indigo-600 hover:underline mb-6 inline-block">&larr; Back to Projects</a>
+
+        <div class="bg-white rounded-xl border p-8">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Tools</span>
+                <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">MCP</span>
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Open Source</span>
+            </div>
+            <h1 class="text-3xl font-bold mb-6">Tools Guide: MCP Servers, CLIs, and Developer Utilities</h1>
+
+            <div class="prose prose-gray max-w-none text-gray-700 space-y-4">
+                <p>This guide covers the developer tools I've built and maintain &mdash; MCP servers for Claude Desktop, CLI utilities, and boilerplate kits. Everything is open-source with tests, CI, and working demos.</p>
+
+                <!-- Table of Contents -->
+                <div class="bg-gray-50 rounded-lg p-5 my-6">
+                    <h3 class="font-bold text-sm uppercase tracking-wide text-gray-500 mb-3">In This Guide</h3>
+                    <ol class="list-decimal pl-5 space-y-1 text-sm">
+                        <li><a href="#what-is-mcp" class="text-indigo-600 hover:underline">What Is MCP?</a></li>
+                        <li><a href="#mcp-toolkit" class="text-indigo-600 hover:underline">MCP Toolkit &mdash; 6 Servers, 32 Tools</a></li>
+                        <li><a href="#mcp-server-toolkit" class="text-indigo-600 hover:underline">MCP Server Toolkit &mdash; 9 Servers, PyPI Published</a></li>
+                        <li><a href="#agentforge" class="text-indigo-600 hover:underline">AgentForge &mdash; Unified LLM Interface + CLI</a></li>
+                        <li><a href="#saas-starter-kit" class="text-indigo-600 hover:underline">SaaS Starter Kit &mdash; Next.js 15 Boilerplate</a></li>
+                        <li><a href="#zoxide" class="text-indigo-600 hover:underline">zoxide &mdash; Smarter Directory Navigation</a></li>
+                        <li><a href="#getting-started" class="text-indigo-600 hover:underline">Getting Started</a></li>
+                    </ol>
+                </div>
+
+                <!-- What Is MCP -->
+                <h2 id="what-is-mcp" class="text-2xl font-bold mt-10 mb-4">What Is MCP?</h2>
+
+                <p>The <strong>Model Context Protocol (MCP)</strong> is an open standard that lets AI assistants like Claude connect to external tools and data sources. Instead of copy-pasting data into chat, MCP servers expose structured tools that Claude can call directly &mdash; query a database, organize files, search a knowledge base, or check system metrics.</p>
+
+                <p>Each MCP server is a lightweight process that registers its tools with the AI client. Claude Desktop, VS Code, and other MCP-compatible clients discover available servers and present their tools as callable functions during conversations.</p>
+
+                <!-- MCP Toolkit -->
+                <h2 id="mcp-toolkit" class="text-2xl font-bold mt-10 mb-4">MCP Toolkit</h2>
+
+                <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded font-medium">233 Tests</span>
+                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2.5 py-1 rounded font-medium">6 Servers</span>
+                    <span class="bg-purple-100 text-purple-700 text-xs px-2.5 py-1 rounded font-medium">32 Tools</span>
+                </div>
+
+                <p>Six production-ready MCP servers built on FastMCP v2, plus an auto-discovery CLI and a Streamlit playground for testing tools interactively.</p>
+
+                <div class="grid md:grid-cols-2 gap-4 my-6">
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h4 class="font-bold text-sm mb-2">SQLite CRUD Server</h4>
+                        <p class="text-sm text-gray-600">Full create, read, update, delete operations on SQLite databases. Schema inspection, query execution, and table management through MCP tools.</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h4 class="font-bold text-sm mb-2">File Organizer Server</h4>
+                        <p class="text-sm text-gray-600">Automated file sorting, renaming, and directory organization. Rule-based and pattern-matching file management.</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h4 class="font-bold text-sm mb-2">TF-IDF Knowledge Base Server</h4>
+                        <p class="text-sm text-gray-600">Document indexing and semantic search using TF-IDF with scikit-learn. Add documents, search by query, and retrieve ranked results.</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h4 class="font-bold text-sm mb-2">System Monitor Server</h4>
+                        <p class="text-sm text-gray-600">CPU, memory, disk, and process monitoring. Real-time system health checks accessible through Claude Desktop.</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h4 class="font-bold text-sm mb-2">Git Analytics Server</h4>
+                        <p class="text-sm text-gray-600">Repository statistics, commit history analysis, contributor metrics, and branch comparisons using GitPython.</p>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h4 class="font-bold text-sm mb-2">Task Tracker Server</h4>
+                        <p class="text-sm text-gray-600">Task creation, status tracking, priority management, and project organization. Persistent storage with SQLite backend.</p>
+                    </div>
+                </div>
+
+                <p>The toolkit also includes an <strong>Analytics and Cost Tracking</strong> server that logs tool usage, tracks token costs, and generates usage reports across all servers.</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        # Install and run<br>
+                        git clone https://github.com/ChunkyTortoise/mcp-toolkit.git<br>
+                        cd mcp-toolkit<br>
+                        pip install -e .<br><br>
+                        # Auto-discover and list all servers<br>
+                        mcp-toolkit discover<br><br>
+                        # Launch the Streamlit playground<br>
+                        streamlit run playground.py
+                    </p>
+                </div>
+
+                <div class="flex gap-4 text-sm my-4">
+                    <a href="https://github.com/ChunkyTortoise/mcp-toolkit" class="text-indigo-600 hover:underline font-medium" target="_blank">GitHub</a>
+                    <a href="https://ct-mcp-toolkit.streamlit.app" class="text-green-600 hover:underline font-medium" target="_blank">Live Demo</a>
+                    <a href="https://github.com/ChunkyTortoise/mcp-toolkit/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline font-medium" target="_blank">Benchmarks</a>
+                    <a href="https://github.com/ChunkyTortoise/mcp-toolkit/tree/main/docs/adr" class="text-purple-600 hover:underline font-medium" target="_blank">ADRs</a>
+                </div>
+
+                <!-- MCP Server Toolkit -->
+                <h2 id="mcp-server-toolkit" class="text-2xl font-bold mt-10 mb-4">MCP Server Toolkit</h2>
+
+                <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded font-medium">412 Tests</span>
+                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2.5 py-1 rounded font-medium">9 Servers</span>
+                    <span class="bg-orange-100 text-orange-700 text-xs px-2.5 py-1 rounded font-medium">PyPI: mcp-server-toolkit 0.2.0</span>
+                </div>
+
+                <p>Nine MCP servers focused on connecting AI workflows to external business tools. Published on PyPI as <code class="bg-gray-100 px-1.5 py-0.5 rounded text-sm">mcp-server-toolkit==0.2.0</code>. This toolkit was built for the <a href="../case-studies.html" class="text-indigo-600 hover:underline">YAML-Driven AI Workflow Engine</a> case study.</p>
+
+                <p>Servers connect to calendar, email, Slack, GitHub, and custom business tools. YAML-based pipeline configuration allows non-technical users to define workflows without writing Python. Server-Sent Events (SSE) streaming provides real-time updates during execution.</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        # Install from PyPI<br>
+                        pip install mcp-server-toolkit==0.2.0<br><br>
+                        # Or install from source<br>
+                        git clone https://github.com/ChunkyTortoise/mcp-server-toolkit.git<br>
+                        cd mcp-server-toolkit<br>
+                        pip install -e .
+                    </p>
+                </div>
+
+                <div class="flex gap-4 text-sm my-4">
+                    <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="text-indigo-600 hover:underline font-medium" target="_blank">GitHub</a>
+                </div>
+
+                <!-- AgentForge -->
+                <h2 id="agentforge" class="text-2xl font-bold mt-10 mb-4">AgentForge</h2>
+
+                <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded font-medium">550 Tests</span>
+                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2.5 py-1 rounded font-medium">Pip-Installable</span>
+                    <span class="bg-purple-100 text-purple-700 text-xs px-2.5 py-1 rounded font-medium">Multi-Agent Mesh</span>
+                </div>
+
+                <p>Async-only LLM orchestrator with a unified interface across Claude, Gemini, OpenAI, and Perplexity. Includes retry/backoff, per-request cost tracking, and structured JSON output.</p>
+
+                <ul class="list-disc pl-6 space-y-1 text-sm">
+                    <li><strong>ReAct Agent Loop</strong> &mdash; Reason-Act-Observe pattern for tool-using agents</li>
+                    <li><strong>Multi-Agent Mesh</strong> &mdash; Agents coordinate through shared memory and message passing</li>
+                    <li><strong>Tool Registry</strong> &mdash; Register tools once, auto-convert to each provider's format</li>
+                    <li><strong>Prompt Template Engine</strong> &mdash; Reusable prompt templates with variable injection</li>
+                    <li><strong>Evaluation Framework</strong> &mdash; Benchmark models against ground-truth datasets</li>
+                    <li><strong>Token-Bucket Rate Limiting</strong> &mdash; Per-provider rate limiting to stay within API quotas</li>
+                    <li><strong>Model Registry</strong> &mdash; Centralized config for model capabilities, pricing, and limits</li>
+                </ul>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        # Install<br>
+                        pip install agentforge<br><br>
+                        # Quick start<br>
+                        from agentforge import AgentForge<br><br>
+                        forge = AgentForge()<br>
+                        response = await forge.chat("claude", "Summarize this document...")<br>
+                        print(response.text, response.cost)
+                    </p>
+                </div>
+
+                <div class="flex gap-4 text-sm my-4">
+                    <a href="https://ct-agentforge.streamlit.app" class="text-green-600 hover:underline font-medium" target="_blank">Live Demo</a>
+                    <a href="https://github.com/ChunkyTortoise/ai-orchestrator" class="text-indigo-600 hover:underline font-medium" target="_blank">GitHub</a>
+                    <a href="https://github.com/ChunkyTortoise/ai-orchestrator/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline font-medium" target="_blank">Benchmarks</a>
+                    <a href="https://github.com/ChunkyTortoise/ai-orchestrator/tree/main/docs/adr" class="text-purple-600 hover:underline font-medium" target="_blank">ADRs</a>
+                </div>
+
+                <!-- SaaS Starter Kit -->
+                <h2 id="saas-starter-kit" class="text-2xl font-bold mt-10 mb-4">SaaS Starter Kit</h2>
+
+                <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="bg-green-100 text-green-700 text-xs px-2.5 py-1 rounded font-medium">61 Tests</span>
+                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2.5 py-1 rounded font-medium">Vercel Deployed</span>
+                </div>
+
+                <p>Production-ready Next.js 15 SaaS boilerplate with Supabase authentication, Stripe billing, TypeScript, and Tailwind CSS. Includes lazy Stripe initialization for edge-compatible builds.</p>
+
+                <ul class="list-disc pl-6 space-y-1 text-sm">
+                    <li><strong>Auth</strong> &mdash; Supabase email/password and OAuth with session management</li>
+                    <li><strong>Billing</strong> &mdash; Stripe checkout, subscription management, webhook handling</li>
+                    <li><strong>Edge-Compatible</strong> &mdash; Lazy initialization pattern avoids Stripe SDK issues on edge runtimes</li>
+                    <li><strong>Type-Safe</strong> &mdash; Full TypeScript with strict mode</li>
+                </ul>
+
+                <div class="flex gap-4 text-sm my-4">
+                    <a href="https://saas-starter-kit-caymanroden-6685.vercel.app" class="text-green-600 hover:underline font-medium" target="_blank">Live Demo</a>
+                    <a href="https://github.com/ChunkyTortoise/saas-starter-kit" class="text-indigo-600 hover:underline font-medium" target="_blank">GitHub</a>
+                </div>
+
+                <!-- zoxide -->
+                <h2 id="zoxide" class="text-2xl font-bold mt-10 mb-4">zoxide</h2>
+
+                <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded font-medium">Rust</span>
+                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2.5 py-1 rounded font-medium">Shell Utility</span>
+                </div>
+
+                <p>A smarter <code class="bg-gray-100 px-1.5 py-0.5 rounded text-sm">cd</code> command that learns your habits. zoxide tracks which directories you visit most frequently and lets you jump to them with partial name matches. Type <code class="bg-gray-100 px-1.5 py-0.5 rounded text-sm">z project</code> instead of <code class="bg-gray-100 px-1.5 py-0.5 rounded text-sm">cd ~/code/clients/acme/project</code>.</p>
+
+                <ul class="list-disc pl-6 space-y-1 text-sm">
+                    <li><strong>Frecency ranking</strong> &mdash; Combines frequency and recency to rank directory matches</li>
+                    <li><strong>Fuzzy matching</strong> &mdash; <code class="bg-gray-100 px-1 py-0.5 rounded text-xs">z foo bar</code> matches any path containing both "foo" and "bar" in order</li>
+                    <li><strong>Interactive selection</strong> &mdash; <code class="bg-gray-100 px-1 py-0.5 rounded text-xs">zi</code> opens an fzf-powered picker when multiple directories match</li>
+                    <li><strong>Shell integration</strong> &mdash; Works with bash, zsh, fish, Nushell, PowerShell, and others</li>
+                    <li><strong>Drop-in replacement</strong> &mdash; Alias <code class="bg-gray-100 px-1 py-0.5 rounded text-xs">cd</code> to <code class="bg-gray-100 px-1 py-0.5 rounded text-xs">z</code> and your existing muscle memory keeps working</li>
+                </ul>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        # Install (macOS)<br>
+                        brew install zoxide<br><br>
+                        # Install (Linux)<br>
+                        curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh<br><br>
+                        # Add to ~/.bashrc or ~/.zshrc<br>
+                        eval "$(zoxide init bash)"&nbsp;&nbsp;# or zsh, fish, etc.<br><br>
+                        # Usage<br>
+                        z myproject&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# jump to best match for "myproject"<br>
+                        zi myproject&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# interactive selection with fzf<br>
+                        z foo bar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# match path containing both "foo" and "bar"
+                    </p>
+                </div>
+
+                <p>I use zoxide across every development machine. Once your shell learns your project directories, navigation becomes nearly instant &mdash; no more tabbing through deep folder hierarchies.</p>
+
+                <!-- Getting Started -->
+                <h2 id="getting-started" class="text-2xl font-bold mt-10 mb-4">Getting Started</h2>
+
+                <p>All tools are open-source and can be cloned directly from GitHub. Here's the quickest path to trying each one:</p>
+
+                <div class="overflow-x-auto my-6">
+                    <table class="min-w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
+                        <thead>
+                            <tr class="bg-gray-50 text-left text-gray-500">
+                                <th class="py-3 px-4 font-medium">Tool</th>
+                                <th class="py-3 px-4 font-medium">Quickest Start</th>
+                                <th class="py-3 px-4 font-medium">Tests</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700">
+                            <tr class="border-t">
+                                <td class="py-3 px-4 font-medium">MCP Toolkit</td>
+                                <td class="py-3 px-4"><a href="https://ct-mcp-toolkit.streamlit.app" class="text-green-600 hover:underline" target="_blank">Try the Streamlit playground</a></td>
+                                <td class="py-3 px-4">233</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="py-3 px-4 font-medium">MCP Server Toolkit</td>
+                                <td class="py-3 px-4"><code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">pip install mcp-server-toolkit</code></td>
+                                <td class="py-3 px-4">412</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="py-3 px-4 font-medium">AgentForge</td>
+                                <td class="py-3 px-4"><a href="https://ct-agentforge.streamlit.app" class="text-green-600 hover:underline" target="_blank">Try the live demo</a></td>
+                                <td class="py-3 px-4">550</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="py-3 px-4 font-medium">SaaS Starter Kit</td>
+                                <td class="py-3 px-4"><a href="https://saas-starter-kit-caymanroden-6685.vercel.app" class="text-green-600 hover:underline" target="_blank">View the Vercel deployment</a></td>
+                                <td class="py-3 px-4">61</td>
+                            </tr>
+                            <tr class="border-t">
+                                <td class="py-3 px-4 font-medium">zoxide</td>
+                                <td class="py-3 px-4"><code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">brew install zoxide</code></td>
+                                <td class="py-3 px-4">&mdash;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>For Claude Desktop integration, add an MCP server to your <code class="bg-gray-100 px-1.5 py-0.5 rounded text-sm">claude_desktop_config.json</code>:</p>
+
+                <div class="bg-gray-50 rounded-lg p-4 my-4">
+                    <p class="text-sm font-mono text-gray-600">
+                        {<br>
+                        &nbsp;&nbsp;"mcpServers": {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;"mcp-toolkit": {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"command": "python",<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"args": ["-m", "mcp_toolkit.server"]<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;}<br>
+                        &nbsp;&nbsp;}<br>
+                        }
+                    </p>
+                </div>
+
+                <!-- CTA -->
+                <div class="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl border border-indigo-200 p-6 mt-8 text-center">
+                    <h3 class="font-bold text-lg mb-2">Need Custom MCP Servers?</h3>
+                    <p class="text-gray-600 text-sm mb-4">I build custom MCP servers that connect Claude to your specific business tools and workflows.</p>
+                    <div class="flex justify-center gap-4">
+                        <a href="../services.html#mcp-specialist" class="bg-indigo-600 text-white text-sm px-5 py-2.5 rounded-lg hover:bg-indigo-700 transition font-medium">View MCP Service</a>
+                        <a href="mailto:caymanroden@gmail.com?subject=Custom%20MCP%20Server" class="bg-white text-indigo-600 text-sm px-5 py-2.5 rounded-lg hover:bg-indigo-50 transition font-medium border border-indigo-200">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
+            <span>&copy; 2026 Cayman Roden</span>
+            <div class="flex gap-5 items-center">
+                <a href="https://github.com/ChunkyTortoise" class="hover:text-white flex items-center gap-1.5" target="_blank">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/cayman-roden" class="hover:text-white flex items-center gap-1.5" target="_blank">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://www.upwork.com/freelancers/~01ee20599d13f4c8c9" class="hover:text-white flex items-center gap-1.5" target="_blank">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.561 13.158c-1.102 0-2.135-.467-3.074-1.227l.228-1.076.008-.042c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.702-2.704 2.702zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+                    Upwork
+                </a>
+                <a href="mailto:caymanroden@gmail.com" class="hover:text-white flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    Email
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
