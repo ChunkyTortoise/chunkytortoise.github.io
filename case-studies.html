@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case Studies | Cayman Roden</title>
-    <meta name="description" content="Engineering and analytics case studies: 500+ leads qualified with zero downtime, 12,000+ TDD tests across 15 repos, $600K-$900K lending risk finding on 1.2M+ CFPB records. Each backed by a public repo.">
+    <meta name="description" content="Engineering and analytics case studies: 500+ leads qualified with zero downtime, 3,500+ TDD tests across production repos, $600K-$900K lending risk finding on 1.2M+ CFPB records. Each backed by a public repo.">
     <meta property="og:title" content="Case Studies | Cayman Roden">
-    <meta property="og:description" content="Real-world AI case studies with measurable results. 89% token cost reduction, multi-agent orchestration, RAG pipelines, and more.">
+    <meta property="og:description" content="Real-world AI case studies with measurable results. Multi-agent orchestration, hybrid RAG pipelines, eval-gated delivery, and more.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chunkytortoise.github.io/case-studies.html">
     <meta name="twitter:card" content="summary">
@@ -59,55 +59,6 @@
         <h1 class="text-3xl font-bold mb-2">Case Studies</h1>
         <p class="text-gray-600 mb-10">Real engineering challenges I solved, with quantified outcomes you can verify in the code. Each case study maps to a public repo.</p>
 
-        <!-- Case Study 1: Token Cost Reduction (REAL — from EnterpriseHub) -->
-        <article class="bg-white rounded-xl border p-8 mb-8">
-            <div class="flex items-center gap-3 mb-4">
-                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
-                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">LLMOps</span>
-                <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
-            </div>
-            <h2 class="text-2xl font-bold mb-6">89% Token Cost Reduction Across a 3-Bot AI Platform</h2>
-
-            <div class="space-y-6">
-                <div>
-                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
-                    <p class="text-gray-700">A real estate AI platform with 3 specialized chatbots (lead qualification, buyer matching, seller advisory) was consuming 93,000 tokens per workflow. Each bot needed conversation context, system prompts, user data, and market intelligence &mdash; all sent on every API call. Token costs were scaling linearly with conversation volume.</p>
-                </div>
-
-                <div>
-                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
-                    <p class="text-gray-700">Built a 3-tier caching system (L1 in-memory, L2 Redis with TTL, L3 PostgreSQL fallback), context window optimization that sends only relevant turns instead of full history (2.3x efficiency), and model routing by task complexity (<code>TaskComplexity</code> enum routes ROUTINE tasks to faster/cheaper models).</p>
-                    <div class="flex gap-2 flex-wrap mt-3">
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Redis</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">PostgreSQL</span>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
-                    <div class="grid grid-cols-3 gap-4">
-                        <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">93K &rarr; 7.8K</p>
-                            <p class="text-xs text-green-600 mt-1">Tokens per workflow</p>
-                        </div>
-                        <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">87%</p>
-                            <p class="text-xs text-green-600 mt-1">Cache hit rate</p>
-                        </div>
-                        <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">&lt;200ms</p>
-                            <p class="text-xs text-green-600 mt-1">Orchestrator overhead</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="text-sm text-gray-500">
-                    <strong>Verify:</strong> <code>services/claude_orchestrator.py</code> (cache layers), <code>core/llm_client.py</code> (TaskComplexity routing). <a href="benchmarks.html" class="text-indigo-600 hover:underline">Full benchmarks &rarr;</a>
-                </div>
-            </div>
-        </article>
 
         <!-- Case Study: Jorge Real Estate AI — Production Lead Qualification -->
         <article class="bg-white rounded-xl border p-8 mb-8">
@@ -324,7 +275,7 @@
                 <a href="https://github.com/ChunkyTortoise/docextract" class="text-sm text-indigo-600 hover:underline" target="_blank">View Repo</a>
                 <a href="https://docextract-demo.streamlit.app" class="text-sm text-green-600 hover:underline" target="_blank">Live Demo</a>
             </div>
-            <h2 class="text-2xl font-bold mb-6">94.6% Extraction Accuracy on 16 Document Types with Hybrid RAG</h2>
+            <h2 class="text-2xl font-bold mb-6">95.5% F1 on a CI-Replayed Golden Baseline with Hybrid RAG</h2>
 
             <div class="space-y-6">
                 <div>
@@ -334,7 +285,7 @@
 
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
-                    <p class="text-gray-700">Built a 12-step async document extraction pipeline: upload &rarr; format detection &rarr; OCR/text extraction &rarr; document classification &rarr; type-aware chunking &rarr; pgvector embedding &rarr; hybrid retrieval (BM25 keyword + cosine similarity + Reciprocal Rank Fusion) &rarr; citation-aware LLM generation. Added production-grade reliability: AsyncCircuitBreaker model fallback (Sonnet &rarr; Haiku), OpenTelemetry + Prometheus metrics, LangSmith tracing per pipeline step, and a golden evaluation CI gate that blocks deploys if accuracy regresses below 94.6%.</p>
+                    <p class="text-gray-700">Built a 12-step async document extraction pipeline: upload &rarr; format detection &rarr; OCR/text extraction &rarr; document classification &rarr; type-aware chunking &rarr; pgvector embedding &rarr; hybrid retrieval (BM25 keyword + cosine similarity + Reciprocal Rank Fusion) &rarr; citation-aware LLM generation. Added production-grade reliability: AsyncCircuitBreaker model fallback (Sonnet &rarr; Haiku), OpenTelemetry + Prometheus metrics, LangSmith tracing per pipeline step, and a golden evaluation CI gate that blocks deploys if F1 regresses below the 95.5% baseline.</p>
                     <div class="flex gap-2 flex-wrap mt-3">
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">pgvector</span>
@@ -350,16 +301,16 @@
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
                     <div class="grid grid-cols-3 gap-4">
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">94.6%</p>
-                            <p class="text-xs text-green-600 mt-1">Extraction accuracy (16 doc types)</p>
+                            <p class="text-2xl font-bold text-green-700">95.5%</p>
+                            <p class="text-xs text-green-600 mt-1">F1 on a 28-case CI-replayed golden baseline</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">1,183</p>
-                            <p class="text-xs text-green-600 mt-1">Automated tests, 90%+ coverage</p>
+                            <p class="text-2xl font-bold text-green-700">1,280</p>
+                            <p class="text-xs text-green-600 mt-1">Automated tests (1,273 passing), 81% coverage</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">12%</p>
-                            <p class="text-xs text-green-600 mt-1">Retrieval gain vs. pure vector</p>
+                            <p class="text-2xl font-bold text-green-700">72</p>
+                            <p class="text-xs text-green-600 mt-1">Eval corpus cases (51 golden + 21 adversarial)</p>
                         </div>
                     </div>
                 </div>
@@ -432,13 +383,13 @@
             </div>
         </article>
 
-        <!-- Case Study: QA Automation — 12,000+ Tests, TDD-First -->
+        <!-- Case Study: QA Automation - Test Architecture, TDD-First -->
         <article class="bg-white rounded-xl border p-8 mb-8">
             <div class="flex items-center gap-3 mb-4">
                 <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
                 <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">QA Automation</span>
             </div>
-            <h2 class="text-2xl font-bold mb-6">12,000+ Tests Across 15 Repos: Test Architecture Designed From Day One</h2>
+            <h2 class="text-2xl font-bold mb-6">Test Architecture Designed From Day One Across Production Repos</h2>
 
             <div class="space-y-6">
                 <div>
@@ -448,7 +399,7 @@
 
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Approach</h3>
-                    <p class="text-gray-700">TDD-first across all 15 repos: failing test written before any implementation code. Framework selection per project type: pytest-asyncio for async event loops (Jorge bots, EnterpriseHub), Playwright for E2E, Vitest for frontend components, dbt schema tests for data model integrity. CI gates on every repo block merge on SAST failure (bandit), CVE detection (pip-audit), type errors (mypy strict), and coverage regression. For LLM outputs: 24-fixture golden evaluation set with 8 adversarial cases (contradictory inputs, truncated documents, multi-language, high-noise OCR) &mdash; CI blocks any accuracy drop below 94.6% baseline before merge.</p>
+                    <p class="text-gray-700">TDD-first across all 15 repos: failing test written before any implementation code. Framework selection per project type: pytest-asyncio for async event loops (Jorge bots, EnterpriseHub), Playwright for E2E, Vitest for frontend components, dbt schema tests for data model integrity. CI gates on every repo block merge on SAST failure (bandit), CVE detection (pip-audit), type errors (mypy strict), and coverage regression. For LLM outputs: a 72-case golden evaluation corpus (51 golden + 21 adversarial: contradictory inputs, truncated documents, multi-language, high-noise OCR), CI blocks any F1 drop below the 95.5% baseline before merge.</p>
                     <div class="flex gap-2 flex-wrap mt-3">
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">pytest</span>
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">pytest-asyncio</span>
@@ -464,22 +415,22 @@
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
                     <div class="grid grid-cols-3 gap-4">
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">12,000+</p>
-                            <p class="text-xs text-green-600 mt-1">Tests across 15 repos</p>
+                            <p class="text-2xl font-bold text-green-700">3,500+</p>
+                            <p class="text-xs text-green-600 mt-1">Tests across production repos</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">94.6%</p>
-                            <p class="text-xs text-green-600 mt-1">LLM eval accuracy (24-fixture golden set)</p>
+                            <p class="text-2xl font-bold text-green-700">95.5%</p>
+                            <p class="text-xs text-green-600 mt-1">LLM eval F1 (28-case CI-replayed baseline)</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">0</p>
-                            <p class="text-xs text-green-600 mt-1">Production regressions (Jan&ndash;Mar 2026)</p>
+                            <p class="text-2xl font-bold text-green-700">Zero</p>
+                            <p class="text-xs text-green-600 mt-1">Downtime on the jorge production run (Jan-Mar 2026)</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="text-sm text-gray-500">
-                    <strong>Verify:</strong> <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank">EnterpriseHub</a> (7,678 tests, CI gate), <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 hover:underline" target="_blank">DocExtract</a> (1,183 tests, RAGAS eval), <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-indigo-600 hover:underline" target="_blank">Finance Analytics</a> (1,611 tests, 4 test layers)
+                    <strong>Verify:</strong> <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 hover:underline" target="_blank">DocExtract</a> (1,280 tests, eval gate), mcp-server-toolkit (600 tests, 82.87% cov), jorge (1,700+ tests, zero downtime)
                 </div>
             </div>
         </article>
@@ -501,7 +452,7 @@
 
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
-                    <p class="text-gray-700">Built compliance controls directly into the extraction pipeline. PII detection runs on every document before processing, flagging SSNs, phone numbers, email addresses, and health record numbers. All processing events are written to an audit trail with timestamps, user IDs, and data lineage. The system includes a <code>COMPLIANCE.md</code> covering HIPAA requirements, SOC 2 considerations, data retention policies, and encryption at rest and in transit. An automated eval gate blocks deployments that regress below 94.6% accuracy on the 28-fixture test suite, including 4 prompt injection adversarial tests.</p>
+                    <p class="text-gray-700">Built compliance controls directly into the extraction pipeline. PII detection runs on every document before processing, flagging SSNs, phone numbers, email addresses, and health record numbers. All processing events are written to an audit trail with timestamps, user IDs, and data lineage. The system includes a <code>COMPLIANCE.md</code> covering HIPAA requirements, SOC 2 considerations, data retention policies, and encryption at rest and in transit. An automated eval gate blocks deployments that regress below the 95.5% F1 golden baseline (28-case CI-replayed), with adversarial cases including prompt-injection tests.</p>
                     <div class="flex gap-2 flex-wrap mt-3">
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
@@ -522,12 +473,12 @@
                             <p class="text-xs text-green-600 mt-1">PII types detected (SSN, phone, email, health IDs)</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">94.6%</p>
-                            <p class="text-xs text-green-600 mt-1">Extraction accuracy (28-fixture eval)</p>
+                            <p class="text-2xl font-bold text-green-700">95.5%</p>
+                            <p class="text-xs text-green-600 mt-1">F1 on 28-case CI-replayed golden baseline</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">12</p>
-                            <p class="text-xs text-green-600 mt-1">Adversarial test cases (incl. 4 prompt injection)</p>
+                            <p class="text-2xl font-bold text-green-700">21</p>
+                            <p class="text-xs text-green-600 mt-1">Adversarial eval cases (incl. prompt injection)</p>
                         </div>
                     </div>
                 </div>
@@ -610,7 +561,7 @@
 
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
-                    <p class="text-gray-700">Built two complementary systems. The AI Workflow API uses YAML configuration files to define multi-step pipelines: each step specifies an action type (LLM call, webhook, data transform, notification), its inputs, and its success conditions. Non-technical users can add new workflow steps without touching code. Server-Sent Events (SSE) stream progress updates to the client in real time so long-running workflows don't appear to hang. The MCP Server Toolkit extends this to Claude Desktop: 9 custom MCP servers connect AI to calendar, email, Slack, GitHub, and custom business tools. Published on PyPI as <code>mcp-server-toolkit==0.2.0</code>.</p>
+                    <p class="text-gray-700">Built two complementary systems. The AI Workflow API uses YAML configuration files to define multi-step pipelines: each step specifies an action type (LLM call, webhook, data transform, notification), its inputs, and its success conditions. Non-technical users can add new workflow steps without touching code. Server-Sent Events (SSE) stream progress updates to the client in real time so long-running workflows don't appear to hang. The MCP Server Toolkit extends this to Claude Desktop: 9 custom MCP servers connect AI to calendar, email, Slack, GitHub, and custom business tools. Published on PyPI as <code>mcp-server-toolkit==0.3.0</code>.</p>
                     <div class="flex gap-2 flex-wrap mt-3">
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">ARQ Workers</span>
@@ -627,7 +578,7 @@
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Result</h3>
                     <div class="grid grid-cols-3 gap-4">
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">148 + 412</p>
+                            <p class="text-2xl font-bold text-green-700">148 + 600</p>
                             <p class="text-xs text-green-600 mt-1">Tests (ai-workflow-api + mcp-server-toolkit)</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
@@ -636,7 +587,7 @@
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
                             <p class="text-2xl font-bold text-green-700">1</p>
-                            <p class="text-xs text-green-600 mt-1">PyPI package (mcp-server-toolkit 0.2.0)</p>
+                            <p class="text-xs text-green-600 mt-1">PyPI package (mcp-server-toolkit 0.3.0)</p>
                         </div>
                     </div>
                 </div>

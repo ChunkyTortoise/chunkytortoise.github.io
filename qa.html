@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cayman Roden | QA Automation Engineer</title>
-    <meta name="description" content="QA Automation Engineer with 9,900+ tests across 15 production repositories, all TDD-first. pytest, Playwright, CI/CD with GitHub Actions, LLM evaluation pipelines. Zero test failures in production across a 3-month run.">
+    <meta name="description" content="QA Automation Engineer with 3,500+ automated tests across production repositories, all TDD-first. pytest, Playwright, CI/CD with GitHub Actions, LLM evaluation pipelines. Zero downtime on the jorge production run (Jan-Mar 2026).">
     <meta property="og:title" content="Cayman Roden | QA Automation Engineer">
-    <meta property="og:description" content="9,900+ tests across 15 production repos. pytest, Playwright, Pact contract testing, Locust load testing, LLM evaluation (RAGAS). Zero production failures.">
+    <meta property="og:description" content="3,500+ automated tests across production repos. pytest, Playwright, Pact contract testing, Locust load testing, LLM evaluation (RAGAS). Zero downtime on the jorge production run.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chunkytortoise.github.io/qa.html">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Cayman Roden | QA Automation Engineer">
-    <meta name="twitter:description" content="9,900+ tests, Pact, Locust, LLM eval (RAGAS). Zero production failures across 15 repos.">
+    <meta name="twitter:description" content="3,500+ automated tests, Pact, Locust, LLM eval (RAGAS). Zero downtime on the jorge production run.">
+    <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -56,8 +57,8 @@
     <section class="bg-gradient-to-br from-indigo-600 to-purple-700 text-white py-20">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <p class="text-indigo-200 text-sm font-medium mb-3 uppercase tracking-widest">QA Automation Engineer</p>
-            <h1 class="text-4xl font-bold mb-4">9,900+ Tests. All TDD-First.</h1>
-            <p class="text-xl text-indigo-100 mb-8">15 production repositories built test-first from day one. pytest, CI/CD with GitHub Actions, LLM evaluation frameworks with RAGAS scoring and adversarial fixtures. Zero test failures across a 3-month production run.</p>
+            <h1 class="text-4xl font-bold mb-4">3,500+ Tests. All TDD-First.</h1>
+            <p class="text-xl text-indigo-100 mb-8">15 production repositories built test-first from day one. pytest, CI/CD with GitHub Actions, LLM evaluation frameworks with RAGAS scoring and adversarial fixtures. Zero downtime on the jorge production run (Jan-Mar 2026).</p>
             <div class="flex flex-wrap justify-center gap-4 mb-8">
                 <a href="mailto:caymanroden@gmail.com" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition shadow-lg">
                     Email Me Directly
@@ -70,7 +71,7 @@
                 </a>
             </div>
             <div class="flex flex-wrap justify-center gap-3 text-xs text-indigo-100">
-                <span class="bg-white/20 rounded-full px-3 py-1">9,900+ Tests</span>
+                <span class="bg-white/20 rounded-full px-3 py-1">3,500+ Tests</span>
                 <span class="bg-white/20 rounded-full px-3 py-1">15 Production Repos</span>
                 <span class="bg-white/20 rounded-full px-3 py-1">87-92% Coverage</span>
                 <span class="bg-white/20 rounded-full px-3 py-1">TDD-First</span>
@@ -132,16 +133,16 @@
             <div class="flex justify-between items-start mb-3">
                 <div>
                     <div class="text-sm text-indigo-600 font-medium mb-1">LLM Evaluation &middot; Niche Differentiator</div>
-                    <h3 class="text-lg font-bold">DocExtract AI &mdash; 1,183 Tests, 87%+ Coverage</h3>
+                    <h3 class="text-lg font-bold">DocExtract AI &mdash; 1,280 Tests, 81% Coverage</h3>
                 </div>
-                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">94.6% accuracy</span>
+                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">95.5% F1</span>
             </div>
             <p class="text-gray-500 text-xs mb-3">pytest &middot; RAGAS &middot; LLM-as-judge &middot; Brier score calibration</p>
             <ul class="space-y-2 text-sm text-gray-700">
-                <li>Golden evaluation set: 24 fixtures including 8 adversarial cases (contradictory documents, truncated inputs, multi-language, high-noise OCR)</li>
+                <li>Eval corpus: 72 cases (51 golden + 21 adversarial, incl. prompt injection) - 28-case CI-replayed golden baseline drives the merge gate</li>
                 <li>RAGAS pipeline: context recall (0.35), faithfulness (0.40), answer relevancy (0.25) scored by LLM judge with rubric and evidence extraction</li>
-                <li>CI regression gate: any accuracy drop below 94.6% baseline blocks merge before code review</li>
-                <li>Brier score calibration: tracks predicted vs actual extraction success across 24 fixture types</li>
+                <li>CI regression gate: any F1 drop below 95.5% baseline blocks merge before code review</li>
+                <li>Brier score calibration: tracks predicted vs actual extraction success across fixture types</li>
             </ul>
             <div class="flex gap-4 mt-4">
                 <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
@@ -165,7 +166,7 @@
                 <li>Integration: Redis rate limiting (60 req/min enforcement), atomic session locks, conversation state persistence and recovery</li>
                 <li><span class="font-medium text-indigo-700">Consumer-driven contract tests (Pact v3):</span> 5 contracts on the GoHighLevel API v2 boundary &mdash; contact lookup, SMS dispatch, opportunity creation, tag management, 404 error handling. Pact JSON generated and versioned.</li>
                 <li><span class="font-medium text-indigo-700">Load tested against production:</span> 20 concurrent users (Locust) &mdash; p50=130ms, p95=250ms, p99=400ms at 5.54 req/s. Rate limiting and auth enforcement verified under concurrent load. Zero 5xx errors.</li>
-                <li>Zero test failures across the full 3-month production run (January &ndash; March 2026)</li>
+                <li>Zero downtime on the jorge production run (January &ndash; March 2026)</li>
             </ul>
             <span class="text-gray-500 text-sm italic mt-4 block">Private client project &mdash; code available on request</span>
         </div>

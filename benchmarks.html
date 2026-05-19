@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Benchmarks | Cayman Roden</title>
-    <meta name="description" content="Performance benchmarks from production AI systems: LLM token cost optimization (89% reduction), cache hit rates, latency percentiles, and 12,000+ tests across 15 repos.">
+    <meta name="description" content="Performance benchmarks from production AI systems: LLM token cost optimization via multi-tier caching, cache hit rates, latency percentiles, and 3,500+ automated tests across production repos.">
     <meta property="og:title" content="Benchmarks | Cayman Roden">
-    <meta property="og:description" content="Production AI benchmarks: 89% token cost reduction, P50/P95/P99 latency, cache hit rates, and test coverage across 7 repos.">
+    <meta property="og:description" content="Production AI benchmarks: multi-tier caching for token efficiency, P50/P95/P99 latency, cache hit rates, and test coverage across 7 repos.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chunkytortoise.github.io/benchmarks.html">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Benchmarks | Cayman Roden">
-    <meta name="twitter:description" content="Production AI benchmarks: 89% token cost reduction, latency percentiles, and 12,000+ tests.">
+    <meta name="twitter:description" content="Production AI benchmarks: multi-tier caching for token efficiency, latency percentiles, and 3,500+ automated tests.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -64,7 +64,7 @@
             <h2 class="text-2xl font-bold mb-2">Token Cost Optimization</h2>
             <p class="text-gray-500 text-sm mb-6">Source: <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank">EnterpriseHub</a> &mdash; <code>services/claude_orchestrator.py</code>, <code>core/llm_client.py</code></p>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
                 <div class="bg-indigo-50 rounded-lg p-4 text-center">
                     <p class="text-2xl font-bold text-indigo-700">93K</p>
                     <p class="text-xs text-indigo-600 mt-1">Tokens before</p>
@@ -72,10 +72,6 @@
                 <div class="bg-green-50 rounded-lg p-4 text-center">
                     <p class="text-2xl font-bold text-green-700">7.8K</p>
                     <p class="text-xs text-green-600 mt-1">Tokens after</p>
-                </div>
-                <div class="bg-green-50 rounded-lg p-4 text-center">
-                    <p class="text-2xl font-bold text-green-700">89%</p>
-                    <p class="text-xs text-green-600 mt-1">Reduction</p>
                 </div>
                 <div class="bg-green-50 rounded-lg p-4 text-center">
                     <p class="text-2xl font-bold text-green-700">2.3x</p>
