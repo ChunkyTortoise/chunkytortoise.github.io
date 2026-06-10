@@ -1,6 +1,40 @@
 /* Custom styles beyond Tailwind */
+
+/*
+ * Design tokens - single source of truth for the palette, consumed by
+ * tw-config.js via rgb(var(--name) / <alpha-value>). Stored as space-separated
+ * RGB channels so Tailwind opacity modifiers and gradient stops keep working.
+ * clay = terracotta accent (anti "AI purple"); stone = warm neutral ramp.
+ */
+:root {
+    /* clay / terracotta accent */
+    --clay-50: 250 243 240;
+    --clay-100: 245 228 220;
+    --clay-200: 234 207 193;
+    --clay-300: 221 179 160;
+    --clay-400: 210 147 122;
+    --clay-500: 208 138 110;
+    --clay-600: 204 120 92;   /* #CC785C primary */
+    --clay-700: 168 94 69;
+    --clay-800: 134 74 55;
+    --clay-900: 107 60 45;
+
+    /* warm stone neutrals (no pure #fff / #000) */
+    --stone-50: 250 250 249;
+    --stone-100: 245 245 244;
+    --stone-200: 231 229 228;
+    --stone-300: 214 211 209;
+    --stone-400: 168 162 158;
+    --stone-500: 120 113 108;
+    --stone-600: 87 83 78;
+    --stone-700: 68 64 60;
+    --stone-800: 41 37 36;
+    --stone-900: 28 25 23;    /* #1C1917 warm near-black */
+    --stone-950: 12 10 9;
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Hanken Grotesk', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 /* Store page styles */
@@ -23,49 +57,51 @@ body {
 }
 
 .product-card {
-    background: white;
-    border-radius: 0.75rem;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    background: #fcfbfa;
+    border-radius: 0.625rem;
+    border: 1px solid rgb(231 229 228);
+    box-shadow: 0 1px 3px rgba(28, 25, 23, 0.05);
     display: flex;
     flex-direction: column;
     transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .product-card:hover {
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 25px rgba(28, 25, 23, 0.1);
     transform: translateY(-2px);
 }
 
 .price .old-price {
     text-decoration: line-through;
-    color: #9ca3af;
+    color: #a8a29e;
     font-size: 1.125rem;
     margin-right: 0.5rem;
 }
 
+/* Primary action: clay fill, dark ink (one accent, applied with intent) */
 .buy-btn {
     display: block;
     text-align: center;
-    background: #4f46e5;
-    color: white;
+    background: #cc785c;
+    color: #1c1917;
     padding: 0.75rem 1.5rem;
-    border-radius: 0.5rem;
+    border-radius: 0.625rem;
     font-weight: 600;
     transition: background-color 0.2s;
     text-decoration: none;
 }
 
 .buy-btn:hover {
-    background: #4338ca;
+    background: #a85e45;
+    color: #faf3f0;
 }
 
 .demo-btn {
     display: block;
     text-align: center;
-    color: #4f46e5;
+    color: #a85e45;
     padding: 0.5rem 1.5rem;
-    border-radius: 0.5rem;
+    border-radius: 0.625rem;
     font-weight: 500;
     font-size: 0.875rem;
     transition: background-color 0.2s;
@@ -74,7 +110,7 @@ body {
 }
 
 .demo-btn:hover {
-    background: #eef2ff;
+    background: #faf3f0;
 }
 
 .tier-section {
@@ -92,27 +128,27 @@ body {
 }
 
 .tier-card {
-    background: #1f2937;
-    border-radius: 0.75rem;
+    background: #1c1917;
+    border-radius: 0.625rem;
     padding: 2rem;
-    border: 1px solid #374151;
+    border: 1px solid #44403c;
 }
 
 .tier-featured {
-    border-color: #6366f1;
-    box-shadow: 0 0 30px rgba(99, 102, 241, 0.15);
+    border-color: #cc785c;
+    box-shadow: 0 0 30px rgba(204, 120, 92, 0.18);
     position: relative;
 }
 
 /* Featured products section on index */
 .featured-product-card {
-    background: white;
-    border-radius: 0.75rem;
-    border: 1px solid #e5e7eb;
+    background: #fcfbfa;
+    border-radius: 0.625rem;
+    border: 1px solid rgb(231 229 228);
     padding: 1.5rem;
     transition: box-shadow 0.2s;
 }
 
 .featured-product-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(28, 25, 23, 0.08);
 }
