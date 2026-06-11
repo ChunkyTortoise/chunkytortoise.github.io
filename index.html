@@ -86,6 +86,16 @@
                 <span class="bg-white/20 rounded-full px-3 py-1">3,500+ Automated Tests</span>
                 <span class="bg-white/20 rounded-full px-3 py-1">PyPI Published</span>
             </div>
+            <!-- Terminal hero: real SSE transcript from ai-workflow-api service_health_pipeline -->
+            <div class="mt-12 max-w-2xl mx-auto text-left" aria-label="Live workflow API demo">
+                <div class="bg-gray-800 rounded-lg border border-gray-700/60 overflow-hidden shadow-2xl">
+                    <div class="bg-gray-700/70 px-4 py-2.5 flex items-center gap-3">
+                        <span class="text-gray-400 text-xs font-mono">$ ai-workflow-api run service_health_pipeline</span>
+                    </div>
+                    <div class="px-5 py-4 font-mono text-sm min-h-[220px]" id="term-output" aria-live="polite" aria-atomic="false">
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -241,5 +251,88 @@
             </div>
         </div>
     </footer>
+    <script>
+    /* Terminal hero: typewriter replay of a real ai-workflow-api SSE run.
+     * Transcript captured 2026-06-10 against live stack (service_health_pipeline,
+     * run 7cd8f441, 6/6 steps completed in 0.41s).
+     * prefers-reduced-motion: renders static, no animation.
+     */
+    (function () {
+      var LINES = [
+        {t: '> registered service_health_pipeline (a208a8af)', k: 'cmd'},
+        {t: '> POST execute-async -> queued (run 7cd8f441)',   k: 'cmd'},
+        {t: '< streaming /api/v1/runs/7cd8f441/stream',        k: 'stream'},
+        {t: '',                                                 k: 'blank'},
+        {t: '  run_started     total_steps=6',                 k: 'info'},
+        {t: '  [##........]  16%  receive_event    completed', k: 'step'},
+        {t: '  [###.......]  33%  fetch_health     completed', k: 'step'},
+        {t: '  [#####.....]  50%  route_on_status  completed', k: 'step'},
+        {t: '  [#######...]  66%  notify_healthy   completed', k: 'step'},
+        {t: '  [##########] 100%  finalize_run     completed', k: 'step'},
+        {t: '  run_completed   status=completed steps 6/6',    k: 'done'},
+        {t: '',                                                 k: 'blank'},
+        {t: 'done in 0.41s',                                   k: 'meta'},
+      ];
+      var CHAR_MS   = 18;
+      var STEP_MS   = 580;
+      var DONE_MS   = 1200;
+      var LOOP_GAP  = 3200;
+
+      var out = document.getElementById('term-output');
+      if (!out) return;
+
+      function cls(el, k) {
+        el.className = 'leading-relaxed whitespace-pre';
+        if      (k === 'cmd')    { el.classList.add('text-clay-400'); }
+        else if (k === 'stream') { el.classList.add('text-gray-400'); }
+        else if (k === 'step')   { el.classList.add('text-gray-300'); }
+        else if (k === 'done')   { el.classList.add('text-clay-400', 'font-semibold'); }
+        else if (k === 'meta')   { el.classList.add('text-gray-500'); }
+        else                     { el.classList.add('text-gray-300'); }
+      }
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        LINES.forEach(function (line) {
+          var el = document.createElement('div');
+          cls(el, line.k);
+          el.textContent = line.t;
+          out.appendChild(el);
+        });
+        return;
+      }
+
+      var stop = false;
+      function sleep(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
+
+      async function type(text, el) {
+        for (var i = 0; i < text.length; i++) {
+          if (stop) return;
+          el.textContent += text[i];
+          await sleep(CHAR_MS);
+        }
+      }
+
+      async function loop() {
+        while (!stop) {
+          out.innerHTML = '';
+          for (var i = 0; i < LINES.length; i++) {
+            if (stop) return;
+            var line = LINES[i];
+            var el = document.createElement('div');
+            cls(el, line.k);
+            out.appendChild(el);
+            if (line.k === 'blank') { await sleep(80); continue; }
+            await type(line.t, el);
+            if      (line.k === 'step') { await sleep(STEP_MS); }
+            else if (line.k === 'done') { await sleep(DONE_MS); }
+            else                        { await sleep(80); }
+          }
+          await sleep(LOOP_GAP);
+        }
+      }
+
+      loop();
+    })();
+    </script>
 </body>
 </html>
