@@ -59,7 +59,7 @@
             <div class="prose prose-gray max-w-none text-gray-700 space-y-4">
                 <p>Every QA engineer's instinct is to write a deterministic assertion: given this input, expect exactly this output. That instinct is correct for 99% of software. It fails completely for large language models.</p>
 
-                <p>When I built the evaluation pipeline for DocExtract AI, a document extraction system that pulls structured fields from unstructured PDFs, the first thing I had to accept was that <code>assert result == expected</code> is not a test strategy for LLM output &mdash; it is a reliability trap. A correctly extracted date field might come back as "2024-01-15", "January 15, 2024", or "15 Jan 2024" depending on model temperature, context window state, and document formatting. All three are correct. A brittle assertion fails two of them.</p>
+                <p>When I built the evaluation pipeline for DocExtract AI, a document extraction system that pulls structured fields from unstructured PDFs, the first thing I had to accept was that <code>assert result == expected</code> is not a test strategy for LLM output - it is a reliability trap. A correctly extracted date field might come back as "2024-01-15", "January 15, 2024", or "15 Jan 2024" depending on model temperature, context window state, and document formatting. All three are correct. A brittle assertion fails two of them.</p>
 
                 <p>This post covers the full evaluation architecture: golden eval sets, RAGAS scoring, LLM-as-judge rubrics, Brier score calibration, and the CI regression gate that ties it all together. The underlying principle throughout is the same: measure quality floors, not exact outputs.</p>
 
@@ -84,7 +84,7 @@
                 <ul class="list-disc pl-6 space-y-2">
                     <li><strong>Contradictory documents.</strong> A lease amendment that overrides a clause in the base lease. The extractor must identify which value is authoritative and not average or concatenate the two.</li>
                     <li><strong>Truncated inputs.</strong> Documents where OCR or upload processing cut off mid-sentence. The extractor must handle partial context without hallucinating the missing content.</li>
-                    <li><strong>Multi-language content.</strong> Documents where field labels are in one language and values are in another &mdash; common in bilingual contracts. These stress-test whether the extractor is pattern-matching on layout versus semantically understanding content.</li>
+                    <li><strong>Multi-language content.</strong> Documents where field labels are in one language and values are in another - common in bilingual contracts. These stress-test whether the extractor is pattern-matching on layout versus semantically understanding content.</li>
                     <li><strong>High-noise OCR.</strong> Scanned documents with degraded text where character recognition errors are frequent. "Tenant" might appear as "T3nant" or "Tena nt". Robust extraction must tolerate character-level noise without treating each variant as a separate field.</li>
                 </ul>
 
@@ -110,7 +110,7 @@
                     </p>
                 </div>
 
-                <p>The 24-fixture set establishes a baseline extraction accuracy of 94.6%. This number did not come from a target &mdash; it came from running the pipeline against the ground-truth labels and measuring what the system actually achieves. That measured baseline then becomes the floor the CI gate enforces.</p>
+                <p>The 24-fixture set establishes a baseline extraction accuracy of 94.6%. This number did not come from a target - it came from running the pipeline against the ground-truth labels and measuring what the system actually achieves. That measured baseline then becomes the floor the CI gate enforces.</p>
 
                 <h2 class="text-2xl font-bold mt-10 mb-4">RAGAS Scoring: Three Dimensions of Retrieval Quality</h2>
 
@@ -119,9 +119,9 @@
                 <p>The DocExtract AI pipeline weights each dimension based on what matters most for a document extraction use case:</p>
 
                 <ul class="list-disc pl-6 space-y-2">
-                    <li><strong>Context recall (weight: 0.35).</strong> Did the retrieval step surface all the document sections needed to answer the question? A high context recall score means the relevant passages were in the model's context window. A low score means the extractor is answering from partial information &mdash; which is where truncation and missing-page failures manifest. The 0.35 weight reflects that retrieval gaps are the second most damaging failure mode after faithfulness issues.</li>
-                    <li><strong>Faithfulness (weight: 0.40).</strong> Does the extracted answer stay within what the source document actually says? Faithfulness is the anti-hallucination metric. A faithfulness score of 1.0 means every claim in the output is attributable to the input document. A low score means the model is generating plausible-sounding but unsupported content &mdash; the most dangerous failure mode for a system whose outputs are used in legal or financial decisions. It carries the highest weight for this reason.</li>
-                    <li><strong>Answer relevancy (weight: 0.25).</strong> Is the output actually answering the question that was asked? Relevancy catches cases where the extractor returns a real value from the document but from the wrong field &mdash; pulling the lease start date when the end date was requested, for instance. The lower weight reflects that relevancy failures are more recoverable than faithfulness failures.</li>
+                    <li><strong>Context recall (weight: 0.35).</strong> Did the retrieval step surface all the document sections needed to answer the question? A high context recall score means the relevant passages were in the model's context window. A low score means the extractor is answering from partial information - which is where truncation and missing-page failures manifest. The 0.35 weight reflects that retrieval gaps are the second most damaging failure mode after faithfulness issues.</li>
+                    <li><strong>Faithfulness (weight: 0.40).</strong> Does the extracted answer stay within what the source document actually says? Faithfulness is the anti-hallucination metric. A faithfulness score of 1.0 means every claim in the output is attributable to the input document. A low score means the model is generating plausible-sounding but unsupported content - the most dangerous failure mode for a system whose outputs are used in legal or financial decisions. It carries the highest weight for this reason.</li>
+                    <li><strong>Answer relevancy (weight: 0.25).</strong> Is the output actually answering the question that was asked? Relevancy catches cases where the extractor returns a real value from the document but from the wrong field - pulling the lease start date when the end date was requested, for instance. The lower weight reflects that relevancy failures are more recoverable than faithfulness failures.</li>
                 </ul>
 
                 <div class="bg-gray-50 rounded-lg p-4 my-4">
@@ -140,13 +140,13 @@
                     </p>
                 </div>
 
-                <p>The composite weighted score is tracked per fixture and per category. When a regression happens, the dimension breakdown tells you immediately whether you have a retrieval problem, a hallucination problem, or a targeting problem &mdash; which guides the fix rather than just signaling that something broke.</p>
+                <p>The composite weighted score is tracked per fixture and per category. When a regression happens, the dimension breakdown tells you immediately whether you have a retrieval problem, a hallucination problem, or a targeting problem - which guides the fix rather than just signaling that something broke.</p>
 
                 <h2 class="text-2xl font-bold mt-10 mb-4">LLM-as-Judge: Writing a Rubric That Grades Consistently</h2>
 
                 <p>Some extraction quality cannot be captured by string matching or even RAGAS scores. A judge needs to assess whether a multi-sentence summary of a contract clause is accurate, whether the tone of a flagged anomaly is appropriately cautious, or whether a conflict explanation correctly identifies which document takes precedence. These require semantic judgment.</p>
 
-                <p>LLM-as-judge uses a second model call to evaluate the first model's output against a rubric. The key insight is that the judge must be given a structured rubric and required to extract evidence &mdash; not just rate quality on a 1-10 scale. Unconstrained scores are inconsistent across calls. A rubric anchors the judge to specific criteria.</p>
+                <p>LLM-as-judge uses a second model call to evaluate the first model's output against a rubric. The key insight is that the judge must be given a structured rubric and required to extract evidence - not just rate quality on a 1-10 scale. Unconstrained scores are inconsistent across calls. A rubric anchors the judge to specific criteria.</p>
 
                 <p>A well-designed rubric for document extraction has three components:</p>
 
@@ -179,7 +179,7 @@
 
                 <h2 class="text-2xl font-bold mt-10 mb-4">Brier Score: Is the System Honest About Its Confidence?</h2>
 
-                <p>Most LLM extraction systems return a confidence score alongside the extracted value. The Brier score measures whether those confidence scores are calibrated &mdash; whether a field the system rates as 90% confident is actually correct 90% of the time.</p>
+                <p>Most LLM extraction systems return a confidence score alongside the extracted value. The Brier score measures whether those confidence scores are calibrated - whether a field the system rates as 90% confident is actually correct 90% of the time.</p>
 
                 <p>The Brier score is the mean squared error between predicted probabilities and actual binary outcomes. A score of 0 is perfect calibration. A score of 1 is maximally wrong. For DocExtract AI, the Brier score is computed per fixture run and tracked over time:</p>
 
@@ -208,7 +208,7 @@
                 <ol class="list-decimal pl-6 space-y-2">
                     <li><strong>Accuracy floor.</strong> Overall extraction accuracy across all 24 fixtures must be at or above 94.6%. This is the primary gate. A drop of any size below this threshold fails the check, requiring a review of what changed and why.</li>
                     <li><strong>Adversarial subset floor.</strong> The 8 adversarial fixtures are checked independently. A change that maintains overall accuracy but degrades performance on the adversarial cases might be hiding a regression behind easy-case gains. Adversarial cases are intentionally harder; they are the ones most likely to reflect real production edge cases.</li>
-                    <li><strong>RAGAS faithfulness floor.</strong> Faithfulness score must not drop more than 0.05 from the rolling baseline. This catches prompt changes that improve format compliance but introduce hallucination &mdash; a common failure mode when prompts are over-optimized for surface-level correctness.</li>
+                    <li><strong>RAGAS faithfulness floor.</strong> Faithfulness score must not drop more than 0.05 from the rolling baseline. This catches prompt changes that improve format compliance but introduce hallucination - a common failure mode when prompts are over-optimized for surface-level correctness.</li>
                 </ol>
 
                 <div class="bg-gray-50 rounded-lg p-4 my-4">
@@ -234,9 +234,9 @@
 
                 <p>The throughline across every component of this pipeline is a shift in what testing means for LLM systems. Traditional testing asks: is this output exactly right? LLM testing asks: is this system reliably staying above a quality threshold across a distribution of inputs?</p>
 
-                <p>This is not a lowering of standards. It is a more honest accounting of what LLMs are. A model that achieves 94.6% extraction accuracy on a 24-fixture eval set including 8 adversarial cases is demonstrably reliable. A model tested with a handful of hand-crafted happy-path assertions that all pass is not &mdash; because those assertions say nothing about the adversarial cases, the calibration, the faithfulness, or what happens when the accuracy floor moves.</p>
+                <p>This is not a lowering of standards. It is a more honest accounting of what LLMs are. A model that achieves 94.6% extraction accuracy on a 24-fixture eval set including 8 adversarial cases is demonstrably reliable. A model tested with a handful of hand-crafted happy-path assertions that all pass is not - because those assertions say nothing about the adversarial cases, the calibration, the faithfulness, or what happens when the accuracy floor moves.</p>
 
-                <p>The practical consequence is that the evaluation suite is a living artifact. As new failure modes appear in production, they get added as adversarial fixtures. As the model improves, the accuracy floor gets raised. The CI gate is not a fixed bar &mdash; it is the current best-known performance that any future change must at least preserve.</p>
+                <p>The practical consequence is that the evaluation suite is a living artifact. As new failure modes appear in production, they get added as adversarial fixtures. As the model improves, the accuracy floor gets raised. The CI gate is not a fixed bar - it is the current best-known performance that any future change must at least preserve.</p>
 
                 <div class="grid grid-cols-3 gap-4 my-6">
                     <div class="bg-indigo-50 rounded-lg p-4 text-center">
@@ -255,9 +255,9 @@
 
                 <h2 class="text-2xl font-bold mt-10 mb-4">Where to Go From Here</h2>
 
-                <p>If you are building an LLM system and relying on ad-hoc assertions or manual spot-checks, the first investment to make is a golden eval set. You do not need 24 fixtures to start &mdash; 10 well-chosen cases with a few adversarial examples will immediately surface failure modes that manual testing misses, and it gives you a quantitative baseline to defend against regressions.</p>
+                <p>If you are building an LLM system and relying on ad-hoc assertions or manual spot-checks, the first investment to make is a golden eval set. You do not need 24 fixtures to start - 10 well-chosen cases with a few adversarial examples will immediately surface failure modes that manual testing misses, and it gives you a quantitative baseline to defend against regressions.</p>
 
-                <p>From there, adding RAGAS scoring is a one-dependency addition that turns a binary pass/fail into a diagnostic signal. The LLM-as-judge layer adds depth for cases where semantic evaluation is needed. Brier score tracking is a late-stage addition that pays off once you have enough prediction volume to detect calibration drift. And the CI gate is the step that makes all the measurement actionable &mdash; without it, you are monitoring quality but not protecting it.</p>
+                <p>From there, adding RAGAS scoring is a one-dependency addition that turns a binary pass/fail into a diagnostic signal. The LLM-as-judge layer adds depth for cases where semantic evaluation is needed. Brier score tracking is a late-stage addition that pays off once you have enough prediction volume to detect calibration drift. And the CI gate is the step that makes all the measurement actionable - without it, you are monitoring quality but not protecting it.</p>
 
                 <p>The full DocExtract AI evaluation pipeline is part of my QA portfolio. If you are working on LLM system quality and want to dig into the implementation, you can find more detail on the <a href="../qa.html" class="text-indigo-600 hover:underline">QA portfolio page</a>, including the eval framework architecture, test fixture design patterns, and the CI gate configuration.</p>
             </div>

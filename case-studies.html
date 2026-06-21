@@ -64,24 +64,24 @@
         <p class="text-gray-600 mb-10">Real engineering challenges I solved, with quantified outcomes you can verify in the code. Each case study maps to a public repo.</p>
 
 
-        <!-- Case Study: Jorge Real Estate AI — Production Lead Qualification -->
+        <!-- Case Study: Jorge Real Estate AI - Production Lead Qualification -->
         <article class="bg-white rounded-xl border p-8 mb-8">
             <div class="flex items-center gap-3 mb-4">
                 <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Production &middot; Delivered &middot; Closed</span>
                 <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Solutions Engineering</span>
-                <span class="text-sm text-gray-500 italic">Private client &mdash; code on request</span>
+                <span class="text-sm text-gray-500 italic">Private client - code on request</span>
             </div>
             <h2 class="text-2xl font-bold mb-6">Production AI Lead Qualification: 500+ Leads, Zero Downtime, 3 Months</h2>
 
             <div class="space-y-6">
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
-                    <p class="text-gray-700">Real estate leads go cold fast &mdash; 40% are lost when response time exceeds 5 minutes. A firm's agents were responding manually, with overnight and weekend leads going unanswered. No way to distinguish buyers from sellers in the CRM or automatically route conversations to the right specialist.</p>
+                    <p class="text-gray-700">Real estate leads go cold fast - 40% are lost when response time exceeds 5 minutes. A firm's agents were responding manually, with overnight and weekend leads going unanswered. No way to distinguish buyers from sellers in the CRM or automatically route conversations to the right specialist.</p>
                 </div>
 
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Solution</h3>
-                    <p class="text-gray-700">Sole technical point of contact from requirements through production deployment. Built 3 specialized SMS bots (Lead Intake, Buyer Qualification, Seller Qualification) integrated into GoHighLevel CRM via dual-scheme webhook verification (HMAC + RSA). Each bot runs a structured Q0&ndash;Q4 qualification flow, scores leads hot/warm/cold, and books appointments on the agent's GHL calendar. Cross-bot handoff with 0.7 confidence threshold, 30-minute circular prevention window, contact-level locking to prevent race conditions, and 3/hr rate limiting routes leads to the right specialist without loops or errors. Bilingual EN/ES throughout.</p>
+                    <p class="text-gray-700">Sole technical point of contact from requirements through production deployment. Built 3 specialized SMS bots (Lead Intake, Buyer Qualification, Seller Qualification) integrated into GoHighLevel CRM via dual-scheme webhook verification (HMAC + RSA). Each bot runs a structured Q0-Q4 qualification flow, scores leads hot/warm/cold, and books appointments on the agent's GHL calendar. Cross-bot handoff with 0.7 confidence threshold, 30-minute circular prevention window, contact-level locking to prevent race conditions, and 3/hr rate limiting routes leads to the right specialist without loops or errors. Bilingual EN/ES throughout.</p>
                     <div class="flex gap-2 flex-wrap mt-3">
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude API</span>
@@ -97,7 +97,7 @@
                     <div class="grid grid-cols-3 gap-4">
                         <div class="bg-green-50 rounded-lg p-4 text-center">
                             <p class="text-2xl font-bold text-green-700">500+</p>
-                            <p class="text-xs text-green-600 mt-1">Leads qualified (Jan&ndash;Mar 2026)</p>
+                            <p class="text-xs text-green-600 mt-1">Leads qualified (Jan-Mar 2026)</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
                             <p class="text-2xl font-bold text-green-700">0</p>
@@ -111,7 +111,7 @@
                 </div>
 
                 <div class="text-sm text-gray-500">
-                    <strong>Delivered:</strong> 3 production bots, GoHighLevel CRM integration, 1,824 automated tests, full handoff documentation and runbooks. Sole technical lead &mdash; requirements through deployment.
+                    <strong>Delivered:</strong> 3 production bots, GoHighLevel CRM integration, 1,824 automated tests, full handoff documentation and runbooks. Sole technical lead - requirements through deployment.
                 </div>
             </div>
         </article>
@@ -179,7 +179,7 @@
             <div class="space-y-6">
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
-                    <p class="text-gray-700">Businesses want AI chat on their websites but SaaS chatbot platforms charge $100&ndash;500/month, lock you into their ecosystem, and give limited control over the AI behavior. Self-hosting typically requires a full engineering team. Small businesses running 5 sites pay $6,000&ndash;12,000/year for basic chat widgets.</p>
+                    <p class="text-gray-700">Businesses want AI chat on their websites but SaaS chatbot platforms charge $100-500/month, lock you into their ecosystem, and give limited control over the AI behavior. Self-hosting typically requires a full engineering team. Small businesses running 5 sites pay $6,000-12,000/year for basic chat widgets.</p>
                 </div>
 
                 <div>
@@ -207,7 +207,7 @@
                             <p class="text-xs text-green-600 mt-1">RAG response time</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">$1.2&ndash;6K/yr</p>
+                            <p class="text-2xl font-bold text-green-700">$1.2-6K/yr</p>
                             <p class="text-xs text-green-600 mt-1">Saved vs SaaS</p>
                         </div>
                     </div>
@@ -231,7 +231,7 @@
             <div class="space-y-6">
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
-                    <p class="text-gray-700">Most voice AI demos fake latency by pre-loading responses or measuring from text input. A real production pipeline &mdash; audio capture, voice activity detection, speech-to-text, LLM reasoning, text-to-speech, and playback &mdash; has six stages of compounding latency. Without careful engineering, round-trips exceed 5&ndash;10 seconds, which is unusable for conversation.</p>
+                    <p class="text-gray-700">Most voice AI demos fake latency by pre-loading responses or measuring from text input. A real production pipeline - audio capture, voice activity detection, speech-to-text, LLM reasoning, text-to-speech, and playback - has six stages of compounding latency. Without careful engineering, round-trips exceed 5-10 seconds, which is unusable for conversation.</p>
                 </div>
 
                 <div>
@@ -271,7 +271,7 @@
             </div>
         </article>
 
-        <!-- Case Study: DocExtract AI — Production RAG Pipeline -->
+        <!-- Case Study: DocExtract AI - Production RAG Pipeline -->
         <article class="bg-white rounded-xl border p-8 mb-8">
             <div class="flex items-center gap-3 mb-4">
                 <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
@@ -284,7 +284,7 @@
             <div class="space-y-6">
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
-                    <p class="text-gray-700">Pure vector search fails on structured documents. An invoice number like <code>INV-2024-0047</code> has no semantic relationship to the query "what is the invoice number?" &mdash; it's a lexical match. Naive RAG pipelines using only cosine similarity miss exact-field lookups, causing extraction failures on the documents that matter most: invoices, contracts, medical records, and identity documents.</p>
+                    <p class="text-gray-700">Pure vector search fails on structured documents. An invoice number like <code>INV-2024-0047</code> has no semantic relationship to the query "what is the invoice number?" - it's a lexical match. Naive RAG pipelines using only cosine similarity miss exact-field lookups, causing extraction failures on the documents that matter most: invoices, contracts, medical records, and identity documents.</p>
                 </div>
 
                 <div>
@@ -325,7 +325,7 @@
             </div>
         </article>
 
-        <!-- Case Study: Finance Analytics Portfolio — Lending Risk & Fair Lending -->
+        <!-- Case Study: Finance Analytics Portfolio - Lending Risk & Fair Lending -->
         <article class="bg-white rounded-xl border p-8 mb-8">
             <div class="flex items-center gap-3 mb-4">
                 <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Verified in Code</span>
@@ -344,10 +344,10 @@
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Key Findings</h3>
                     <ul class="space-y-3 text-sm text-gray-700">
-                        <li><span class="font-medium text-gray-900">DTI beats FICO among prime borrowers.</span> Among 720+ FICO borrowers, DTI ratio explains ~38% of default variance. Tightening DTI thresholds in the 720&ndash;760 band reduces expected losses by <span class="font-semibold text-green-700">$600K&ndash;$900K per $100M</span> with no impact on approval volume.</li>
+                        <li><span class="font-medium text-gray-900">DTI beats FICO among prime borrowers.</span> Among 720+ FICO borrowers, DTI ratio explains ~38% of default variance. Tightening DTI thresholds in the 720-760 band reduces expected losses by <span class="font-semibold text-green-700">$600K-$900K per $100M</span> with no impact on approval volume.</li>
                         <li><span class="font-medium text-gray-900">Grade B, not Grade G, is the true loss concentration.</span> ~35% of exposure, ~42% of stressed expected loss under severe recession. Misallocation: <span class="font-semibold text-green-700">~$35M per $500M portfolio</span> if capital is sized by per-loan PD rather than volume-weighted loss.</li>
-                        <li><span class="font-medium text-gray-900">Parametric VaR understates tail risk by 12&ndash;18%.</span> For a $1B equity portfolio: <span class="font-semibold text-green-700">$12&ndash;18M in unhedged tail exposure</span> invisible in the daily risk report.</li>
-                        <li><span class="font-medium text-gray-900">Geographic fair lending risk is invisible in flat-file analysis.</span> County-level HMDA data shows 20+ percentage point approval rate gaps. Regulatory exposure: <span class="font-semibold text-green-700">$5&ndash;15M per fair lending consent order</span>.</li>
+                        <li><span class="font-medium text-gray-900">Parametric VaR understates tail risk by 12-18%.</span> For a $1B equity portfolio: <span class="font-semibold text-green-700">$12-18M in unhedged tail exposure</span> invisible in the daily risk report.</li>
+                        <li><span class="font-medium text-gray-900">Geographic fair lending risk is invisible in flat-file analysis.</span> County-level HMDA data shows 20+ percentage point approval rate gaps. Regulatory exposure: <span class="font-semibold text-green-700">$5-15M per fair lending consent order</span>.</li>
                     </ul>
                 </div>
 
@@ -398,7 +398,7 @@
             <div class="space-y-6">
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Challenge</h3>
-                    <p class="text-gray-700">Every production system in this portfolio handles async state machines, third-party webhooks, or LLM outputs &mdash; categories where a production bug has no safe rollback. Retroactive test coverage misses the edge cases that actually fail: race conditions on concurrent webhook delivery, Redis TTL boundary conditions, LLM responses that are fluent but factually wrong. The constraint: every repo had to be designed for testability from the first commit.</p>
+                    <p class="text-gray-700">Every production system in this portfolio handles async state machines, third-party webhooks, or LLM outputs - categories where a production bug has no safe rollback. Retroactive test coverage misses the edge cases that actually fail: race conditions on concurrent webhook delivery, Redis TTL boundary conditions, LLM responses that are fluent but factually wrong. The constraint: every repo had to be designed for testability from the first commit.</p>
                 </div>
 
                 <div>
