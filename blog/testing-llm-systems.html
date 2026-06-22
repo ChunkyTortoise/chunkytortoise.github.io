@@ -85,7 +85,7 @@
                     <li><strong>Contradictory documents.</strong> A lease amendment that overrides a clause in the base lease. The extractor must identify which value is authoritative and not average or concatenate the two.</li>
                     <li><strong>Truncated inputs.</strong> Documents where OCR or upload processing cut off mid-sentence. The extractor must handle partial context without hallucinating the missing content.</li>
                     <li><strong>Multi-language content.</strong> Documents where field labels are in one language and values are in another - common in bilingual contracts. These stress-test whether the extractor is pattern-matching on layout versus semantically understanding content.</li>
-                    <li><strong>High-noise OCR.</strong> Scanned documents with degraded text where character recognition errors are frequent. "Tenant" might appear as "T3nant" or "Tena nt". Robust extraction must tolerate character-level noise without treating each variant as a separate field.</li>
+                    <li><strong>High-noise OCR.</strong> Scanned documents with degraded text where character recognition errors are frequent. "Tenant" might appear as "T3nant" or "Tena nt". Extraction must tolerate character-level noise without treating each variant as a separate field.</li>
                 </ul>
 
                 <p>Designing adversarial fixtures requires thinking like an attacker. Ask: what document characteristics would make the most common failure mode in this system trigger? For extraction systems, that is usually ambiguity, multi-source conflicts, and input degradation. Build fixtures that deliberately invoke each failure mode.</p>
