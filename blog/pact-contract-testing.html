@@ -198,7 +198,7 @@
                         @pytest.fixture(scope="session", autouse=True)<br>
                         def clear_pact_file():<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;"""Remove stale pact file before session so interactions accumulate cleanly."""<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;pact_file = PACTS_DIR / "jorge-bots-ghl-api-v2.json"<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;pact_file = PACTS_DIR / "realty-bots-ghl-api-v2.json"<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;if pact_file.exists():<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pact_file.unlink()<br><br>
                         @pytest.fixture<br>
@@ -206,14 +206,14 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;"""Fresh Pact instance per test; writes merge into a shared pact file."""<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;if not PACT_AVAILABLE:<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pytest.skip("pact-python not installed")<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;return Pact("jorge-bots", "ghl-api-v2")<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;return Pact("realty-bots", "ghl-api-v2")<br><br>
                         # Each test function receives a fresh pact, defines one interaction,<br>
                         # and calls pact.write_file(PACTS_DIR) at the end.<br>
                         # After 5 tests, the file contains all 5 interactions.
                     </p>
                 </div>
 
-                <p>The naming convention for the pact file (<code>jorge-bots-ghl-api-v2.json</code>) matches the consumer and provider names passed to <code>Pact()</code> - that is how the FFI determines which file to merge into. If you change the consumer or provider name between tests, you get separate files. This is usually a bug, not a feature, so keeping the names consistent across all tests in a module is important.</p>
+                <p>The naming convention for the pact file (<code>realty-bots-ghl-api-v2.json</code>) matches the consumer and provider names passed to <code>Pact()</code> - that is how the FFI determines which file to merge into. If you change the consumer or provider name between tests, you get separate files. This is usually a bug, not a feature, so keeping the names consistent across all tests in a module is important.</p>
 
                 <p>The <code>PACT_AVAILABLE</code> guard around the import is worth keeping. pact-python requires the FFI shared library to be present, which is not always true in minimal CI environments. Guarding with a skip rather than a hard import failure lets the rest of the test suite run without pact-python installed.</p>
 
