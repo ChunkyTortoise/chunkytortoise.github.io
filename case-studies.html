@@ -64,7 +64,7 @@
         <p class="text-gray-600 mb-10">Real engineering challenges I solved, with quantified outcomes you can verify in the code. Each case study maps to a public repo.</p>
 
 
-        <!-- Case Study: Jorge Real Estate AI - Production Lead Qualification -->
+        <!-- Case Study: Realty Bots - Production Lead Qualification -->
         <article class="bg-white rounded-xl border p-8 mb-8">
             <div class="flex items-center gap-3 mb-4">
                 <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Production &middot; Delivered &middot; Closed</span>
@@ -403,7 +403,7 @@
 
                 <div>
                     <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Approach</h3>
-                    <p class="text-gray-700">TDD-first across all 15 repos: failing test written before any implementation code. Framework selection per project type: pytest-asyncio for async event loops (Jorge bots, EnterpriseHub), Playwright for E2E, Vitest for frontend components, dbt schema tests for data model integrity. CI gates on every repo block merge on SAST failure (bandit), CVE detection (pip-audit), type errors (mypy strict), and coverage regression. For LLM outputs: a 72-case golden evaluation corpus (51 golden + 21 adversarial: contradictory inputs, truncated documents, multi-language, high-noise OCR), CI blocks any F1 drop below the 95.5% baseline before merge.</p>
+                    <p class="text-gray-700">TDD-first across all 15 repos: failing test written before any implementation code. Framework selection per project type: pytest-asyncio for async event loops (Realty Bots, EnterpriseHub), Playwright for E2E, Vitest for frontend components, dbt schema tests for data model integrity. CI gates on every repo block merge on SAST failure (bandit), CVE detection (pip-audit), type errors (mypy strict), and coverage regression. For LLM outputs: a 72-case golden evaluation corpus (51 golden + 21 adversarial: contradictory inputs, truncated documents, multi-language, high-noise OCR), CI blocks any F1 drop below the 95.5% baseline before merge.</p>
                     <div class="flex gap-2 flex-wrap mt-3">
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">pytest</span>
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">pytest-asyncio</span>
@@ -428,13 +428,13 @@
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
                             <p class="text-2xl font-bold text-green-700">Zero</p>
-                            <p class="text-xs text-green-600 mt-1">Downtime on the jorge production run (Jan-Mar 2026)</p>
+                            <p class="text-xs text-green-600 mt-1">Downtime on the Realty Bots production run (Jan-Mar 2026)</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="text-sm text-gray-500">
-                    <strong>Verify:</strong> <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 hover:underline" target="_blank">DocExtract</a> (1,280 tests, eval gate), mcp-server-toolkit (600 tests, 82.87% cov), jorge (1,700+ tests, zero downtime)
+                    <strong>Verify:</strong> <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 hover:underline" target="_blank">DocExtract</a> (1,280 tests, eval gate), mcp-server-toolkit (600 tests, 82.87% cov), realty-ai (1,778 tests, zero downtime)
                 </div>
             </div>
         </article>
