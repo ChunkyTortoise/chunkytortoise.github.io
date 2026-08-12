@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case Studies | Cayman Roden</title>
-    <meta name="description" content="Engineering and analytics case studies: 500+ leads qualified with zero downtime, 3,500+ TDD tests across production repos, $600K-$900K lending risk finding on 1.2M+ CFPB records. Each backed by a public repo.">
+    <meta name="description" content="Engineering and analytics case studies: 500+ leads qualified with zero downtime, DocExtract 1,366 tests and eval-gated CI, $600K-$900K lending risk finding on 1.2M+ CFPB records. Each backed by a public repo.">
     <meta property="og:title" content="Case Studies | Cayman Roden">
     <meta property="og:description" content="Real-world AI case studies with measurable results. Multi-agent orchestration, hybrid RAG pipelines, eval-gated delivery, and more.">
     <meta property="og:type" content="website">
@@ -278,7 +278,7 @@
                 <a href="https://github.com/ChunkyTortoise/docextract" class="text-sm text-indigo-800 underline" target="_blank">View Repo</a>
                 <a href="https://docextract-demo.streamlit.app" class="text-sm text-green-800 underline" target="_blank">Live Demo</a>
             </div>
-            <h2 class="text-2xl font-bold mb-6">95.5% F1 on a CI-Replayed Golden Baseline with Hybrid RAG</h2>
+            <h2 class="text-2xl font-bold mb-6">95.5% weighted field-level accuracy on a CI-Replayed Golden Baseline with Hybrid RAG</h2>
 
             <div class="space-y-6">
                 <div>
@@ -288,7 +288,7 @@
 
                 <div>
                     <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wide mb-2">Solution</h3>
-                    <p class="text-gray-700">Built a 12-step async document extraction pipeline: upload &rarr; format detection &rarr; OCR/text extraction &rarr; document classification &rarr; type-aware chunking &rarr; pgvector embedding &rarr; hybrid retrieval (BM25 keyword + cosine similarity + Reciprocal Rank Fusion) &rarr; citation-aware LLM generation. Added production-grade reliability: AsyncCircuitBreaker model fallback (Sonnet &rarr; Haiku), OpenTelemetry + Prometheus metrics, LangSmith tracing per pipeline step, and a golden evaluation CI gate that blocks deploys if F1 regresses below the 95.5% baseline.</p>
+                    <p class="text-gray-700">Built a 12-step async document extraction pipeline: upload &rarr; format detection &rarr; OCR/text extraction &rarr; document classification &rarr; type-aware chunking &rarr; pgvector embedding &rarr; hybrid retrieval (BM25 keyword + cosine similarity + Reciprocal Rank Fusion) &rarr; citation-aware LLM generation. Added production-grade reliability: AsyncCircuitBreaker model fallback (Sonnet &rarr; Haiku), OpenTelemetry + Prometheus metrics, LangSmith tracing per pipeline step, and a golden evaluation CI gate that blocks deploys if weighted field-level accuracy regresses below the 95.5% baseline.</p>
                     <div class="flex gap-2 flex-wrap mt-3">
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">pgvector</span>
@@ -305,15 +305,15 @@
                     <div class="grid grid-cols-3 gap-4">
                         <div class="bg-green-50 rounded-lg p-4 text-center">
                             <p class="text-2xl font-bold text-green-700">95.5%</p>
-                            <p class="text-xs text-green-800 mt-1">F1 on a 28-case CI-replayed golden baseline</p>
+                            <p class="text-xs text-green-800 mt-1">weighted field-level accuracy on a 28-case offline CI replay</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">1,280</p>
-                            <p class="text-xs text-green-800 mt-1">Automated tests (1,273 passing), 81% coverage</p>
+                            <p class="text-2xl font-bold text-green-700">1,366</p>
+                            <p class="text-xs text-green-800 mt-1">1,366 collected tests, 80% CI coverage gate</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">72</p>
-                            <p class="text-xs text-green-800 mt-1">Eval corpus cases (51 golden + 21 adversarial)</p>
+                            <p class="text-2xl font-bold text-green-700">202</p>
+                            <p class="text-xs text-green-800 mt-1">Eval corpus (151 golden + 51 adversarial)</p>
                         </div>
                     </div>
                 </div>
@@ -402,7 +402,7 @@
 
                 <div>
                     <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wide mb-2">Approach</h3>
-                    <p class="text-gray-700">TDD-first across all 15 repos: failing test written before any implementation code. Framework selection per project type: pytest-asyncio for async event loops (Realty Bots, EnterpriseHub), Playwright for E2E, Vitest for frontend components, dbt schema tests for data model integrity. CI gates on every repo block merge on SAST failure (bandit), CVE detection (pip-audit), type errors (mypy strict), and coverage regression. For LLM outputs: a 72-case golden evaluation corpus (51 golden + 21 adversarial: contradictory inputs, truncated documents, multi-language, high-noise OCR), CI blocks any F1 drop below the 95.5% baseline before merge.</p>
+                    <p class="text-gray-700">TDD-first across all 15 repos: failing test written before any implementation code. Framework selection per project type: pytest-asyncio for async event loops (Realty Bots, EnterpriseHub), Playwright for E2E, Vitest for frontend components, dbt schema tests for data model integrity. CI gates on every repo block merge on SAST failure (bandit), CVE detection (pip-audit), type errors (mypy strict), and coverage regression. For LLM outputs: a 202-case golden evaluation corpus (151 golden + 51 adversarial: contradictory inputs, truncated documents, multi-language, high-noise OCR), CI blocks any drop below the 95.5% weighted field-level accuracy baseline before merge.</p>
                     <div class="flex gap-2 flex-wrap mt-3">
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">pytest</span>
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">pytest-asyncio</span>
@@ -418,12 +418,12 @@
                     <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wide mb-2">Result</h3>
                     <div class="grid grid-cols-3 gap-4">
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">3,500+</p>
-                            <p class="text-xs text-green-800 mt-1">Tests across production repos</p>
+                            <p class="text-2xl font-bold text-green-700">1,366</p>
+                            <p class="text-xs text-green-800 mt-1">DocExtract collected tests (80% CI gate)</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
                             <p class="text-2xl font-bold text-green-700">95.5%</p>
-                            <p class="text-xs text-green-800 mt-1">LLM eval F1 (28-case CI-replayed baseline)</p>
+                            <p class="text-xs text-green-800 mt-1">weighted field-level accuracy (28-case offline CI replay)</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
                             <p class="text-2xl font-bold text-green-700">Zero</p>
@@ -433,7 +433,7 @@
                 </div>
 
                 <div class="text-sm text-gray-700">
-                    <strong>Verify:</strong> <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-800 underline" target="_blank">DocExtract</a> (1,280 tests, eval gate), mcp-server-toolkit (600 tests, 82.87% cov), realty-ai (1,778 tests, zero downtime)
+                    <strong>Verify:</strong> <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-800 underline" target="_blank">DocExtract</a> (1,366 tests, eval gate), mcp-server-toolkit (617 tests, 80% CI coverage gate), Acuity handoff (1,700+ tests, zero production regressions)
                 </div>
             </div>
         </article>
@@ -455,7 +455,7 @@
 
                 <div>
                     <h3 class="text-sm font-bold text-gray-700 uppercase tracking-wide mb-2">Solution</h3>
-                    <p class="text-gray-700">Built compliance controls directly into the extraction pipeline. PII detection runs on every document before processing, flagging SSNs, phone numbers, email addresses, and health record numbers. All processing events are written to an audit trail with timestamps, user IDs, and data lineage. The system includes a <code>COMPLIANCE.md</code> covering HIPAA requirements, SOC 2 considerations, data retention policies, and encryption at rest and in transit. An automated eval gate blocks deployments that regress below the 95.5% F1 golden baseline (28-case CI-replayed), with adversarial cases including prompt-injection tests.</p>
+                    <p class="text-gray-700">Built compliance controls directly into the extraction pipeline. PII detection runs on every document before processing, flagging SSNs, phone numbers, email addresses, and health record numbers. All processing events are written to an audit trail with timestamps, user IDs, and data lineage. The system includes a <code>COMPLIANCE.md</code> covering HIPAA requirements, SOC 2 considerations, data retention policies, and encryption at rest and in transit. An automated eval gate blocks deployments that regress below the 95.5% weighted field-level accuracy on a 28-case offline CI replay, with adversarial cases including prompt-injection tests.</p>
                     <div class="flex gap-2 flex-wrap mt-3">
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
                         <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
@@ -477,10 +477,10 @@
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
                             <p class="text-2xl font-bold text-green-700">95.5%</p>
-                            <p class="text-xs text-green-800 mt-1">F1 on 28-case CI-replayed golden baseline</p>
+                            <p class="text-xs text-green-800 mt-1">weighted field-level accuracy on a 28-case offline CI replay</p>
                         </div>
                         <div class="bg-green-50 rounded-lg p-4 text-center">
-                            <p class="text-2xl font-bold text-green-700">21</p>
+                            <p class="text-2xl font-bold text-green-700">51</p>
                             <p class="text-xs text-green-800 mt-1">Adversarial eval cases (incl. prompt injection)</p>
                         </div>
                     </div>

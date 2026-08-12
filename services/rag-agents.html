@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>Custom RAG Conversational Agents | Cayman Roden</title>
-    <meta name="description" content="Production RAG agents trained on your documents. Hybrid BM25+vector retrieval, cited answers, CRM integration, and 95.5% F1 on a 28-case golden baseline.">
+    <meta name="description" content="Production RAG agents trained on your documents. Hybrid BM25+vector retrieval, cited answers, CRM integration, and 95.5% weighted field-level accuracy on a 28-case offline CI replay.">
     <meta property="og:title" content="Custom RAG Conversational Agents | Cayman Roden">
     <meta property="og:description" content="Not a chatbot. A knowledge system trained on your documents that cites its sources and routes complex questions to humans.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chunkytortoise.github.io/services/rag-agents.html">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Custom RAG Conversational Agents | Cayman Roden">
-    <meta name="twitter:description" content="Production RAG agents. Hybrid retrieval, cited answers, 95.5% F1. Fixed price $3,600-$5,200.">
+    <meta name="twitter:description" content="Production RAG agents. Hybrid retrieval, cited answers, 95.5% weighted field-level accuracy. Fixed price $3,600-$5,200.">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="stylesheet" href="../tw.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
         "@context": "https://schema.org",
         "@type": "Service",
         "name": "Custom RAG Conversational Agents",
-        "description": "Production RAG agents trained on your documents. Hybrid BM25+vector retrieval, cited answers, CRM integration, and 95.5% F1 on a 28-case golden baseline.",
+        "description": "Production RAG agents trained on your documents. Hybrid BM25+vector retrieval, cited answers, CRM integration, and 95.5% weighted field-level accuracy on a 28-case offline CI replay.",
         "provider": {
             "@type": "Person",
             "name": "Cayman Roden",
@@ -116,7 +116,7 @@
                     <p class="text-white font-bold text-lg">3-5 days</p>
                 </div>
                 <div class="bg-white/10 rounded-lg px-5 py-3">
-                    <p class="text-indigo-200 text-xs mb-1 uppercase tracking-wide font-semibold">Extraction F1</p>
+                    <p class="text-indigo-200 text-xs mb-1 uppercase tracking-wide font-semibold">Weighted field-level accuracy</p>
                     <p class="text-white font-bold text-lg">95.5%</p>
                 </div>
             </div>
@@ -223,12 +223,12 @@
 
         <!-- Proof -->
         <section class="mb-16 bg-gray-900 text-white rounded-2xl p-8">
-            <h2 class="text-2xl font-bold mb-2">Proof: 95.5% F1 on Real Documents</h2>
-            <p class="text-indigo-200 mb-8">F1 claims backed by a public evaluation suite, not a marketing slide.</p>
+            <h2 class="text-2xl font-bold mb-2">Proof: 95.5% weighted field-level accuracy</h2>
+            <p class="text-indigo-200 mb-8">Accuracy claims backed by a public evaluation suite, not a marketing slide.</p>
             <div class="grid md:grid-cols-2 gap-6">
                 <div class="bg-white/10 rounded-xl p-6">
-                    <p class="text-3xl font-bold mb-1">72-case eval corpus</p>
-                    <p class="text-indigo-200 text-sm mb-4">51 golden plus 21 adversarial cases. 4 are prompt injection attacks.</p>
+                    <p class="text-3xl font-bold mb-1">202-case eval corpus</p>
+                    <p class="text-indigo-200 text-sm mb-4">151 golden plus 51 adversarial cases.</p>
                     <ul class="text-sm text-indigo-100 space-y-1.5">
                         <li>&#10003; Invoices and purchase orders</li>
                         <li>&#10003; Legal contracts and NDAs</li>
@@ -239,8 +239,8 @@
                     </ul>
                 </div>
                 <div class="bg-white/10 rounded-xl p-6">
-                    <p class="text-3xl font-bold mb-1">1,280 tests</p>
-                    <p class="text-indigo-200 text-sm mb-4">81% code coverage. CI runs on every commit.</p>
+                    <p class="text-3xl font-bold mb-1">1,366 tests</p>
+                    <p class="text-indigo-200 text-sm mb-4">80% CI coverage gate. 1,366 collected tests.</p>
                     <ul class="text-sm text-indigo-100 space-y-1.5">
                         <li>&#10003; PII detection on all extraction outputs</li>
                         <li>&#10003; Grounding guardrails prevent hallucinated citations</li>

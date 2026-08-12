@@ -94,7 +94,7 @@
                         <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
                     </div>
                     <h3 class="font-bold mb-2">Accuracy requirements are higher</h3>
-                    <p class="text-gray-600 text-sm">95.5% F1 on a 28-case golden baseline, validated against 21 adversarial cases. Every output is grounded with source citations so staff can verify before acting.</p>
+                    <p class="text-gray-600 text-sm">95.5% weighted field-level accuracy on a 28-case offline CI replay; corpus 202 cases (151 golden + 51 adversarial). Every output is grounded with source citations so staff can verify before acting.</p>
                 </div>
                 <div class="bg-white rounded-xl border border-gray-200 p-6">
                     <div class="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
@@ -118,12 +118,12 @@
                         <h3 class="font-bold text-lg">HIPAA-Compliant Document Intelligence</h3>
                         <span class="text-indigo-600 font-medium text-sm whitespace-nowrap ml-4">$7,500</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-3">Extract data from medical records, insurance forms, and intake documents with 95.5% F1. PII detection, audit logging, and COMPLIANCE.md delivered with every project.</p>
+                    <p class="text-gray-600 text-sm mb-3">Extract data from medical records, insurance forms, and intake documents with 95.5% weighted field-level accuracy. PII detection, audit logging, and COMPLIANCE.md delivered with every project.</p>
                     <ul class="text-sm text-gray-500 space-y-1 mb-4">
                         <li class="flex items-center gap-2"><span class="text-indigo-600">&#10003;</span> PII detection across 4 categories</li>
                         <li class="flex items-center gap-2"><span class="text-indigo-600">&#10003;</span> Full audit trail logging</li>
                         <li class="flex items-center gap-2"><span class="text-indigo-600">&#10003;</span> Data retention policies included</li>
-                        <li class="flex items-center gap-2"><span class="text-indigo-600">&#10003;</span> 95.5% extraction F1</li>
+                        <li class="flex items-center gap-2"><span class="text-indigo-600">&#10003;</span> 95.5% weighted field-level accuracy</li>
                     </ul>
                     <a href="../services.html#document-intelligence" class="text-indigo-600 text-sm font-medium hover:underline">View service details &rarr;</a>
                 </div>
@@ -185,19 +185,19 @@
                         <div class="grid grid-cols-2 gap-4 mb-6">
                             <div>
                                 <div class="text-2xl font-bold text-indigo-600">95.5%</div>
-                                <div class="text-sm text-gray-500">extraction F1</div>
+                                <div class="text-sm text-gray-500">weighted field-level accuracy</div>
                             </div>
                             <div>
-                                <div class="text-2xl font-bold text-indigo-600">1,280</div>
-                                <div class="text-sm text-gray-500">automated tests</div>
+                                <div class="text-2xl font-bold text-indigo-600">1,366</div>
+                                <div class="text-sm text-gray-500">DocExtract collected tests</div>
                             </div>
                             <div>
                                 <div class="text-2xl font-bold text-indigo-600">4 types</div>
                                 <div class="text-sm text-gray-500">PII detection categories</div>
                             </div>
                             <div>
-                                <div class="text-2xl font-bold text-indigo-600">81%</div>
-                                <div class="text-sm text-gray-500">code coverage</div>
+                                <div class="text-2xl font-bold text-indigo-600">80%</div>
+                                <div class="text-sm text-gray-500">CI coverage gate</div>
                             </div>
                         </div>
                         <a href="https://github.com/ChunkyTortoise/docextract" target="_blank" class="inline-flex items-center gap-2 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-indigo-700 transition">View on GitHub</a>
