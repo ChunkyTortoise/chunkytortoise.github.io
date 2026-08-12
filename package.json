@@ -1,0 +1,10 @@
+{
+  "name": "chunkytortoise-github-io",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i tw-input.css -o tw.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}
