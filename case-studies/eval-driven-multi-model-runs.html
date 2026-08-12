@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eval-driven multi-model runs: contracts, gates, and a kill | Cayman Roden</title>
+    <meta name="description" content="Personal developer infrastructure for coordinating Claude Code, Codex, and Cursor: one writer, an independent gate, a nonce-stamped result contract, and a measured reject.">
+    <meta property="og:title" content="Eval-driven multi-model runs: contracts, gates, and a kill">
+    <meta property="og:description" content="How I route coding-agent work, verify claims, and kill a play that loses the eval. Personal infrastructure, not a product.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://chunkytortoise.github.io/case-studies/eval-driven-multi-model-runs.html">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Eval-driven multi-model runs: contracts, gates, and a kill">
+    <meta name="twitter:description" content="Contracts, one writer, an independent gate, and a measured reject. Personal developer infrastructure.">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../tw-config.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QNBBCMHX7Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QNBBCMHX7Q');
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="../index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
+            <div class="flex gap-4 text-sm">
+                <a href="../projects.html" class="hover:text-indigo-600">Portfolio</a>
+                <a href="../certifications.html" class="hover:text-indigo-600">Certifications</a>
+                <a href="../case-studies.html" class="text-indigo-600 font-medium">Case Studies</a>
+                <a href="../benchmarks.html" class="hover:text-indigo-600">Benchmarks</a>
+                <a href="../blog.html" class="hover:text-indigo-600">Blog</a>
+                <a href="../about.html" class="hover:text-indigo-600">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <article class="max-w-4xl mx-auto px-4 py-12">
+        <a href="../case-studies.html" class="text-sm text-indigo-600 hover:underline mb-6 inline-block">&larr; Back to Case Studies</a>
+
+        <div class="bg-white rounded-xl border p-8">
+            <div class="flex items-center gap-3 mb-4 flex-wrap">
+                <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full font-medium">Engineering notes</span>
+                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Personal infra</span>
+                <span class="text-sm text-gray-400">August 12, 2026</span>
+            </div>
+            <h1 class="text-3xl font-bold mb-6">Eval-driven multi-model runs: contracts, gates, and a kill</h1>
+
+            <div class="prose prose-gray max-w-none text-gray-700 space-y-4">
+                <p>I run Claude Code, Codex, and Cursor on the same machine. The failure mode is not "the model wrote bad code." It is two writers on one branch, a stale pane that still thinks it owns the change, and a claim nobody can rerun. This note is how I coordinate those runtimes. It is personal developer infrastructure, not a product, and it is not the proof that I ship systems. That proof is still <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 hover:underline">DocExtract</a>, the Acuity engagement, and <a href="https://pypi.org/project/mcp-server-toolkit" class="text-indigo-600 hover:underline">mcp-server-toolkit</a>.</p>
+
+                <h2 class="text-2xl font-bold mt-10 mb-4">The problem</h2>
+                <p>Three coding-agent surfaces, used in parallel, create three cheap ways to lie to yourself:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Two panes edit the same files. Git looks busy. Ownership is gone.</li>
+                    <li>A session outlives the task. The next agent resumes stale context and "fixes" work that already moved.</li>
+                    <li>A model summarizes its own run as evidence. The summary is not a command you can replay.</li>
+                </ul>
+                <p>I wanted a pattern a hiring engineer can audit in one sitting: who may write, who may only check, what artifact counts as a result, and what happens when the check loses. Automation can observe, stamp, and refuse a second writer. It cannot accept the change. That last step stays human.</p>
+
+                <h2 class="text-2xl font-bold mt-10 mb-4">The pattern</h2>
+                <p>Work is scoped to a mission, not to a model. A model is a lane for a stage. The standing rule is one writer per resource boundary, plus an independent gate from a different model family. The human accepts. I use <code>cmux</code> as the pane and fanout surface for that contract.</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>Conduct</strong> plans and reports. It does not write the shared artifact, merge, or declare done.</li>
+                    <li><strong>Build</strong> is the only writer for the declared branch, worktree, or file set.</li>
+                    <li><strong>Gate</strong> reruns named checks from the diff. It does not read the builder's rationale.</li>
+                    <li><strong>Result contract</strong> is a nonce-stamped result file. A result without the nonce is not a result.</li>
+                </ul>
+                <p>The handoff a receiver gets is mechanical, not a chat paste: what changed, which commands were run, the exit codes, and one claim they can rerun in a single command. Models may summarize those fields. They may not author them. If the nonce is missing, or a second writer targets the same resource, the run is refused rather than "merged in conversation."</p>
+                <p>That is employer language for orchestration with an eval gate, not a multi-user control plane. There is no SaaS, no daemon customers log into, and no second tenant.</p>
+
+                <h2 class="text-2xl font-bold mt-10 mb-4">What was measured</h2>
+                <p>The interesting result is a reject.</p>
+                <p>On 2026-08-06 I compared two ways to draft a research digest, N=5 fixed cases. Baseline: Opus one-shot. Candidate: an advice-profile fanout on Sonnet. Promote required schema 5/5 and a blind preference of at least 3/5 versus baseline.</p>
+                <div class="grid grid-cols-3 gap-4 my-6">
+                    <div class="bg-gray-50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-gray-800">5/5</p>
+                        <p class="text-xs text-gray-600 mt-1">Schema (candidate)</p>
+                    </div>
+                    <div class="bg-red-50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-red-700">3/5</p>
+                        <p class="text-xs text-red-600 mt-1">Style sanitize (needed 5/5)</p>
+                    </div>
+                    <div class="bg-red-50 rounded-lg p-4 text-center">
+                        <p class="text-2xl font-bold text-red-700">1/5</p>
+                        <p class="text-xs text-red-600 mt-1">Blind preference for candidate</p>
+                    </div>
+                </div>
+                <p>Opus one-shot won 4 of 5 blind preferences. Mean wall clock was 48s for the candidate and 47s for the baseline: not a latency win. Both promote gates missed, so the play was rejected. Routing did not change. That is the point. A coordination layer that loses to a strong one-shot on the task it was supposed to improve does not get a pin on GitHub.</p>
+                <p>A separate three-change documentation pilot (2026-08-07) did meet its scored accept-clock bar: each accepted change landed under 1.5 times a 307-second baseline (0.38x, 0.61x, 0.09x). That is process timing, not model quality, and it is not a cost or token claim. I do not have a production unit-economics study for this workflow yet, so this page does not invent one.</p>
+
+                <h2 class="text-2xl font-bold mt-10 mb-4">What this is not</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li>Not a public hero repository. The executable orchestrator stays private. The research hub stays private. Publishing either would ship history, local paths, and unfinished lanes.</li>
+                    <li>Not Phase 2. Codex, Gemini, and Grok interop rows are still blocked. This page does not claim those lanes run.</li>
+                    <li>Not an agent OS, control plane, or enterprise platform. Operational prototype. One operator.</li>
+                    <li>Not a substitute for shipped systems. If you are hiring for production LLM work, start with DocExtract, Acuity, and mcp-server-toolkit.</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold mt-10 mb-4">How to read this if you are hiring</h2>
+                <p>Read it as judgment under measurement. I built a contract for multi-runtime work, ran a comparison, and killed the play that lost. I did not rebrand the loss as a platform.</p>
+                <p>A February 2026 post on this site covers cross-bot handoffs inside EnterpriseHub (Lead, Buyer, Seller). That is product orchestration for a CRM mesh. This page is the developer-runtime contract. Do not treat them as the same artifact.</p>
+                <p>If you want code you can clone, open the flagship repos. If you want to know how I keep two models from stepping on the same files, and what I do when a fancier routing loses the eval, this is the note.</p>
+            </div>
+        </div>
+    </article>
+
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="max-w-6xl mx-auto px-4 text-sm">
+            <p>&copy; 2026 Cayman Roden</p>
+        </div>
+    </footer>
+</body>
+</html>
