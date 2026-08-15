@@ -1,5 +1,7 @@
 # Fail-closed cmux interoperability fixtures
 
+[![cmux interop safety fixtures](https://github.com/ChunkyTortoise/chunkytortoise.github.io/actions/workflows/cmux-interop-demo.yml/badge.svg)](https://github.com/ChunkyTortoise/chunkytortoise.github.io/actions/workflows/cmux-interop-demo.yml)
+
 This dependency-free fixture suite models eight controls from a dated local
 multi-model terminal campaign. It requires Python 3.12 or newer and no model
 account, private socket, pane history, or raw run artifact.
