@@ -26,6 +26,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://chunkytortoise.github.io/case-studies/cmux-fail-closed-interop.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://chunkytortoise.github.io/benchmarks.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

@@ -1,0 +1,29 @@
+name: cmux interop safety fixtures
+
+on:
+  push:
+    paths:
+      - "demos/cmux-interop/**"
+      - ".github/workflows/cmux-interop-demo.yml"
+  pull_request:
+    paths:
+      - "demos/cmux-interop/**"
+      - ".github/workflows/cmux-interop-demo.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  threat-model-fixtures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: demos/cmux-interop
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run eight fail-closed interoperability controls
+        run: make test
