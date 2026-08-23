@@ -107,7 +107,7 @@
     <section class="bg-white border-t border-b border-gray-200 py-16">
         <div class="max-w-4xl mx-auto px-4">
             <h2 class="text-2xl font-bold mb-8">Projects</h2>
-            <p class="text-gray-500 text-sm mb-8">Best first-click proof for hiring teams: EnterpriseHub, AI Workflow API, TechNova Voice Bot, and Multi-Agent Demo. The sections below include older supporting projects as well.</p>
+            <p class="text-gray-500 text-sm mb-8">Best first-click proof for hiring teams: llm-reviewer-path (clone + pytest), DocExtract, AI Workflow API, and TechNova Voice Bot. The sections below include older supporting projects as well.</p>
 
             <!-- Realty Bots -->
             <div class="bg-gray-50 rounded-xl border border-indigo-200 p-6 mb-6">
@@ -167,32 +167,15 @@
                 </div>
             </div>
 
-            <!-- EnterpriseHub -->
-            <div class="bg-gray-50 rounded-xl border border-gray-200 p-6 mb-6">
-                <div class="text-sm text-indigo-600 font-medium mb-2">Multi-Agent Orchestration</div>
-                <h3 class="text-lg font-bold mb-3">EnterpriseHub</h3>
-                <p class="text-gray-600 text-sm mb-4">Domain-specific agent mesh with 3-tier cache achieving 88% aggregate hit rate. 8 agent capabilities, circuit-breaker failover, per-agent model routing, OWASP-hardened security, and OpenTelemetry instrumentation.</p>
-                <div class="grid md:grid-cols-2 gap-4 mb-4 text-sm text-gray-700">
-                    <div>
-                        <p class="font-medium mb-2">Capabilities</p>
-                        <ul class="space-y-1">
-                            <li>Lead Intake, Buyer, Seller agent mesh</li>
-                            <li>L1 memory, L2 Redis, L3 PostgreSQL cache</li>
-                            <li>Per-agent model routing (Haiku/Sonnet/Opus)</li>
-                            <li>Ed25519 webhook verification, Redis rate limiting</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <p class="font-medium mb-2">Stack</p>
-                        <ul class="space-y-1">
-                            <li>FastAPI, PostgreSQL, Redis, LangGraph</li>
-                            <li>Claude API, Prometheus, Grafana</li>
-                            <li>OpenTelemetry, 9-panel dashboard configs</li>
-                            <li>7-agent mesh (~10 with auto-discovery)</li>
-                        </ul>
-                    </div>
+            <!-- llm-reviewer-path -->
+            <div class="bg-gray-50 rounded-xl border border-indigo-200 p-6 mb-6">
+                <div class="text-sm text-indigo-600 font-medium mb-2">Start Here</div>
+                <h3 class="text-lg font-bold mb-3">llm-reviewer-path</h3>
+                <p class="text-gray-600 text-sm mb-4">Ten-minute hiring path: clone, install, and run pytest. No API key. Eval gates, hard-action boundaries, and receipts from production parent repos.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="text-indigo-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
                 </div>
-                <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
+                <p class="text-gray-500 text-xs mt-3 font-mono">git clone https://github.com/ChunkyTortoise/llm-reviewer-path &amp;&amp; cd llm-reviewer-path &amp;&amp; uv sync --group dev &amp;&amp; uv run pytest</p>
             </div>
 
             <!-- mcp-server-toolkit -->

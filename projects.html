@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Cayman Roden</title>
-    <meta name="description" content="Public portfolio of production AI systems, workflow APIs, real-time AI backends, and developer tooling. Start with EnterpriseHub, ai-workflow-api, TechNova Voice Bot, and multi-agent-demo.">
+    <meta name="description" content="Public portfolio of production AI systems, workflow APIs, real-time AI backends, and developer tooling. Start with llm-reviewer-path (clone + pytest), then DocExtract, ai-workflow-api, and TechNova Voice Bot.">
     <meta property="og:title" content="Projects | Cayman Roden">
     <meta property="og:description" content="Production AI portfolio: workflow APIs, agent orchestration, streaming systems, and developer tooling across Python and FastAPI.">
     <meta property="og:type" content="website">
@@ -64,7 +64,7 @@
 
         <div class="bg-white border border-gray-200 rounded-xl p-5 mb-8">
             <h2 class="text-lg font-semibold mb-3">Flagship Order</h2>
-            <p class="text-sm text-gray-600 mb-3">If you are evaluating for AI roles, start here: EnterpriseHub, ai-workflow-api, TechNova Voice Bot, and multi-agent-demo.</p>
+            <p class="text-sm text-gray-600 mb-3">If you are evaluating for AI roles, start here: llm-reviewer-path (clone + pytest), DocExtract, ai-workflow-api, and TechNova Voice Bot.</p>
             <div class="flex flex-wrap gap-2 text-xs">
                 <span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">Workflow APIs</span>
                 <span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">Agent Systems</span>
@@ -87,36 +87,28 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-6" id="project-grid">
-            <!-- EnterpriseHub -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai qa">
-                <div class="w-full h-40 rounded-lg border border-gray-200 mb-4 flex flex-col items-center justify-center bg-gray-900 text-center px-4">
-                    <span class="font-display text-2xl text-gray-50 tracking-tight leading-tight">EnterpriseHub</span>
-                    <span class="font-mono text-[10px] uppercase tracking-widest text-indigo-400 mt-2">Live demo</span>
+            <!-- llm-reviewer-path -->
+            <div class="project-card bg-white rounded-xl shadow-sm border border-indigo-200 p-6" data-category="ai qa">
+                <div class="w-full h-40 rounded-lg border border-indigo-200 mb-4 flex flex-col items-center justify-center bg-gray-900 text-center px-4">
+                    <span class="font-display text-2xl text-gray-50 tracking-tight leading-tight">llm-reviewer-path</span>
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-indigo-400 mt-2">Start here</span>
                 </div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">EnterpriseHub</h3>
-                        <p class="text-sm text-gray-500">Multi-Agent Orchestration Platform</p>
+                        <h3 class="text-lg font-bold">llm-reviewer-path</h3>
+                        <p class="text-sm text-gray-500">10-Minute Hiring Review Path</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">7 Agents</span>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">pytest</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">Agent orchestration platform with weighted routing, cost governance, observability, prompt versioning, and eval-driven development. This is the best systems-depth repo in the portfolio.</p>
+                <p class="text-gray-600 text-sm mb-4">Clone, install, and run pytest. No API key. Eval gates, hard-action approval boundaries, retrieval failure modes, and FDE scoping receipts from production parent repos.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">PostgreSQL</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Redis</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Docker</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Observability</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Cost Tracking</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Eval gates</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">No network</span>
+                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <a href="https://ct-enterprise-ai.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo &rarr;</a>
-                    <a href="https://github.com/ChunkyTortoise/EnterpriseHub/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline" target="_blank">Benchmarks</a>
-                    <a href="https://github.com/ChunkyTortoise/EnterpriseHub/tree/main/docs/adr" class="text-purple-600 hover:underline" target="_blank">ADRs</a>
-                    <span class="text-gray-400">7-agent mesh (~10 w/ auto-discovery) | eval gates | observability</span>
+                    <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
+                    <span class="text-gray-400 font-mono text-xs">uv sync --group dev &amp;&amp; uv run pytest</span>
                 </div>
             </div>
 
@@ -327,7 +319,7 @@
                     <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Grafana</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/EnterpriseHub/tree/main/advanced_rag_system" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
+                    
                     <span class="text-teal-600" title="Run locally with Docker Compose">API: localhost:8000/docs</span>
                     <span class="text-gray-400">FastAPI + ChromaDB | Containerizable</span>
                 </div>
@@ -559,7 +551,7 @@
                             <td class="py-2 pr-4 font-medium text-purple-700">Testing and Reliability</td>
                             <td class="py-2 pr-4">pytest, Playwright, RAGAS, bandit, mypy, GitHub Actions</td>
                             <td class="py-2">
-                                <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank">EnterpriseHub</a>,
+                                EnterpriseHub,
                                 <a href="https://github.com/ChunkyTortoise/realty-ai" class="text-indigo-600 hover:underline" target="_blank">Realty Bots</a>
                             </td>
                         </tr>
@@ -575,7 +567,7 @@
                             <td class="py-2 pr-4 font-medium text-orange-700">AI and LLM Systems</td>
                             <td class="py-2 pr-4">Claude API, RAG, pgvector, LangChain, agentic workflows</td>
                             <td class="py-2">
-                                <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank">EnterpriseHub</a>,
+                                EnterpriseHub,
                                 <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 hover:underline" target="_blank">DocExtract AI</a>,
                                 <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="text-indigo-600 hover:underline" target="_blank">mcp-server-toolkit</a>
                             </td>

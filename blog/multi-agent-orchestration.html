@@ -57,7 +57,7 @@
             <div class="prose prose-gray max-w-none text-gray-700 space-y-4">
                 <p>Everyone focuses on making individual AI bots smarter. Better prompts, finer-tuned intent detection, richer context windows. That work matters - but when you run multiple specialized bots in production, the hardest engineering problem is not inside any single bot. It is the moment one bot decides a conversation belongs to another bot and tries to hand it off mid-flow. That transition is where conversations get lost, users get confused, and your system's reliability collapses.</p>
 
-                <p>I built the orchestration layer for <a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank">EnterpriseHub</a>, a real estate AI platform with three specialized chatbots: a Lead Bot that qualifies inbound contacts, a Buyer Bot that handles property searches and financing, and a Seller Bot that manages CMAs and listing prep. Each has its own personality, prompt engineering, intent decoder, and CRM integrations. This post covers the full orchestration stack: handoffs, safety rails, pattern learning, A/B testing, and monitoring.</p>
+                <p>I built the orchestration layer for EnterpriseHub, a real estate AI platform with three specialized chatbots: a Lead Bot that qualifies inbound contacts, a Buyer Bot that handles property searches and financing, and a Seller Bot that manages CMAs and listing prep. Each has its own personality, prompt engineering, intent decoder, and CRM integrations. This post covers the full orchestration stack: handoffs, safety rails, pattern learning, A/B testing, and monitoring.</p>
 
                 <h2 class="text-2xl font-bold mt-10 mb-4">Why Multi-Agent Beats Monolithic</h2>
 
@@ -363,11 +363,11 @@
                 <h2 class="text-2xl font-bold mt-10 mb-4">Try It Yourself</h2>
                 <p>The full implementation is open source. The relevant files:</p>
                 <ul class="list-disc pl-6 space-y-1">
-                    <li><a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank"><code>realty_handoff_service.py</code></a> - Circular prevention, rate limiting, contact locking, pattern learning</li>
-                    <li><a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank"><code>alerting_service.py</code></a> - 7 alert rules, 3-level escalation, multi-channel notifications</li>
-                    <li><a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank"><code>ab_testing_service.py</code></a> - Hash-based assignment, z-test significance, Wilson intervals</li>
-                    <li><a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank"><code>bot_metrics_collector.py</code></a> - Per-bot stats, cache hits, alerting integration</li>
-                    <li><a href="https://github.com/ChunkyTortoise/EnterpriseHub" class="text-indigo-600 hover:underline" target="_blank"><code>performance_tracker.py</code></a> - P50/P95/P99 latency, SLA compliance, rolling window</li>
+                    <li><code>realty_handoff_service.py</code> - Circular prevention, rate limiting, contact locking, pattern learning</li>
+                    <li><code>alerting_service.py</code> - 7 alert rules, 3-level escalation, multi-channel notifications</li>
+                    <li><code>ab_testing_service.py</code> - Hash-based assignment, z-test significance, Wilson intervals</li>
+                    <li><code>bot_metrics_collector.py</code> - Per-bot stats, cache hits, alerting integration</li>
+                    <li><code>performance_tracker.py</code> - P50/P95/P99 latency, SLA compliance, rolling window</li>
                 </ul>
 
                 <p class="mt-6">For the full performance metrics, see the <a href="../benchmarks.html" class="text-indigo-600 hover:underline">benchmarks page</a>.</p>
