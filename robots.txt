@@ -1,4 +1,17 @@
 User-agent: *
 Allow: /
+Disallow: /certifications.html
+Disallow: /case-studies.html
+Disallow: /case-studies/
+Disallow: /ai.html
+Disallow: /se.html
+Disallow: /qa.html
+Disallow: /services.html
+Disallow: /services/
+Disallow: /verticals/
+Disallow: /benchmarks.html
+Disallow: /blog/testing-llm-systems.html
+Disallow: /blog/multi-agent-orchestration.html
+Disallow: /cohort.html
 
 Sitemap: https://chunkytortoise.github.io/sitemap.xml

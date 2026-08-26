@@ -2,111 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fail-closed multi-model dispatch | Cayman Roden</title>
-    <meta name="description" content="A dated synthetic campaign and eight public fixtures for fail-closed terminal-agent dispatch, stale-result rejection, and immutable recovery.">
-    <meta property="og:title" content="Fail-closed multi-model dispatch">
-    <meta property="og:description" content="Exact identity gates, sealed missions, context-bound results, and immutable successor recovery, with public fixtures.">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://chunkytortoise.github.io/case-studies/cmux-fail-closed-interop.html">
-    <meta name="twitter:card" content="summary">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <link rel="stylesheet" href="../tw.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Instrument+Serif&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../style.css">
+    <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="refresh" content="0; url=index.html">
+    <link rel="canonical" href="https://chunkytortoise.github.io/">
+    <title>Moved</title>
 </head>
-<body class="bg-gray-50 text-gray-900">
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="../index.html" class="text-lg font-bold text-indigo-800">Cayman Roden</a>
-            <div class="flex gap-4 text-sm">
-                <a href="../projects.html" class="hover:text-indigo-800">Portfolio</a>
-                <a href="../case-studies.html" class="text-indigo-800 font-medium">Case Studies</a>
-                <a href="../about.html" class="hover:text-indigo-800">About</a>
-            </div>
-        </div>
-    </nav>
-
-    <article class="max-w-4xl mx-auto px-4 py-12">
-        <a href="../case-studies.html" class="text-sm text-indigo-800 hover:underline mb-6 inline-block">&larr; Back to Case Studies</a>
-        <div class="bg-white rounded-xl border p-6 sm:p-8">
-            <div class="flex items-center gap-3 mb-4 flex-wrap">
-                <span class="bg-indigo-100 text-indigo-900 text-xs px-3 py-1 rounded-full font-medium">Runnable fixtures</span>
-                <span class="bg-gray-100 text-gray-700 text-xs px-3 py-1 rounded-full font-medium">Personal infrastructure</span>
-                <span class="text-sm text-gray-700">August 15, 2026</span>
-            </div>
-            <h1 class="text-3xl font-bold mb-4">Fail-closed multi-model dispatch</h1>
-            <p class="text-lg text-gray-700 mb-8">I built a dispatch layer for independent command-line model agents that refuses work unless identity, cwd, actor, nonce, and sealed mission context match. Eight public fixtures show the rejection and recovery rules without model accounts or private infrastructure.</p>
-            <p class="mb-8"><a href="https://github.com/ChunkyTortoise/chunkytortoise.github.io/actions/workflows/cmux-interop-demo.yml"><img src="https://github.com/ChunkyTortoise/chunkytortoise.github.io/actions/workflows/cmux-interop-demo.yml/badge.svg" alt="cmux interop safety fixtures workflow status"></a></p>
-
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
-                <div class="bg-gray-50 rounded-lg p-4 text-center"><p class="text-2xl font-bold">10/10</p><p class="text-xs text-gray-600">dated local runs</p></div>
-                <div class="bg-gray-50 rounded-lg p-4 text-center"><p class="text-2xl font-bold">20/20</p><p class="text-xs text-gray-600">bound results</p></div>
-                <div class="bg-gray-50 rounded-lg p-4 text-center"><p class="text-2xl font-bold">3x</p><p class="text-xs text-gray-600">each injected fault</p></div>
-                <div class="bg-gray-50 rounded-lg p-4 text-center"><p class="text-2xl font-bold">0</p><p class="text-xs text-gray-600">observed invariant breaches</p></div>
-            </div>
-
-            <section class="mb-10">
-                <h2 class="text-2xl font-bold mb-4">Risk, control, result</h2>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left border-collapse">
-                        <thead><tr class="border-b"><th class="p-2">Risk</th><th class="p-2">Control</th><th class="p-2">Fixture result</th></tr></thead>
-                        <tbody class="text-gray-700">
-                            <tr class="border-b"><td class="p-2">Prefix or title spoof</td><td class="p-2">Exact basename and title</td><td class="p-2">Rejected</td></tr>
-                            <tr class="border-b"><td class="p-2">Wrong cwd or actor</td><td class="p-2">Full identity proof</td><td class="p-2">Rejected</td></tr>
-                            <tr class="border-b"><td class="p-2">Stale result</td><td class="p-2">Nonce plus context binding</td><td class="p-2">Rejected</td></tr>
-                            <tr class="border-b"><td class="p-2">Changed mission</td><td class="p-2">Sealed input hash</td><td class="p-2">Rejected</td></tr>
-                            <tr class="border-b"><td class="p-2">Partial fanout</td><td class="p-2">Terminal state</td><td class="p-2">Fresh successor required</td></tr>
-                            <tr class="border-b"><td class="p-2">Missing process list</td><td class="p-2">Exact surface UUID fallback</td><td class="p-2">Verified or refused</td></tr>
-                            <tr class="border-b"><td class="p-2">Unavailable verifier</td><td class="p-2">Ready independent fallback</td><td class="p-2">Selected explicitly</td></tr>
-                            <tr><td class="p-2">Unsafe retry</td><td class="p-2">Immutable successor ID</td><td class="p-2">Predecessor preserved</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <section class="mb-10">
-                <h2 class="text-2xl font-bold mb-4">Synthetic recovery demo</h2>
-                <p class="text-gray-700 mb-4">This transcript is generated from fixture behavior. It contains no pane history or private run data.</p>
-                <pre class="bg-gray-950 text-green-300 rounded-lg p-5 overflow-x-auto text-sm" aria-label="Synthetic partial dispatch recovery transcript"><code>$ make test
-test_exact_title_and_executable_reject_prefix_spoof ... ok
-test_nonce_and_context_binding_reject_stale_result ... ok
-test_partial_dispatch_is_monotonic_and_terminal ... ok
-
-inject: second send fails
-predecessor.state = partial-dispatch
-collect(predecessor) = REFUSED
-successor = run-fixture-successor-01
-successor.state = gated
-
-Ran 8 tests
-OK</code></pre>
-            </section>
-
-            <section class="mb-10">
-                <h2 class="text-2xl font-bold mb-4">Run it</h2>
-                <pre class="bg-gray-100 rounded-lg p-4 overflow-x-auto text-sm"><code>git clone https://github.com/ChunkyTortoise/chunkytortoise.github.io.git
-cd chunkytortoise.github.io/demos/cmux-interop
-make test</code></pre>
-                <p class="mt-4"><a href="https://github.com/ChunkyTortoise/chunkytortoise.github.io/tree/main/demos/cmux-interop" class="text-indigo-800 underline">Read the public fixture code</a></p>
-            </section>
-
-            <section>
-                <h2 class="text-2xl font-bold mb-4">Limits</h2>
-                <ul class="list-disc pl-6 space-y-2 text-gray-700">
-                    <li>The recorded campaign was local and synthetic.</li>
-                    <li>The fixture model is smaller than the private live driver.</li>
-                    <li>Exact model versions were not independently attested.</li>
-                    <li>The counts are not a reliability rate or comparison against another system.</li>
-                </ul>
-            </section>
-        </div>
-    </article>
-
-    <footer class="bg-gray-900 text-gray-400 py-8">
-        <div class="max-w-6xl mx-auto px-4 text-sm"><p>&copy; 2026 Cayman Roden</p></div>
-    </footer>
+<body>
+    <p>This page is retired. The reviewer path is on the <a href="index.html">homepage</a>.</p>
 </body>
 </html>

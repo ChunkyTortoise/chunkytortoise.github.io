@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Cayman Roden</title>
-    <meta name="description" content="Public portfolio of production AI systems, workflow APIs, real-time AI backends, and developer tooling. Start with llm-reviewer-path (clone + pytest), then DocExtract, ai-workflow-api, and TechNova Voice Bot.">
+    <meta name="description" content="Public portfolio of production AI systems and developer tooling. Start with Acuity (paid delivery), DocExtract, llm-reviewer-path, and mcp-server-toolkit on GitHub.">
     <meta property="og:title" content="Projects | Cayman Roden">
     <meta property="og:description" content="Production AI portfolio: workflow APIs, agent orchestration, streaming systems, and developer tooling across Python and FastAPI.">
     <meta property="og:type" content="website">
@@ -36,19 +36,11 @@
             </button>
             <div class="hidden md:flex gap-4 text-sm">
                 <a href="projects.html" class="text-indigo-600 font-medium">Portfolio</a>
-                <a href="certifications.html" class="hover:text-indigo-600">Certifications</a>
-                <a href="case-studies.html" class="hover:text-indigo-600">Case Studies</a>
-                <a href="benchmarks.html" class="hover:text-indigo-600">Benchmarks</a>
-                <a href="blog.html" class="hover:text-indigo-600">Blog</a>
                 <a href="about.html" class="hover:text-indigo-600">About</a>
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-2 text-sm">
             <a href="projects.html" class="block py-1 text-indigo-600 font-medium">Portfolio</a>
-            <a href="certifications.html" class="block py-1 hover:text-indigo-600">Certifications</a>
-            <a href="case-studies.html" class="block py-1 hover:text-indigo-600">Case Studies</a>
-            <a href="benchmarks.html" class="block py-1 hover:text-indigo-600">Benchmarks</a>
-            <a href="blog.html" class="block py-1 hover:text-indigo-600">Blog</a>
             <a href="about.html" class="block py-1 hover:text-indigo-600">About</a>
         </div>
     </nav>
@@ -60,11 +52,11 @@
 
     <section class="max-w-6xl mx-auto px-4 py-12">
         <h1 class="text-3xl font-bold mb-2">Portfolio</h1>
-        <p class="text-gray-600 mb-8">AI-first portfolio focused on workflow APIs, agent systems, real-time AI backends, and developer tooling. Start with the four flagship repos below, then use the rest of the page as secondary proof.</p>
+        <p class="text-gray-600 mb-8">Paid delivery and public proof for LLM systems, agents, and evals. Start with the four cards below, then use the independent repositories as secondary proof.</p>
 
         <div class="bg-white border border-gray-200 rounded-xl p-5 mb-8">
             <h2 class="text-lg font-semibold mb-3">Flagship Order</h2>
-            <p class="text-sm text-gray-600 mb-3">If you are evaluating for AI roles, start here: llm-reviewer-path (clone + pytest), DocExtract, ai-workflow-api, and TechNova Voice Bot.</p>
+            <p class="text-sm text-gray-600 mb-3">If you are evaluating for AI roles, start here: Acuity, DocExtract, llm-reviewer-path, and mcp-server-toolkit on GitHub.</p>
             <div class="flex flex-wrap gap-2 text-xs">
                 <span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">Workflow APIs</span>
                 <span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">Agent Systems</span>
@@ -87,29 +79,44 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-6" id="project-grid">
+            <!-- Acuity paid engagement -->
+            <div class="project-card bg-white rounded-xl shadow-sm border border-indigo-200 p-6" data-category="ai automation">
+                <div class="flex justify-between items-start mb-3">
+                    <div><h3 class="text-lg font-bold">Acuity Real Estate</h3><p class="text-sm text-gray-500">Paid bilingual SMS qualification delivery</p></div>
+                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Paid</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">January to March 2026 delivery for 500+ inbound leads, with bilingual qualification, CRM integration, and handoff workflows.</p>
+                <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-indigo-600 text-sm hover:underline" target="_blank">GitHub</a>
+            </div>
+
+            <!-- DocExtract -->
+            <div class="project-card bg-white rounded-xl shadow-sm border border-indigo-200 p-6" data-category="ai qa">
+                <div class="flex justify-between items-start mb-3">
+                    <div><h3 class="text-lg font-bold">DocExtract</h3><p class="text-sm text-gray-500">Document extraction and eval-gated CI</p></div>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">95.5%</span>
+                </div>
+                <p class="text-gray-600 text-sm mb-4">95.5% weighted field-level accuracy on a 28-case offline replay, with a 202-case corpus (151 golden, 51 adversarial) and an 80% CI coverage gate.</p>
+                <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 text-sm hover:underline" target="_blank">GitHub</a>
+            </div>
+
             <!-- llm-reviewer-path -->
             <div class="project-card bg-white rounded-xl shadow-sm border border-indigo-200 p-6" data-category="ai qa">
-                <div class="w-full h-40 rounded-lg border border-indigo-200 mb-4 flex flex-col items-center justify-center bg-gray-900 text-center px-4">
-                    <span class="font-display text-2xl text-gray-50 tracking-tight leading-tight">llm-reviewer-path</span>
-                    <span class="font-mono text-[10px] uppercase tracking-widest text-indigo-400 mt-2">Start here</span>
-                </div>
                 <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="text-lg font-bold">llm-reviewer-path</h3>
-                        <p class="text-sm text-gray-500">10-Minute Hiring Review Path</p>
-                    </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">pytest</span>
+                    <div><h3 class="text-lg font-bold">llm-reviewer-path</h3><p class="text-sm text-gray-500">Clone and pytest review path</p></div>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">No API key</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">Clone, install, and run pytest. No API key. Eval gates, hard-action approval boundaries, retrieval failure modes, and FDE scoping receipts from production parent repos.</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Eval gates</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">No network</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
+                <p class="text-gray-600 text-sm mb-4">A short, rerunnable review path for eval gates, action boundaries, retrieval failures, and scoping receipts.</p>
+                <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="text-indigo-600 text-sm hover:underline" target="_blank">GitHub</a>
+            </div>
+
+            <!-- mcp-server-toolkit -->
+            <div class="project-card bg-white rounded-xl shadow-sm border border-indigo-200 p-6" data-category="tools qa">
+                <div class="flex justify-between items-start mb-3">
+                    <div><h3 class="text-lg font-bold">mcp-server-toolkit</h3><p class="text-sm text-gray-500">Python MCP server framework</p></div>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">617 tests</span>
                 </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <span class="text-gray-400 font-mono text-xs">uv sync --group dev &amp;&amp; uv run pytest</span>
-                </div>
+                <p class="text-gray-600 text-sm mb-4">GitHub is the supported proof: 617 collected tests, a 30-case adversarial corpus, and Python 3.10 to 3.12.</p>
+                <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="text-indigo-600 text-sm hover:underline" target="_blank">GitHub</a>
             </div>
 
             <!-- AI Workflow API -->
@@ -121,7 +128,7 @@
                     </div>
                     <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">FastAPI Proof</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">YAML-driven workflow automation backend with async job processing and SSE streaming. This is the cleanest FastAPI-first backend proof in the portfolio for AI backend and integration roles.</p>
+                <p class="text-gray-600 text-sm mb-4">Independent repository: YAML-driven workflow automation backend with async job processing and SSE streaming.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
                     <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
                     <span class="bg-gray-100 text-xs px-2 py-1 rounded">ARQ</span>
@@ -144,7 +151,7 @@
                     </div>
                     <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">171 Tests</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">Real-time voice AI with WebSocket audio streaming, voice activity detection, Deepgram STT/TTS, and barge-in support. Strong proof for streaming and latency-sensitive AI applications.</p>
+                <p class="text-gray-600 text-sm mb-4">Independent repository: real-time voice AI with WebSocket audio streaming, voice activity detection, Deepgram STT/TTS, and barge-in support.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
                     <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
                     <span class="bg-gray-100 text-xs px-2 py-1 rounded">WebSockets</span>
@@ -156,30 +163,6 @@
                 <div class="flex gap-4 text-sm">
                     <a href="https://github.com/ChunkyTortoise/technova-voice-bot" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
                     <span class="text-gray-400">streaming pipeline | VAD | STT/TTS</span>
-                </div>
-            </div>
-
-            <!-- Multi-Agent Demo -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="tools">
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="text-lg font-bold">Multi-Agent Demo</h3>
-                        <p class="text-sm text-gray-500">Planning and Routing Demo</p>
-                    </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">89 Tests</span>
-                </div>
-                <p class="text-gray-600 text-sm mb-4">Clear planning, tool use, retrieval, and conditional routing in a live demo that also runs offline with MockLLM support. Strong supporting proof for orchestration concepts.</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">LangGraph</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">MockLLM</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Routing</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/multi-agent-demo" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <a href="https://multi-agent-demo-xjvogxpydrv6cfnxvqftpx.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo</a>
-                    <span class="text-gray-400">89 tests | offline demo path</span>
                 </div>
             </div>
 
@@ -484,7 +467,7 @@
                         <h3 class="text-lg font-bold">DocExtract AI</h3>
                         <p class="text-sm text-gray-500">Document Extraction API</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">1,366 tests</span>
+                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">95.5% replay</span>
                 </div>
                 <p class="text-gray-600 text-sm mb-4">Document extraction API with async job processing, hybrid retrieval, and evaluation gates. Included here as secondary proof because it is already featured higher on the page.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
@@ -497,7 +480,7 @@
                 </div>
                 <div class="flex gap-4 text-sm">
                     <a href="https://docextract-demo.streamlit.app" class="text-green-600 hover:underline font-semibold" target="_blank">Live Demo</a>
-                    <span class="text-gray-400">1,366 tests | Streamlit Cloud</span>
+                    <span class="text-gray-400">28-case offline replay | Streamlit Cloud</span>
                 </div>
             </div>
 
@@ -551,8 +534,11 @@
                             <td class="py-2 pr-4 font-medium text-purple-700">Testing and Reliability</td>
                             <td class="py-2 pr-4">pytest, Playwright, RAGAS, bandit, mypy, GitHub Actions</td>
                             <td class="py-2">
-                                EnterpriseHub,
-                                <a href="https://github.com/ChunkyTortoise/realty-ai" class="text-indigo-600 hover:underline" target="_blank">Realty Bots</a>
+                                <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-indigo-600 hover:underline" target="_blank">Acuity Real Estate</a>,
+                                <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 hover:underline" target="_blank">DocExtract AI</a>,
+                                <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="text-indigo-600 hover:underline" target="_blank">llm-reviewer-path</a>,
+                                <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="text-indigo-600 hover:underline" target="_blank">mcp-server-toolkit</a>,
+                                EnterpriseHub
                             </td>
                         </tr>
                         <tr class="border-b">
@@ -567,9 +553,11 @@
                             <td class="py-2 pr-4 font-medium text-orange-700">AI and LLM Systems</td>
                             <td class="py-2 pr-4">Claude API, RAG, pgvector, LangChain, agentic workflows</td>
                             <td class="py-2">
-                                EnterpriseHub,
+                                <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-indigo-600 hover:underline" target="_blank">Acuity Real Estate</a>,
                                 <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 hover:underline" target="_blank">DocExtract AI</a>,
-                                <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="text-indigo-600 hover:underline" target="_blank">mcp-server-toolkit</a>
+                                <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="text-indigo-600 hover:underline" target="_blank">llm-reviewer-path</a>,
+                                <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="text-indigo-600 hover:underline" target="_blank">mcp-server-toolkit</a>,
+                                EnterpriseHub
                             </td>
                         </tr>
                     </tbody>

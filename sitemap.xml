@@ -11,31 +11,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://chunkytortoise.github.io/certifications.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chunkytortoise.github.io/case-studies.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chunkytortoise.github.io/case-studies/eval-driven-multi-model-runs.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://chunkytortoise.github.io/case-studies/cmux-fail-closed-interop.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://chunkytortoise.github.io/benchmarks.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://chunkytortoise.github.io/blog.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -44,10 +19,5 @@
     <loc>https://chunkytortoise.github.io/about.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://chunkytortoise.github.io/blog/multi-agent-orchestration.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
 </urlset>
