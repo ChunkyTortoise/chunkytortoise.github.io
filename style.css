@@ -286,6 +286,106 @@ a.surface:hover {
     color: rgb(var(--clay-200));
 }
 
+.article-title {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    font-size: clamp(1.5rem, 2.4vw, 1.85rem);
+    color: rgb(var(--stone-50));
+}
+
+.article-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.article-title a:hover {
+    color: rgb(var(--clay-200));
+}
+
+.blog-prose {
+    color: rgb(var(--ink-muted));
+}
+
+.blog-prose p,
+.blog-prose li {
+    color: rgb(var(--ink-muted));
+}
+
+.blog-prose h2,
+.blog-prose h3 {
+    color: rgb(var(--stone-50));
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.blog-prose h2 {
+    font-size: 1.35rem;
+    margin-top: 2.25rem;
+    margin-bottom: 0.85rem;
+}
+
+.blog-prose h3 {
+    font-size: 1.15rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.blog-prose a {
+    color: rgb(var(--clay-300));
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+}
+
+.blog-prose a:hover {
+    color: rgb(var(--clay-200));
+}
+
+.blog-prose code {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.875em;
+    color: rgb(var(--clay-200));
+}
+
+.blog-prose strong {
+    color: rgb(var(--stone-100));
+    font-weight: 600;
+}
+
+.blog-code {
+    background: rgb(var(--stone-950));
+    border: 1px solid rgb(var(--line));
+    border-radius: 0.75rem;
+    padding: 1rem;
+    overflow-x: auto;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: rgb(var(--ink-muted));
+}
+
+.blog-stat {
+    background: rgb(var(--stone-950));
+    border: 1px solid rgb(var(--line));
+    border-radius: 0.625rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.blog-stat .num {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: rgb(var(--clay-200));
+}
+
+.blog-stat .label {
+    font-size: 0.75rem;
+    color: rgb(var(--ink-faint));
+    margin-top: 0.35rem;
+}
+
 .chip {
     display: inline-flex;
     align-items: center;

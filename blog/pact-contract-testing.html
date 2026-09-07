@@ -28,37 +28,52 @@
         gtag('config', 'G-QNBBCMHX7Q');
     </script>
 </head>
-<body class="bg-gray-50 text-gray-900">
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="../index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
-            <div class="flex gap-4 text-sm">
-                <a href="../projects.html" class="hover:text-indigo-600">Portfolio</a>
-                <a href="../blog.html" class="text-indigo-600 font-medium">Blog</a>
-                <a href="../about.html" class="hover:text-indigo-600">About</a>
+<body>
+    <nav class="site-nav" aria-label="Primary">
+        <div class="site-wrap nav-inner">
+            <a href="../index.html" class="wordmark">Cayman Roden</a>
+            <button id="menu-toggle" class="nav-toggle md:hidden" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="../projects.html" class="nav-link">Portfolio</a>
+                <a href="../about.html" class="nav-link">About</a>
+                <a href="../resume/cayman-roden-ai-engineer.pdf" class="nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
         </div>
+        <div id="mobile-menu" class="hidden md:hidden site-wrap mobile-panel space-y-2 text-sm">
+            <a href="../projects.html" class="block py-1 nav-link">Portfolio</a>
+            <a href="../about.html" class="block py-1 nav-link">About</a>
+            <a href="../resume/cayman-roden-ai-engineer.pdf" class="block py-1 nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
+        </div>
     </nav>
+    <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        var menu = document.getElementById('mobile-menu');
+        var open = menu.classList.toggle('hidden');
+        this.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+    </script>
 
-    <article class="max-w-4xl mx-auto px-4 py-12">
-        <a href="../blog.html" class="text-sm text-indigo-600 hover:underline mb-6 inline-block">&larr; Back to Blog</a>
+    <article class="site-wrap-narrow py-14 md:py-20">
+        <a href="../blog.html" class="btn-ghost mb-6">&larr; Back to Blog</a>
 
-        <div class="bg-white rounded-xl border p-8">
-            <div class="flex items-center gap-3 mb-4">
-                <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Contract Testing</span>
-                <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">QA</span>
-                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Python</span>
-                <span class="text-sm text-gray-400">April 6, 2026</span>
-                <span class="text-sm text-gray-400">&middot; 8 min read</span>
+        <div class="surface p-7 md:p-8">
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+                <span class="chip chip-clay">Contract Testing</span>
+                <span class="chip">QA</span>
+                <span class="chip">Python</span>
+                <span class="faint text-sm">April 6, 2026</span>
+                <span class="faint text-sm">&middot; 8 min read</span>
             </div>
-            <h1 class="text-3xl font-bold mb-6">Consumer-Driven Contract Testing with pact-python v3</h1>
+            <h1 class="section-title mb-6">Consumer-Driven Contract Testing with pact-python v3</h1>
 
-            <div class="prose prose-gray max-w-none text-gray-700 space-y-4">
+            <div class="blog-prose space-y-4">
                 <p>Third-party API boundaries are where integrations silently break. The SaaS vendor ships a new release, a field gets renamed, a previously optional key becomes required, and your system starts failing in production before any test catches it. Unit tests mock the HTTP layer entirely, so they cannot detect this. End-to-end tests hit the real API, but they are slow, flaky, and do not run in CI without live credentials. Contract testing sits between these two extremes: it verifies the shape of the API your code depends on, without making a live network call, and it produces a machine-readable artifact that the provider can run against their own implementation.</p>
 
                 <p>This post walks through consumer-driven contract testing using <strong>pact-python v3</strong>, the Python binding for the Pact specification. The examples come from real test code I wrote for a production integration against the GoHighLevel (GHL) CRM API v2. The consumer is a Python bot application; the provider is a third-party SaaS that we do not control. This is the exact scenario where contract testing pays off most.</p>
 
-                <h2 class="text-2xl font-bold mt-10 mb-4">What Contract Testing Is (and Why It Matters)</h2>
+                <h2>What Contract Testing Is (and Why It Matters)</h2>
 
                 <p>A contract is a record of what interactions the consumer expects from the provider: which endpoints it calls, what request shape it sends, and what response shape it needs back. The consumer owns the contract definition. The provider verifies it. Neither side needs the other to be running during their respective test runs.</p>
 
@@ -66,7 +81,7 @@
 
                 <p>The failure mode it prevents is subtle: a provider changes a response field from <code>"contactId"</code> to <code>"contact_id"</code>. Your integration code references the old key. Nothing raises an exception - you just get <code>None</code> where you expected a string, and a downstream database write silently stores a null. Contract tests catch this at the shape-verification stage, not in production.</p>
 
-                <h2 class="text-2xl font-bold mt-10 mb-4">Consumer vs Provider Contracts</h2>
+                <h2>Consumer vs Provider Contracts</h2>
 
                 <p>The Pact model has two distinct phases:</p>
 
@@ -77,12 +92,12 @@
 
                 <p>This post focuses on the consumer phase, because that is what you control when integrating against a third-party SaaS.</p>
 
-                <h2 class="text-2xl font-bold mt-10 mb-4">The pact-python v3 API</h2>
+                <h2>The pact-python v3 API</h2>
 
                 <p>The v3 API introduced a fluent builder pattern that is more explicit than the v2 decorator-based style. The core flow is four steps: create a <code>Pact</code> instance, define the interaction with the builder chain, run your real code against the mock server with <code>pact.serve()</code>, then write the interaction to disk with <code>pact.write_file()</code>.</p>
 
-                <div class="bg-gray-50 rounded-lg p-4 my-4">
-                    <p class="text-sm font-mono text-gray-600">
+                <div class="blog-code my-4">
+                    <p>
                         from pact import Pact<br>
                         from pathlib import Path<br><br>
                         PACTS_DIR = Path(__file__).parent / "pacts"<br>
@@ -106,12 +121,12 @@
 
                 <p>The <code>with_body()</code> method on the response side specifies exact match by default. Pact v3 also supports matchers (regex, type, like) if you need to handle dynamic values, but exact match is appropriate for the fields your code actually reads.</p>
 
-                <h2 class="text-2xl font-bold mt-10 mb-4">A Real Example: GET /contacts/{id}</h2>
+                <h2>A Real Example: GET /contacts/{id}</h2>
 
                 <p>Here is the full contract test for fetching a contact from the GHL API. The client code under test wraps every response in an envelope: <code>{"success": True, "data": &lt;ghl_json&gt;, "status_code": N}</code>. This is an implementation detail of the client, not the API - understanding the distinction is important for writing correct assertions.</p>
 
-                <div class="bg-gray-50 rounded-lg p-4 my-4">
-                    <p class="text-sm font-mono text-gray-600">
+                <div class="blog-code my-4">
+                    <p>
                         @pytest.mark.asyncio<br>
                         async def test_get_contact_contract(pact, ghl_client):<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;"""Contract: GET /contacts/{id} - GHL returns contact; client wraps in data envelope."""<br>
@@ -147,14 +162,14 @@
 
                 <p>A few details worth noting. The mock server URL comes from <code>srv.url</code> inside the context manager, and you point your client at it by overriding its base URL. The test uses <code>MOCK_TOKEN</code> and <code>MOCK_LOCATION</code> constants (patched into settings) rather than real credentials - the mock server does not validate authentication headers, so the client never needs a real token. The assertions check the envelope fields (<code>result["success"]</code>, <code>result["data"]</code>) rather than the raw HTTP response, because that is what the calling code actually consumes.</p>
 
-                <h2 class="text-2xl font-bold mt-10 mb-4">An Interesting Edge Case: Testing Error Envelopes</h2>
+                <h2>An Interesting Edge Case: Testing Error Envelopes</h2>
 
                 <p>When the GHL API returns a 404, most HTTP clients raise an exception. The GHL client in this codebase does not - it catches non-retryable <code>HTTPStatusError</code> and converts it into an error envelope: <code>{"success": False, "error": ..., "status_code": 404}</code>. This is a deliberate design choice that makes the calling code simpler: every response has the same shape, and you check <code>result["success"]</code> rather than catching exceptions everywhere.</p>
 
                 <p>Contract testing this behavior requires you to contract the provider-side 404 response <em>and</em> assert the client-side envelope transformation separately:</p>
 
-                <div class="bg-gray-50 rounded-lg p-4 my-4">
-                    <p class="text-sm font-mono text-gray-600">
+                <div class="blog-code my-4">
+                    <p>
                         @pytest.mark.asyncio<br>
                         async def test_get_contact_not_found_contract(pact, ghl_client):<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;"""Contract: GET /contacts/{id} - GHL returns 404; client returns error envelope (no raise)."""<br>
@@ -180,7 +195,7 @@
 
                 <p>The same pattern applies to the POST contracts that encode client-side transformations. The <code>send_message</code> contract specifies <code>disclosed_message = input_message + "\n[AI-assisted message]"</code> as the request body, because the client appends a disclosure footer before sending. The <code>create_opportunity</code> contract specifies an <code>expected_request_body</code> that includes <code>"locationId": MOCK_LOCATION</code>, because the client injects the location ID from settings before the request goes out. The contract captures what actually hits the wire, not what the caller passed in.</p>
 
-                <h2 class="text-2xl font-bold mt-10 mb-4">The FFI Limitation and the Per-Test Merge Pattern</h2>
+                <h2>The FFI Limitation and the Per-Test Merge Pattern</h2>
 
                 <p>pact-python v3 is built on the Pact FFI (foreign function interface), a Rust-based shared library that handles the mock server lifecycle. The FFI has a constraint: you cannot safely reuse a single <code>Pact</code> instance across multiple test functions. Attempting to define a second interaction on an already-served pact produces undefined behavior or silently overwrites the previous interaction, depending on the FFI version.</p>
 
@@ -188,8 +203,8 @@
 
                 <p>The pattern that works cleanly is: create a fresh <code>Pact</code> instance per test, then call <code>pact.write_file()</code> at the end of each test with the same output directory. The FFI merges interactions into the existing file rather than overwriting it. Combined with a session-scoped fixture that deletes any stale file before the test run begins, you get a clean accumulated pact JSON at the end of the session.</p>
 
-                <div class="bg-gray-50 rounded-lg p-4 my-4">
-                    <p class="text-sm font-mono text-gray-600">
+                <div class="blog-code my-4">
+                    <p>
                         PACTS_DIR = Path(__file__).parent / "pacts"<br>
                         PACTS_DIR.mkdir(exist_ok=True)<br><br>
                         @pytest.fixture(scope="session", autouse=True)<br>
@@ -214,7 +229,7 @@
 
                 <p>The <code>PACT_AVAILABLE</code> guard around the import is worth keeping. pact-python requires the FFI shared library to be present, which is not always true in minimal CI environments. Guarding with a skip rather than a hard import failure lets the rest of the test suite run without pact-python installed.</p>
 
-                <h2 class="text-2xl font-bold mt-10 mb-4">How the Pact JSON Fits Into CI</h2>
+                <h2>How the Pact JSON Fits Into CI</h2>
 
                 <p>After the consumer tests pass, you have a pact JSON file in <code>tests/contract/pacts/</code>. This file is the artifact that makes contract testing useful beyond the current run.</p>
 
@@ -224,8 +239,8 @@
 
                 <p><strong>Run provider verification separately.</strong> Consumer tests run in your main CI on every pull request. Provider verification runs in a separate job - ideally triggered by the provider's release pipeline, or on a schedule, or both. For a third-party API like GHL, provider verification requires a sandbox environment and a real (non-mock) token scoped to that sandbox. Running it on a schedule (daily or on every consumer release) catches breaking changes without blocking your main CI on live network availability.</p>
 
-                <div class="bg-gray-50 rounded-lg p-4 my-4">
-                    <p class="text-sm font-mono text-gray-600">
+                <div class="blog-code my-4">
+                    <p>
                         # .github/workflows/contract-verify.yml (provider verification job)<br>
                         # Runs on schedule or workflow_dispatch; not on every PR<br><br>
                         - name: Run consumer contract tests<br>
@@ -245,22 +260,22 @@
 
                 <p>For teams using the Pact Broker, the pact JSON can be published there instead of committed directly to source control. The broker adds can-i-deploy gates, webhook triggers, and interaction history. For a small team or a third-party-only integration, committing the file directly is simpler and sufficient.</p>
 
-                <h2 class="text-2xl font-bold mt-10 mb-4">Summary</h2>
+                <h2>Summary</h2>
 
                 <p>Consumer-driven contract testing fills a gap that neither unit tests nor end-to-end tests cover: verifying the exact shape of a third-party API dependency without live credentials or network access. The pact-python v3 API is more verbose than earlier versions but more explicit about what is being contracted. The per-test Pact instance plus <code>write_file()</code> merge pattern works around the FFI limitation cleanly. And versioning the pact JSON as a build artifact gives you a diff-visible record of every contract change across your API integration's history.</p>
 
-                <p>For more on how this fits into a broader QA automation strategy - including end-to-end tests, performance benchmarks, and the full CI pipeline - see the <a href="../qa.html" class="text-indigo-600 hover:underline">QA portfolio page</a>.</p>
+                <p>For more on how this fits into a broader QA automation strategy - including end-to-end tests, performance benchmarks, and the full CI pipeline - see the <a href="../qa.html">QA portfolio page</a>.</p>
             </div>
         </div>
     </article>
 
-    <footer class="bg-gray-900 text-gray-400 py-8">
-        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
+    <footer class="site-footer">
+        <div class="site-wrap flex flex-col sm:flex-row justify-between gap-4">
             <span>&copy; 2026 Cayman Roden</span>
-            <div class="flex gap-4">
-                <a href="https://github.com/ChunkyTortoise" class="hover:text-white" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/caymanroden" class="hover:text-white" target="_blank">LinkedIn</a>
-                <a href="mailto:caymanroden@gmail.com" class="hover:text-white">Email</a>
+            <div class="flex flex-wrap gap-5 items-center">
+                <a href="https://github.com/ChunkyTortoise" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/caymanroden" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:caymanroden@gmail.com">Email</a>
             </div>
         </div>
     </footer>
