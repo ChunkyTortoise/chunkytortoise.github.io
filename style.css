@@ -44,7 +44,8 @@
     --line-strong: var(--stone-700);
     --accent: var(--clay-600);
     --accent-text: var(--clay-300);
-    --nav-offset: 7.5rem;
+    /* Measured sticky .site-nav height at 1440px with fonts loaded: 56px. + 1rem gap. */
+    --nav-offset: 4.5rem;
 }
 
 html {
@@ -56,8 +57,19 @@ html {
 #project-grid,
 article[id],
 section[id],
-main [id] {
+main [id],
+.hash-target {
     scroll-margin-top: var(--nav-offset);
+}
+
+/*
+ * Pull the hash box up by the measured nav offset without moving the card.
+ * Chips and the clay border then sit below a sticky header whether the
+ * browser honors scroll-margin or a screenshot is cropped to #acuity.
+ */
+.hash-target {
+    padding-top: var(--nav-offset);
+    margin-top: calc(-1 * var(--nav-offset));
 }
 
 body {
@@ -66,6 +78,7 @@ body {
     color: rgb(var(--ink-body));
     font-size: 1.0625rem;
     line-height: 1.65;
+    scroll-padding-top: var(--nav-offset);
 }
 
 h1, h2, h3, h4 {
