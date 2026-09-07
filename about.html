@@ -28,176 +28,169 @@
         gtag('config', 'G-QNBBCMHX7Q');
     </script>
 </head>
-<body class="bg-gray-50 text-gray-900">
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
-            <button id="menu-toggle" class="md:hidden p-2 text-gray-600 hover:text-indigo-600" aria-label="Toggle menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+<body>
+    <nav class="site-nav" aria-label="Primary">
+        <div class="site-wrap nav-inner">
+            <a href="index.html" class="wordmark">Cayman Roden</a>
+            <button id="menu-toggle" class="nav-toggle md:hidden" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
-            <div class="hidden md:flex gap-4 text-sm">
-                <a href="projects.html" class="hover:text-indigo-600">Portfolio</a>
-                <a href="about.html" class="text-indigo-600 font-medium">About</a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="projects.html" class="nav-link">Portfolio</a>
+                <a href="about.html" class="nav-link is-active" aria-current="page">About</a>
+                <a href="resume/cayman-roden-ai-engineer.pdf" class="nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-2 text-sm">
-            <a href="projects.html" class="block py-1 hover:text-indigo-600">Portfolio</a>
-            <a href="about.html" class="block py-1 text-indigo-600 font-medium">About</a>
+        <div id="mobile-menu" class="hidden md:hidden site-wrap mobile-panel space-y-2 text-sm">
+            <a href="projects.html" class="block py-1 nav-link">Portfolio</a>
+            <a href="about.html" class="block py-1 nav-link is-active" aria-current="page">About</a>
+            <a href="resume/cayman-roden-ai-engineer.pdf" class="block py-1 nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
         </div>
     </nav>
     <script>
     document.getElementById('menu-toggle').addEventListener('click', function() {
-        document.getElementById('mobile-menu').classList.toggle('hidden');
+        var menu = document.getElementById('mobile-menu');
+        var open = menu.classList.toggle('hidden');
+        this.setAttribute('aria-expanded', open ? 'false' : 'true');
     });
     </script>
 
-    <section class="max-w-4xl mx-auto px-4 py-12">
-        <h1 class="text-3xl font-bold mb-4">About</h1>
-        <p class="text-gray-600 text-lg mb-10">AI Engineer building Python and FastAPI LLM applications with retrieval, structured outputs, evaluation, and human handoff. Remote, US-based.</p>
+    <main class="site-wrap-narrow py-14 md:py-20">
+        <p class="kicker mb-3">About</p>
+        <h1 class="section-title mb-5">AI Engineer, paid delivery, public proof</h1>
+        <p class="lede mb-12">Python and FastAPI LLM applications with retrieval, structured outputs, evaluation, and human handoff. Remote, US-based. Contract-first.</p>
 
-        <!-- Who I Am -->
-        <div class="bg-white rounded-xl border p-8 mb-8">
-            <h2 class="text-xl font-bold mb-4">Who I Am</h2>
-            <p class="text-gray-700 mb-4">Based in the Inland Empire, California. My work centers on FastAPI backends, retrieval pipelines, evaluation harnesses, and public proof repositories. Client-facing operations experience still shapes how I scope work, communicate tradeoffs, and deliver under real constraints.</p>
-            <p class="text-gray-700">The proof on this site starts with named paid delivery for Acuity, then DocExtract, llm-reviewer-path, and mcp-server-toolkit on GitHub. Independent repositories are independent unless explicitly labeled paid.</p>
-        </div>
+        <section class="surface p-7 md:p-8 mb-8">
+            <h2 class="card-title mb-4">Who I am</h2>
+            <p class="muted mb-4">Based in the Inland Empire, California. My work centers on FastAPI backends, retrieval pipelines, evaluation harnesses, and public proof repositories. Client-facing operations experience still shapes how I scope work, communicate tradeoffs, and deliver under real constraints.</p>
+            <p class="muted">The proof on this site starts with named paid delivery for Acuity, then DocExtract, llm-reviewer-path, and mcp-server-toolkit on GitHub. Independent repositories are independent unless explicitly labeled paid.</p>
+        </section>
 
-        <!-- Three Tracks -->
-        <div class="mb-8">
-            <h2 class="text-xl font-bold mb-6">What I Do</h2>
-            <div class="space-y-6">
-                <div class="bg-white rounded-xl border p-6">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="bg-indigo-100 text-indigo-700 text-xs px-3 py-1 rounded-full font-medium">Production AI Delivery</span>
+        <section class="mb-8">
+            <h2 class="card-title mb-6">What I do</h2>
+            <div class="space-y-5">
+                <article class="surface p-6">
+                    <p class="kicker mb-3">Production AI delivery</p>
+                    <h3 class="text-lg font-semibold text-gray-50 mb-2">Applied AI systems that ship</h3>
+                    <p class="muted mb-3">I build AI systems that have to work inside real workflows: RAG pipelines, agent workflows, FastAPI services, and evaluation gates. The paid Acuity engagement processed 500+ inbound leads. Public proof includes DocExtract at 95.5% weighted field-level accuracy, llm-reviewer-path, and mcp-server-toolkit on GitHub (600 collected tests).</p>
+                    <div class="flex gap-4 text-sm">
+                        <a href="projects.html" class="btn-ghost">Public proof &rarr;</a>
+                        <a href="https://docextract-demo.streamlit.app" class="btn-ghost" target="_blank" rel="noopener noreferrer">Live demo</a>
                     </div>
-                    <h3 class="text-lg font-bold mb-2">Applied AI Systems That Ship</h3>
-                    <p class="text-gray-700 mb-3">I build AI systems that have to work inside real workflows: RAG pipelines, agent workflows, FastAPI services, and evaluation gates. The paid Acuity engagement processed 500+ inbound leads. Public proof includes DocExtract at 95.5% weighted field-level accuracy, llm-reviewer-path, and mcp-server-toolkit on GitHub.</p>
-                    <div class="flex gap-3 text-sm">
-                        <a href="projects.html" class="text-indigo-600 hover:underline">Public proof &rarr;</a>
-                        <a href="https://docextract-demo.streamlit.app" class="text-indigo-600 hover:underline" target="_blank">Live Demo</a>
+                </article>
+
+                <article class="surface p-6">
+                    <p class="kicker mb-3">Backend and reliability</p>
+                    <h3 class="text-lg font-semibold text-gray-50 mb-2">Application layer around LLMs</h3>
+                    <p class="muted mb-3">My strongest layer is the application layer around LLMs: retrieval, tool use, backend APIs, evaluation harnesses, caching, and operational debugging. Public proof includes DocExtract offline replay and an 80% CI coverage gate.</p>
+                    <a href="projects.html" class="btn-ghost text-sm">Flagship repos &rarr;</a>
+                </article>
+
+                <article class="surface p-6">
+                    <p class="kicker mb-3">Delivery ownership</p>
+                    <h3 class="text-lg font-semibold text-gray-50 mb-2">Client-facing execution without role drift</h3>
+                    <p class="muted mb-3">The strongest non-code part of my profile is delivery ownership. I came from 10 years of client-facing operations, so I am comfortable translating vague requirements into working systems, communicating constraints clearly, and making AI useful in live environments.</p>
+                    <a href="projects.html" class="btn-ghost text-sm">Public proof &rarr;</a>
+                </article>
+            </div>
+        </section>
+
+        <section class="surface p-7 md:p-8 mb-8">
+            <h2 class="card-title mb-6">How I work</h2>
+            <ol class="space-y-5">
+                <li class="grid sm:grid-cols-[3rem_1fr] gap-3">
+                    <span class="proof-metric">01</span>
+                    <div>
+                        <h3 class="font-semibold text-gray-50 mb-1">Discovery</h3>
+                        <p class="text-sm muted">Understand your data, existing systems, constraints, and what "done" looks like. No scope creep. Explicit deliverables before code starts.</p>
                     </div>
+                </li>
+                <li class="grid sm:grid-cols-[3rem_1fr] gap-3">
+                    <span class="proof-metric">02</span>
+                    <div>
+                        <h3 class="font-semibold text-gray-50 mb-1">Architecture</h3>
+                        <p class="text-sm muted">Design the system: data flow, component boundaries, API contracts, caching strategy, and deployment plan. You review before implementation.</p>
+                    </div>
+                </li>
+                <li class="grid sm:grid-cols-[3rem_1fr] gap-3">
+                    <span class="proof-metric">03</span>
+                    <div>
+                        <h3 class="font-semibold text-gray-50 mb-1">TDD build</h3>
+                        <p class="text-sm muted">Tests first, then implementation, then refactor. CI runs on every push. Progress is visible on GitHub.</p>
+                    </div>
+                </li>
+                <li class="grid sm:grid-cols-[3rem_1fr] gap-3">
+                    <span class="proof-metric">04</span>
+                    <div>
+                        <h3 class="font-semibold text-gray-50 mb-1">Delivery</h3>
+                        <p class="text-sm muted">Deployed with Docker, documented with examples, demo mode included. Handoff includes architecture docs, a test coverage report, and a walkthrough call.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="grid md:grid-cols-2 gap-5 mb-8">
+            <div class="surface p-6">
+                <h2 class="card-title mb-4">Strengths</h2>
+                <ul class="text-sm muted space-y-2">
+                    <li>Production Python AI systems with retrieval, orchestration, evals, and backend delivery</li>
+                    <li>FastAPI, PostgreSQL, Redis, Docker, and API integration in real workflows</li>
+                    <li>Proof stack: paid Acuity delivery, DocExtract offline replay, llm-reviewer-path, and mcp-server-toolkit on GitHub</li>
+                    <li>Agent-security notes as a supporting differentiator, not the primary proof</li>
+                    <li>10 years of client-facing ops applied to technical delivery and stakeholder communication</li>
+                </ul>
+            </div>
+            <div class="surface p-6">
+                <h2 class="card-title mb-4">Target roles</h2>
+                <ul class="text-sm muted space-y-2">
+                    <li>AI Engineer / Applied AI Engineer</li>
+                    <li>AI Backend Engineer / LLM Platform Engineer</li>
+                    <li>Selective Forward Deployed Engineer roles</li>
+                    <li>Remote, US-based, contract-first</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="surface p-7 md:p-8 mb-8">
+            <h2 class="card-title mb-5">Stack</h2>
+            <div class="grid md:grid-cols-2 gap-5 text-sm">
+                <div>
+                    <h3 class="kicker mb-2">Backend and APIs</h3>
+                    <p class="muted">Python, FastAPI, REST APIs, PostgreSQL, Redis, Docker, GitHub Actions CI/CD, GoHighLevel CRM integration</p>
                 </div>
-
-                <div class="bg-white rounded-xl border p-6">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full font-medium">Backend And Reliability</span>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2">Backend Systems Around LLMs</h3>
-                    <p class="text-gray-700 mb-3">My strongest layer is the application layer around LLMs: retrieval, tool use, backend APIs, evaluation harnesses, caching, and operational debugging. Public proof includes DocExtract offline replay and an 80% CI coverage gate.</p>
-                    <div class="flex gap-3 text-sm">
-                        <a href="projects.html" class="text-indigo-600 hover:underline">Flagship Repos &rarr;</a>
-                    </div>
+                <div>
+                    <h3 class="kicker mb-2">Evaluation and reliability</h3>
+                    <p class="muted">pytest, pytest-asyncio, RAGAS, LLM-as-judge, adversarial fixtures, GitHub Actions CI/CD, OpenTelemetry, structured logging</p>
                 </div>
-
-                <div class="bg-white rounded-xl border p-6">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full font-medium">Stakeholder Ownership</span>
-                    </div>
-                    <h3 class="text-lg font-bold mb-2">Client-Facing Execution Without Role Drift</h3>
-                    <p class="text-gray-700 mb-3">The strongest non-code part of my profile is delivery ownership. I came from 10 years of client-facing operations, so I am comfortable translating vague requirements into working systems, communicating constraints clearly, and making AI useful in live environments.</p>
-                    <div class="flex gap-3 text-sm">
-                        <a href="projects.html" class="text-indigo-600 hover:underline">Public proof &rarr;</a>
-                    </div>
+                <div>
+                    <h3 class="kicker mb-2">Retrieval and data</h3>
+                    <p class="muted">SQL, PostgreSQL, pgvector, Redis, embeddings, semantic search, BM25, reciprocal rank fusion, Streamlit, Plotly</p>
+                </div>
+                <div>
+                    <h3 class="kicker mb-2">AI APIs and orchestration</h3>
+                    <p class="muted">Claude API, OpenAI API, Gemini API, RAG pipelines, agent workflows, tool use, structured output, prompt engineering</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Process -->
-        <div class="bg-white rounded-xl border p-8 mb-8">
-            <h2 class="text-xl font-bold mb-6">How I Work</h2>
-            <div class="grid md:grid-cols-4 gap-6">
-                <div>
-                    <div class="text-2xl font-bold text-indigo-600 mb-2">1</div>
-                    <h3 class="font-bold mb-1">Discovery</h3>
-                    <p class="text-gray-600 text-sm">Understand your data, existing systems, constraints, and what "done" looks like. No scope creep - explicit deliverables before code starts.</p>
-                </div>
-                <div>
-                    <div class="text-2xl font-bold text-indigo-600 mb-2">2</div>
-                    <h3 class="font-bold mb-1">Architecture</h3>
-                    <p class="text-gray-600 text-sm">Design the system: data flow, component boundaries, API contracts, caching strategy, and deployment plan. You review before implementation.</p>
-                </div>
-                <div>
-                    <div class="text-2xl font-bold text-indigo-600 mb-2">3</div>
-                    <h3 class="font-bold mb-1">TDD Build</h3>
-                    <p class="text-gray-600 text-sm">Test-driven development. Tests first, then implementation, then refactor. CI runs on every push. You see progress in real-time via GitHub.</p>
-                </div>
-                <div>
-                    <div class="text-2xl font-bold text-indigo-600 mb-2">4</div>
-                    <h3 class="font-bold mb-1">Delivery</h3>
-                    <p class="text-gray-600 text-sm">Deployed with Docker, documented with examples, demo mode included. Handoff includes architecture docs, test coverage report, and a walkthrough call.</p>
-                </div>
+        <section class="surface-accent p-7 md:p-8">
+            <h2 class="card-title mb-3">Contact</h2>
+            <p class="muted mb-6">Open to remote AI Engineer, Applied AI, AI Backend, and LLM Platform roles. Selectively open to forward-deployed work that still centers on building and shipping real systems.</p>
+            <div class="flex flex-wrap gap-3">
+                <a href="mailto:caymanroden@gmail.com" class="btn-primary">Email</a>
+                <a href="https://linkedin.com/in/caymanroden" class="btn-secondary" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="resume/cayman-roden-ai-engineer.pdf" class="btn-secondary" target="_blank" rel="noopener noreferrer">Resume PDF</a>
             </div>
-        </div>
+        </section>
+    </main>
 
-        <!-- Ideal Client -->
-        <div class="bg-white rounded-xl border p-8 mb-8">
-            <h2 class="text-xl font-bold mb-4">What I Bring to a Team</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div>
-                    <h3 class="font-bold mb-2 text-green-700">Strengths</h3>
-                    <ul class="text-gray-700 text-sm space-y-2">
-                        <li>Production Python AI systems with retrieval, orchestration, evals, and backend delivery</li>
-                        <li>FastAPI, PostgreSQL, Redis, Docker, and API integration in real workflows</li>
-                        <li>Proof stack: paid Acuity delivery, DocExtract offline replay, llm-reviewer-path, and mcp-server-toolkit on GitHub</li>
-                        <li>Agent-security notes as a supporting differentiator, not the primary proof</li>
-                        <li>10 years of client-facing ops applied to technical delivery and stakeholder communication</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold mb-2 text-indigo-600">Target Roles</h3>
-                    <ul class="text-gray-700 text-sm space-y-2">
-                        <li>AI Engineer / Applied AI Engineer</li>
-                        <li>AI Backend Engineer / LLM Platform Engineer</li>
-                        <li>Selective Forward Deployed Engineer roles</li>
-                        <li>Remote, US-based</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- Stack -->
-        <div class="bg-white rounded-xl border p-8 mb-8">
-            <h2 class="text-xl font-bold mb-4">Stack</h2>
-            <div class="grid md:grid-cols-2 gap-4 text-sm">
-                <div>
-                    <h3 class="font-bold text-gray-500 mb-2">Backend &amp; APIs</h3>
-                    <p class="text-gray-700">Python, FastAPI, REST APIs, PostgreSQL, Redis, Docker, GitHub Actions CI/CD, GoHighLevel CRM integration</p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-gray-500 mb-2">Evaluation &amp; Reliability</h3>
-                    <p class="text-gray-700">pytest, pytest-asyncio, RAGAS, LLM-as-judge, adversarial fixtures, GitHub Actions CI/CD, OpenTelemetry, structured logging</p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-gray-500 mb-2">Retrieval &amp; Data</h3>
-                    <p class="text-gray-700">SQL, PostgreSQL, pgvector, Redis, embeddings, semantic search, BM25, reciprocal rank fusion, Streamlit, Plotly</p>
-                </div>
-                <div>
-                    <h3 class="font-bold text-gray-500 mb-2">AI APIs &amp; Orchestration</h3>
-                    <p class="text-gray-700">Claude API, OpenAI API, Gemini API, RAG pipelines, agent workflows, tool use, structured output, prompt engineering</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- CTA -->
-        <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-8 text-center">
-            <h2 class="text-xl font-bold mb-3">Let's Talk</h2>
-            <p class="text-gray-600 mb-6">Open to remote AI Engineer, Applied AI, AI Backend, and LLM Platform roles. Selectively open to forward-deployed work that still centers on building and shipping real systems.</p>
-            <div class="flex justify-center gap-4">
-                <a href="https://linkedin.com/in/caymanroden" class="inline-block bg-white text-indigo-600 border border-indigo-600 px-6 py-2 rounded-lg hover:bg-indigo-50 transition" target="_blank">LinkedIn</a>
-                <a href="mailto:caymanroden@gmail.com" class="inline-block bg-white text-indigo-600 border border-indigo-600 px-6 py-2 rounded-lg hover:bg-indigo-50 transition">Email</a>
-                <a href="/resume/cayman-roden-ai-engineer.pdf" target="_blank" class="inline-block bg-white text-gray-700 border border-gray-300 px-6 py-2 rounded-lg hover:bg-gray-50 transition">Resume PDF</a>
-            </div>
-        </div>
-
-    </section>
-
-    <footer class="bg-gray-900 text-gray-400 py-8">
-        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
+    <footer class="site-footer">
+        <div class="site-wrap flex flex-col sm:flex-row justify-between gap-4">
             <span>&copy; 2026 Cayman Roden</span>
-            <div class="flex gap-4">
-                <a href="https://github.com/ChunkyTortoise" class="hover:text-white" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/caymanroden" class="hover:text-white" target="_blank">LinkedIn</a>
-                <a href="mailto:caymanroden@gmail.com" class="hover:text-white">Email</a>
+            <div class="flex flex-wrap gap-5 items-center">
+                <a href="https://github.com/ChunkyTortoise" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/caymanroden" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:caymanroden@gmail.com">Email</a>
             </div>
         </div>
     </footer>

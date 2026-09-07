@@ -8,9 +8,10 @@
  * (e.g. bg-indigo-600/20) and gradient stops keep working. A bare var() with a
  * hex value silently breaks those - do not change this shape.
  *
- * Design direction (matches the ai-dashboard warm-editorial identity):
+ * Design direction (dark-base, proof-first portfolio):
  *   accent  = clay / terracotta (#CC785C), the anti "AI purple"
  *   neutral = warm stone ramp (no pure #fff / #000)
+ *   surfaces = stone-950 base, stone-900 raised
  *   display = Instrument Serif (titles only)   body = Hanken Grotesk   mono = JetBrains Mono
  *
  * The legacy palette names `indigo` and `purple` are remapped to the same clay
