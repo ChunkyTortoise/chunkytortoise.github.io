@@ -57,19 +57,8 @@ html {
 #project-grid,
 article[id],
 section[id],
-main [id],
-.hash-target {
+main [id] {
     scroll-margin-top: var(--nav-offset);
-}
-
-/*
- * Pull the hash box up by the measured nav offset without moving the card.
- * Chips and the clay border then sit below a sticky header whether the
- * browser honors scroll-margin or a screenshot is cropped to #acuity.
- */
-.hash-target {
-    padding-top: var(--nav-offset);
-    margin-top: calc(-1 * var(--nav-offset));
 }
 
 body {
