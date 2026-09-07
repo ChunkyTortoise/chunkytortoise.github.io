@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Cayman Roden</title>
-    <meta name="description" content="Public portfolio of production AI systems and developer tooling. Start with Acuity (paid delivery), DocExtract, llm-reviewer-path, and mcp-server-toolkit on GitHub.">
+    <meta name="description" content="Public portfolio of production AI systems. Three paid contracts: Acuity, DocExtract, and EnterpriseHub. Inspect DocExtract, llm-reviewer-path, and mcp-server-toolkit.">
     <meta property="og:title" content="Projects | Cayman Roden">
-    <meta property="og:description" content="Production AI portfolio: workflow APIs, agent orchestration, streaming systems, and developer tooling across Python and FastAPI.">
+    <meta property="og:description" content="Three paid contracts: Acuity, DocExtract, and EnterpriseHub. Public inspection: DocExtract, llm-reviewer-path, and mcp-server-toolkit.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chunkytortoise.github.io/projects.html">
     <link rel="canonical" href="https://chunkytortoise.github.io/projects.html">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Projects | Cayman Roden">
-    <meta name="twitter:description" content="Production AI portfolio: workflow APIs, agent orchestration, streaming systems, and developer tooling across Python and FastAPI.">
+    <meta name="twitter:description" content="Three paid contracts: Acuity, DocExtract, and EnterpriseHub. Public inspection: DocExtract, llm-reviewer-path, and mcp-server-toolkit.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="tw.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,12 +58,12 @@
     <main class="site-wrap py-14 md:py-20">
         <p class="kicker mb-3">Portfolio</p>
         <h1 class="section-title mb-4">Paid delivery and public proof</h1>
-        <p class="lede max-w-2xl mb-10">LLM systems, agents, and evals. Start with the four cards below, then treat the remaining repositories as secondary, independent proof.</p>
+        <p class="lede max-w-2xl mb-10">LLM systems, agents, and evals. Start with the paid contracts and three public proof repos below, then treat the remaining repositories as secondary, independent proof.</p>
 
         <div class="surface p-6 mb-8 lg:grid lg:grid-cols-12 lg:gap-8">
             <div class="lg:col-span-7 mb-5 lg:mb-0">
                 <h2 class="card-title mb-3">Flagship order</h2>
-                <p class="text-sm muted">If you are evaluating for AI roles, start here: Acuity as a paid story, then DocExtract, llm-reviewer-path, and mcp-server-toolkit on GitHub.</p>
+                <p class="text-sm muted">If you are evaluating for AI roles, start here: Acuity as the named paid delivery, DocExtract as public eval proof, EnterpriseHub as a replay demo, then llm-reviewer-path and mcp-server-toolkit on GitHub.</p>
             </div>
             <div class="lg:col-span-5 flex flex-wrap gap-2 content-start">
                 <span class="chip">Workflow APIs</span>
@@ -91,8 +91,8 @@
                     <div class="md:col-span-7">
                         <p class="kicker mb-2">Paid engagement</p>
                         <h3 class="font-display text-3xl font-normal tracking-tightest text-gray-50 mb-2">Acuity Real Estate</h3>
-                        <p class="text-sm faint mb-4">Bilingual SMS qualification. January to March 2026.</p>
-                        <p class="muted mb-4">500+ inbound leads, CRM integration, and a human handoff path. This is a delivery story. The implementation repo is private, so it is not offered as public GitHub proof.</p>
+                        <p class="text-sm faint mb-4">Bilingual EN/ES SMS qualification. January to March 2026.</p>
+                        <p class="muted mb-4">500+ inbound leads. FastAPI, Redis, and GoHighLevel, with broker collaboration and a human handoff path. 1,700+ tests at handoff and an audit of 226 GHL workflows. This is a named delivery story, not a public clone target.</p>
                     </div>
                     <div class="md:col-span-5">
                         <ul class="text-sm muted space-y-2">
@@ -103,15 +103,28 @@
                 </div>
             </article>
 
-            <article class="project-card surface p-6" data-category="ai qa">
+            <article id="enterprisehub" class="project-card surface p-6 md:col-span-2" data-category="ai">
+                <div class="flex justify-between items-start mb-3 gap-3">
+                    <div>
+                        <p class="kicker mb-2">Paid engagement · replay demo</p>
+                        <h3 class="card-title">EnterpriseHub</h3>
+                        <p class="text-sm faint">Confidential client. 2025 to 2026.</p>
+                    </div>
+                    <span class="chip chip-clay">Replay demo</span>
+                </div>
+                <p class="text-sm muted mb-4">Paid AI application work. The public surface is a replay-only demo. It does not show live client outcomes.</p>
+                <a href="https://enterprisehub-demo.vercel.app" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">Replay demo</a>
+            </article>
+
+            <article id="docextract" class="project-card surface p-6" data-category="ai qa">
                 <div class="flex justify-between items-start mb-3 gap-3">
                     <div>
                         <h3 class="card-title">DocExtract</h3>
                         <p class="text-sm faint">Document extraction and eval-gated CI</p>
                     </div>
-                    <span class="chip chip-clay">95.5%</span>
+                    <span class="chip chip-clay">Measured 95.5%</span>
                 </div>
-                <p class="text-sm muted mb-4">95.5% weighted field-level accuracy on a 28-case offline replay, with a 202-case corpus (151 golden, 51 adversarial) and an 80% CI coverage gate.</p>
+                <p class="text-sm muted mb-4">Measured 95.5% weighted field-level accuracy on a 28-case offline replay; separate 202-case evaluation corpus (151 golden, 51 adversarial); 80% CI coverage gate.</p>
                 <a href="https://github.com/ChunkyTortoise/docextract" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
             </article>
 
@@ -489,7 +502,7 @@
                     </div>
                     <span class="chip">95.5% replay</span>
                 </div>
-                <p class="text-sm muted mb-4">Document extraction API with async job processing, hybrid retrieval, and evaluation gates. Included here as secondary proof because it is already featured higher on the page.</p>
+                <p class="text-sm muted mb-4">Document extraction API with async job processing, hybrid retrieval, and evaluation gates. Measured 95.5% weighted field-level accuracy on a 28-case offline replay; separate 202-case evaluation corpus (151 golden, 51 adversarial); 80% CI coverage gate. Included here as secondary proof because it is already featured higher on the page.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
                     <span class="chip">FastAPI</span>
                     <span class="chip">pgvector</span>
@@ -499,7 +512,8 @@
                     <span class="chip chip-clay">Semantic Search</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://docextract-demo.streamlit.app" class="btn-ghost text-sm" target="_blank">Live Demo</a>
+                    <a href="https://docextract-demo.streamlit.app" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">Offline replay demo</a>
+                    <a href="https://github.com/ChunkyTortoise/docextract" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
                     <span class="faint">28-case offline replay | Streamlit Cloud</span>
                 </div>
             </div>
@@ -571,6 +585,7 @@
                             <td>Claude API, RAG, pgvector, LangChain, agentic workflows</td>
                             <td>
                                 <a href="#acuity">Acuity (paid story)</a>,
+                                <a href="#enterprisehub">EnterpriseHub (replay demo)</a>,
                                 <a href="https://github.com/ChunkyTortoise/docextract" target="_blank" rel="noopener noreferrer">DocExtract</a>,
                                 <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" target="_blank" rel="noopener noreferrer">llm-reviewer-path</a>,
                                 <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" target="_blank" rel="noopener noreferrer">mcp-server-toolkit</a>
