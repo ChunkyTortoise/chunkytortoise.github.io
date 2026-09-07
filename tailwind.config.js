@@ -30,6 +30,10 @@ module.exports = {
         display: ['Instrument Serif', 'Georgia', 'serif'],
         mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
+      fontSize: {
+        display: ['clamp(2.5rem, 6vw, 4.35rem)', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
+        section: ['clamp(1.85rem, 3.4vw, 2.65rem)', { lineHeight: '1.15', letterSpacing: '-0.025em' }],
+      },
       borderRadius: {
         lg: '0.625rem',
         xl: '0.625rem',
@@ -37,6 +41,7 @@ module.exports = {
       },
       letterSpacing: {
         tightest: '-0.03em',
+        widekicker: '0.14em',
       },
     },
   },

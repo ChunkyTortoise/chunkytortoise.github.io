@@ -28,581 +28,583 @@
         gtag('config', 'G-QNBBCMHX7Q');
     </script>
 </head>
-<body class="bg-gray-50 text-gray-900">
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
-            <button id="menu-toggle" class="md:hidden p-2 text-gray-600 hover:text-indigo-600" aria-label="Toggle menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+<body>
+    <nav class="site-nav" aria-label="Primary">
+        <div class="site-wrap nav-inner">
+            <a href="index.html" class="wordmark">Cayman Roden</a>
+            <button id="menu-toggle" class="nav-toggle md:hidden" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
-            <div class="hidden md:flex gap-4 text-sm">
-                <a href="projects.html" class="text-indigo-600 font-medium">Portfolio</a>
-                <a href="about.html" class="hover:text-indigo-600">About</a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="projects.html" class="nav-link is-active">Portfolio</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="resume/cayman-roden-ai-engineer.pdf" class="nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-2 text-sm">
-            <a href="projects.html" class="block py-1 text-indigo-600 font-medium">Portfolio</a>
-            <a href="about.html" class="block py-1 hover:text-indigo-600">About</a>
+        <div id="mobile-menu" class="hidden md:hidden site-wrap mobile-panel space-y-2 text-sm">
+            <a href="projects.html" class="block py-1 nav-link is-active">Portfolio</a>
+            <a href="about.html" class="block py-1 nav-link">About</a>
+            <a href="resume/cayman-roden-ai-engineer.pdf" class="block py-1 nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
         </div>
     </nav>
     <script>
     document.getElementById('menu-toggle').addEventListener('click', function() {
-        document.getElementById('mobile-menu').classList.toggle('hidden');
+        var menu = document.getElementById('mobile-menu');
+        var open = menu.classList.toggle('hidden');
+        this.setAttribute('aria-expanded', open ? 'false' : 'true');
     });
     </script>
 
-    <section class="max-w-6xl mx-auto px-4 py-12">
-        <h1 class="text-3xl font-bold mb-2">Portfolio</h1>
-        <p class="text-gray-600 mb-8">Paid delivery and public proof for LLM systems, agents, and evals. Start with the four cards below, then use the independent repositories as secondary proof.</p>
+    <main class="site-wrap py-14 md:py-20">
+        <p class="kicker mb-3">Portfolio</p>
+        <h1 class="section-title mb-4">Paid delivery and public proof</h1>
+        <p class="lede max-w-2xl mb-10">LLM systems, agents, and evals. Start with the four cards below, then treat the remaining repositories as secondary, independent proof.</p>
 
-        <div class="bg-white border border-gray-200 rounded-xl p-5 mb-8">
-            <h2 class="text-lg font-semibold mb-3">Flagship Order</h2>
-            <p class="text-sm text-gray-600 mb-3">If you are evaluating for AI roles, start here: Acuity, DocExtract, llm-reviewer-path, and mcp-server-toolkit on GitHub.</p>
-            <div class="flex flex-wrap gap-2 text-xs">
-                <span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">Workflow APIs</span>
-                <span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">Agent Systems</span>
-                <span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">Streaming Systems</span>
-                <span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">FastAPI</span>
-                <span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">Python</span>
-                <span class="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">WebSockets</span>
-                <span class="bg-gray-50 text-gray-700 px-2.5 py-1 rounded-full">Eval-gated CI</span>
+        <div class="surface p-6 mb-8 lg:grid lg:grid-cols-12 lg:gap-8">
+            <div class="lg:col-span-7 mb-5 lg:mb-0">
+                <h2 class="card-title mb-3">Flagship order</h2>
+                <p class="text-sm muted">If you are evaluating for AI roles, start here: Acuity as a paid story, then DocExtract, llm-reviewer-path, and mcp-server-toolkit on GitHub.</p>
+            </div>
+            <div class="lg:col-span-5 flex flex-wrap gap-2 content-start">
+                <span class="chip">Workflow APIs</span>
+                <span class="chip">Agent Systems</span>
+                <span class="chip">Streaming Systems</span>
+                <span class="chip">FastAPI</span>
+                <span class="chip">Python</span>
+                <span class="chip">WebSockets</span>
+                <span class="chip chip-clay">Eval-gated CI</span>
             </div>
         </div>
 
-        <!-- Filter -->
         <div class="flex gap-3 mb-8 flex-wrap">
-            <button onclick="filterProjects('all')" class="filter-btn active bg-indigo-600 text-white px-4 py-1.5 rounded-full text-sm">All</button>
-            <button onclick="filterProjects('ai')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">AI Systems</button>
-            <button onclick="filterProjects('data')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Secondary Data/BI</button>
-            <button onclick="filterProjects('qa')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Testing</button>
-            <button onclick="filterProjects('automation')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Automation</button>
-            <button onclick="filterProjects('tools')" class="filter-btn bg-gray-200 text-gray-700 px-4 py-1.5 rounded-full text-sm hover:bg-gray-300">Tools/MCP</button>
+            <button type="button" onclick="filterProjects('all')" class="filter-btn active">All</button>
+            <button type="button" onclick="filterProjects('ai')" class="filter-btn">AI Systems</button>
+            <button type="button" onclick="filterProjects('data')" class="filter-btn">Secondary Data/BI</button>
+            <button type="button" onclick="filterProjects('qa')" class="filter-btn">Testing</button>
+            <button type="button" onclick="filterProjects('automation')" class="filter-btn">Automation</button>
+            <button type="button" onclick="filterProjects('tools')" class="filter-btn">Tools/MCP</button>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6" id="project-grid">
-            <!-- Acuity paid engagement -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-indigo-200 p-6" data-category="ai automation">
-                <div class="flex justify-between items-start mb-3">
-                    <div><h3 class="text-lg font-bold">Acuity Real Estate</h3><p class="text-sm text-gray-500">Paid bilingual SMS qualification delivery</p></div>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Paid</span>
+            <article id="acuity" class="project-card surface-accent p-6 md:col-span-2" data-category="ai automation">
+                <div class="grid md:grid-cols-12 gap-6 items-start">
+                    <div class="md:col-span-7">
+                        <p class="kicker mb-2">Paid engagement</p>
+                        <h3 class="font-display text-3xl font-normal tracking-tightest text-gray-50 mb-2">Acuity Real Estate</h3>
+                        <p class="text-sm faint mb-4">Bilingual SMS qualification. January to March 2026.</p>
+                        <p class="muted mb-4">500+ inbound leads, CRM integration, and a human handoff path. This is a delivery story. The implementation repo is private, so it is not offered as public GitHub proof.</p>
+                    </div>
+                    <div class="md:col-span-5">
+                        <ul class="text-sm muted space-y-2">
+                            <li>Named paid work, not a public clone target</li>
+                            <li>Inspect public proof on DocExtract, llm-reviewer-path, and mcp-server-toolkit</li>
+                        </ul>
+                    </div>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">January to March 2026 delivery for 500+ inbound leads, with bilingual qualification, CRM integration, and handoff workflows.</p>
-                <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-indigo-600 text-sm hover:underline" target="_blank">GitHub</a>
-            </div>
+            </article>
 
-            <!-- DocExtract -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-indigo-200 p-6" data-category="ai qa">
-                <div class="flex justify-between items-start mb-3">
-                    <div><h3 class="text-lg font-bold">DocExtract</h3><p class="text-sm text-gray-500">Document extraction and eval-gated CI</p></div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">95.5%</span>
+            <article class="project-card surface p-6" data-category="ai qa">
+                <div class="flex justify-between items-start mb-3 gap-3">
+                    <div>
+                        <h3 class="card-title">DocExtract</h3>
+                        <p class="text-sm faint">Document extraction and eval-gated CI</p>
+                    </div>
+                    <span class="chip chip-clay">95.5%</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">95.5% weighted field-level accuracy on a 28-case offline replay, with a 202-case corpus (151 golden, 51 adversarial) and an 80% CI coverage gate.</p>
-                <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 text-sm hover:underline" target="_blank">GitHub</a>
-            </div>
+                <p class="text-sm muted mb-4">95.5% weighted field-level accuracy on a 28-case offline replay, with a 202-case corpus (151 golden, 51 adversarial) and an 80% CI coverage gate.</p>
+                <a href="https://github.com/ChunkyTortoise/docextract" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </article>
 
-            <!-- llm-reviewer-path -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-indigo-200 p-6" data-category="ai qa">
-                <div class="flex justify-between items-start mb-3">
-                    <div><h3 class="text-lg font-bold">llm-reviewer-path</h3><p class="text-sm text-gray-500">Clone and pytest review path</p></div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">No API key</span>
+            <article class="project-card surface p-6" data-category="ai qa">
+                <div class="flex justify-between items-start mb-3 gap-3">
+                    <div>
+                        <h3 class="card-title">llm-reviewer-path</h3>
+                        <p class="text-sm faint">Clone and pytest review path</p>
+                    </div>
+                    <span class="chip chip-clay">No API key</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">A short, rerunnable review path for eval gates, action boundaries, retrieval failures, and scoping receipts.</p>
-                <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="text-indigo-600 text-sm hover:underline" target="_blank">GitHub</a>
-            </div>
+                <p class="text-sm muted mb-4">A short, rerunnable review path for eval gates, action boundaries, retrieval failures, and scoping receipts.</p>
+                <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </article>
 
-            <!-- mcp-server-toolkit -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-indigo-200 p-6" data-category="tools qa">
-                <div class="flex justify-between items-start mb-3">
-                    <div><h3 class="text-lg font-bold">mcp-server-toolkit</h3><p class="text-sm text-gray-500">Python MCP server framework</p></div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">617 tests</span>
+            <article class="project-card surface p-6 md:col-span-2" data-category="tools qa">
+                <div class="flex justify-between items-start mb-3 gap-3">
+                    <div>
+                        <h3 class="card-title">mcp-server-toolkit</h3>
+                        <p class="text-sm faint">Python MCP server framework. GitHub is the supported artifact.</p>
+                    </div>
+                    <span class="chip chip-clay">600 tests</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">GitHub is the supported proof: 617 collected tests, a 30-case adversarial corpus, and Python 3.10 to 3.12.</p>
-                <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="text-indigo-600 text-sm hover:underline" target="_blank">GitHub</a>
-            </div>
+                <p class="text-sm muted mb-4">600 collected tests (598 passing, 2 skipped on the published README run), a 30-case adversarial corpus, and Python 3.10 to 3.14.</p>
+                <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </article>
 
             <!-- AI Workflow API -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai qa">
+            <div class="project-card surface p-6" data-category="ai qa">
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">AI Workflow API</h3>
-                        <p class="text-sm text-gray-500">Workflow Automation Backend</p>
+                        <h3 class="card-title">AI Workflow API</h3>
+                        <p class="text-sm faint">Workflow Automation Backend</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">FastAPI Proof</span>
+                    <span class="chip">FastAPI Proof</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">Independent repository: YAML-driven workflow automation backend with async job processing and SSE streaming.</p>
+                <p class="text-sm muted mb-4">Independent repository: YAML-driven workflow automation backend with async job processing and SSE streaming.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">ARQ</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Redis</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">SSE</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
+                    <span class="chip">FastAPI</span>
+                    <span class="chip">ARQ</span>
+                    <span class="chip">Redis</span>
+                    <span class="chip">SSE</span>
+                    <span class="chip">Claude AI</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/ai-workflow-api" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <span class="text-gray-400">YAML workflows | async workers | streaming API</span>
+                    <a href="https://github.com/ChunkyTortoise/ai-workflow-api" class="btn-ghost text-sm" target="_blank">GitHub</a>
+                    <span class="faint">YAML workflows | async workers | streaming API</span>
                 </div>
             </div>
 
             <!-- TechNova Voice Bot -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card surface p-6" data-category="ai">
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">TechNova Voice Bot</h3>
-                        <p class="text-sm text-gray-500">Real-Time Voice AI Pipeline</p>
+                        <h3 class="card-title">TechNova Voice Bot</h3>
+                        <p class="text-sm faint">Real-Time Voice AI Pipeline</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">171 Tests</span>
+                    <span class="chip">171 Tests</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">Independent repository: real-time voice AI with WebSocket audio streaming, voice activity detection, Deepgram STT/TTS, and barge-in support.</p>
+                <p class="text-sm muted mb-4">Independent repository: real-time voice AI with WebSocket audio streaming, voice activity detection, Deepgram STT/TTS, and barge-in support.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">WebSockets</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Deepgram</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Redis</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Barge-In</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Streaming Audio</span>
+                    <span class="chip">FastAPI</span>
+                    <span class="chip">WebSockets</span>
+                    <span class="chip">Deepgram</span>
+                    <span class="chip">Redis</span>
+                    <span class="chip chip-clay">Barge-In</span>
+                    <span class="chip chip-clay">Streaming Audio</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/technova-voice-bot" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <span class="text-gray-400">streaming pipeline | VAD | STT/TTS</span>
+                    <a href="https://github.com/ChunkyTortoise/technova-voice-bot" class="btn-ghost text-sm" target="_blank">GitHub</a>
+                    <span class="faint">streaming pipeline | VAD | STT/TTS</span>
                 </div>
             </div>
 
             <!-- Insight Engine -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="data">
-                <div class="w-full h-40 rounded-lg border border-gray-200 mb-4 flex flex-col items-center justify-center bg-gray-900 text-center px-4">
+            <div class="project-card surface p-6" data-category="data">
+                <div class="w-full h-32 rounded-lg border border-gray-800 mb-4 flex flex-col items-center justify-center bg-gray-950 text-center px-4">
                     <span class="font-display text-2xl text-gray-50 tracking-tight leading-tight">Insight Engine</span>
-                    <span class="font-mono text-[10px] uppercase tracking-widest text-indigo-400 mt-2">Live demo</span>
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-clay-300 mt-2">Live demo</span>
                 </div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">Insight Engine</h3>
-                        <p class="text-sm text-gray-500">Data Analytics Platform</p>
+                        <h3 class="card-title">Insight Engine</h3>
+                        <p class="text-sm faint">Data Analytics Platform</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">640 Tests</span>
+                    <span class="chip">640 Tests</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">Upload CSV/Excel for auto-profiling, interactive dashboards, marketing attribution (4 models), anomaly detection (Z-score/IQR), predictive modeling with SHAP, time-series forecasting, K-means/DBSCAN clustering, feature engineering lab, model observatory (5 models), hyperparameter tuning, statistical testing, KPI framework, dimensionality reduction, advanced anomaly detection, and regression diagnostics.</p>
+                <p class="text-sm muted mb-4">Upload CSV/Excel for auto-profiling, interactive dashboards, marketing attribution (4 models), anomaly detection (Z-score/IQR), predictive modeling with SHAP, time-series forecasting, K-means/DBSCAN clustering, feature engineering lab, model observatory (5 models), hyperparameter tuning, statistical testing, KPI framework, dimensionality reduction, advanced anomaly detection, and regression diagnostics.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Plotly</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">scikit-learn</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">XGBoost</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">SHAP</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Statistical Testing</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">KPI Framework</span>
+                    <span class="chip">Streamlit</span>
+                    <span class="chip">Plotly</span>
+                    <span class="chip">scikit-learn</span>
+                    <span class="chip">XGBoost</span>
+                    <span class="chip">SHAP</span>
+                    <span class="chip chip-clay">Statistical Testing</span>
+                    <span class="chip chip-clay">KPI Framework</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/insight-engine" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <a href="https://ct-insight-engine.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo &rarr;</a>
-                    <span class="text-teal-600" title="FastAPI wrapper available at /docs when running locally or via Docker">API: localhost:8080/docs</span>
-                    <a href="https://github.com/ChunkyTortoise/insight-engine/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline" target="_blank">Benchmarks</a>
-                    <a href="https://github.com/ChunkyTortoise/insight-engine/tree/main/docs/adr" class="text-purple-600 hover:underline" target="_blank">ADRs</a>
-                    <span class="text-gray-400">640 tests | 3 demo datasets</span>
+                    <a href="https://github.com/ChunkyTortoise/insight-engine" class="btn-ghost text-sm" target="_blank">GitHub</a>
+                    <a href="https://ct-insight-engine.streamlit.app" class="btn-ghost text-sm" target="_blank">Live Demo &rarr;</a>
+                    <span class="text-sm faint" title="FastAPI wrapper available at /docs when running locally or via Docker">API: localhost:8080/docs</span>
+                    <a href="https://github.com/ChunkyTortoise/insight-engine/blob/main/BENCHMARKS.md" class="btn-ghost text-sm" target="_blank">Benchmarks</a>
+                    <a href="https://github.com/ChunkyTortoise/insight-engine/tree/main/docs/adr" class="btn-ghost text-sm" target="_blank">ADRs</a>
+                    <span class="faint">640 tests | 3 demo datasets</span>
                 </div>
             </div>
 
             <!-- Finance Analytics Portfolio -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="data qa">
+            <div class="project-card surface p-6" data-category="data qa">
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">Finance Analytics Portfolio</h3>
-                        <p class="text-sm text-gray-500">End-to-End Financial Data Pipeline</p>
+                        <h3 class="card-title">Finance Analytics Portfolio</h3>
+                        <p class="text-sm faint">End-to-End Financial Data Pipeline</p>
                     </div>
-                    <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">1,611 Tests</span>
+                    <span class="chip">1,611 Tests</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">25-page interactive finance dashboard answering 17 business questions: credit risk modeling (SHAP/RF), stress testing (CCAR/DFAST), VaR analysis, A/B testing, fair lending geography (real CFPB HMDA data), causal inference, and more. Delivered as dashboard, 8-tab Excel workbook, 11 SQL query templates, 15 Jupyter notebooks, and written business memos. dbt analytics layer (DuckDB + Snowflake).</p>
+                <p class="text-sm muted mb-4">25-page interactive finance dashboard answering 17 business questions: credit risk modeling (SHAP/RF), stress testing (CCAR/DFAST), VaR analysis, A/B testing, fair lending geography (real CFPB HMDA data), causal inference, and more. Delivered as dashboard, 8-tab Excel workbook, 11 SQL query templates, 15 Jupyter notebooks, and written business memos. dbt analytics layer (DuckDB + Snowflake).</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">pandas</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">scikit-learn</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">DuckDB</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">dbt</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">SHAP</span>
+                    <span class="chip">Python</span>
+                    <span class="chip">pandas</span>
+                    <span class="chip">scikit-learn</span>
+                    <span class="chip">DuckDB</span>
+                    <span class="chip">Streamlit</span>
+                    <span class="chip chip-clay">dbt</span>
+                    <span class="chip chip-clay">SHAP</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <a href="https://finance-analytics-portfolio.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo</a>
-                    <span class="text-gray-400">1,611 tests | real HMDA data | 25 pages | 15 notebooks</span>
+                    <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="btn-ghost text-sm" target="_blank">GitHub</a>
+                    <a href="https://finance-analytics-portfolio.streamlit.app" class="btn-ghost text-sm" target="_blank">Live Demo</a>
+                    <span class="faint">1,611 tests | real HMDA data | 25 pages | 15 notebooks</span>
                 </div>
             </div>
 
             <!-- Olist Analytics Portfolio -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="data">
+            <div class="project-card surface p-6" data-category="data">
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">Olist E-Commerce Analytics</h3>
-                        <p class="text-sm text-gray-500">Customer Retention and Delivery Analysis</p>
+                        <h3 class="card-title">Olist E-Commerce Analytics</h3>
+                        <p class="text-sm faint">Customer Retention and Delivery Analysis</p>
                     </div>
-                    <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">DA Portfolio</span>
+                    <span class="chip">DA Portfolio</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">Customer retention and delivery performance analysis on 100K+ real orders from a Brazilian e-commerce marketplace. Key findings: 93% of customers never return (vs 25-30% industry benchmark), late deliveries cost 1.2 review points, K-Means segmentation surfaces 4 actionable customer segments. Delivered as 10 SQL queries, EDA + segmentation notebooks, interactive dashboard, and written business memo.</p>
+                <p class="text-sm muted mb-4">Customer retention and delivery performance analysis on 100K+ real orders from a Brazilian e-commerce marketplace. Key findings: 93% of customers never return (vs 25-30% industry benchmark), late deliveries cost 1.2 review points, K-Means segmentation surfaces 4 actionable customer segments. Delivered as 10 SQL queries, EDA + segmentation notebooks, interactive dashboard, and written business memo.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">pandas</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">scikit-learn</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">SQL</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">K-Means</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">RFM</span>
+                    <span class="chip">Python</span>
+                    <span class="chip">pandas</span>
+                    <span class="chip">scikit-learn</span>
+                    <span class="chip">SQL</span>
+                    <span class="chip">Streamlit</span>
+                    <span class="chip chip-clay">K-Means</span>
+                    <span class="chip chip-clay">RFM</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/olist-analytics-portfolio" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <a href="https://olist-analytics-portfo-nbpkbqj3vy7dpa2tus56th.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo</a>
-                    <span class="text-gray-400">100K+ orders | 10 SQL queries | business memo</span>
+                    <a href="https://github.com/ChunkyTortoise/olist-analytics-portfolio" class="btn-ghost text-sm" target="_blank">GitHub</a>
+                    <a href="https://olist-analytics-portfo-nbpkbqj3vy7dpa2tus56th.streamlit.app" class="btn-ghost text-sm" target="_blank">Live Demo</a>
+                    <span class="faint">100K+ orders | 10 SQL queries | business memo</span>
                 </div>
             </div>
 
             <!-- DocQA Engine -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
-                <div class="w-full h-40 rounded-lg border border-gray-200 mb-4 flex flex-col items-center justify-center bg-gray-900 text-center px-4">
+            <div class="project-card surface p-6" data-category="ai">
+                <div class="w-full h-32 rounded-lg border border-gray-800 mb-4 flex flex-col items-center justify-center bg-gray-950 text-center px-4">
                     <span class="font-display text-2xl text-gray-50 tracking-tight leading-tight">DocQA Engine</span>
-                    <span class="font-mono text-[10px] uppercase tracking-widest text-indigo-400 mt-2">Live demo</span>
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-clay-300 mt-2">Live demo</span>
                 </div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">DocQA Engine</h3>
-                        <p class="text-sm text-gray-500">RAG Document Q and A</p>
+                        <h3 class="card-title">DocQA Engine</h3>
+                        <p class="text-sm faint">RAG Document Q and A</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">550 Tests</span>
+                    <span class="chip">550 Tests</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">Upload PDFs/DOCX, ask questions, get cited answers. Hybrid retrieval (BM25 + vectors), cross-encoder re-ranker, query expansion, retrieval evaluation (MRR, NDCG@K), 5 chunking strategies with comparison, citation quality scoring, redundancy detection, RAGAS-style evaluation, conversation manager, document graph, batch processing, JSON/CSV export.</p>
+                <p class="text-sm muted mb-4">Upload PDFs/DOCX, ask questions, get cited answers. Hybrid retrieval (BM25 + vectors), cross-encoder re-ranker, query expansion, retrieval evaluation (MRR, NDCG@K), 5 chunking strategies with comparison, citation quality scoring, redundancy detection, RAGAS-style evaluation, conversation manager, document graph, batch processing, JSON/CSV export.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">BM25</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">NumPy</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">PyPDF2</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Re-Ranker</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Query Expansion</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Document Graph</span>
+                    <span class="chip">BM25</span>
+                    <span class="chip">NumPy</span>
+                    <span class="chip">Streamlit</span>
+                    <span class="chip">PyPDF2</span>
+                    <span class="chip chip-clay">Re-Ranker</span>
+                    <span class="chip chip-clay">Query Expansion</span>
+                    <span class="chip chip-clay">Document Graph</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/docqa-engine" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <a href="https://ct-document-engine.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo &rarr;</a>
-                    <a href="https://github.com/ChunkyTortoise/docqa-engine/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline" target="_blank">Benchmarks</a>
-                    <a href="https://github.com/ChunkyTortoise/docqa-engine/tree/main/docs/adr" class="text-purple-600 hover:underline" target="_blank">ADRs</a>
-                    <span class="text-gray-400">550 tests | mock mode</span>
+                    <a href="https://github.com/ChunkyTortoise/docqa-engine" class="btn-ghost text-sm" target="_blank">GitHub</a>
+                    <a href="https://ct-document-engine.streamlit.app" class="btn-ghost text-sm" target="_blank">Live Demo &rarr;</a>
+                    <a href="https://github.com/ChunkyTortoise/docqa-engine/blob/main/BENCHMARKS.md" class="btn-ghost text-sm" target="_blank">Benchmarks</a>
+                    <a href="https://github.com/ChunkyTortoise/docqa-engine/tree/main/docs/adr" class="btn-ghost text-sm" target="_blank">ADRs</a>
+                    <span class="faint">550 tests | mock mode</span>
                 </div>
             </div>
 
             <!-- Advanced RAG System -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card surface p-6" data-category="ai">
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">Advanced RAG System</h3>
-                        <p class="text-sm text-gray-500">Enterprise RAG Pipeline</p>
+                        <h3 class="card-title">Advanced RAG System</h3>
+                        <p class="text-sm faint">Enterprise RAG Pipeline</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Tests Passing</span>
+                    <span class="chip">Tests Passing</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">Enterprise-grade retrieval-augmented generation with hybrid search (BM25 + dense vectors), reciprocal rank fusion, ChromaDB vector store, FastAPI REST API with health/metrics endpoints, and Grafana observability. Designed for principal AI engineer portfolio demonstration.</p>
+                <p class="text-sm muted mb-4">Independent repository: hybrid search (BM25 + dense vectors), reciprocal rank fusion, ChromaDB vector store, FastAPI REST API with health/metrics endpoints, and Grafana observability.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">ChromaDB</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">BM25</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Docker</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Hybrid Retrieval</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Grafana</span>
+                    <span class="chip">FastAPI</span>
+                    <span class="chip">ChromaDB</span>
+                    <span class="chip">BM25</span>
+                    <span class="chip">Docker</span>
+                    <span class="chip chip-clay">Hybrid Retrieval</span>
+                    <span class="chip chip-clay">Grafana</span>
                 </div>
                 <div class="flex gap-4 text-sm">
                     
-                    <span class="text-teal-600" title="Run locally with Docker Compose">API: localhost:8000/docs</span>
-                    <span class="text-gray-400">FastAPI + ChromaDB | Containerizable</span>
+                    <span class="text-sm faint" title="Run locally with Docker Compose">API: localhost:8000/docs</span>
+                    <span class="faint">FastAPI + ChromaDB | Containerizable</span>
                 </div>
             </div>
 
             <!-- Scrape-and-Serve -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="automation">
-                <div class="w-full h-40 rounded-lg border border-gray-200 mb-4 flex flex-col items-center justify-center bg-gray-900 text-center px-4">
+            <div class="project-card surface p-6" data-category="automation">
+                <div class="w-full h-32 rounded-lg border border-gray-800 mb-4 flex flex-col items-center justify-center bg-gray-950 text-center px-4">
                     <span class="font-display text-2xl text-gray-50 tracking-tight leading-tight">Scrape-and-Serve</span>
-                    <span class="font-mono text-[10px] uppercase tracking-widest text-indigo-400 mt-2">Live demo</span>
+                    <span class="font-mono text-[10px] uppercase tracking-widest text-clay-300 mt-2">Live demo</span>
                 </div>
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">Scrape-and-Serve</h3>
-                        <p class="text-sm text-gray-500">Web Scraping + Excel-to-Web</p>
+                        <h3 class="card-title">Scrape-and-Serve</h3>
+                        <p class="text-sm faint">Web Scraping + Excel-to-Web</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">370 Tests</span>
+                    <span class="chip">370 Tests</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">YAML-configurable web scrapers, competitor SEO analysis with gap detection, asyncio scheduler with change callbacks, backlink estimation, data validation rules engine, diff visualization, keyword extraction (TF-IDF n-grams), content scoring, data quality profiler, content intelligence, and data pipeline.</p>
+                <p class="text-sm muted mb-4">YAML-configurable web scrapers, competitor SEO analysis with gap detection, asyncio scheduler with change callbacks, backlink estimation, data validation rules engine, diff visualization, keyword extraction (TF-IDF n-grams), content scoring, data quality profiler, content intelligence, and data pipeline.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">BeautifulSoup</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">httpx</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">SQLite</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Data Pipeline</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Content Intelligence</span>
+                    <span class="chip">BeautifulSoup</span>
+                    <span class="chip">httpx</span>
+                    <span class="chip">SQLite</span>
+                    <span class="chip">Streamlit</span>
+                    <span class="chip chip-clay">Data Pipeline</span>
+                    <span class="chip chip-clay">Content Intelligence</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/scrape-and-serve" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <a href="https://ct-scrape-and-serve.streamlit.app" class="text-green-600 hover:underline" target="_blank">Live Demo &rarr;</a>
-                    <a href="https://github.com/ChunkyTortoise/scrape-and-serve/blob/main/BENCHMARKS.md" class="text-orange-600 hover:underline" target="_blank">Benchmarks</a>
-                    <a href="https://github.com/ChunkyTortoise/scrape-and-serve/tree/main/docs/adr" class="text-purple-600 hover:underline" target="_blank">ADRs</a>
-                    <span class="text-gray-400">370 tests | 11 modules</span>
+                    <a href="https://github.com/ChunkyTortoise/scrape-and-serve" class="btn-ghost text-sm" target="_blank">GitHub</a>
+                    <a href="https://ct-scrape-and-serve.streamlit.app" class="btn-ghost text-sm" target="_blank">Live Demo &rarr;</a>
+                    <a href="https://github.com/ChunkyTortoise/scrape-and-serve/blob/main/BENCHMARKS.md" class="btn-ghost text-sm" target="_blank">Benchmarks</a>
+                    <a href="https://github.com/ChunkyTortoise/scrape-and-serve/tree/main/docs/adr" class="btn-ghost text-sm" target="_blank">ADRs</a>
+                    <span class="faint">370 tests | 11 modules</span>
                 </div>
             </div>
 
             <!-- Next.js AI Dashboard -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card surface p-6" data-category="ai">
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">Next.js AI Dashboard</h3>
-                        <p class="text-sm text-gray-500">Full-Stack AI Dashboard</p>
+                        <h3 class="card-title">Next.js AI Dashboard</h3>
+                        <p class="text-sm faint">Full-Stack AI Dashboard</p>
                     </div>
-                    <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded">Live</span>
+                    <span class="chip">Live</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">Full-stack AI dashboard with real-time metrics, chat interface, and document processing UI. Dark-mode design with Recharts analytics, shadcn/ui components, and responsive layout.</p>
+                <p class="text-sm muted mb-4">Full-stack AI dashboard with real-time metrics, chat interface, and document processing UI. Dark-mode design with Recharts analytics, shadcn/ui components, and responsive layout.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">TypeScript</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Next.js 15</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">shadcn/ui</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Recharts</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Tailwind CSS</span>
+                    <span class="chip">TypeScript</span>
+                    <span class="chip">Next.js 15</span>
+                    <span class="chip">shadcn/ui</span>
+                    <span class="chip">Recharts</span>
+                    <span class="chip">Tailwind CSS</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://ai-dashboard-rust.vercel.app" class="text-green-600 hover:underline font-semibold" target="_blank">Live Demo</a>
-                    <a href="https://github.com/ChunkyTortoise/ai-dashboard" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <span class="text-gray-400">TypeScript strict | App Router | Vercel</span>
+                    <a href="https://ai-dashboard-rust.vercel.app" class="btn-ghost text-sm" target="_blank">Live Demo</a>
+                    <a href="https://github.com/ChunkyTortoise/ai-dashboard" class="btn-ghost text-sm" target="_blank">GitHub</a>
+                    <span class="faint">TypeScript strict | App Router | Vercel</span>
                 </div>
             </div>
 
             <!-- GHL Multi-Vertical AI Kit -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card surface p-6" data-category="ai">
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">GHL Multi-Vertical AI Kit</h3>
-                        <p class="text-sm text-gray-500">YAML-Driven Bot Framework</p>
+                        <h3 class="card-title">GHL Multi-Vertical AI Kit</h3>
+                        <p class="text-sm faint">YAML-Driven Bot Framework</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Production</span>
+                    <span class="chip">Production</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">YAML-driven GHL bot framework supporting real estate, home services, and legal verticals. Configurable question flows, multi-vertical prompt templates, and GoHighLevel CRM integration.</p>
+                <p class="text-sm muted mb-4">YAML-driven GHL bot framework supporting real estate, home services, and legal verticals. Configurable question flows, multi-vertical prompt templates, and GoHighLevel CRM integration.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">YAML Config</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Multi-Vertical</span>
+                    <span class="chip">Python</span>
+                    <span class="chip">FastAPI</span>
+                    <span class="chip">Claude AI</span>
+                    <span class="chip chip-clay">YAML Config</span>
+                    <span class="chip chip-clay">Multi-Vertical</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/ghl-multi-vertical-kit" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <span class="text-gray-400">105 tests | Real estate, home services, legal</span>
+                    <a href="https://github.com/ChunkyTortoise/ghl-multi-vertical-kit" class="btn-ghost text-sm" target="_blank">GitHub</a>
+                    <span class="faint">105 tests | Real estate, home services, legal</span>
                 </div>
             </div>
 
             <!-- AI Workflow Automation API -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="automation">
+            <div class="project-card surface p-6" data-category="automation">
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">AI Workflow Automation API</h3>
-                        <p class="text-sm text-gray-500">Async Workflow Engine</p>
+                        <h3 class="card-title">AI Workflow Automation API</h3>
+                        <p class="text-sm faint">Async Workflow Engine</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">Production</span>
+                    <span class="chip">Production</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">YAML-defined async workflow engine with SSE progress streaming and 3 built-in example workflows. Background task queue with ARQ, real-time status updates, and webhook notifications.</p>
+                <p class="text-sm muted mb-4">YAML-defined async workflow engine with SSE progress streaming and 3 built-in example workflows. Background task queue with ARQ, real-time status updates, and webhook notifications.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">ARQ</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">SSE Streaming</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">YAML Workflows</span>
+                    <span class="chip">Python</span>
+                    <span class="chip">FastAPI</span>
+                    <span class="chip">ARQ</span>
+                    <span class="chip">Claude AI</span>
+                    <span class="chip chip-clay">SSE Streaming</span>
+                    <span class="chip chip-clay">YAML Workflows</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/ai-workflow-api" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <span class="text-gray-400">148 tests | Async pipelines | SSE progress</span>
+                    <a href="https://github.com/ChunkyTortoise/ai-workflow-api" class="btn-ghost text-sm" target="_blank">GitHub</a>
+                    <span class="faint">148 tests | Async pipelines | SSE progress</span>
                 </div>
             </div>
 
             <!-- TechNova Voice Bot -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card surface p-6" data-category="ai">
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">TechNova Voice Bot</h3>
-                        <p class="text-sm text-gray-500">Real-Time Voice AI Pipeline</p>
+                        <h3 class="card-title">TechNova Voice Bot</h3>
+                        <p class="text-sm faint">Real-Time Voice AI Pipeline</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">113 Tests</span>
+                    <span class="chip">113 Tests</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">Real-time voice AI pipeline: OGG to FFmpeg to VAD to STT to Claude to TTS, with sub-3s round-trip latency. WebSocket streaming, Silero-ONNX voice activity detection, Deepgram speech-to-text.</p>
+                <p class="text-sm muted mb-4">Real-time voice AI pipeline: OGG to FFmpeg to VAD to STT to Claude to TTS, with sub-3s round-trip latency. WebSocket streaming, Silero-ONNX voice activity detection, Deepgram speech-to-text.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">WebSocket</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Deepgram</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Silero VAD</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">FFmpeg</span>
+                    <span class="chip">Python</span>
+                    <span class="chip">FastAPI</span>
+                    <span class="chip">WebSocket</span>
+                    <span class="chip">Deepgram</span>
+                    <span class="chip">Claude AI</span>
+                    <span class="chip chip-clay">Silero VAD</span>
+                    <span class="chip chip-clay">FFmpeg</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/technova-voice-bot" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <span class="text-gray-400">113 tests | &lt;3s latency | PWA</span>
+                    <a href="https://github.com/ChunkyTortoise/technova-voice-bot" class="btn-ghost text-sm" target="_blank">GitHub</a>
+                    <span class="faint">113 tests | &lt;3s latency | PWA</span>
                 </div>
             </div>
 
             <!-- Chatbot Widget SaaS -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card surface p-6" data-category="ai">
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">Chatbot Widget SaaS</h3>
-                        <p class="text-sm text-gray-500">Drop-in AI Chat Widget</p>
+                        <h3 class="card-title">Chatbot Widget SaaS</h3>
+                        <p class="text-sm faint">Drop-in AI Chat Widget</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">139 Tests</span>
+                    <span class="chip">139 Tests</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">Drop-in AI chat widget with a single script tag. Full SaaS product: FastAPI + pgvector + RAG + WebSocket + Supabase JWT auth + Stripe billing. Shadow DOM isolation, streaming responses, Next.js admin dashboard. Live demo with no account required.</p>
+                <p class="text-sm muted mb-4">Drop-in AI chat widget with a single script tag. Full SaaS product: FastAPI + pgvector + RAG + WebSocket + Supabase JWT auth + Stripe billing. Shadow DOM isolation, streaming responses, Next.js admin dashboard. Live demo with no account required.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">pgvector</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Stripe</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Shadow DOM</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">RAG</span>
+                    <span class="chip">FastAPI</span>
+                    <span class="chip">pgvector</span>
+                    <span class="chip">Claude AI</span>
+                    <span class="chip">Stripe</span>
+                    <span class="chip chip-clay">Shadow DOM</span>
+                    <span class="chip chip-clay">RAG</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/chatbot-widget" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <a href="https://dashboard-mu-two-10.vercel.app" class="text-green-600 hover:underline" target="_blank">Live Dashboard</a>
-                    <span class="text-gray-400">139 tests | Single script tag embed</span>
+                    <a href="https://github.com/ChunkyTortoise/chatbot-widget" class="btn-ghost text-sm" target="_blank">GitHub</a>
+                    <a href="https://dashboard-mu-two-10.vercel.app" class="btn-ghost text-sm" target="_blank">Live Dashboard</a>
+                    <span class="faint">139 tests | Single script tag embed</span>
                 </div>
             </div>
 
             <!-- DocExtract AI -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai qa">
+            <div class="project-card surface p-6" data-category="ai qa">
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">DocExtract AI</h3>
-                        <p class="text-sm text-gray-500">Document Extraction API</p>
+                        <h3 class="card-title">DocExtract AI</h3>
+                        <p class="text-sm faint">Document Extraction API</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">95.5% replay</span>
+                    <span class="chip">95.5% replay</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">Document extraction API with async job processing, hybrid retrieval, and evaluation gates. Included here as secondary proof because it is already featured higher on the page.</p>
+                <p class="text-sm muted mb-4">Document extraction API with async job processing, hybrid retrieval, and evaluation gates. Included here as secondary proof because it is already featured higher on the page.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">FastAPI</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">pgvector</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">ARQ</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Async Jobs</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Semantic Search</span>
+                    <span class="chip">FastAPI</span>
+                    <span class="chip">pgvector</span>
+                    <span class="chip">ARQ</span>
+                    <span class="chip">Claude AI</span>
+                    <span class="chip chip-clay">Async Jobs</span>
+                    <span class="chip chip-clay">Semantic Search</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://docextract-demo.streamlit.app" class="text-green-600 hover:underline font-semibold" target="_blank">Live Demo</a>
-                    <span class="text-gray-400">28-case offline replay | Streamlit Cloud</span>
+                    <a href="https://docextract-demo.streamlit.app" class="btn-ghost text-sm" target="_blank">Live Demo</a>
+                    <span class="faint">28-case offline replay | Streamlit Cloud</span>
                 </div>
             </div>
 
             <!-- GraphRAG Demo -->
-            <div class="project-card bg-white rounded-xl shadow-sm border border-gray-200 p-6" data-category="ai">
+            <div class="project-card surface p-6" data-category="ai">
                 <div class="flex justify-between items-start mb-3">
                     <div>
-                        <h3 class="text-lg font-bold">GraphRAG Demo</h3>
-                        <p class="text-sm text-gray-500">Knowledge Graph-Enhanced RAG</p>
+                        <h3 class="card-title">GraphRAG Demo</h3>
+                        <p class="text-sm faint">Knowledge Graph-Enhanced RAG</p>
                     </div>
-                    <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">63 Tests</span>
+                    <span class="chip">63 Tests</span>
                 </div>
-                <p class="text-gray-600 text-sm mb-4">Knowledge graph-enhanced RAG system. Entity extraction (spaCy + Claude), NetworkX graph traversal, BM25 + graph fusion retrieval, fact-checking, side-by-side comparison: Basic vs GraphRAG.</p>
+                <p class="text-sm muted mb-4">Knowledge graph-enhanced RAG system. Entity extraction (spaCy + Claude), NetworkX graph traversal, BM25 + graph fusion retrieval, fact-checking, side-by-side comparison: Basic vs GraphRAG.</p>
                 <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Streamlit</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">NetworkX</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">spaCy</span>
-                    <span class="bg-gray-100 text-xs px-2 py-1 rounded">Claude AI</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Graph Fusion</span>
-                    <span class="bg-indigo-100 text-indigo-700 text-xs px-2 py-1 rounded">Fact-Checking</span>
+                    <span class="chip">Streamlit</span>
+                    <span class="chip">NetworkX</span>
+                    <span class="chip">spaCy</span>
+                    <span class="chip">Claude AI</span>
+                    <span class="chip chip-clay">Graph Fusion</span>
+                    <span class="chip chip-clay">Fact-Checking</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://graphr-azucpb9e7jkdxavkahvicr.streamlit.app" class="text-green-600 hover:underline font-semibold" target="_blank">Live Demo</a>
-                    <a href="https://github.com/ChunkyTortoise/graphrag-demo" class="text-indigo-600 hover:underline" target="_blank">GitHub</a>
-                    <span class="text-gray-400">63 tests | 3-tab Streamlit UI</span>
+                    <a href="https://graphr-azucpb9e7jkdxavkahvicr.streamlit.app" class="btn-ghost text-sm" target="_blank">Live Demo</a>
+                    <a href="https://github.com/ChunkyTortoise/graphrag-demo" class="btn-ghost text-sm" target="_blank">GitHub</a>
+                    <span class="faint">63 tests | 3-tab Streamlit UI</span>
                 </div>
             </div>
         </div>
 
-        <div class="mt-12 bg-white border border-gray-200 rounded-xl p-6">
-            <h2 class="text-xl font-semibold mb-4">Capability Coverage</h2>
+        <div class="mt-12 surface p-6">
+            <h2 class="card-title mb-4">Capability coverage</h2>
             <div class="overflow-x-auto">
-                <table class="min-w-full text-sm">
+                <table class="min-w-full text-sm site-table">
                     <thead>
-                        <tr class="text-left text-gray-500 border-b">
-                            <th class="py-2 pr-4">Capability</th>
-                            <th class="py-2 pr-4">Focus</th>
-                            <th class="py-2">Key Repos</th>
+                        <tr>
+                            <th>Capability</th>
+                            <th>Focus</th>
+                            <th>Public proof</th>
                         </tr>
                     </thead>
-                    <tbody class="text-gray-700">
-                        <tr class="border-b">
-                            <td class="py-2 pr-4 font-medium text-indigo-700">Backend and API</td>
-                            <td class="py-2 pr-4">FastAPI, PostgreSQL, Redis, Docker, CI/CD</td>
-                            <td class="py-2">
-                                <a href="https://github.com/ChunkyTortoise/realty-ai" class="text-indigo-600 hover:underline" target="_blank">Realty Bots</a>,
-                                <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 hover:underline" target="_blank">DocExtract AI</a>
-                            </td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="py-2 pr-4 font-medium text-purple-700">Testing and Reliability</td>
-                            <td class="py-2 pr-4">pytest, Playwright, RAGAS, bandit, mypy, GitHub Actions</td>
-                            <td class="py-2">
-                                <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-indigo-600 hover:underline" target="_blank">Acuity Real Estate</a>,
-                                <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 hover:underline" target="_blank">DocExtract AI</a>,
-                                <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="text-indigo-600 hover:underline" target="_blank">llm-reviewer-path</a>,
-                                <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="text-indigo-600 hover:underline" target="_blank">mcp-server-toolkit</a>,
-                                EnterpriseHub
-                            </td>
-                        </tr>
-                        <tr class="border-b">
-                            <td class="py-2 pr-4 font-medium text-green-700">Data and Analytics</td>
-                            <td class="py-2 pr-4">SQL, pandas, Tableau, Power BI, Streamlit, DuckDB</td>
-                            <td class="py-2">
-                                <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="text-indigo-600 hover:underline" target="_blank">Finance Analytics</a>,
-                                <a href="https://github.com/ChunkyTortoise/insight-engine" class="text-indigo-600 hover:underline" target="_blank">Insight Engine</a>
+                    <tbody class="muted">
+                        <tr>
+                            <td class="font-medium text-gray-50">Backend and API</td>
+                            <td>FastAPI, PostgreSQL, Redis, Docker, CI/CD</td>
+                            <td>
+                                <a href="https://github.com/ChunkyTortoise/docextract" target="_blank" rel="noopener noreferrer">DocExtract</a>
                             </td>
                         </tr>
                         <tr>
-                            <td class="py-2 pr-4 font-medium text-orange-700">AI and LLM Systems</td>
-                            <td class="py-2 pr-4">Claude API, RAG, pgvector, LangChain, agentic workflows</td>
-                            <td class="py-2">
-                                <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-indigo-600 hover:underline" target="_blank">Acuity Real Estate</a>,
-                                <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 hover:underline" target="_blank">DocExtract AI</a>,
-                                <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="text-indigo-600 hover:underline" target="_blank">llm-reviewer-path</a>,
-                                <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="text-indigo-600 hover:underline" target="_blank">mcp-server-toolkit</a>,
-                                EnterpriseHub
+                            <td class="font-medium text-gray-50">Testing and reliability</td>
+                            <td>pytest, Playwright, RAGAS, bandit, mypy, GitHub Actions</td>
+                            <td>
+                                <a href="https://github.com/ChunkyTortoise/docextract" target="_blank" rel="noopener noreferrer">DocExtract</a>,
+                                <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" target="_blank" rel="noopener noreferrer">llm-reviewer-path</a>,
+                                <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" target="_blank" rel="noopener noreferrer">mcp-server-toolkit</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-50">Data and analytics</td>
+                            <td>SQL, pandas, Tableau, Power BI, Streamlit, DuckDB</td>
+                            <td>
+                                <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" target="_blank" rel="noopener noreferrer">Finance Analytics</a>,
+                                <a href="https://github.com/ChunkyTortoise/insight-engine" target="_blank" rel="noopener noreferrer">Insight Engine</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-medium text-gray-50">AI and LLM systems</td>
+                            <td>Claude API, RAG, pgvector, LangChain, agentic workflows</td>
+                            <td>
+                                <a href="#acuity">Acuity (paid story)</a>,
+                                <a href="https://github.com/ChunkyTortoise/docextract" target="_blank" rel="noopener noreferrer">DocExtract</a>,
+                                <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" target="_blank" rel="noopener noreferrer">llm-reviewer-path</a>,
+                                <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" target="_blank" rel="noopener noreferrer">mcp-server-toolkit</a>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-    </section>
+    </main>
 
-    <footer class="bg-gray-900 text-gray-400 py-8">
-        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
+    <footer class="site-footer">
+        <div class="site-wrap flex flex-col sm:flex-row justify-between gap-4">
             <span>&copy; 2026 Cayman Roden</span>
-            <div class="flex gap-5 items-center">
-                <a href="https://github.com/ChunkyTortoise" class="hover:text-white flex items-center gap-1.5" target="_blank">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    GitHub
-                </a>
-                <a href="https://linkedin.com/in/caymanroden" class="hover:text-white flex items-center gap-1.5" target="_blank">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    LinkedIn
-                </a>
-                <a href="mailto:caymanroden@gmail.com" class="hover:text-white flex items-center gap-1.5">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                    Email
-                </a>
+            <div class="flex flex-wrap gap-5 items-center">
+                <a href="https://github.com/ChunkyTortoise" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/caymanroden" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:caymanroden@gmail.com">Email</a>
             </div>
         </div>
     </footer>
 
     <script>
     function filterProjects(category) {
-        document.querySelectorAll('.project-card').forEach(card => {
-            const cats = card.dataset.category.split(' ');
-            if (category === 'all' || cats.includes(category)) {
-                card.style.display = '';
-            } else {
-                card.style.display = 'none';
-            }
+        document.querySelectorAll('.project-card').forEach(function(card) {
+            var cats = card.dataset.category.split(' ');
+            card.style.display = (category === 'all' || cats.indexOf(category) !== -1) ? '' : 'none';
         });
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.classList.remove('bg-indigo-600', 'text-white', 'active');
-            btn.classList.add('bg-gray-200', 'text-gray-700');
+        document.querySelectorAll('.filter-btn').forEach(function(btn) {
+            btn.classList.remove('active');
         });
-        event.target.classList.remove('bg-gray-200', 'text-gray-700');
-        event.target.classList.add('bg-indigo-600', 'text-white', 'active');
+        if (event && event.target) {
+            event.target.classList.add('active');
+        }
     }
     </script>
 </body>

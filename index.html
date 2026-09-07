@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    
+
     <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QNBBCMHX7Q"></script>
     <script>
@@ -30,171 +30,191 @@
         gtag('config', 'G-QNBBCMHX7Q');
     </script>
 </head>
-<body class="bg-gray-50 text-gray-900">
-    <!-- Nav -->
-    <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-lg font-bold text-indigo-600">Cayman Roden</a>
-            <button id="menu-toggle" class="md:hidden p-2 text-gray-600 hover:text-indigo-600" aria-label="Toggle menu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+<body>
+    <nav class="site-nav" aria-label="Primary">
+        <div class="site-wrap nav-inner">
+            <a href="index.html" class="wordmark">Cayman Roden</a>
+            <button id="menu-toggle" class="nav-toggle md:hidden" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
-            <div class="hidden md:flex gap-4 text-sm">
-                <a href="projects.html" class="hover:text-indigo-600">Portfolio</a>
-                <a href="about.html" class="hover:text-indigo-600">About</a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="projects.html" class="nav-link">Portfolio</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="resume/cayman-roden-ai-engineer.pdf" class="nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-2 text-sm">
-            <a href="projects.html" class="block py-1 hover:text-indigo-600">Portfolio</a>
-            <a href="about.html" class="block py-1 hover:text-indigo-600">About</a>
+        <div id="mobile-menu" class="hidden md:hidden site-wrap mobile-panel space-y-2 text-sm">
+            <a href="projects.html" class="block py-1 nav-link">Portfolio</a>
+            <a href="about.html" class="block py-1 nav-link">About</a>
+            <a href="resume/cayman-roden-ai-engineer.pdf" class="block py-1 nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
         </div>
     </nav>
     <script>
     document.getElementById('menu-toggle').addEventListener('click', function() {
-        document.getElementById('mobile-menu').classList.toggle('hidden');
+        var menu = document.getElementById('mobile-menu');
+        var open = menu.classList.toggle('hidden');
+        this.setAttribute('aria-expanded', open ? 'false' : 'true');
     });
     </script>
 
-    <!-- Hero -->
-    <section class="bg-gray-900 text-white py-24">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <p class="text-indigo-200 text-sm font-medium mb-3 uppercase tracking-widest">AI Engineer</p>
-            <h1 class="font-display text-5xl md:text-6xl font-normal tracking-tightest leading-[1.05] mb-5">Production LLM Systems, Agents, and Evals</h1>
-            <p class="text-xl text-indigo-100 mb-8">Paid delivery: Acuity Real Estate (January to March 2026), bilingual SMS qualification, 500+ inbound leads. Public proof: DocExtract at 95.5% weighted field-level accuracy on a 28-case offline replay; llm-reviewer-path (clone and pytest, no API key); mcp-server-toolkit on GitHub (617 collected tests).</p>
-            <div class="flex flex-wrap justify-center gap-4 mb-8">
-                <a href="mailto:caymanroden@gmail.com" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-indigo-50 transition shadow-lg">
-                    Email Me
-                </a>
-                <a href="resume/cayman-roden-ai-engineer.pdf" class="bg-indigo-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-400 transition border border-indigo-400" target="_blank" rel="noopener noreferrer">
-                    Resume
-                </a>
-                <a href="https://linkedin.com/in/caymanroden" class="bg-indigo-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-400 transition border border-indigo-400" target="_blank" rel="noopener noreferrer">
-                    LinkedIn
-                </a>
-            </div>
-            <div class="flex flex-wrap justify-center gap-3 text-xs text-indigo-100">
-                <span class="bg-white/20 rounded-full px-3 py-1">Python and FastAPI</span>
-                <span class="bg-white/20 rounded-full px-3 py-1">Human handoff</span>
-                <span class="bg-white/20 rounded-full px-3 py-1">Offline evaluation</span>
-                <span class="bg-white/20 rounded-full px-3 py-1">Adversarial fixtures</span>
-                <span class="bg-white/20 rounded-full px-3 py-1">GitHub Proof</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Teams Hire Me -->
-    <section class="max-w-6xl mx-auto px-4 py-16">
-        <h2 class="text-2xl font-bold mb-8 text-center">Why Teams Hire Me</h2>
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition">
-                <div class="text-sm text-indigo-600 font-medium mb-2 uppercase tracking-wide">Production Delivery</div>
-                <h3 class="text-lg font-bold mb-3">Public Proof With Real Systems Depth</h3>
-                <p class="text-gray-600 text-sm mb-4">The reviewer path begins with paid Acuity delivery, then DocExtract evaluation evidence, a no-key clone-and-pytest path, and supporting MCP backend work on GitHub.</p>
-                <a href="projects.html" class="text-indigo-600 text-sm font-medium hover:underline">Start With Flagship Repos &rarr;</a>
-            </div>
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition">
-                <div class="text-sm text-indigo-600 font-medium mb-2 uppercase tracking-wide">AI Infrastructure</div>
-                <h3 class="text-lg font-bold mb-3">LLM Application Systems and Evaluation</h3>
-                <p class="text-gray-600 text-sm mb-4">Strongest technical areas are Python and FastAPI services, retrieval, structured outputs, tool use, evaluation fixtures, and human handoff.</p>
-                <a href="projects.html" class="text-indigo-600 text-sm font-medium hover:underline">View public proof &rarr;</a>
-            </div>
-            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition">
-                <div class="text-sm text-indigo-600 font-medium mb-2 uppercase tracking-wide">Reliability</div>
-                <h3 class="text-lg font-bold mb-3">Evaluation and Testing Discipline</h3>
-                <p class="text-gray-600 text-sm mb-4">Golden evals, adversarial cases, CI gates, prompt versioning, and an 80% DocExtract CI coverage gate make the AI work easier to inspect.</p>
-                <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 text-sm font-medium hover:underline">DocExtract on GitHub &rarr;</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Projects -->
-    <section class="bg-white border-t border-b border-gray-200 py-16">
-        <div class="max-w-6xl mx-auto px-4">
-            <h2 class="text-2xl font-bold mb-8 text-center">Recruiter Proof</h2>
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-gray-50 rounded-xl border border-indigo-200 p-6 hover:shadow-md transition">
-                    <div class="text-sm text-indigo-600 font-medium mb-2">Paid Engagement</div>
-                    <h3 class="text-lg font-bold mb-2">Acuity Real Estate</h3>
-                    <p class="text-gray-600 text-sm mb-4">Bilingual SMS qualification for 500+ inbound leads, delivered January to March 2026 with CRM integration and handoff workflows.</p>
-                    <a href="https://github.com/ChunkyTortoise/jorge_real_estate_bots" class="text-indigo-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
-                </div>
-
-                <div class="bg-gray-50 rounded-xl border border-gray-200 p-6 hover:shadow-md transition">
-                    <div class="text-sm text-indigo-600 font-medium mb-2">Public Proof</div>
-                    <h3 class="text-lg font-bold mb-2">DocExtract</h3>
-                    <p class="text-gray-600 text-sm mb-4">95.5% weighted field-level accuracy on a 28-case offline replay, with a 202-case corpus (151 golden, 51 adversarial) and an 80% CI coverage gate.</p>
-                    <a href="https://github.com/ChunkyTortoise/docextract" class="text-indigo-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
-                </div>
-
-                <div class="bg-gray-50 rounded-xl border border-gray-200 p-6 hover:shadow-md transition">
-                    <div class="text-sm text-indigo-600 font-medium mb-2">Public Proof</div>
-                    <h3 class="text-lg font-bold mb-2">llm-reviewer-path</h3>
-                    <p class="text-gray-600 text-sm mb-4">Clone, install, and run pytest with no API key. Review eval gates, action boundaries, retrieval failures, and scoping receipts.</p>
-                    <div class="flex gap-2 flex-wrap mb-4">
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">pytest</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">No API key</span>
+    <main>
+        <section class="border-b border-gray-800">
+            <div class="site-wrap py-16 md:py-24 grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+                <div class="lg:col-span-7">
+                    <p class="kicker mb-4">AI Engineer · contract-first · remote US</p>
+                    <h1 class="display-title mb-6">Production LLM systems, agents, and evals</h1>
+                    <p class="lede mb-6">I build Python and FastAPI systems around LLMs: retrieval, tool use, evaluation gates, and human handoff. Paid delivery first. Public GitHub second.</p>
+                    <p class="muted mb-8">Named paid work: Acuity Real Estate, January to March 2026. Bilingual SMS qualification for 500+ inbound leads, with CRM integration and handoff. Public inspection starts at DocExtract, llm-reviewer-path, and mcp-server-toolkit.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="projects.html" class="btn-primary">Inspect projects</a>
+                        <a href="https://github.com/ChunkyTortoise" class="btn-secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="resume/cayman-roden-ai-engineer.pdf" class="btn-secondary" target="_blank" rel="noopener noreferrer">Resume</a>
                     </div>
-                    <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="text-indigo-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
+                </div>
+                <aside class="lg:col-span-5 surface p-6 md:p-7" aria-label="Proof stack">
+                    <p class="kicker mb-5">Inspect next</p>
+                    <ol class="space-y-5">
+                        <li class="flex gap-4">
+                            <span class="proof-metric w-10 shrink-0">01</span>
+                            <div>
+                                <p class="font-medium text-gray-50">Acuity Real Estate</p>
+                                <p class="text-sm muted">Paid SMS delivery. 500+ inbound leads. January to March 2026.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="proof-metric w-10 shrink-0">02</span>
+                            <div>
+                                <p class="font-medium text-gray-50">DocExtract</p>
+                                <p class="text-sm muted">95.5% weighted field-level accuracy on a 28-case offline replay. 202-case corpus.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="proof-metric w-10 shrink-0">03</span>
+                            <div>
+                                <p class="font-medium text-gray-50">llm-reviewer-path</p>
+                                <p class="text-sm muted">Clone and pytest. No API key.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <span class="proof-metric w-10 shrink-0">04</span>
+                            <div>
+                                <p class="font-medium text-gray-50">mcp-server-toolkit</p>
+                                <p class="text-sm muted">GitHub artifact. 600 collected tests.</p>
+                            </div>
+                        </li>
+                    </ol>
+                </aside>
+            </div>
+        </section>
+
+        <section class="border-b border-gray-800">
+            <div class="site-wrap py-16 md:py-20">
+                <div class="max-w-2xl mb-10">
+                    <p class="kicker mb-3">Recruiter proof</p>
+                    <h2 class="section-title mb-4">Paid story, then public repos</h2>
+                    <p class="muted">Start with the named engagement. Then clone the three public repositories. Independent repos stay independent unless a card says paid.</p>
                 </div>
 
-                <div class="bg-gray-50 rounded-xl border border-gray-200 p-6 hover:shadow-md transition">
-                    <div class="text-sm text-indigo-600 font-medium mb-2">Supported GitHub Repository</div>
-                    <h3 class="text-lg font-bold mb-2">mcp-server-toolkit</h3>
-                    <p class="text-gray-600 text-sm mb-4">Python MCP server framework with 617 collected tests, a 30-case adversarial corpus, and support for Python 3.10 to 3.12.</p>
-                    <div class="flex gap-2 flex-wrap mb-4">
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">Python</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">MCP</span>
-                        <span class="bg-gray-100 text-xs px-2 py-1 rounded">617 tests</span>
+                <div class="grid lg:grid-cols-12 gap-6 items-start">
+                    <article id="acuity" class="lg:col-span-7 surface-accent p-7 md:p-8">
+                        <div class="flex flex-wrap items-center gap-2 mb-4">
+                            <span class="chip chip-clay">Paid engagement</span>
+                            <span class="chip">Jan to Mar 2026</span>
+                        </div>
+                        <h3 class="font-display text-3xl md:text-4xl font-normal tracking-tightest text-gray-50 mb-4">Acuity Real Estate</h3>
+                        <p class="lede mb-4">Bilingual SMS qualification against live inbound traffic. 500+ leads processed in a three-month window, with CRM writes and a human handoff path when the bot should stop.</p>
+                        <p class="muted mb-6">This is a delivery story, not a public repository. The code target is private, so the inspectable proof sits in the public repos on the right.</p>
+                        <a href="projects.html#acuity" class="btn-ghost">Full portfolio context &rarr;</a>
+                    </article>
+
+                    <div class="lg:col-span-5 space-y-4">
+                        <article class="surface p-6">
+                            <p class="kicker mb-2">Public proof</p>
+                            <h3 class="card-title mb-2">DocExtract</h3>
+                            <p class="text-sm muted mb-4">95.5% weighted field-level accuracy on a 28-case offline replay. 202-case corpus (151 golden, 51 adversarial). 80% CI coverage gate.</p>
+                            <a href="https://github.com/ChunkyTortoise/docextract" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
+                        </article>
+                        <article class="surface p-6">
+                            <p class="kicker mb-2">Public proof</p>
+                            <h3 class="card-title mb-2">llm-reviewer-path</h3>
+                            <p class="text-sm muted mb-3">Clone, install, and run pytest with no API key. Review eval gates, action boundaries, retrieval failures, and scoping receipts.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="chip">pytest</span>
+                                <span class="chip">No API key</span>
+                            </div>
+                            <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
+                        </article>
+                        <article class="surface p-6">
+                            <p class="kicker mb-2">Supported GitHub artifact</p>
+                            <h3 class="card-title mb-2">mcp-server-toolkit</h3>
+                            <p class="text-sm muted mb-3">Python MCP server framework. GitHub v0.3.0 is the supported artifact: 600 collected tests, a 30-case adversarial corpus, and Python 3.10 to 3.14.</p>
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="chip">Python</span>
+                                <span class="chip">MCP</span>
+                                <span class="chip">600 tests</span>
+                            </div>
+                            <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
+                        </article>
                     </div>
-                    <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="text-indigo-600 text-sm hover:underline" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
                 </div>
             </div>
-            <div class="text-center mt-8">
-                <a href="projects.html" class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">View All Projects &rarr;</a>
+        </section>
+
+        <section class="border-b border-gray-800">
+            <div class="site-wrap py-16 md:py-20">
+                <p class="kicker mb-3">Where to look</p>
+                <h2 class="section-title mb-10">Three next clicks</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <a href="projects.html" class="surface p-6 block hover:border-clay-700">
+                        <p class="proof-metric mb-3">Portfolio</p>
+                        <h3 class="card-title mb-2">Project index</h3>
+                        <p class="text-sm muted">Flagship order first, then independent repositories as secondary proof.</p>
+                    </a>
+                    <a href="https://github.com/ChunkyTortoise" class="surface p-6 block hover:border-clay-700" target="_blank" rel="noopener noreferrer">
+                        <p class="proof-metric mb-3">GitHub</p>
+                        <h3 class="card-title mb-2">Public source</h3>
+                        <p class="text-sm muted">DocExtract, llm-reviewer-path, and mcp-server-toolkit are the first-click repos.</p>
+                    </a>
+                    <a href="resume/cayman-roden-ai-engineer.pdf" class="surface p-6 block hover:border-clay-700" target="_blank" rel="noopener noreferrer">
+                        <p class="proof-metric mb-3">Resume</p>
+                        <h3 class="card-title mb-2">One-pager PDF</h3>
+                        <p class="text-sm muted">One-page PDF. AI Engineer. Contract-first.</p>
+                    </a>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-
-    <!-- Cert Logos -->
-    <section class="py-12">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-        </div>
-    </section>
-
-    <!-- Contact CTA -->
-    <section class="bg-indigo-50 border-t border-indigo-100 py-16">
-        <div class="max-w-3xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-3 text-gray-900">Open to Remote Opportunities</h2>
-            <p class="text-gray-600 mb-6">AI Engineer, production LLM systems, agents, and evals. Paid Acuity delivery first, then public proof on GitHub (DocExtract, llm-reviewer-path, mcp-server-toolkit). Contract-first, remote, US-based.</p>
-            <div class="flex flex-wrap justify-center gap-4 mb-6">
-                <a href="mailto:caymanroden@gmail.com" class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition font-semibold">
-                    Email caymanroden@gmail.com
-                </a>
-                <a href="https://linkedin.com/in/caymanroden" class="inline-block bg-white text-indigo-600 border border-indigo-600 px-8 py-3 rounded-lg hover:bg-indigo-50 transition font-semibold" target="_blank" rel="noopener noreferrer">
-                    Connect on LinkedIn
-                </a>
+        <section>
+            <div class="site-wrap py-16 md:py-20 grid lg:grid-cols-12 gap-10 items-start">
+                <div class="lg:col-span-7">
+                    <p class="kicker mb-3">Availability</p>
+                    <h2 class="section-title mb-4">Open to remote contract work</h2>
+                    <p class="muted mb-6">AI Engineer roles centered on production LLM systems, agents, and evals. Cathedral City, CA. Remote nationwide. Contract-first; also open to remote AI Engineer roles that match this stack.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <a href="mailto:caymanroden@gmail.com" class="btn-primary">Email caymanroden@gmail.com</a>
+                        <a href="https://linkedin.com/in/caymanroden" class="btn-secondary" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 surface p-6">
+                    <p class="kicker mb-4">Working stack</p>
+                    <ul class="space-y-3 text-sm muted">
+                        <li>Python and FastAPI services</li>
+                        <li>Retrieval, structured outputs, and tool use</li>
+                        <li>Offline evaluation and adversarial fixtures</li>
+                        <li>Human handoff when the model should stop</li>
+                    </ul>
+                </div>
             </div>
-            <p class="text-sm text-gray-500">Cathedral City, CA &middot; Remote nationwide &middot; Contract-first; also open to remote AI Engineer roles</p>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-8">
-        <div class="max-w-6xl mx-auto px-4 flex justify-between items-center text-sm">
+    <footer class="site-footer">
+        <div class="site-wrap flex flex-col sm:flex-row justify-between gap-4">
             <span>&copy; 2026 Cayman Roden</span>
-            <div class="flex gap-5 items-center">
-                <a href="https://github.com/ChunkyTortoise" class="hover:text-white flex items-center gap-1.5" target="_blank">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    GitHub
-                </a>
-                <a href="https://linkedin.com/in/caymanroden" class="hover:text-white flex items-center gap-1.5" target="_blank">
-                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    LinkedIn
-                </a>
-                <a href="mailto:caymanroden@gmail.com" class="hover:text-white flex items-center gap-1.5">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                    Email
-                </a>
+            <div class="flex flex-wrap gap-5 items-center">
+                <a href="https://github.com/ChunkyTortoise" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/caymanroden" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:caymanroden@gmail.com">Email</a>
             </div>
         </div>
     </footer>
