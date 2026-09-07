@@ -44,10 +44,20 @@
     --line-strong: var(--stone-700);
     --accent: var(--clay-600);
     --accent-text: var(--clay-300);
+    --nav-offset: 5.75rem;
 }
 
 html {
     color-scheme: dark;
+    scroll-padding-top: var(--nav-offset);
+}
+
+#acuity,
+#project-grid,
+article[id],
+section[id],
+main [id] {
+    scroll-margin-top: var(--nav-offset);
 }
 
 body {
