@@ -54,9 +54,6 @@ See full details and benefits: https://github.com/sponsors/ChunkyTortoise
 
 Your sponsorship supports development of:
 
-### AgentForge (ai-orchestrator)
-Multi-LLM orchestration framework with 4.3M dispatches/sec and 89% cost reduction.
-
 ### DocQA Engine
 Production RAG system with BM25/semantic hybrid search.
 
