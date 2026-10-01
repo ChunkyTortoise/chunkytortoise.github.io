@@ -58,12 +58,12 @@
     <main class="site-wrap py-14 md:py-20">
         <p class="kicker mb-3">Portfolio</p>
         <h1 class="section-title mb-4">Paid delivery and public proof</h1>
-        <p class="lede max-w-2xl mb-10">LLM systems, agents, and evals. Start with the paid contracts and two public proof repos below, then treat the remaining repositories as secondary, independent proof.</p>
+        <p class="lede max-w-2xl mb-10">LLM systems, agents, and evals. Start with the public proof repos below, then read the paid delivery stories and secondary repositories.</p>
 
         <div class="surface p-6 mb-8 lg:grid lg:grid-cols-12 lg:gap-8">
             <div class="lg:col-span-7 mb-5 lg:mb-0">
                 <h2 class="card-title mb-3">Flagship order</h2>
-                <p class="text-sm muted">If you are evaluating for AI roles, start here: Acuity as the named paid delivery, DocExtract as public eval proof, EnterpriseHub as a replay demo, then llm-reviewer-path on GitHub. mcp-server-toolkit is a supporting artifact lower on this page.</p>
+                <p class="text-sm muted">Start with llm-reviewer-path for an offline clone-and-pytest check, then DocExtract for document extraction and its 28-fixture replay. mcp-server-toolkit adds MCP server evidence. Acuity and EnterpriseHub are private client stories; walkthroughs are available on request.</p>
             </div>
             <div class="lg:col-span-5 flex flex-wrap gap-2 content-start">
                 <span class="chip">Workflow APIs</span>
@@ -86,34 +86,16 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-6" id="project-grid">
-            <article id="acuity" class="project-card surface-accent p-6 md:col-span-2" data-category="ai automation">
-                <div class="grid md:grid-cols-12 gap-6 items-start">
-                    <div class="md:col-span-7">
-                        <p class="kicker mb-2">Paid engagement</p>
-                        <h3 class="font-display text-3xl font-normal tracking-tightest text-gray-50 mb-2">Acuity Real Estate</h3>
-                        <p class="text-sm faint mb-4">SMS qualification with Spanish detection and bilingual handoff. January to March 2026.</p>
-                        <p class="muted mb-4">Client-reported 500+ inbound leads. FastAPI, Redis, and GoHighLevel, with broker collaboration and a human handoff path. 1,700+ tests at handoff; audited 226 existing GoHighLevel workflows at handoff (archive-verified). This is a named delivery story, not a public clone target.</p>
-                    </div>
-                    <div class="md:col-span-5">
-                        <ul class="text-sm muted space-y-2">
-                            <li>Named paid work, not a public clone target</li>
-                            <li>Inspect public proof on DocExtract and llm-reviewer-path</li>
-                        </ul>
-                    </div>
-                </div>
-            </article>
-
-            <article id="enterprisehub" class="project-card surface p-6 md:col-span-2" data-category="ai">
+            <article class="project-card surface p-6" data-category="ai qa">
                 <div class="flex justify-between items-start mb-3 gap-3">
                     <div>
-                        <p class="kicker mb-2">Paid engagement · replay demo</p>
-                        <h3 class="card-title">EnterpriseHub</h3>
-                        <p class="text-sm faint">Confidential client. 2025 to 2026.</p>
+                        <h3 class="card-title">llm-reviewer-path</h3>
+                        <p class="text-sm faint">Clone and pytest review path</p>
                     </div>
-                    <span class="chip chip-clay">Replay demo</span>
+                    <span class="chip chip-clay">No API key</span>
                 </div>
-                <p class="text-sm muted mb-4">Paid AI application work. The public surface is a replay-only demo. It does not show live client outcomes.</p>
-                <a href="https://enterprisehub-demo.vercel.app" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">Replay demo</a>
+                <p class="text-sm muted mb-4">A short, rerunnable review path for eval gates, action boundaries, retrieval failures, and scoping receipts.</p>
+                <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
             </article>
 
             <article id="docextract" class="project-card surface p-6" data-category="ai qa">
@@ -129,19 +111,49 @@
                 <a href="https://github.com/ChunkyTortoise/docextract" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
             </article>
 
-            <article class="project-card surface p-6" data-category="ai qa">
+            <article class="project-card surface p-6" data-category="tools qa">
                 <div class="flex justify-between items-start mb-3 gap-3">
                     <div>
-                        <h3 class="card-title">llm-reviewer-path</h3>
-                        <p class="text-sm faint">Clone and pytest review path</p>
+                        <p class="kicker mb-2">Supporting artifact</p>
+                        <h3 class="card-title">mcp-server-toolkit</h3>
+                        <p class="text-sm faint">Python MCP server framework. GitHub is the supported artifact.</p>
                     </div>
-                    <span class="chip chip-clay">No API key</span>
+                    <span class="chip">Adversarial corpus</span>
                 </div>
-                <p class="text-sm muted mb-4">A short, rerunnable review path for eval gates, action boundaries, retrieval failures, and scoping receipts.</p>
-                <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <p class="text-sm muted mb-4">A 30-case adversarial corpus and Python 3.10 to 3.14. Full test inventory is on the README.</p>
+                <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
             </article>
 
-            <!-- AI Workflow API -->
+            <article id="acuity" class="project-card surface-accent p-6 md:col-span-2" data-category="ai automation">
+                <div class="grid md:grid-cols-12 gap-6 items-start">
+                    <div class="md:col-span-7">
+                        <p class="kicker mb-2">Paid engagement</p>
+                        <h3 class="font-display text-3xl font-normal tracking-tightest text-gray-50 mb-2">Acuity Real Estate</h3>
+                        <p class="text-sm faint mb-4">SMS qualification with Spanish detection and bilingual handoff. January to March 2026.</p>
+                        <p class="muted mb-4">Client-reported 500+ inbound leads. FastAPI, Redis, and GoHighLevel, with broker collaboration and a human handoff path. 1,700+ tests at handoff; audited 226 existing GoHighLevel workflows at handoff (archive-verified). This is a named delivery story, not a public clone target.</p>
+                    </div>
+                    <div class="md:col-span-5">
+                        <ul class="text-sm muted space-y-2">
+                            <li>Named paid work, not a public clone target</li>
+                            <li>Inspect public proof on llm-reviewer-path and DocExtract</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <article id="enterprisehub" class="project-card surface p-6 md:col-span-2" data-category="ai">
+                <div class="flex justify-between items-start mb-3 gap-3">
+                    <div>
+                        <p class="kicker mb-2">Paid engagement · private client work</p>
+                        <h3 class="card-title">EnterpriseHub</h3>
+                        <p class="text-sm faint">Confidential client. 2025 to 2026.</p>
+                    </div>
+                    <span class="chip chip-clay">Private client work</span>
+                </div>
+                <p class="text-sm muted mb-4">Paid AI application work. The client repository is private; an authorized walkthrough is available on request.</p>
+                <span class="text-sm faint">Private client work; walkthrough on request.</span>
+            </article>
+
             <div class="project-card surface p-6" data-category="ai qa">
                 <div class="flex justify-between items-start mb-3">
                     <div>
@@ -164,300 +176,6 @@
                 </div>
             </div>
 
-            <!-- TechNova Voice Bot -->
-            <div class="project-card surface p-6" data-category="ai">
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="card-title">TechNova Voice Bot</h3>
-                        <p class="text-sm faint">Real-Time Voice AI Pipeline</p>
-                    </div>
-                    <span class="chip">171 Tests</span>
-                </div>
-                <p class="text-sm muted mb-4">Independent repository: real-time voice AI with WebSocket audio streaming, voice activity detection, Deepgram STT/TTS, and barge-in support.</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="chip">FastAPI</span>
-                    <span class="chip">WebSockets</span>
-                    <span class="chip">Deepgram</span>
-                    <span class="chip">Redis</span>
-                    <span class="chip chip-clay">Barge-In</span>
-                    <span class="chip chip-clay">Streaming Audio</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/technova-voice-bot" class="btn-ghost text-sm" target="_blank">GitHub</a>
-                    <span class="faint">streaming pipeline | VAD | STT/TTS</span>
-                </div>
-            </div>
-
-            <!-- Insight Engine -->
-            <div class="project-card surface p-6" data-category="data">
-                <div class="w-full h-32 rounded-lg border border-gray-800 mb-4 flex flex-col items-center justify-center bg-gray-950 text-center px-4">
-                    <span class="font-display text-2xl text-gray-50 tracking-tight leading-tight">Insight Engine</span>
-                    <span class="font-mono text-[10px] uppercase tracking-widest text-clay-300 mt-2">Live demo</span>
-                </div>
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="card-title">Insight Engine</h3>
-                        <p class="text-sm faint">Data Analytics Platform</p>
-                    </div>
-                    <span class="chip">640 Tests</span>
-                </div>
-                <p class="text-sm muted mb-4">Upload CSV/Excel for auto-profiling, interactive dashboards, marketing attribution (4 models), anomaly detection (Z-score/IQR), predictive modeling with SHAP, time-series forecasting, K-means/DBSCAN clustering, feature engineering lab, model observatory (5 models), hyperparameter tuning, statistical testing, KPI framework, dimensionality reduction, advanced anomaly detection, and regression diagnostics.</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="chip">Streamlit</span>
-                    <span class="chip">Plotly</span>
-                    <span class="chip">scikit-learn</span>
-                    <span class="chip">XGBoost</span>
-                    <span class="chip">SHAP</span>
-                    <span class="chip chip-clay">Statistical Testing</span>
-                    <span class="chip chip-clay">KPI Framework</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/insight-engine" class="btn-ghost text-sm" target="_blank">GitHub</a>
-                    <a href="https://ct-insight-engine.streamlit.app" class="btn-ghost text-sm" target="_blank">Live Demo &rarr;</a>
-                    <span class="text-sm faint" title="FastAPI wrapper available at /docs when running locally or via Docker">API: localhost:8080/docs</span>
-                    <a href="https://github.com/ChunkyTortoise/insight-engine/blob/main/BENCHMARKS.md" class="btn-ghost text-sm" target="_blank">Benchmarks</a>
-                    <a href="https://github.com/ChunkyTortoise/insight-engine/tree/main/docs/adr" class="btn-ghost text-sm" target="_blank">ADRs</a>
-                    <span class="faint">640 tests | 3 demo datasets</span>
-                </div>
-            </div>
-
-            <!-- Finance Analytics Portfolio -->
-            <div class="project-card surface p-6" data-category="data qa">
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="card-title">Finance Analytics Portfolio</h3>
-                        <p class="text-sm faint">End-to-End Financial Data Pipeline</p>
-                    </div>
-                    <span class="chip">1,611 Tests</span>
-                </div>
-                <p class="text-sm muted mb-4">25-page interactive finance dashboard answering 17 business questions: credit risk modeling (SHAP/RF), stress testing (CCAR/DFAST), VaR analysis, A/B testing, fair lending geography (real CFPB HMDA data), causal inference, and more. Delivered as dashboard, 8-tab Excel workbook, 11 SQL query templates, 15 Jupyter notebooks, and written business memos. dbt analytics layer (DuckDB + Snowflake).</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="chip">Python</span>
-                    <span class="chip">pandas</span>
-                    <span class="chip">scikit-learn</span>
-                    <span class="chip">DuckDB</span>
-                    <span class="chip">Streamlit</span>
-                    <span class="chip chip-clay">dbt</span>
-                    <span class="chip chip-clay">SHAP</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" class="btn-ghost text-sm" target="_blank">GitHub</a>
-                    <a href="https://finance-analytics-portfolio.streamlit.app" class="btn-ghost text-sm" target="_blank">Live Demo</a>
-                    <span class="faint">1,611 tests | real HMDA data | 25 pages | 15 notebooks</span>
-                </div>
-            </div>
-
-            <!-- Olist Analytics Portfolio -->
-            <div class="project-card surface p-6" data-category="data">
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="card-title">Olist E-Commerce Analytics</h3>
-                        <p class="text-sm faint">Customer Retention and Delivery Analysis</p>
-                    </div>
-                    <span class="chip">DA Portfolio</span>
-                </div>
-                <p class="text-sm muted mb-4">Customer retention and delivery performance analysis on 100K+ real orders from a Brazilian e-commerce marketplace. Key findings: 93% of customers never return (vs 25-30% industry benchmark), late deliveries cost 1.2 review points, K-Means segmentation surfaces 4 actionable customer segments. Delivered as 10 SQL queries, EDA + segmentation notebooks, interactive dashboard, and written business memo.</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="chip">Python</span>
-                    <span class="chip">pandas</span>
-                    <span class="chip">scikit-learn</span>
-                    <span class="chip">SQL</span>
-                    <span class="chip">Streamlit</span>
-                    <span class="chip chip-clay">K-Means</span>
-                    <span class="chip chip-clay">RFM</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/olist-analytics-portfolio" class="btn-ghost text-sm" target="_blank">GitHub</a>
-                    <a href="https://olist-analytics-portfo-nbpkbqj3vy7dpa2tus56th.streamlit.app" class="btn-ghost text-sm" target="_blank">Live Demo</a>
-                    <span class="faint">100K+ orders | 10 SQL queries | business memo</span>
-                </div>
-            </div>
-
-            <!-- DocQA Engine -->
-            <div class="project-card surface p-6" data-category="ai">
-                <div class="w-full h-32 rounded-lg border border-gray-800 mb-4 flex flex-col items-center justify-center bg-gray-950 text-center px-4">
-                    <span class="font-display text-2xl text-gray-50 tracking-tight leading-tight">DocQA Engine</span>
-                    <span class="font-mono text-[10px] uppercase tracking-widest text-clay-300 mt-2">Live demo</span>
-                </div>
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="card-title">DocQA Engine</h3>
-                        <p class="text-sm faint">RAG Document Q and A</p>
-                    </div>
-                    <span class="chip">550 Tests</span>
-                </div>
-                <p class="text-sm muted mb-4">Upload PDFs/DOCX, ask questions, get cited answers. Hybrid retrieval (BM25 + vectors), cross-encoder re-ranker, query expansion, retrieval evaluation (MRR, NDCG@K), 5 chunking strategies with comparison, citation quality scoring, redundancy detection, RAGAS-style evaluation, conversation manager, document graph, batch processing, JSON/CSV export.</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="chip">BM25</span>
-                    <span class="chip">NumPy</span>
-                    <span class="chip">Streamlit</span>
-                    <span class="chip">PyPDF2</span>
-                    <span class="chip chip-clay">Re-Ranker</span>
-                    <span class="chip chip-clay">Query Expansion</span>
-                    <span class="chip chip-clay">Document Graph</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/docqa-engine" class="btn-ghost text-sm" target="_blank">GitHub</a>
-                    <a href="https://ct-document-engine.streamlit.app" class="btn-ghost text-sm" target="_blank">Live Demo &rarr;</a>
-                    <a href="https://github.com/ChunkyTortoise/docqa-engine/blob/main/BENCHMARKS.md" class="btn-ghost text-sm" target="_blank">Benchmarks</a>
-                    <a href="https://github.com/ChunkyTortoise/docqa-engine/tree/main/docs/adr" class="btn-ghost text-sm" target="_blank">ADRs</a>
-                    <span class="faint">550 tests | mock mode</span>
-                </div>
-            </div>
-
-            <!-- Advanced RAG System -->
-            <div class="project-card surface p-6" data-category="ai">
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="card-title">Advanced RAG System</h3>
-                        <p class="text-sm faint">Enterprise RAG Pipeline</p>
-                    </div>
-                    <span class="chip">Tests Passing</span>
-                </div>
-                <p class="text-sm muted mb-4">Independent repository: hybrid search (BM25 + dense vectors), reciprocal rank fusion, ChromaDB vector store, FastAPI REST API with health/metrics endpoints, and Grafana observability.</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="chip">FastAPI</span>
-                    <span class="chip">ChromaDB</span>
-                    <span class="chip">BM25</span>
-                    <span class="chip">Docker</span>
-                    <span class="chip chip-clay">Hybrid Retrieval</span>
-                    <span class="chip chip-clay">Grafana</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    
-                    <span class="text-sm faint" title="Run locally with Docker Compose">API: localhost:8000/docs</span>
-                    <span class="faint">FastAPI + ChromaDB | Containerizable</span>
-                </div>
-            </div>
-
-            <!-- Scrape-and-Serve -->
-            <div class="project-card surface p-6" data-category="automation">
-                <div class="w-full h-32 rounded-lg border border-gray-800 mb-4 flex flex-col items-center justify-center bg-gray-950 text-center px-4">
-                    <span class="font-display text-2xl text-gray-50 tracking-tight leading-tight">Scrape-and-Serve</span>
-                    <span class="font-mono text-[10px] uppercase tracking-widest text-clay-300 mt-2">Live demo</span>
-                </div>
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="card-title">Scrape-and-Serve</h3>
-                        <p class="text-sm faint">Web Scraping + Excel-to-Web</p>
-                    </div>
-                    <span class="chip">370 Tests</span>
-                </div>
-                <p class="text-sm muted mb-4">YAML-configurable web scrapers, competitor SEO analysis with gap detection, asyncio scheduler with change callbacks, backlink estimation, data validation rules engine, diff visualization, keyword extraction (TF-IDF n-grams), content scoring, data quality profiler, content intelligence, and data pipeline.</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="chip">BeautifulSoup</span>
-                    <span class="chip">httpx</span>
-                    <span class="chip">SQLite</span>
-                    <span class="chip">Streamlit</span>
-                    <span class="chip chip-clay">Data Pipeline</span>
-                    <span class="chip chip-clay">Content Intelligence</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/scrape-and-serve" class="btn-ghost text-sm" target="_blank">GitHub</a>
-                    <a href="https://ct-scrape-and-serve.streamlit.app" class="btn-ghost text-sm" target="_blank">Live Demo &rarr;</a>
-                    <a href="https://github.com/ChunkyTortoise/scrape-and-serve/blob/main/BENCHMARKS.md" class="btn-ghost text-sm" target="_blank">Benchmarks</a>
-                    <a href="https://github.com/ChunkyTortoise/scrape-and-serve/tree/main/docs/adr" class="btn-ghost text-sm" target="_blank">ADRs</a>
-                    <span class="faint">370 tests | 11 modules</span>
-                </div>
-            </div>
-
-            <!-- Next.js AI Dashboard -->
-            <div class="project-card surface p-6" data-category="ai">
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="card-title">Next.js AI Dashboard</h3>
-                        <p class="text-sm faint">Full-Stack AI Dashboard</p>
-                    </div>
-                    <span class="chip">Live</span>
-                </div>
-                <p class="text-sm muted mb-4">Full-stack AI dashboard with real-time metrics, chat interface, and document processing UI. Dark-mode design with Recharts analytics, shadcn/ui components, and responsive layout.</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="chip">TypeScript</span>
-                    <span class="chip">Next.js 15</span>
-                    <span class="chip">shadcn/ui</span>
-                    <span class="chip">Recharts</span>
-                    <span class="chip">Tailwind CSS</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://ai-dashboard-rust.vercel.app" class="btn-ghost text-sm" target="_blank">Live Demo</a>
-                    <a href="https://github.com/ChunkyTortoise/ai-dashboard" class="btn-ghost text-sm" target="_blank">GitHub</a>
-                    <span class="faint">TypeScript strict | App Router | Vercel</span>
-                </div>
-            </div>
-
-            <!-- GHL Multi-Vertical AI Kit -->
-            <div class="project-card surface p-6" data-category="ai">
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="card-title">GHL Multi-Vertical AI Kit</h3>
-                        <p class="text-sm faint">YAML-Driven Bot Framework</p>
-                    </div>
-                    <span class="chip">Production</span>
-                </div>
-                <p class="text-sm muted mb-4">YAML-driven GHL bot framework supporting real estate, home services, and legal verticals. Configurable question flows, multi-vertical prompt templates, and GoHighLevel CRM integration.</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="chip">Python</span>
-                    <span class="chip">FastAPI</span>
-                    <span class="chip">Claude AI</span>
-                    <span class="chip chip-clay">YAML Config</span>
-                    <span class="chip chip-clay">Multi-Vertical</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/ghl-multi-vertical-kit" class="btn-ghost text-sm" target="_blank">GitHub</a>
-                    <span class="faint">105 tests | Real estate, home services, legal</span>
-                </div>
-            </div>
-
-            <!-- AI Workflow Automation API -->
-            <div class="project-card surface p-6" data-category="automation">
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="card-title">AI Workflow Automation API</h3>
-                        <p class="text-sm faint">Async Workflow Engine</p>
-                    </div>
-                    <span class="chip">Production</span>
-                </div>
-                <p class="text-sm muted mb-4">YAML-defined async workflow engine with SSE progress streaming and 3 built-in example workflows. Background task queue with ARQ, real-time status updates, and webhook notifications.</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="chip">Python</span>
-                    <span class="chip">FastAPI</span>
-                    <span class="chip">ARQ</span>
-                    <span class="chip">Claude AI</span>
-                    <span class="chip chip-clay">SSE Streaming</span>
-                    <span class="chip chip-clay">YAML Workflows</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/ai-workflow-api" class="btn-ghost text-sm" target="_blank">GitHub</a>
-                    <span class="faint">148 tests | Async pipelines | SSE progress</span>
-                </div>
-            </div>
-
-            <!-- TechNova Voice Bot -->
-            <div class="project-card surface p-6" data-category="ai">
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="card-title">TechNova Voice Bot</h3>
-                        <p class="text-sm faint">Real-Time Voice AI Pipeline</p>
-                    </div>
-                    <span class="chip">113 Tests</span>
-                </div>
-                <p class="text-sm muted mb-4">Real-time voice AI pipeline: OGG to FFmpeg to VAD to STT to Claude to TTS, with sub-3s round-trip latency. WebSocket streaming, Silero-ONNX voice activity detection, Deepgram speech-to-text.</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="chip">Python</span>
-                    <span class="chip">FastAPI</span>
-                    <span class="chip">WebSocket</span>
-                    <span class="chip">Deepgram</span>
-                    <span class="chip">Claude AI</span>
-                    <span class="chip chip-clay">Silero VAD</span>
-                    <span class="chip chip-clay">FFmpeg</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/technova-voice-bot" class="btn-ghost text-sm" target="_blank">GitHub</a>
-                    <span class="faint">113 tests | &lt;3s latency | PWA</span>
-                </div>
-            </div>
-
-            <!-- Chatbot Widget SaaS -->
             <div class="project-card surface p-6" data-category="ai">
                 <div class="flex justify-between items-start mb-3">
                     <div>
@@ -479,70 +197,6 @@
                     <a href="https://github.com/ChunkyTortoise/chatbot-widget" class="btn-ghost text-sm" target="_blank">GitHub</a>
                     <a href="https://dashboard-mu-two-10.vercel.app" class="btn-ghost text-sm" target="_blank">Live Dashboard</a>
                     <span class="faint">139 tests | Single script tag embed</span>
-                </div>
-            </div>
-
-            <!-- DocExtract AI -->
-            <div class="project-card surface p-6" data-category="ai qa">
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <p class="kicker mb-2">Paid · public eval</p>
-                        <h3 class="card-title">DocExtract AI</h3>
-                        <p class="text-sm faint">Document Extraction API</p>
-                    </div>
-                    <span class="chip">95.5% replay</span>
-                </div>
-                <p class="text-sm muted mb-4">Document extraction API with async job processing, hybrid retrieval, and evaluation gates. Measured 95.5% weighted field-level accuracy on a 28-case offline replay; separate 200-case authoring corpus (202 JSONL lines including metadata); 80% CI coverage gate. Included here as secondary proof because it is already featured higher on the page.</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="chip">FastAPI</span>
-                    <span class="chip">pgvector</span>
-                    <span class="chip">ARQ</span>
-                    <span class="chip">Claude AI</span>
-                    <span class="chip chip-clay">Async Jobs</span>
-                    <span class="chip chip-clay">Semantic Search</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://docextract-demo.streamlit.app" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">Offline replay demo</a>
-                    <a href="https://github.com/ChunkyTortoise/docextract" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    <span class="faint">28-case offline replay | Streamlit Cloud</span>
-                </div>
-            </div>
-
-            <article class="project-card surface p-6" data-category="tools qa">
-                <div class="flex justify-between items-start mb-3 gap-3">
-                    <div>
-                        <p class="kicker mb-2">Supporting artifact</p>
-                        <h3 class="card-title">mcp-server-toolkit</h3>
-                        <p class="text-sm faint">Python MCP server framework. GitHub is the supported artifact.</p>
-                    </div>
-                    <span class="chip">Adversarial corpus</span>
-                </div>
-                <p class="text-sm muted mb-4">A 30-case adversarial corpus and Python 3.10 to 3.14. Full test inventory is on the README.</p>
-                <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </article>
-
-            <!-- GraphRAG Demo -->
-            <div class="project-card surface p-6" data-category="ai">
-                <div class="flex justify-between items-start mb-3">
-                    <div>
-                        <h3 class="card-title">GraphRAG Demo</h3>
-                        <p class="text-sm faint">Knowledge Graph-Enhanced RAG</p>
-                    </div>
-                    <span class="chip">63 Tests</span>
-                </div>
-                <p class="text-sm muted mb-4">Knowledge graph-enhanced RAG system. Entity extraction (spaCy + Claude), NetworkX graph traversal, BM25 + graph fusion retrieval, fact-checking, side-by-side comparison: Basic vs GraphRAG.</p>
-                <div class="flex gap-2 flex-wrap mb-4">
-                    <span class="chip">Streamlit</span>
-                    <span class="chip">NetworkX</span>
-                    <span class="chip">spaCy</span>
-                    <span class="chip">Claude AI</span>
-                    <span class="chip chip-clay">Graph Fusion</span>
-                    <span class="chip chip-clay">Fact-Checking</span>
-                </div>
-                <div class="flex gap-4 text-sm">
-                    <a href="https://graphr-azucpb9e7jkdxavkahvicr.streamlit.app" class="btn-ghost text-sm" target="_blank">Live Demo</a>
-                    <a href="https://github.com/ChunkyTortoise/graphrag-demo" class="btn-ghost text-sm" target="_blank">GitHub</a>
-                    <span class="faint">63 tests | 3-tab Streamlit UI</span>
                 </div>
             </div>
         </div>
@@ -576,19 +230,11 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="font-medium text-gray-50">Data and analytics</td>
-                            <td>SQL, pandas, Tableau, Power BI, Streamlit, DuckDB</td>
-                            <td>
-                                <a href="https://github.com/ChunkyTortoise/finance-analytics-portfolio" target="_blank" rel="noopener noreferrer">Finance Analytics</a>,
-                                <a href="https://github.com/ChunkyTortoise/insight-engine" target="_blank" rel="noopener noreferrer">Insight Engine</a>
-                            </td>
-                        </tr>
-                        <tr>
                             <td class="font-medium text-gray-50">AI and LLM systems</td>
                             <td>Claude API, RAG, pgvector, LangChain, agentic workflows</td>
                             <td>
                                 <a href="#acuity">Acuity (paid story)</a>,
-                                <a href="#enterprisehub">EnterpriseHub (replay demo)</a>,
+                                <a href="#enterprisehub">EnterpriseHub (private story)</a>,
                                 <a href="https://github.com/ChunkyTortoise/docextract" target="_blank" rel="noopener noreferrer">DocExtract</a>,
                                 <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" target="_blank" rel="noopener noreferrer">llm-reviewer-path</a>.
                                 Also <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" target="_blank" rel="noopener noreferrer">mcp-server-toolkit</a> (supporting).

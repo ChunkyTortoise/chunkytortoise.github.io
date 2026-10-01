@@ -1,0 +1,21 @@
+name: Public hiring links
+on:
+  push:
+    paths: ['**.html', 'resume/**', 'scripts/check_public_links.py', 'tests/test_public_links.py', '.github/workflows/public-links.yml']
+  pull_request:
+    paths: ['**.html', 'resume/**', 'scripts/check_public_links.py', 'tests/test_public_links.py', '.github/workflows/public-links.yml']
+  schedule:
+    - cron: '17 16 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - run: python3 -m unittest discover -s tests
+      - run: python3 scripts/check_public_links.py

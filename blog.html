@@ -226,14 +226,9 @@
                     <li><strong>No incremental index updates.</strong> Adding one document rebuilds both indices from scratch. For corpora under 10,000 chunks this completes in under a second. Beyond that, incremental index maintenance (e.g., streaming BM25 updates) would be worth implementing.</li>
                 </ul>
 
-                <h3>Try It Yourself</h3>
-                <p>The full implementation is open source with a <a href="https://ct-document-engine.streamlit.app/" target="_blank" rel="noopener noreferrer">live demo on Streamlit Cloud</a>. The relevant files:</p>
-                <ul class="list-disc pl-6 space-y-1">
-                    <li><a href="https://github.com/ChunkyTortoise/docqa-engine/blob/main/src/retriever.py" target="_blank" rel="noopener noreferrer"><code>src/retriever.py</code></a> - BM25 index, dense index, and Reciprocal Rank Fusion</li>
-                    <li><a href="https://github.com/ChunkyTortoise/docqa-engine/blob/main/src/pipeline.py" target="_blank" rel="noopener noreferrer"><code>src/pipeline.py</code></a> - Orchestration, lazy evaluation, context building</li>
-                    <li><a href="https://github.com/ChunkyTortoise/docqa-engine/blob/main/src/ingest.py" target="_blank" rel="noopener noreferrer"><code>src/ingest.py</code></a> - Multi-format parsing and sentence-aware chunking</li>
-                    <li><a href="https://github.com/ChunkyTortoise/docqa-engine/blob/main/src/prompt_lab.py" target="_blank" rel="noopener noreferrer"><code>src/prompt_lab.py</code></a> - Template engine and A/B comparison</li>
-                </ul>
+                <h3>Implementation access</h3>
+                <p>The DocQA Engine repository is private. An authorized walkthrough is available on request. For runnable public retrieval examples, see <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" target="_blank" rel="noopener noreferrer">llm-reviewer-path</a>.</p>
+
 
             </div>
         </article>
