@@ -16,6 +16,7 @@
     <meta property="og:image:alt" content="Cayman Roden, AI Engineer: production LLM systems, agents, and evals">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="https://chunkytortoise.github.io/og-image.png">
+    <meta name="twitter:image:alt" content="Cayman Roden, AI Engineer: production LLM systems, agents, and evals">
     <meta name="twitter:title" content="Blog | Cayman Roden">
     <meta name="twitter:description" content="Technical blog on LLM cost engineering, multi-agent orchestration, and RAG pipelines.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -92,11 +93,7 @@
 
                 <p>I built the orchestration layer for EnterpriseHub, a real estate AI platform with three specialized chatbots. This post covers the full orchestration stack: cross-bot handoffs with circular prevention and rate limiting, pattern learning for dynamic threshold adjustment, A/B testing for handoff optimization, and a 7-rule alerting system with 3-level escalation.</p>
 
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
-                    <div class="blog-stat">
-                        <p class="num">Built-in</p>
-                        <p class="label">Circular-handoff prevention</p>
-                    </div>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 my-6">
                     <div class="blog-stat">
                         <p class="num">4 layers</p>
                         <p class="label">Safety checks per handoff</p>
@@ -123,7 +120,7 @@
             <h2 class="article-title mb-6">Why Single-Index RAG Fails and How Hybrid Retrieval Fixes It</h2>
 
             <div class="blog-prose space-y-4">
-                <p>Most RAG tutorials show a simple pipeline: chunk documents, embed them, do a cosine similarity search, pass the top results to the LLM. It works for demos. It breaks in production. The problem is that a single retrieval method has systematic blind spots - dense embeddings miss exact keyword matches, and keyword search misses semantic paraphrases. I built a hybrid retrieval system that combines both, so a relevant document that one method ranks poorly can still surface through the other.</p>
+                <p>Most RAG tutorials show a simple pipeline: chunk documents, embed them, do a cosine similarity search, pass the top results to the LLM. It works for demos. It breaks in production. The problem is that a single retrieval method has systematic blind spots - dense embeddings miss exact keyword matches, and keyword search misses semantic paraphrases. Production systems usually pair a keyword index with an embedding index. This post walks through a lightweight version of that design: a BM25 keyword index fused with a TF-IDF vector index. Both of those are lexical, so this build trades paraphrase recall for zero model dependencies (see the tradeoffs at the end), but the fusion and chunking patterns carry over unchanged when you swap in real embeddings.</p>
 
                 <h3>The Problem: Every Index Has Blind Spots</h3>
                 <p>Consider a document about "Section 8 housing voucher programs." A user asks: "What government rental assistance programs are available?" Dense embeddings will match the semantic meaning - "government rental assistance" is conceptually similar to "housing voucher programs." But if the user asks "Section 8 requirements," a keyword search finds it instantly while the dense index may rank it lower because "Section 8" is a proper noun with no direct semantic relationship to generic terms.</p>
@@ -234,7 +231,7 @@
                 </ul>
 
                 <h3>Implementation access</h3>
-                <p>The DocQA Engine repository is private. An authorized walkthrough is available on request. For runnable public retrieval examples, see <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" target="_blank" rel="noopener noreferrer">llm-reviewer-path</a>.</p>
+                <p>The DocQA Engine repository is private. A walkthrough is available on request. For runnable public retrieval examples, see <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" target="_blank" rel="noopener noreferrer">llm-reviewer-path</a>.</p>
 
 
             </div>
