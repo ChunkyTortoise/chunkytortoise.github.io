@@ -7,6 +7,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import unquote, urlsplit
 from urllib.request import Request, urlopen
 import argparse
+import time
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = ("index.html", "about.html", "projects.html", "blog.html")
@@ -44,23 +45,36 @@ def collect_links(root, pages):
     return sorted(external), errors
 
 
-def check_url(url, opener=urlopen):
+def fetch_once(url, opener):
+    """Return (error or None, retryable)."""
     try:
         request = Request(url, headers={"User-Agent": "portfolio-link-check/1.0"})
         with opener(request, timeout=20) as response:
             status = response.status
             final = urlsplit(response.geturl())
             if status != 200:
-                return f"{url}: HTTP {status}"
+                return f"{url}: HTTP {status}", status >= 500
             if "/auth/" in final.path or "/login" in final.path:
-                return f"{url}: redirects to login ({response.geturl()})"
+                return f"{url}: redirects to login ({response.geturl()})", False
     except HTTPError as error:
         message = f"{url}: {error}"
+        retryable = error.code >= 500 or error.code == 429
         error.close()
-        return message
+        return message, retryable
     except (URLError, TimeoutError, OSError) as error:
-        return f"{url}: {error}"
-    return None
+        return f"{url}: {error}", True
+    return None, False
+
+
+def check_url(url, opener=urlopen, attempts=3, sleep=time.sleep):
+    """Retry server errors and timeouts so a brief GitHub outage is not a broken link."""
+    for attempt in range(attempts):
+        error, retryable = fetch_once(url, opener)
+        if error is None or not retryable:
+            return error
+        if attempt + 1 < attempts:
+            sleep(2 ** (attempt + 1))
+    return error
 
 
 def main():
