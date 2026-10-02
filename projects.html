@@ -139,6 +139,16 @@
                         </ul>
                     </div>
                 </div>
+                <details class="mt-6">
+                    <summary class="text-sm muted cursor-pointer">Delivery receipt and evidence limits</summary>
+                    <div class="mt-4 space-y-4">
+                        <p class="text-sm muted">Acuity needed inbound SMS qualification inside its existing CRM, with broker-defined qualification rules and a human handoff for Spanish-language messages. The first delivery slice focused on lead intake and CRM updates, keeping GoHighLevel as the system of record.</p>
+                        <p class="text-sm muted">Cayman set requirements and directed AI-assisted implementation. The supported language scope was Spanish detection and bilingual human handoff. Expanding automated Spanish qualification would require separate validation.</p>
+                        <p class="text-sm muted">A documented monitoring correction illustrates the review work. The overdue-handoff query checked <code>bot_type</code> for a handoff value stored in <code>mode</code>, so it could miss the intended records. The correction moved the filter to <code>mode</code>. The regression test captures the SQL and checks that predicate. This is evidence of a corrected query and a targeted regression check; it does not establish a measured human-response SLA.</p>
+                        <p class="text-sm muted">The delivery included a runbook, evaluation fixtures and a historical handoff test suite. The public redacted scope receipt records the intake slice, exclusions, acceptance criteria and the instruction to pause expansion if CRM writes or Spanish handoffs failed. Private implementation details are available only within an approved walkthrough scope.</p>
+                        <p class="text-sm muted"><a href="https://github.com/ChunkyTortoise/llm-reviewer-path/blob/main/receipts/fde_scope/ACUITY.md" target="_blank" rel="noopener noreferrer">Public redacted scope receipt</a>. Narrative scope evidence, not a current runtime test. Private implementation and regression provenance are available only within an approved walkthrough scope.</p>
+                    </div>
+                </details>
             </article>
 
             <article id="enterprisehub" class="project-card surface p-6 md:col-span-2" data-category="ai">
