@@ -433,22 +433,6 @@ button:focus-visible {
     outline-offset: 3px;
 }
 
-.filter-btn {
-    border: 1px solid rgb(var(--stone-700));
-    background: rgb(var(--stone-900));
-    color: rgb(var(--stone-300));
-    padding: 0.35rem 0.9rem;
-    border-radius: 999px;
-    font-size: 0.875rem;
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-    background: rgb(var(--clay-600));
-    color: rgb(var(--stone-950));
-    border-color: rgb(var(--clay-600));
-}
-
 .site-table th {
     color: rgb(var(--ink-faint));
     font-weight: 500;

@@ -10,7 +10,12 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chunkytortoise.github.io/projects.html">
     <link rel="canonical" href="https://chunkytortoise.github.io/projects.html">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://chunkytortoise.github.io/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Cayman Roden, AI Engineer: production LLM systems, agents, and evals">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://chunkytortoise.github.io/og-image.png">
     <meta name="twitter:title" content="Projects | Cayman Roden">
     <meta name="twitter:description" content="Three paid contracts: Acuity, DocExtract, and EnterpriseHub. Public inspection: DocExtract and llm-reviewer-path.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -38,12 +43,14 @@
             <div class="hidden md:flex items-center gap-6">
                 <a href="projects.html" class="nav-link is-active" aria-current="page">Portfolio</a>
                 <a href="about.html" class="nav-link">About</a>
+                <a href="blog.html" class="nav-link">Writing</a>
                 <a href="resume/cayman-roden-ai-engineer.pdf" class="nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden site-wrap mobile-panel space-y-2 text-sm">
             <a href="projects.html" class="block py-1 nav-link is-active" aria-current="page">Portfolio</a>
             <a href="about.html" class="block py-1 nav-link">About</a>
+            <a href="blog.html" class="block py-1 nav-link">Writing</a>
             <a href="resume/cayman-roden-ai-engineer.pdf" class="block py-1 nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
         </div>
     </nav>
@@ -58,12 +65,12 @@
     <main class="site-wrap py-14 md:py-20">
         <p class="kicker mb-3">Portfolio</p>
         <h1 class="section-title mb-4">Paid delivery and public proof</h1>
-        <p class="lede max-w-2xl mb-10">LLM systems, agents, and evals. Start with the public proof repos below, then read the paid delivery stories and secondary repositories.</p>
+        <p class="lede max-w-2xl mb-10">LLM systems, agents, and evals. Public repositories you can run come first, followed by paid client engagements and smaller independent projects.</p>
 
         <div class="surface p-6 mb-8 lg:grid lg:grid-cols-12 lg:gap-8">
             <div class="lg:col-span-7 mb-5 lg:mb-0">
-                <h2 class="card-title mb-3">Flagship order</h2>
-                <p class="text-sm muted">Start with llm-reviewer-path for an offline clone-and-pytest check, then DocExtract for document extraction and its 28-fixture replay. mcp-server-toolkit adds MCP server evidence. Acuity and EnterpriseHub are private client stories; walkthroughs are available on request.</p>
+                <h2 class="card-title mb-3">Where to start</h2>
+                <p class="text-sm muted">Start with DocExtract for document extraction and its 28-case offline replay, then llm-reviewer-path for a clone-and-pytest check that needs no API key. mcp-server-toolkit adds MCP server work. Acuity and EnterpriseHub are private client engagements; walkthroughs are available on request.</p>
             </div>
             <div class="lg:col-span-5 flex flex-wrap gap-2 content-start">
                 <span class="chip">Workflow APIs</span>
@@ -76,28 +83,7 @@
             </div>
         </div>
 
-        <div class="flex gap-3 mb-8 flex-wrap">
-            <button type="button" onclick="filterProjects('all')" class="filter-btn active">All</button>
-            <button type="button" onclick="filterProjects('ai')" class="filter-btn">AI Systems</button>
-            <button type="button" onclick="filterProjects('data')" class="filter-btn">Secondary Data/BI</button>
-            <button type="button" onclick="filterProjects('qa')" class="filter-btn">Testing</button>
-            <button type="button" onclick="filterProjects('automation')" class="filter-btn">Automation</button>
-            <button type="button" onclick="filterProjects('tools')" class="filter-btn">Tools/MCP</button>
-        </div>
-
         <div class="grid md:grid-cols-2 gap-6" id="project-grid">
-            <article class="project-card surface p-6" data-category="ai qa">
-                <div class="flex justify-between items-start mb-3 gap-3">
-                    <div>
-                        <h3 class="card-title">llm-reviewer-path</h3>
-                        <p class="text-sm faint">Clone and pytest review path</p>
-                    </div>
-                    <span class="chip chip-clay">No API key</span>
-                </div>
-                <p class="text-sm muted mb-4">A short, rerunnable review path for eval gates, action boundaries, retrieval failures, and scoping receipts.</p>
-                <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
-            </article>
-
             <article id="docextract" class="project-card surface p-6" data-category="ai qa">
                 <div class="flex justify-between items-start mb-3 gap-3">
                     <div>
@@ -111,12 +97,24 @@
                 <a href="https://github.com/ChunkyTortoise/docextract" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
             </article>
 
+            <article class="project-card surface p-6" data-category="ai qa">
+                <div class="flex justify-between items-start mb-3 gap-3">
+                    <div>
+                        <h3 class="card-title">llm-reviewer-path</h3>
+                        <p class="text-sm faint">Clone and pytest review path</p>
+                    </div>
+                    <span class="chip chip-clay">No API key</span>
+                </div>
+                <p class="text-sm muted mb-4">A short, rerunnable review path for eval gates, action boundaries, retrieval failures, and scoping receipts.</p>
+                <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </article>
+
             <article class="project-card surface p-6" data-category="tools qa">
                 <div class="flex justify-between items-start mb-3 gap-3">
                     <div>
-                        <p class="kicker mb-2">Supporting artifact</p>
+                        <p class="kicker mb-2">Supporting repo</p>
                         <h3 class="card-title">mcp-server-toolkit</h3>
-                        <p class="text-sm faint">Python MCP server framework. GitHub is the supported artifact.</p>
+                        <p class="text-sm faint">Python MCP server framework</p>
                     </div>
                     <span class="chip">Adversarial corpus</span>
                 </div>
@@ -130,12 +128,11 @@
                         <p class="kicker mb-2">Paid engagement</p>
                         <h3 class="font-display text-3xl font-normal tracking-tightest text-gray-50 mb-2">Acuity Real Estate</h3>
                         <p class="text-sm faint mb-4">SMS qualification with Spanish detection and bilingual handoff. January to March 2026.</p>
-                        <p class="muted mb-4">Client-reported 500+ inbound leads. FastAPI, Redis, and GoHighLevel, with broker collaboration and a human handoff path. 1,700+ tests at handoff; audited 226 existing GoHighLevel workflows at handoff (archive-verified). This is a named delivery story, not a public clone target.</p>
+                        <p class="muted mb-4">Client-reported 500+ inbound leads. FastAPI, Redis, and GoHighLevel, with broker collaboration and a human handoff path. 1,700+ tests at handoff; audited 226 existing GoHighLevel workflows at handoff (archive-verified). The client code is private; a walkthrough is available on request.</p>
                     </div>
                     <div class="md:col-span-5">
                         <ul class="text-sm muted space-y-2">
-                            <li>Named paid work, not a public clone target</li>
-                            <li>Inspect public proof on llm-reviewer-path and DocExtract</li>
+                            <li>Runnable public work: DocExtract and llm-reviewer-path</li>
                         </ul>
                     </div>
                 </div>
@@ -181,7 +178,7 @@
                     <span class="chip">Claude AI</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/ai-workflow-api" class="btn-ghost text-sm" target="_blank">GitHub</a>
+                    <a href="https://github.com/ChunkyTortoise/ai-workflow-api" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
                     <span class="faint">YAML workflows | async workers | streaming API</span>
                 </div>
             </div>
@@ -204,8 +201,8 @@
                     <span class="chip chip-clay">RAG</span>
                 </div>
                 <div class="flex gap-4 text-sm">
-                    <a href="https://github.com/ChunkyTortoise/chatbot-widget" class="btn-ghost text-sm" target="_blank">GitHub</a>
-                    <a href="https://dashboard-mu-two-10.vercel.app" class="btn-ghost text-sm" target="_blank">Live Dashboard</a>
+                    <a href="https://github.com/ChunkyTortoise/chatbot-widget" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    <a href="https://dashboard-mu-two-10.vercel.app" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">Live Dashboard</a>
                     <span class="faint">139 tests | Single script tag embed</span>
                 </div>
             </div>
@@ -266,20 +263,5 @@
             </div>
         </div>
     </footer>
-
-    <script>
-    function filterProjects(category) {
-        document.querySelectorAll('.project-card').forEach(function(card) {
-            var cats = card.dataset.category.split(' ');
-            card.style.display = (category === 'all' || cats.indexOf(category) !== -1) ? '' : 'none';
-        });
-        document.querySelectorAll('.filter-btn').forEach(function(btn) {
-            btn.classList.remove('active');
-        });
-        if (event && event.target) {
-            event.target.classList.add('active');
-        }
-    }
-    </script>
 </body>
 </html>

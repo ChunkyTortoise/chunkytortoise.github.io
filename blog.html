@@ -10,7 +10,12 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chunkytortoise.github.io/blog.html">
     <link rel="canonical" href="https://chunkytortoise.github.io/blog.html">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://chunkytortoise.github.io/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Cayman Roden, AI Engineer: production LLM systems, agents, and evals">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://chunkytortoise.github.io/og-image.png">
     <meta name="twitter:title" content="Blog | Cayman Roden">
     <meta name="twitter:description" content="Technical blog on LLM cost engineering, multi-agent orchestration, and RAG pipelines.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -38,12 +43,14 @@
             <div class="hidden md:flex items-center gap-6">
                 <a href="projects.html" class="nav-link">Portfolio</a>
                 <a href="about.html" class="nav-link">About</a>
+                <a href="blog.html" class="nav-link is-active" aria-current="page">Writing</a>
                 <a href="resume/cayman-roden-ai-engineer.pdf" class="nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden site-wrap mobile-panel space-y-2 text-sm">
             <a href="projects.html" class="block py-1 nav-link">Portfolio</a>
             <a href="about.html" class="block py-1 nav-link">About</a>
+            <a href="blog.html" class="block py-1 nav-link is-active" aria-current="page">Writing</a>
             <a href="resume/cayman-roden-ai-engineer.pdf" class="block py-1 nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
         </div>
     </nav>
@@ -87,8 +94,8 @@
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 my-6">
                     <div class="blog-stat">
-                        <p class="num">0</p>
-                        <p class="label">Circular handoffs in production</p>
+                        <p class="num">Built-in</p>
+                        <p class="label">Circular-handoff prevention</p>
                     </div>
                     <div class="blog-stat">
                         <p class="num">4 layers</p>
@@ -104,7 +111,7 @@
                     </div>
                 </div>
 
-                <p><a href="https://github.com/ChunkyTortoise/llm-reviewer-path" target="_blank" rel="noopener noreferrer">See the orchestration work on GitHub &rarr;</a></p>
+                <p><a href="https://github.com/ChunkyTortoise/llm-reviewer-path" target="_blank" rel="noopener noreferrer">See public review examples on GitHub &rarr;</a></p>
             </div>
         </article>
 
@@ -116,7 +123,7 @@
             <h2 class="article-title mb-6">Why Single-Index RAG Fails and How Hybrid Retrieval Fixes It</h2>
 
             <div class="blog-prose space-y-4">
-                <p>Most RAG tutorials show a simple pipeline: chunk documents, embed them, do a cosine similarity search, pass the top results to the LLM. It works for demos. It breaks in production. The problem is that a single retrieval method has systematic blind spots - dense embeddings miss exact keyword matches, and keyword search misses semantic paraphrases. I built a hybrid retrieval system that combines both, and it finds relevant documents that neither method catches alone.</p>
+                <p>Most RAG tutorials show a simple pipeline: chunk documents, embed them, do a cosine similarity search, pass the top results to the LLM. It works for demos. It breaks in production. The problem is that a single retrieval method has systematic blind spots - dense embeddings miss exact keyword matches, and keyword search misses semantic paraphrases. I built a hybrid retrieval system that combines both, so a relevant document that one method ranks poorly can still surface through the other.</p>
 
                 <h3>The Problem: Every Index Has Blind Spots</h3>
                 <p>Consider a document about "Section 8 housing voucher programs." A user asks: "What government rental assistance programs are available?" Dense embeddings will match the semantic meaning - "government rental assistance" is conceptually similar to "housing voucher programs." But if the user asks "Section 8 requirements," a keyword search finds it instantly while the dense index may rank it lower because "Section 8" is a proper noun with no direct semantic relationship to generic terms.</p>
@@ -128,7 +135,7 @@
 
                 <ul class="list-disc pl-6 space-y-2">
                     <li><strong>BM25 (Okapi)</strong> - The keyword index. Uses term frequency with saturation (k1=1.5) and document length normalization (b=0.75). IDF is calculated as <code>log((N - df + 0.5) / (df + 0.5) + 1.0)</code> to prevent zero scores on common terms. This catches exact matches, proper nouns, and technical terminology.</li>
-                    <li><strong>TF-IDF Dense Vectors</strong> - The semantic index. Scikit-learn's <code>TfidfVectorizer</code> with a vocabulary cap of 5,000 features generates dense vectors. Cosine similarity with L2 normalization handles the ranking. This catches paraphrases, synonyms, and conceptual similarity.</li>
+                    <li><strong>TF-IDF Vectors</strong> - The vector index, standing in for dense embeddings. Scikit-learn's <code>TfidfVectorizer</code> with a vocabulary cap of 5,000 features produces sparse, L2-normalized vectors ranked by cosine similarity. This ranks by overall term overlap across the whole chunk rather than BM25's saturated per-term weighting. It is still lexical, so true paraphrase and synonym matching needs a real embedding model (see the tradeoffs below).</li>
                 </ul>
 
                 <p>Both indices return ranked results for every query. The challenge is combining them. You can't simply average the scores - BM25 scores and cosine similarities are on completely different scales with different distributions. A BM25 score of 12.7 and a cosine similarity of 0.83 aren't comparable.</p>
@@ -220,7 +227,7 @@
 
                 <h3>Limitations and Tradeoffs</h3>
                 <ul class="list-disc pl-6 space-y-2">
-                    <li><strong>TF-IDF is not a true embedding model.</strong> Using TF-IDF cosine similarity as the "dense" index captures more semantic signal than BM25 alone, but less than a transformer-based embedding model like <code>all-MiniLM-L6-v2</code>. The tradeoff is zero external dependencies and fast startup - no downloading 90MB models on first run.</li>
+                    <li><strong>TF-IDF is not a true embedding model.</strong> TF-IDF vectors are sparse and lexical: they do not match synonyms or paraphrases the way a transformer-based embedding model like <code>all-MiniLM-L6-v2</code> does. Swapping one in for the vector index is the natural upgrade. The tradeoff is zero external dependencies and fast startup - no downloading 90MB models on first run.</li>
                     <li><strong>RRF loses score magnitude.</strong> By converting to ranks, you lose how <em>much</em> better the #1 result is versus #2. If one result is overwhelmingly more relevant, RRF treats it the same as a marginal lead. For most document QA workloads this doesn't matter, but for tasks where confidence calibration is important, you'd want a learned fusion model instead.</li>
                     <li><strong>500-character chunks are opinionated.</strong> Legal documents, code files, and scientific papers all have different optimal chunk sizes. The system uses a single chunk size across all documents, which is a simplification. Per-format chunking would improve retrieval quality for mixed corpora.</li>
                     <li><strong>No incremental index updates.</strong> Adding one document rebuilds both indices from scratch. For corpora under 10,000 chunks this completes in under a second. Beyond that, incremental index maintenance (e.g., streaming BM25 updates) would be worth implementing.</li>
