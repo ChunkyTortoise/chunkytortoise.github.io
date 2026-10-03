@@ -7,6 +7,7 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import unquote, urlsplit
 from urllib.request import Request, urlopen
 import argparse
+import time
 
 ROOT = Path(__file__).resolve().parents[1]
 PAGES = (
@@ -58,22 +59,30 @@ def collect_links(root, pages):
     return sorted(external), errors
 
 
-def check_url(url, opener=urlopen):
-    try:
-        request = Request(url, headers={"User-Agent": "portfolio-link-check/1.0"})
-        with opener(request, timeout=20) as response:
-            status = response.status
-            final = urlsplit(response.geturl())
-            if status != 200:
-                return f"{url}: HTTP {status}"
-            if "/auth/" in final.path or "/login" in final.path:
-                return f"{url}: redirects to login ({response.geturl()})"
-    except HTTPError as error:
-        message = f"{url}: {error}"
-        error.close()
-        return message
-    except (URLError, TimeoutError, OSError) as error:
-        return f"{url}: {error}"
+RETRY_STATUSES = {429, 500, 502, 503, 504}
+
+
+def check_url(url, opener=urlopen, attempts=3, sleep=time.sleep):
+    """Return an error string for url, or None. Retries throttling and 5xx responses."""
+    for attempt in range(attempts):
+        try:
+            request = Request(url, headers={"User-Agent": "portfolio-link-check/1.0"})
+            with opener(request, timeout=20) as response:
+                status = response.status
+                final = urlsplit(response.geturl())
+                if status != 200:
+                    return f"{url}: HTTP {status}"
+                if "/auth/" in final.path or "/login" in final.path:
+                    return f"{url}: redirects to login ({response.geturl()})"
+            return None
+        except HTTPError as error:
+            message = f"{url}: {error}"
+            error.close()
+            if error.code not in RETRY_STATUSES or attempt == attempts - 1:
+                return message
+        except (URLError, TimeoutError, OSError) as error:
+            return f"{url}: {error}"
+        sleep(2 ** (attempt + 1))
     return None
 
 

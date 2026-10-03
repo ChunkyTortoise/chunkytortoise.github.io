@@ -87,6 +87,39 @@ class PublicLinksTests(TestCase):
 
         self.assertIn("404", links.check_url("https://example.com", opener))
 
+    def test_transient_503_is_retried(self):
+        calls = []
+
+        def opener(request, timeout):
+            calls.append(request.full_url)
+            if len(calls) < 3:
+                raise HTTPError(request.full_url, 503, "Service Unavailable", {}, None)
+            return Response(request.full_url)
+
+        self.assertIsNone(links.check_url("https://example.com", opener, sleep=lambda s: None))
+        self.assertEqual(len(calls), 3)
+
+    def test_persistent_503_fails_after_retries(self):
+        calls = []
+
+        def opener(request, timeout):
+            calls.append(1)
+            raise HTTPError(request.full_url, 503, "Service Unavailable", {}, None)
+
+        result = links.check_url("https://example.com", opener, sleep=lambda s: None)
+        self.assertIn("503", result)
+        self.assertEqual(len(calls), 3)
+
+    def test_404_is_not_retried(self):
+        calls = []
+
+        def opener(request, timeout):
+            calls.append(1)
+            raise HTTPError(request.full_url, 404, "Not Found", {}, None)
+
+        self.assertIn("404", links.check_url("https://example.com", opener, sleep=lambda s: None))
+        self.assertEqual(len(calls), 1)
+
 
 if __name__ == "__main__":
     main()
