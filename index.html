@@ -107,12 +107,12 @@
                     <div class="surface p-6">
                         <p class="pillar-num mb-2">02 · Measure it</p>
                         <h2 class="card-title mb-2">Evals as CI</h2>
-                        <p class="text-sm muted">DocExtract replays committed extraction fixtures on every relevant pull request, and the check fails below a floor. llm-reviewer-path shows the same pattern in a 10-minute sample.</p>
+                        <p class="text-sm muted">DocExtract re-scores committed extraction outputs on every relevant pull request, and the check fails below a floor. llm-reviewer-path shows the same pattern in a 10-minute sample.</p>
                     </div>
                     <div class="surface p-6">
                         <p class="pillar-num mb-2">03 · Secure it</p>
                         <h2 class="card-title mb-2">Agent and MCP security</h2>
-                        <p class="text-sm muted">Pre-registered prompt-injection research showing typed tool-call dispatch, not prompt scaffolding, is the durable fix, plus an MCP toolkit with auth and read-only SQL checks.</p>
+                        <p class="text-sm muted">Pre-registered prompt-injection research showing a defensive prompt stops some payloads and misses others, so the fix belongs in tool dispatch. Plus an MCP toolkit with auth and a read-only SQL allowlist.</p>
                     </div>
                 </div>
             </div>
@@ -133,8 +133,8 @@
                         <div class="p-6 flex flex-col gap-3 grow">
                             <p class="kicker">Ship it · Measure it</p>
                             <h3 class="card-title">DocExtract</h3>
-                            <p class="text-sm muted">Turns PDFs and scans into validated, searchable records, and measures its own extraction accuracy in CI.</p>
-                            <p class="text-sm text-gray-50">95.5% field-level accuracy on a 28-fixture offline replay; the CI check fails below a 0.85 floor.</p>
+                            <p class="text-sm muted">Turns PDFs and scans into validated, searchable records, with an extraction eval that runs as a CI check.</p>
+                            <p class="text-sm text-gray-50">95.5% weighted field-level score on a 28-fixture offline replay; the CI check fails below a 0.85 floor.</p>
                             <div class="flex flex-wrap gap-2"><span class="chip">FastAPI</span><span class="chip">Claude</span><span class="chip">pgvector</span><span class="chip">Redis + ARQ</span></div>
                             <div class="link-row mt-auto pt-2">
                                 <a href="case-studies/docextract.html" class="btn-ghost text-sm">Case study &rarr;</a>
@@ -148,7 +148,7 @@
                             <p class="kicker">Secure it</p>
                             <h3 class="card-title">ai-redteam-notes</h3>
                             <p class="text-sm muted">Pre-registered research on indirect prompt injection through agent tool output, turned into a CI-ready auditor.</p>
-                            <p class="text-sm text-gray-50">With a content-trust prompt scaffold in place, one payload variant still exfiltrated a canary in 10 of 10 runs on Llama-3.3-70B. Typed tool-call dispatch is the durable fix.</p>
+                            <p class="text-sm text-gray-50">With a content-trust prompt scaffold in place, one payload variant still exfiltrated a canary in 10 of 10 runs on Llama-3.3-70B. The fix belongs in tool dispatch, not the prompt.</p>
                             <div class="flex flex-wrap gap-2"><span class="chip">Python</span><span class="chip">MCP harnesses</span><span class="chip">Pre-registration</span><span class="chip">CI gate</span></div>
                             <div class="link-row mt-auto pt-2">
                                 <a href="case-studies/agent-security.html" class="btn-ghost text-sm">Case study &rarr;</a>
@@ -161,8 +161,8 @@
                         <div class="p-6 flex flex-col gap-3 grow">
                             <p class="kicker">Secure it</p>
                             <h3 class="card-title">mcp-server-toolkit</h3>
-                            <p class="text-sm muted">A library that wraps MCP tool logic with auth, read-only SQL checks, caching, rate limits and tracing, so servers ship with guardrails by default.</p>
-                            <p class="text-sm text-gray-50">JWT/JWKS auth, sqlglot read-only SQL AST checks and OpenTelemetry spans, covered by 609 collected tests.</p>
+                            <p class="text-sm muted">A library of opt-in decorators that wrap MCP tool logic with auth, a read-only SQL allowlist, caching, rate limits and tracing.</p>
+                            <p class="text-sm text-gray-50">JWT/JWKS auth, a sqlglot read-only SQL allowlist and OpenTelemetry spans, covered by 627 tests.</p>
                             <div class="flex flex-wrap gap-2"><span class="chip">Python</span><span class="chip">MCP SDK</span><span class="chip">PyJWT</span><span class="chip">sqlglot</span></div>
                             <div class="link-row mt-auto pt-2">
                                 

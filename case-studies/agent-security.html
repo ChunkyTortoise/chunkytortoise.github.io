@@ -64,7 +64,7 @@
 
     <main id="main" class="site-wrap-narrow py-14 md:py-20">
         <p class="kicker mb-3"><a href="../projects.html" class="hover:underline">Work</a> / Agent security</p>
-        <h1 class="section-title mb-5">Prompt scaffolding doesn't fix a broken tool-call substrate. Typed dispatch does.</h1>
+        <h1 class="section-title mb-5">A defensive prompt stopped some injection payloads and missed others. The fix belongs in tool dispatch.</h1>
         <p class="lede mb-6">Pre-registered research on indirect prompt injection through agent tool output, with the misses published alongside the hits.</p>
         <div class="link-row mb-4"><a href="https://github.com/ChunkyTortoise/ai-redteam-notes" class="btn-primary" target="_blank" rel="noopener noreferrer">Code</a><code class="cmd">make repro</code></div>
         <div class="cs-prose">
@@ -76,7 +76,7 @@
                 <li><strong>Pre-registered hypotheses.</strong> Each experiment's hypotheses and success criteria were written down and dated before the runs, with Wilson 95% confidence intervals at n=10 (<a href="https://github.com/ChunkyTortoise/ai-redteam-notes/blob/main/docs/preregistrations/INDEX.md" target="_blank" rel="noopener noreferrer">ledger</a>).</li>
                 <li><strong>Controlled substrate.</strong> The same payloads ran through an inline text/XML tool-dispatch substrate and a chat-only control, so the dispatch mechanism could be isolated from the model.</li>
                 <li><strong>Safe targets only.</strong> Intentionally vulnerable benchmarks, open-weight models via public APIs and localhost harnesses. Nothing in production was tested without authorization.</li>
-                <li><strong>A tool, not just a writeup.</strong> The finding became <code>substrate_auditor.py</code>, a zero-dependency check that flags risky dispatch substrates and runs in CI.</li>
+                <li><strong>A tool, not just a writeup.</strong> The finding became <code>substrate_auditor.py</code>, a zero-dependency check that classifies a config or transcript as inline-XML or typed dispatch. CI runs its self-check and requires it to rate the inline-XML sample high-risk and the typed sample low-risk.</li>
             </ul>
 
             <h2>Architecture</h2>
@@ -86,18 +86,19 @@
             </figure>
 
             <h2>Results</h2>
-            <p>Strict canary exfiltration on Llama-3.3-70B through the inline-XML dispatch substrate:</p>
+            <p>Strict canary exfiltration on Groq-hosted Llama-3.3-70B, n=10 seeds per cell (<a href="https://github.com/ChunkyTortoise/ai-redteam-notes#results" target="_blank" rel="noopener noreferrer">source and per-seed runs</a>):</p>
             <div class="table-scroll">
             <table class="results-table">
                 <thead><tr><th>Condition</th><th>Exfiltrated</th><th>What it shows</th></tr></thead>
                 <tbody>
-                    <tr><td>Content-trust scaffold (M1), payload v7</td><td>10 / 10</td><td>The scaffold failed completely against this variant</td></tr>
-                    <tr><td>Content-trust scaffold (M1), payload v3</td><td>0 / 10</td><td>The same scaffold stopped a different variant</td></tr>
-                    <tr><td>Chat-only control (no XML dispatch)</td><td>0 / 10</td><td>The dispatch substrate, not the model alone, is the exposure</td></tr>
+                    <tr><td>No scaffold (M0): baseline, v3, v7 payloads</td><td>9 / 10, 10 / 10, 10 / 10</td><td>The inline-XML dispatch path is exploitable</td></tr>
+                    <tr><td>Content-trust scaffold (M1): baseline and v3 payloads</td><td>0 / 10 each</td><td>The scaffold stopped these two variants</td></tr>
+                    <tr><td>Content-trust scaffold (M1): v7 payload</td><td>10 / 10</td><td>The same scaffold failed completely against this one</td></tr>
+                    <tr><td>Chat-only control (no XML dispatch)</td><td>0 / 10</td><td>Without the inline-XML dispatch path there is no tool call to hijack</td></tr>
                 </tbody>
             </table>
             </div>
-            <p>Takeaway: prompt scaffolding is variant-selective. It blocked some payloads and not others, so it can't be the fix on its own. The durable fix belongs in the agent client: typed tool-call dispatch, with authorization and provenance checks outside the model, and prompt hardening as defense in depth. Source: the <a href="https://github.com/ChunkyTortoise/ai-redteam-notes/blob/main/ATTACKS/2026-05-18-h10b-g-70b-substrate-grid-m1-variant-selective.md" target="_blank" rel="noopener noreferrer">H10b-G report</a>.</p>
+            <p>Takeaway: prompt scaffolding is variant-selective. It blocked some payloads and not others, so it can't be the fix on its own. My recommendation is architectural: typed tool-call dispatch in the agent client, authorization and provenance checks outside the model, and prompt hardening as defense in depth. That rests on the substrate isolation above; a typed-dispatch agent has not yet been measured at 70B. Source: the <a href="https://github.com/ChunkyTortoise/ai-redteam-notes/blob/main/ATTACKS/2026-05-18-h10b-g-70b-substrate-grid-m1-variant-selective.md" target="_blank" rel="noopener noreferrer">H10b-G report</a>.</p>
             <p><strong>Published misses.</strong> The pre-registered assumption that a larger model would be safer here (H7) was falsified at 70B. H3 was retracted for a substrate confound, H6 and H11 were falsified, and one mitigation (M2) measured as a regression. They're listed in the <a href="https://github.com/ChunkyTortoise/ai-redteam-notes/blob/main/docs/preregistrations/INDEX.md" target="_blank" rel="noopener noreferrer">hypothesis ledger</a> because a record that hides its nulls is harder to trust.</p>
 
             <h2>What I'd do next</h2>
@@ -113,7 +114,9 @@
                 <ul>
                     <li>"Typed dispatch is the fix" is architectural reasoning backed by thin measurement: the typed-substrate cell is a single simulated 8B run. At 70B, the isolation check is the chat-only control, not a typed substrate.</li>
                     <li>The H10b-G grid used n=10 per cell on a single hosted provider. An earlier 8B baseline was n=5 on a free tier and is directional only.</li>
-                    <li>Targets were intentionally vulnerable benchmarks, open-weight models and local harnesses, under a three-tier disclosure policy enforced by a pre-push hook.</li>
+                    <li>Targets were intentionally vulnerable benchmarks, open-weight models and local harnesses, under a three-tier disclosure policy. The pre-push hook described in SECURITY.md is not in the public repo; there, disclosure frontmatter is checked by <code>make public-surface</code> in CI.</li>
+                    <li>The chat-only control has no tool-dispatch path, so its 0/10 is expected by construction. It isolates the substrate; it does not test a typed-dispatch agent at 70B.</li>
+                    <li>The auditor recognizes the transcript and config shapes it was built for and returns <code>unknown</code> on others, such as a plain <code>mcpServers</code> config.</li>
                     <li>Full claim-to-run mapping and limitations: the <a href="https://github.com/ChunkyTortoise/ai-redteam-notes" target="_blank" rel="noopener noreferrer">repository README</a> and <a href="https://github.com/ChunkyTortoise/ai-redteam-notes/blob/main/RESEARCH-SUMMARY.md" target="_blank" rel="noopener noreferrer">research summary</a>.</li>
                 </ul>
             </details>

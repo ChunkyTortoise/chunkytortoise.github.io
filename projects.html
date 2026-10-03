@@ -65,7 +65,7 @@
     <main id="main" class="site-wrap py-14 md:py-20">
         <p class="kicker mb-3">Work</p>
         <h1 class="section-title mb-4">LLM systems that are measured, gated and safe to ship</h1>
-        <p class="lede max-w-2xl mb-12">Four public repos in the order I'd read them, then paid client work and earlier projects. Every number links back to its source in the repo, and each repo's README keeps a Methodology &amp; limits section.</p>
+        <p class="lede max-w-2xl mb-12">Four public repos in the order I'd read them, then paid client work and earlier projects. Each number comes from the repo's README Results table, which links to its source file, and each README keeps a Methodology &amp; limits section.</p>
 
         <div class="space-y-8">
             <article id="docextract" class="surface overflow-hidden grid lg:grid-cols-12">
@@ -75,11 +75,11 @@
                 <div class="lg:col-span-7 p-6 md:p-8 flex flex-col gap-4">
                     <p class="kicker">01 · Ship it · Measure it</p>
                     <h2 class="font-display text-3xl md:text-4xl font-normal tracking-tightest text-gray-50">DocExtract</h2>
-                    <p class="muted">Turns PDFs and scans into validated, searchable records, and measures its own extraction accuracy in CI.</p>
-                    <p class="text-gray-50">95.5% field-level accuracy on a 28-fixture offline replay; the CI check fails below a 0.85 floor.</p>
+                    <p class="muted">Turns PDFs and scans into validated, searchable records, with an extraction eval that runs as a CI check.</p>
+                    <p class="text-gray-50">95.5% weighted field-level score on a 28-fixture offline replay; the CI check fails below a 0.85 floor.</p>
                     <div class="flex flex-wrap gap-2"><span class="chip">FastAPI</span><span class="chip">Claude</span><span class="chip">pgvector</span><span class="chip">Redis + ARQ</span><span class="chip">Agentic RAG</span></div>
                     <div>
-                        <p class="text-xs faint mb-2 uppercase tracking-widekicker">Run in 60 seconds, no API key</p>
+                        <p class="text-xs faint mb-2 uppercase tracking-widekicker">Try it locally, no API key</p>
                         <code class="cmd">python scripts/eval_offline_replay.py --floor 0.85</code>
                     </div>
                     <div class="link-row">
@@ -97,10 +97,10 @@
                     <p class="kicker">02 · Secure it</p>
                     <h2 class="font-display text-3xl md:text-4xl font-normal tracking-tightest text-gray-50">ai-redteam-notes</h2>
                     <p class="muted">Pre-registered research on indirect prompt injection through agent tool output, turned into a CI-ready auditor.</p>
-                    <p class="text-gray-50">With a content-trust prompt scaffold in place, one payload variant still exfiltrated a canary in 10 of 10 runs on Llama-3.3-70B. Typed tool-call dispatch is the durable fix.</p>
+                    <p class="text-gray-50">With a content-trust prompt scaffold in place, one payload variant still exfiltrated a canary in 10 of 10 runs on Llama-3.3-70B. The fix belongs in tool dispatch, not the prompt.</p>
                     <div class="flex flex-wrap gap-2"><span class="chip">Python</span><span class="chip">MCP harnesses</span><span class="chip">Pre-registration</span><span class="chip">CI gate</span></div>
                     <div>
-                        <p class="text-xs faint mb-2 uppercase tracking-widekicker">Run in 60 seconds, no API key</p>
+                        <p class="text-xs faint mb-2 uppercase tracking-widekicker">Try it locally, no API key</p>
                         <code class="cmd">make repro</code>
                     </div>
                     <div class="link-row">
@@ -117,11 +117,11 @@
                 <div class="lg:col-span-7 p-6 md:p-8 flex flex-col gap-4">
                     <p class="kicker">03 · Secure it</p>
                     <h2 class="font-display text-3xl md:text-4xl font-normal tracking-tightest text-gray-50">mcp-server-toolkit</h2>
-                    <p class="muted">A library that wraps MCP tool logic with auth, read-only SQL checks, caching, rate limits and tracing, so servers ship with guardrails by default.</p>
-                    <p class="text-gray-50">JWT/JWKS auth, sqlglot read-only SQL AST checks and OpenTelemetry spans, covered by 609 collected tests.</p>
+                    <p class="muted">A library of opt-in decorators that wrap MCP tool logic with auth, a read-only SQL allowlist, caching, rate limits and tracing.</p>
+                    <p class="text-gray-50">JWT/JWKS auth, a sqlglot read-only SQL allowlist and OpenTelemetry spans, covered by 627 tests.</p>
                     <div class="flex flex-wrap gap-2"><span class="chip">Python</span><span class="chip">MCP SDK</span><span class="chip">PyJWT</span><span class="chip">sqlglot</span><span class="chip">OpenTelemetry</span></div>
                     <div>
-                        <p class="text-xs faint mb-2 uppercase tracking-widekicker">Run in 60 seconds, no API key</p>
+                        <p class="text-xs faint mb-2 uppercase tracking-widekicker">Try it locally, no API key</p>
                         <code class="cmd">pip install -e ".[dev]" && python examples/verified_cache.py</code>
                     </div>
                     <div class="link-row">
@@ -142,7 +142,7 @@
                     <p class="text-gray-50">36 offline tests, no API key. A mutated eval submission fails the gate, and a duplicate retry is suppressed.</p>
                     <div class="flex flex-wrap gap-2"><span class="chip">Python</span><span class="chip">pytest</span><span class="chip">uv</span><span class="chip">GitHub Actions</span></div>
                     <div>
-                        <p class="text-xs faint mb-2 uppercase tracking-widekicker">Run in 60 seconds, no API key</p>
+                        <p class="text-xs faint mb-2 uppercase tracking-widekicker">Try it locally, no API key</p>
                         <code class="cmd">uv sync --group dev && uv run pytest</code>
                     </div>
                     <div class="link-row">

@@ -69,7 +69,7 @@
         <div class="link-row mb-4"><a href="https://github.com/ChunkyTortoise/docextract" class="btn-primary" target="_blank" rel="noopener noreferrer">Code</a><code class="cmd">python scripts/eval_offline_replay.py --floor 0.85</code></div>
         <div class="cs-prose">
             <h2>Problem</h2>
-            <p>Document extraction looks easy in a demo and drifts in production. A prompt tweak or a model swap can quietly drop field accuracy on invoices, receipts and statements, and nobody notices until a downstream report is wrong. The client needed structured fields they could trust, plus a way to know when a change made them worse.</p>
+            <p>Document extraction looks easy in a demo and drifts in production. A prompt tweak or a model swap can quietly drop field accuracy on invoices, receipts and statements, and nobody notices until a downstream report is wrong. DocExtract was built under a paid client engagement that needed structured fields it could trust, plus a way to know when a change made them worse.</p>
 
             <h2>Approach</h2>
             <ul>
@@ -78,7 +78,7 @@
                 <li><strong>Validated output.</strong> Pydantic v2 schemas reject malformed extractions before they're stored.</li>
                 <li><strong>Search over what was extracted.</strong> Embeddings go to Postgres with pgvector, and questions run through an agentic RAG loop over vector, BM25 and hybrid tools.</li>
                 <li><strong>Injection defense on both paths.</strong> Fencing, scanning and output sanitization on text and vision extraction (<a href="https://github.com/ChunkyTortoise/docextract/blob/main/docs/adr/0020-indirect-prompt-injection-defense.md" target="_blank" rel="noopener noreferrer">ADR-0020</a>).</li>
-                <li><strong>Evals as a CI check.</strong> Every pull request that touches prompts or the extractor replays committed prediction fixtures and fails below an accuracy floor. No API key or spend required.</li>
+                <li><strong>Evals as a CI check.</strong> Every pull request that touches prompts or the extractor re-scores committed extraction outputs against expected fields, and the check fails below a floor or on a drop from baseline. No API key or spend required. Because the outputs are frozen, this catches scorer, schema and fixture regressions; prompt and model changes are measured by a separate paid live eval job when an API key is configured.</li>
             </ul>
 
             <h2>Architecture</h2>
@@ -92,8 +92,8 @@
             <table class="results-table">
                 <thead><tr><th>Result</th><th>Value</th><th>Source</th></tr></thead>
                 <tbody>
-                    <tr><td>Field-level extraction accuracy (critical fields weighted 2×)</td><td>95.5% on a 28-fixture offline replay</td><td><a href="https://github.com/ChunkyTortoise/docextract/blob/main/docs/retrieval-extraction-evidence.md" target="_blank" rel="noopener noreferrer">evidence note</a></td></tr>
-                    <tr><td>CI accuracy floor</td><td>0.85; the check fails below it</td><td><a href="https://github.com/ChunkyTortoise/docextract/blob/main/.github/workflows/eval-gate.yml" target="_blank" rel="noopener noreferrer">eval-gate.yml</a></td></tr>
+                    <tr><td>Weighted field-level score (critical fields 2×)</td><td>95.5% on a 28-fixture offline replay</td><td><a href="https://github.com/ChunkyTortoise/docextract/blob/main/docs/retrieval-extraction-evidence.md" target="_blank" rel="noopener noreferrer">evidence note</a></td></tr>
+                    <tr><td>CI floor</td><td>0.85; the check also fails on a drop of more than 0.03 from baseline</td><td><a href="https://github.com/ChunkyTortoise/docextract/blob/main/.github/workflows/eval-gate.yml" target="_blank" rel="noopener noreferrer">eval-gate.yml</a></td></tr>
                     <tr><td>Regression caught</td><td>A demo branch that corrupted eight fixtures failed the check</td><td><a href="https://github.com/ChunkyTortoise/docextract/blob/main/docs/eval-gate-proof.md" target="_blank" rel="noopener noreferrer">eval-gate proof</a></td></tr>
                     <tr><td>Eval authoring corpus</td><td>200 cases (150 golden, 50 adversarial)</td><td><a href="https://github.com/ChunkyTortoise/docextract/tree/main/evals" target="_blank" rel="noopener noreferrer">evals/</a></td></tr>
                 </tbody>
@@ -116,7 +116,8 @@
             <details>
                 <summary>What the numbers cover</summary>
                 <ul>
-                    <li>The accuracy score is a deterministic replay of committed prediction fixtures, not a live-model grade and not F1. The 200-case authoring corpus is a separate population from the 28 scored fixtures.</li>
+                    <li>The score is a deterministic replay of committed prediction fixtures, not a live-model grade and not F1. It gives partial credit: strings by normalized Levenshtein similarity, numbers within ±1%, and half credit for a value where null was expected. The 200-case authoring corpus is a separate population from the 28 scored fixtures.</li>
+                    <li>The replayed outputs are frozen, so a prompt or model change does not move the replay score. The paid live eval job measures those changes and runs only when an API key is configured in CI.</li>
                     <li>Retrieval quality (recall, support, abstention) is not measured yet.</li>
                     <li>The eval gate reports a passing or failing check. It blocks merges only where branch protection requires the check.</li>
                     <li>Cost and latency figures in the repo are modeled until a metered run is committed.</li>
