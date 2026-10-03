@@ -91,13 +91,13 @@
             </article>
             <article id="ai-redteam-notes" class="surface overflow-hidden grid lg:grid-cols-12">
                 <div class="lg:col-span-5 bg-gray-900 border-b lg:border-b-0 lg:border-r border-gray-800">
-                    <img src="assets/projects/agent-security-substrate.svg" alt="Diagram: untrusted tool output reaches inline XML dispatch and leads to canary exfiltration; substrate_auditor flags the substrate and typed dispatch fixes it." class="w-full h-full max-h-96 lg:max-h-[30rem] object-contain p-4" loading="lazy" width="640" height="400">
+                    <img src="assets/projects/agent-security-substrate.svg" alt="Diagram: untrusted tool output reaches inline XML dispatch and leads to canary exfiltration; substrate_auditor flags the substrate, and typed dispatch is the recommended fix." class="w-full h-full max-h-96 lg:max-h-[30rem] object-contain p-4" loading="lazy" width="640" height="400">
                 </div>
                 <div class="lg:col-span-7 p-6 md:p-8 flex flex-col gap-4">
                     <p class="kicker">02 · Secure it</p>
                     <h2 class="font-display text-3xl md:text-4xl font-normal tracking-tightest text-gray-50">ai-redteam-notes</h2>
                     <p class="muted">Pre-registered research on indirect prompt injection through agent tool output, turned into a CI-ready auditor.</p>
-                    <p class="text-gray-50">With a content-trust prompt scaffold in place, one payload variant still exfiltrated a canary in 10 of 10 runs on Groq-hosted Llama-3.3-70B (one provider, n=10). The fix belongs in tool dispatch, not the prompt.</p>
+                    <p class="text-gray-50">With a content-trust prompt scaffold in place, one payload variant still exfiltrated a canary in 10 of 10 runs on Groq-hosted Llama-3.3-70B (one provider, n=10). The recommended fix is in tool dispatch rather than the prompt; it has not been measured at 70B.</p>
                     <div class="flex flex-wrap gap-2"><span class="chip">Python</span><span class="chip">MCP harnesses</span><span class="chip">Pre-registration</span><span class="chip">CI gate</span></div>
                     <div>
                         <p class="text-xs faint mb-2 uppercase tracking-widekicker">Try it locally, no API key</p>
@@ -118,7 +118,7 @@
                     <p class="kicker">03 · Secure it</p>
                     <h2 class="font-display text-3xl md:text-4xl font-normal tracking-tightest text-gray-50">mcp-server-toolkit</h2>
                     <p class="muted">A library of opt-in decorators that wrap MCP tool logic with auth, a read-only SQL allowlist, caching, rate limits and tracing.</p>
-                    <p class="text-gray-50">JWT/JWKS auth, a sqlglot read-only SQL allowlist and OpenTelemetry spans, covered by 627 tests.</p>
+                    <p class="text-gray-50">JWT/JWKS auth, a sqlglot read-only SQL allowlist and OpenTelemetry spans, with 627 collected tests.</p>
                     <div class="flex flex-wrap gap-2"><span class="chip">Python</span><span class="chip">MCP SDK</span><span class="chip">PyJWT</span><span class="chip">sqlglot</span><span class="chip">OpenTelemetry</span></div>
                     <div>
                         <p class="text-xs faint mb-2 uppercase tracking-widekicker">Try it locally, no API key</p>

@@ -112,7 +112,7 @@
                     <div class="surface p-6">
                         <p class="pillar-num mb-2">03 · Secure it</p>
                         <h2 class="card-title mb-2">Agent and MCP security</h2>
-                        <p class="text-sm muted">Pre-registered prompt-injection research showing a defensive prompt stops some payloads and misses others, so the fix belongs in tool dispatch. Plus an MCP toolkit with auth and a read-only SQL allowlist.</p>
+                        <p class="text-sm muted">Pre-registered prompt-injection research showing a defensive prompt stops some payloads and misses others, which points to fixing tool dispatch instead (a recommendation, not yet measured at 70B). Plus an MCP toolkit with auth and a read-only SQL allowlist.</p>
                     </div>
                 </div>
             </div>
@@ -143,12 +143,12 @@
                         </div>
                     </article>
                     <article class="surface card-link">
-                        <img src="assets/projects/agent-security-substrate.svg" alt="Diagram: untrusted tool output reaches inline XML dispatch and leads to canary exfiltration; substrate_auditor flags the substrate and typed dispatch fixes it." class="thumb thumb-contain" loading="lazy" width="640" height="400">
+                        <img src="assets/projects/agent-security-substrate.svg" alt="Diagram: untrusted tool output reaches inline XML dispatch and leads to canary exfiltration; substrate_auditor flags the substrate, and typed dispatch is the recommended fix." class="thumb thumb-contain" loading="lazy" width="640" height="400">
                         <div class="p-6 flex flex-col gap-3 grow">
                             <p class="kicker">Secure it</p>
                             <h3 class="card-title">ai-redteam-notes</h3>
                             <p class="text-sm muted">Pre-registered research on indirect prompt injection through agent tool output, turned into a CI-ready auditor.</p>
-                            <p class="text-sm text-gray-50">With a content-trust prompt scaffold in place, one payload variant still exfiltrated a canary in 10 of 10 runs on Groq-hosted Llama-3.3-70B (one provider, n=10). The fix belongs in tool dispatch, not the prompt.</p>
+                            <p class="text-sm text-gray-50">With a content-trust prompt scaffold in place, one payload variant still exfiltrated a canary in 10 of 10 runs on Groq-hosted Llama-3.3-70B (one provider, n=10). The recommended fix is in tool dispatch rather than the prompt; it has not been measured at 70B.</p>
                             <div class="flex flex-wrap gap-2"><span class="chip">Python</span><span class="chip">MCP harnesses</span><span class="chip">Pre-registration</span><span class="chip">CI gate</span></div>
                             <div class="link-row mt-auto pt-2">
                                 <a href="case-studies/agent-security.html" class="btn-ghost text-sm">Case study &rarr;</a>
@@ -162,7 +162,7 @@
                             <p class="kicker">Secure it</p>
                             <h3 class="card-title">mcp-server-toolkit</h3>
                             <p class="text-sm muted">A library of opt-in decorators that wrap MCP tool logic with auth, a read-only SQL allowlist, caching, rate limits and tracing.</p>
-                            <p class="text-sm text-gray-50">JWT/JWKS auth, a sqlglot read-only SQL allowlist and OpenTelemetry spans, covered by 627 tests.</p>
+                            <p class="text-sm text-gray-50">JWT/JWKS auth, a sqlglot read-only SQL allowlist and OpenTelemetry spans, with 627 collected tests.</p>
                             <div class="flex flex-wrap gap-2"><span class="chip">Python</span><span class="chip">MCP SDK</span><span class="chip">PyJWT</span><span class="chip">sqlglot</span></div>
                             <div class="link-row mt-auto pt-2">
                                 
