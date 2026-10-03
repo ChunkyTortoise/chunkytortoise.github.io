@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocExtract case study | Cayman Roden</title>
+    <meta name="description" content="How DocExtract extracts structured fields with a two-pass Claude pipeline and replays committed fixtures in CI: 95.5% field-level accuracy on a 28-fixture offline replay.">
+    <link rel="canonical" href="https://chunkytortoise.github.io/case-studies/docextract.html">
+    <meta property="og:title" content="DocExtract case study | Cayman Roden">
+    <meta property="og:description" content="How DocExtract extracts structured fields with a two-pass Claude pipeline and replays committed fixtures in CI: 95.5% field-level accuracy on a 28-fixture offline replay.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://chunkytortoise.github.io/case-studies/docextract.html">
+    <meta property="og:image" content="https://chunkytortoise.github.io/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Cayman Roden, AI Engineer: production LLM systems with evals and guardrails.">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DocExtract case study | Cayman Roden">
+    <meta name="twitter:description" content="How DocExtract extracts structured fields with a two-pass Claude pipeline and replays committed fixtures in CI: 95.5% field-level accuracy on a 28-fixture offline replay.">
+    <meta name="twitter:image" content="https://chunkytortoise.github.io/assets/og-image.png">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="stylesheet" href="../tw.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QNBBCMHX7Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-QNBBCMHX7Q');
+    </script>
+</head>
+<body>
+    <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
+    <nav class="site-nav" aria-label="Primary">
+        <div class="site-wrap nav-inner">
+            <a href="../index.html" class="wordmark">Cayman Roden</a>
+            <button id="menu-toggle" class="nav-toggle md:hidden" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="../projects.html" class="nav-link">Work</a>
+                <a href="../about.html" class="nav-link">About</a>
+                <a href="../resume/cayman-roden-ai-engineer.pdf" class="nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden site-wrap mobile-panel space-y-2 text-sm">
+            <a href="../projects.html" class="block py-1 nav-link">Work</a>
+            <a href="../about.html" class="block py-1 nav-link">About</a>
+            <a href="../resume/cayman-roden-ai-engineer.pdf" class="block py-1 nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
+        </div>
+    </nav>
+    <script>
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+        var menu = document.getElementById('mobile-menu');
+        var open = menu.classList.toggle('hidden');
+        this.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+    </script>
+
+    <main id="main" class="site-wrap-narrow py-14 md:py-20">
+        <p class="kicker mb-3"><a href="../projects.html" class="hover:underline">Work</a> / DocExtract</p>
+        <h1 class="section-title mb-5">DocExtract: document extraction with an eval gate in CI</h1>
+        <p class="lede mb-6">Turning PDFs and scans into validated, searchable records, and catching accuracy regressions before merge instead of after.</p>
+        <div class="link-row mb-4"><a href="https://github.com/ChunkyTortoise/docextract" class="btn-primary" target="_blank" rel="noopener noreferrer">Code</a><code class="cmd">python scripts/eval_offline_replay.py --floor 0.85</code></div>
+        <div class="cs-prose">
+            <h2>Problem</h2>
+            <p>Document extraction looks easy in a demo and drifts in production. A prompt tweak or a model swap can quietly drop field accuracy on invoices, receipts and statements, and nobody notices until a downstream report is wrong. The client needed structured fields they could trust, plus a way to know when a change made them worse.</p>
+
+            <h2>Approach</h2>
+            <ul>
+                <li><strong>Two-pass extraction.</strong> Pass 1 extracts fields with a confidence score. A correction pass runs only when confidence falls below a per-document-type threshold, so most documents pay for one call (<a href="https://github.com/ChunkyTortoise/docextract/blob/main/docs/adr/0003-two-pass-extraction.md" target="_blank" rel="noopener noreferrer">ADR-0003</a>).</li>
+                <li><strong>Cost-aware routing.</strong> Haiku classifies, Sonnet extracts, prompt caching covers system prompts, and a circuit breaker falls back to Haiku.</li>
+                <li><strong>Validated output.</strong> Pydantic v2 schemas reject malformed extractions before they're stored.</li>
+                <li><strong>Search over what was extracted.</strong> Embeddings go to Postgres with pgvector, and questions run through an agentic RAG loop over vector, BM25 and hybrid tools.</li>
+                <li><strong>Injection defense on both paths.</strong> Fencing, scanning and output sanitization on text and vision extraction (<a href="https://github.com/ChunkyTortoise/docextract/blob/main/docs/adr/0020-indirect-prompt-injection-defense.md" target="_blank" rel="noopener noreferrer">ADR-0020</a>).</li>
+                <li><strong>Evals as a CI check.</strong> Every pull request that touches prompts or the extractor replays committed prediction fixtures and fails below an accuracy floor. No API key or spend required.</li>
+            </ul>
+
+            <h2>Architecture</h2>
+            <figure class="figure">
+                <img src="../assets/projects/docextract-architecture.svg" alt="DocExtract request path from upload through FastAPI, Redis and ARQ, classification, two-pass extraction, validation, embedding and pgvector storage to agentic RAG, plus a CI-only offline replay checked against an accuracy floor." width="960" height="500" loading="lazy">
+                <figcaption>Simplified from the mermaid diagram in the <a href="https://github.com/ChunkyTortoise/docextract#how-it-works" target="_blank" rel="noopener noreferrer">README</a>.</figcaption>
+            </figure>
+
+            <h2>Results</h2>
+            <div class="table-scroll">
+            <table class="results-table">
+                <thead><tr><th>Result</th><th>Value</th><th>Source</th></tr></thead>
+                <tbody>
+                    <tr><td>Field-level extraction accuracy (critical fields weighted 2×)</td><td>95.5% on a 28-fixture offline replay</td><td><a href="https://github.com/ChunkyTortoise/docextract/blob/main/docs/retrieval-extraction-evidence.md" target="_blank" rel="noopener noreferrer">evidence note</a></td></tr>
+                    <tr><td>CI accuracy floor</td><td>0.85; the check fails below it</td><td><a href="https://github.com/ChunkyTortoise/docextract/blob/main/.github/workflows/eval-gate.yml" target="_blank" rel="noopener noreferrer">eval-gate.yml</a></td></tr>
+                    <tr><td>Regression caught</td><td>A demo branch that corrupted eight fixtures failed the check</td><td><a href="https://github.com/ChunkyTortoise/docextract/blob/main/docs/eval-gate-proof.md" target="_blank" rel="noopener noreferrer">eval-gate proof</a></td></tr>
+                    <tr><td>Eval authoring corpus</td><td>200 cases (150 golden, 50 adversarial)</td><td><a href="https://github.com/ChunkyTortoise/docextract/tree/main/evals" target="_blank" rel="noopener noreferrer">evals/</a></td></tr>
+                </tbody>
+            </table>
+            </div>
+            <figure class="figure mt-6">
+                <img src="../assets/projects/docextract-replay.svg" alt="Dot chart of weighted field-level accuracy per document type from the 28-fixture offline replay, with the 0.85 CI floor marked." width="720" height="374" loading="lazy">
+                <figcaption>Replay score by document type, generated from the replay output by <code>scripts/render_eval_chart.py</code>.</figcaption>
+            </figure>
+
+            <h2>What I'd do next</h2>
+            <ul>
+                <li>Record prediction fixtures for the remaining lookup cases so the replay covers the whole eval dataset.</li>
+                <li>Run the held-out live protocol and publish live-model accuracy next to the replay score.</li>
+                <li>Measure retrieval recall, support and abstention on a labeled query set.</li>
+                <li>Replace modeled cost and latency with a metered benchmark run.</li>
+            </ul>
+
+            <h2>Methodology &amp; limits</h2>
+            <details>
+                <summary>What the numbers cover</summary>
+                <ul>
+                    <li>The accuracy score is a deterministic replay of committed prediction fixtures, not a live-model grade and not F1. The 200-case authoring corpus is a separate population from the 28 scored fixtures.</li>
+                    <li>Retrieval quality (recall, support, abstention) is not measured yet.</li>
+                    <li>The eval gate reports a passing or failing check. It blocks merges only where branch protection requires the check.</li>
+                    <li>Cost and latency figures in the repo are modeled until a metered run is committed.</li>
+                    <li>DocExtract was built under a paid client engagement; an authorized walkthrough is available on request.</li>
+                    <li>Full detail: the <a href="https://github.com/ChunkyTortoise/docextract#methodology--limits" target="_blank" rel="noopener noreferrer">Methodology &amp; limits</a> section of the README.</li>
+                </ul>
+            </details>
+        </div>
+    </main>
+
+        <section>
+            <div class="site-wrap py-16 md:py-20">
+                <div class="surface-accent p-7 md:p-10 grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-6">
+                        <p class="kicker mb-3">Contact</p>
+                        <h2 class="section-title mb-3">Open to full-time AI Engineer roles</h2>
+                        <p class="muted">US remote or LA-area hybrid. Applied AI, AI backend and LLM platform teams.</p>
+                    </div>
+                    <div class="lg:col-span-6 flex flex-wrap gap-3 lg:justify-end">
+                        <a href="mailto:caymanroden@gmail.com" class="btn-primary">Email me</a>
+                        <a href="https://linkedin.com/in/caymanroden" class="btn-secondary" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://github.com/ChunkyTortoise" class="btn-secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="../resume/cayman-roden-ai-engineer.pdf" class="btn-secondary" target="_blank" rel="noopener noreferrer">Resume</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    <footer class="site-footer">
+        <div class="site-wrap flex flex-col sm:flex-row justify-between gap-4">
+            <span>&copy; 2026 Cayman Roden</span>
+            <div class="flex flex-wrap gap-5 items-center">
+                <a href="https://github.com/ChunkyTortoise" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/caymanroden" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:caymanroden@gmail.com">Email</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

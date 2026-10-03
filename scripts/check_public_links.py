@@ -1,4 +1,4 @@
-"""Check hiring-page destinations as an anonymous visitor, using only stdlib."""
+"""Check public portfolio-page destinations as an anonymous visitor, using only stdlib."""
 
 from concurrent.futures import ThreadPoolExecutor
 from html.parser import HTMLParser
@@ -9,19 +9,32 @@ from urllib.request import Request, urlopen
 import argparse
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = ("index.html", "about.html", "projects.html", "blog.html")
+PAGES = (
+    "index.html",
+    "about.html",
+    "projects.html",
+    "blog.html",
+    "case-studies/docextract.html",
+    "case-studies/agent-security.html",
+    "case-studies/acuity.html",
+)
 
 
 class Links(HTMLParser):
     def __init__(self):
         super().__init__()
         self.hrefs = []
+        self.srcs = []
 
     def handle_starttag(self, tag, attrs):
         if tag == "a":
             href = dict(attrs).get("href")
             if href:
                 self.hrefs.append(href)
+        elif tag == "img":
+            src = dict(attrs).get("src")
+            if src:
+                self.srcs.append(src)
 
 
 def collect_links(root, pages):
@@ -29,7 +42,8 @@ def collect_links(root, pages):
     for page in pages:
         parser = Links()
         parser.feed((root / page).read_text())
-        for href in parser.hrefs:
+        local_srcs = [src for src in parser.srcs if not urlsplit(src).scheme]
+        for href in parser.hrefs + local_srcs:
             url = urlsplit(href)
             if url.scheme in ("http", "https"):
                 external.add(href)
@@ -74,7 +88,7 @@ def main():
     for error in errors:
         print(error)
     print(
-        f"{len(PAGES)} hiring pages, {len(urls)} external destinations, {len(errors)} failures"
+        f"{len(PAGES)} public pages, {len(urls)} external destinations, {len(errors)} failures"
     )
     return bool(errors)
 

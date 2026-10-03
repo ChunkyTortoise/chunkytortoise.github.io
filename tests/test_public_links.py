@@ -50,6 +50,21 @@ class PublicLinksTests(TestCase):
                 ["index.html: missing missing.pdf"],
             )
 
+    def test_missing_local_image(self):
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "case").mkdir()
+            (root / "assets").mkdir()
+            (root / "assets" / "ok.svg").write_text("<svg/>")
+            (root / "case" / "page.html").write_text(
+                '<img src="../assets/ok.svg"><img src="../assets/gone.png">'
+                '<img src="https://example.com/remote.png">'
+            )
+            self.assertEqual(
+                links.collect_links(root, ["case/page.html"]),
+                ([], ["case/page.html: missing ../assets/gone.png"]),
+            )
+
     def test_anonymous_success(self):
         def opener(request, timeout):
             self.assertNotIn("Authorization", request.headers)

@@ -4,16 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cayman Roden | AI Engineer</title>
-    <meta name="description" content="AI Engineer. Three paid contracts: Acuity, DocExtract, and EnterpriseHub. Public proof: DocExtract offline replay and llm-reviewer-path.">
+    <meta name="description" content="AI Engineer building production LLM systems, plus the evals and guardrails that make them safe to ship. DocExtract, agent-security research, MCP tooling, and a paid client deployment.">
+    <link rel="canonical" href="https://chunkytortoise.github.io/">
     <meta property="og:title" content="Cayman Roden | AI Engineer">
-    <meta property="og:description" content="Three paid contracts: Acuity, DocExtract, and EnterpriseHub. Public proof: DocExtract and llm-reviewer-path.">
+    <meta property="og:description" content="AI Engineer building production LLM systems, plus the evals and guardrails that make them safe to ship. DocExtract, agent-security research, MCP tooling, and a paid client deployment.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://chunkytortoise.github.io/">
-    <link rel="canonical" href="https://chunkytortoise.github.io/">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://chunkytortoise.github.io/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Cayman Roden, AI Engineer: production LLM systems with evals and guardrails.">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cayman Roden | AI Engineer">
-    <meta name="twitter:description" content="Three paid contracts: Acuity, DocExtract, and EnterpriseHub. Public proof: DocExtract and llm-reviewer-path.">
+    <meta name="twitter:description" content="AI Engineer building production LLM systems, plus the evals and guardrails that make them safe to ship. DocExtract, agent-security research, MCP tooling, and a paid client deployment.">
+    <meta name="twitter:image" content="https://chunkytortoise.github.io/assets/og-image.png">
     <meta name="google-site-verification" content="fqM9ETfWcRpkFwMpzTH4iqQGlV7uSSkdjDR_-6OK0Vc" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Cayman Roden",
+      "jobTitle": "AI Engineer",
+      "url": "https://chunkytortoise.github.io/",
+      "email": "mailto:caymanroden@gmail.com",
+      "sameAs": [
+        "https://github.com/ChunkyTortoise",
+        "https://linkedin.com/in/caymanroden"
+      ],
+      "knowsAbout": [
+        "LLM application engineering",
+        "LLM evaluation",
+        "Retrieval-augmented generation",
+        "AI agent security",
+        "Model Context Protocol",
+        "Python",
+        "FastAPI"
+      ]
+    }
+    </script>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="tw.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +59,7 @@
     </script>
 </head>
 <body>
+    <a href="#main" class="sr-only focus:not-sr-only">Skip to content</a>
     <nav class="site-nav" aria-label="Primary">
         <div class="site-wrap nav-inner">
             <a href="index.html" class="wordmark">Cayman Roden</a>
@@ -38,13 +67,13 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <div class="hidden md:flex items-center gap-6">
-                <a href="projects.html" class="nav-link">Portfolio</a>
+                <a href="projects.html" class="nav-link">Work</a>
                 <a href="about.html" class="nav-link">About</a>
                 <a href="resume/cayman-roden-ai-engineer.pdf" class="nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
         </div>
         <div id="mobile-menu" class="hidden md:hidden site-wrap mobile-panel space-y-2 text-sm">
-            <a href="projects.html" class="block py-1 nav-link">Portfolio</a>
+            <a href="projects.html" class="block py-1 nav-link">Work</a>
             <a href="about.html" class="block py-1 nav-link">About</a>
             <a href="resume/cayman-roden-ai-engineer.pdf" class="block py-1 nav-link" target="_blank" rel="noopener noreferrer">Resume</a>
         </div>
@@ -57,143 +86,146 @@
     });
     </script>
 
-    <main>
+    <main id="main">
         <section class="border-b border-gray-800">
-            <div class="site-wrap py-16 md:py-24 grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-                <div class="lg:col-span-7">
-                    <p class="kicker mb-4">AI Engineer · contract-first · remote US</p>
-                    <h1 class="display-title mb-6">Production LLM systems, agents, and evals</h1>
-                    <p class="lede mb-6">I build Python and FastAPI systems around LLMs: retrieval, tool use, evaluation gates, and human handoff. Paid delivery first. Public GitHub second.</p>
-                    <p class="muted mb-8">Three paid contracts. Named flagship: Acuity Real Estate, January to March 2026. SMS qualification with Spanish detection and bilingual handoff for client-reported 500+ inbound leads, with CRM integration and human handoff. Public inspection starts at llm-reviewer-path, then DocExtract.</p>
-                    <div class="hero-cta">
-                        <a href="projects.html" class="btn-primary">Inspect projects</a>
-                        <a href="https://github.com/ChunkyTortoise" class="btn-secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
-                        <a href="resume/cayman-roden-ai-engineer.pdf" class="btn-secondary" target="_blank" rel="noopener noreferrer">Resume</a>
+            <div class="site-wrap py-16 md:py-24">
+                <p class="kicker mb-4">AI Engineer · US remote or LA-area hybrid</p>
+                <h1 class="display-title mb-6 max-w-4xl">I build production LLM systems, and the evals and guardrails that make them safe to ship.</h1>
+                <p class="lede mb-8 max-w-2xl">Python and FastAPI services around LLMs: extraction, retrieval and tool use, with the eval gates and agent-security checks that catch problems before users do. Open to full-time AI Engineer roles.</p>
+                <div class="hero-cta">
+                    <a href="projects.html" class="btn-primary">See the work</a>
+                    <a href="resume/cayman-roden-ai-engineer.pdf" class="btn-secondary" target="_blank" rel="noopener noreferrer">Resume</a>
+                    <a href="https://github.com/ChunkyTortoise" class="btn-secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-5 mt-14">
+                    <div class="surface p-6">
+                        <p class="pillar-num mb-2">01 · Ship it</p>
+                        <h2 class="card-title mb-2">Production LLM apps</h2>
+                        <p class="text-sm muted">A paid SMS lead-qualification deployment for <a href="case-studies/acuity.html" class="underline">Acuity Real Estate</a>, and DocExtract's FastAPI, Claude and pgvector extraction pipeline.</p>
+                    </div>
+                    <div class="surface p-6">
+                        <p class="pillar-num mb-2">02 · Measure it</p>
+                        <h2 class="card-title mb-2">Evals as CI</h2>
+                        <p class="text-sm muted">DocExtract replays committed extraction fixtures on every relevant pull request, and the check fails below a floor. llm-reviewer-path shows the same pattern in a 10-minute sample.</p>
+                    </div>
+                    <div class="surface p-6">
+                        <p class="pillar-num mb-2">03 · Secure it</p>
+                        <h2 class="card-title mb-2">Agent and MCP security</h2>
+                        <p class="text-sm muted">Pre-registered prompt-injection research showing typed tool-call dispatch, not prompt scaffolding, is the durable fix, plus an MCP toolkit with auth and read-only SQL checks.</p>
                     </div>
                 </div>
-                <aside class="lg:col-span-5 surface p-6 md:p-7" aria-label="Proof stack">
-                    <p class="kicker mb-5">Inspect next</p>
-                    <ol class="space-y-5">
-                        <li class="flex gap-4">
-                            <span class="proof-metric w-10 shrink-0">01</span>
-                            <div>
-                                <p class="font-medium text-gray-50"><a href="https://github.com/ChunkyTortoise/llm-reviewer-path">llm-reviewer-path</a></p>
-                                <p class="text-sm muted">Clone and pytest. Offline examples, no API key.</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4">
-                            <span class="proof-metric w-10 shrink-0">02</span>
-                            <div>
-                                <p class="font-medium text-gray-50">DocExtract</p>
-                                <p class="text-sm muted">Measured 95.5% weighted field-level accuracy on a 28-case offline replay.</p>
-                            </div>
-                        </li>
-                        <li class="flex gap-4">
-                            <span class="proof-metric w-10 shrink-0">03</span>
-                            <div>
-                                <p class="font-medium text-gray-50"><a href="https://github.com/ChunkyTortoise/mcp-server-toolkit">mcp-server-toolkit</a></p>
-                                <p class="text-sm muted">FastMCP extensions for authentication, SQL validation and tracing. 600 collected tests.</p>
-                            </div>
-                        </li>
-                    </ol>
-                </aside>
             </div>
         </section>
 
         <section class="border-b border-gray-800">
             <div class="site-wrap py-16 md:py-20">
-                <div class="max-w-2xl mb-10">
-                    <p class="kicker mb-3">Recruiter proof</p>
-                    <h2 class="section-title mb-4">Three paid contracts, then public repos</h2>
-                    <p class="muted">Acuity is the named flagship. DocExtract is public offline-eval proof. EnterpriseHub is private paid work with a walkthrough on request. Start the public code review at llm-reviewer-path, then DocExtract. Independent repos stay independent unless a card says paid.</p>
+                <div class="flex flex-wrap items-end justify-between gap-4 mb-10">
+                    <div>
+                        <p class="kicker mb-3">Featured work</p>
+                        <h2 class="section-title">Four repos, each one runnable</h2>
+                    </div>
+                    <a href="projects.html" class="btn-ghost">All work and run commands &rarr;</a>
                 </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <article class="surface card-link">
+                        <img src="assets/projects/docextract-explorer.png" alt="DocExtract fixture explorer showing stored invoice fields and labeled sample confidence." class="thumb" loading="lazy" width="640" height="400">
+                        <div class="p-6 flex flex-col gap-3 grow">
+                            <p class="kicker">Ship it · Measure it</p>
+                            <h3 class="card-title">DocExtract</h3>
+                            <p class="text-sm muted">Turns PDFs and scans into validated, searchable records, and measures its own extraction accuracy in CI.</p>
+                            <p class="text-sm text-gray-50">95.5% field-level accuracy on a 28-fixture offline replay; the CI check fails below a 0.85 floor.</p>
+                            <div class="flex flex-wrap gap-2"><span class="chip">FastAPI</span><span class="chip">Claude</span><span class="chip">pgvector</span><span class="chip">Redis + ARQ</span></div>
+                            <div class="link-row mt-auto pt-2">
+                                <a href="case-studies/docextract.html" class="btn-ghost text-sm">Case study &rarr;</a>
+                                <a href="https://github.com/ChunkyTortoise/docextract" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">Code &rarr;</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="surface card-link">
+                        <img src="assets/projects/agent-security-substrate.svg" alt="Diagram: untrusted tool output reaches inline XML dispatch and leads to canary exfiltration; substrate_auditor flags the substrate and typed dispatch fixes it." class="thumb thumb-contain" loading="lazy" width="640" height="400">
+                        <div class="p-6 flex flex-col gap-3 grow">
+                            <p class="kicker">Secure it</p>
+                            <h3 class="card-title">ai-redteam-notes</h3>
+                            <p class="text-sm muted">Pre-registered research on indirect prompt injection through agent tool output, turned into a CI-ready auditor.</p>
+                            <p class="text-sm text-gray-50">With a content-trust prompt scaffold in place, one payload variant still exfiltrated a canary in 10 of 10 runs on Llama-3.3-70B. Typed tool-call dispatch is the durable fix.</p>
+                            <div class="flex flex-wrap gap-2"><span class="chip">Python</span><span class="chip">MCP harnesses</span><span class="chip">Pre-registration</span><span class="chip">CI gate</span></div>
+                            <div class="link-row mt-auto pt-2">
+                                <a href="case-studies/agent-security.html" class="btn-ghost text-sm">Case study &rarr;</a>
+                                <a href="https://github.com/ChunkyTortoise/ai-redteam-notes" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">Code &rarr;</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="surface card-link">
+                        <img src="assets/projects/mcp-architecture.svg" alt="Library map: tool logic surrounded by auth, per-caller rate limits, cache, cost attribution and OpenTelemetry." class="thumb thumb-contain" loading="lazy" width="640" height="400">
+                        <div class="p-6 flex flex-col gap-3 grow">
+                            <p class="kicker">Secure it</p>
+                            <h3 class="card-title">mcp-server-toolkit</h3>
+                            <p class="text-sm muted">A library that wraps MCP tool logic with auth, read-only SQL checks, caching, rate limits and tracing, so servers ship with guardrails by default.</p>
+                            <p class="text-sm text-gray-50">JWT/JWKS auth, sqlglot read-only SQL AST checks and OpenTelemetry spans, covered by 609 collected tests.</p>
+                            <div class="flex flex-wrap gap-2"><span class="chip">Python</span><span class="chip">MCP SDK</span><span class="chip">PyJWT</span><span class="chip">sqlglot</span></div>
+                            <div class="link-row mt-auto pt-2">
+                                
+                                <a href="https://github.com/ChunkyTortoise/mcp-server-toolkit" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">Code &rarr;</a>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="surface card-link">
+                        <img src="assets/projects/llm-reviewer-receipt.svg" alt="Receipt: GOOD passes the eval gate, MUTATION fails it, an unapproved write is denied and a duplicate retry is suppressed." class="thumb thumb-contain" loading="lazy" width="640" height="400">
+                        <div class="p-6 flex flex-col gap-3 grow">
+                            <p class="kicker">Measure it</p>
+                            <h3 class="card-title">llm-reviewer-path</h3>
+                            <p class="text-sm muted">A 10-minute runnable code sample: eval gates, approval-bound writes and idempotent retries.</p>
+                            <p class="text-sm text-gray-50">36 offline tests, no API key. A mutated eval submission fails the gate, and a duplicate retry is suppressed.</p>
+                            <div class="flex flex-wrap gap-2"><span class="chip">Python</span><span class="chip">pytest</span><span class="chip">uv</span><span class="chip">GitHub Actions</span></div>
+                            <div class="link-row mt-auto pt-2">
+                                
+                                <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">Code &rarr;</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-                <div class="grid lg:grid-cols-12 gap-6 items-start">
-                    <article id="acuity" class="lg:col-span-7 surface-accent p-7 md:p-8">
+        <section class="border-b border-gray-800">
+            <div class="site-wrap py-16 md:py-20">
+                <article class="surface-accent p-7 md:p-10 grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7">
                         <div class="flex flex-wrap items-center gap-2 mb-4">
-                            <span class="chip chip-clay">Paid engagement</span>
+                            <span class="chip chip-clay">Paid client deployment</span>
                             <span class="chip">Jan to Mar 2026</span>
                         </div>
-                        <h3 class="font-display text-3xl md:text-4xl font-normal tracking-tightest text-gray-50 mb-4">Acuity Real Estate</h3>
-                        <p class="lede mb-4">SMS qualification with Spanish detection and bilingual handoff for client-reported 500+ inbound leads. FastAPI, Redis, and GoHighLevel, with broker collaboration and a human handoff path when the bot should stop.</p>
-                        <p class="muted mb-6">1,700+ tests at handoff; audited 226 existing GoHighLevel workflows at handoff (archive-verified). This is a named delivery story, not a public clone target. Inspectable proof sits in the public repos on the right.</p>
-                        <a href="projects.html#acuity" class="btn-ghost">Full portfolio context &rarr;</a>
-                    </article>
-
-                    <div class="lg:col-span-5 space-y-4">
-                        <article id="docextract" class="surface p-6">
-                            <p class="kicker mb-2">Paid · public eval</p>
-                            <h3 class="card-title mb-2">DocExtract</h3>
-                            <p class="text-sm muted mb-4">Measured 95.5% weighted field-level accuracy on a 28-case offline replay; separate 200-case authoring corpus (202 JSONL lines including metadata); 80% CI coverage gate.</p>
-                            <a href="https://github.com/ChunkyTortoise/docextract" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
-                        </article>
-                        <article id="enterprisehub" class="surface p-6">
-                            <p class="kicker mb-2">Paid · private client work</p>
-                            <h3 class="card-title mb-2">EnterpriseHub</h3>
-                            <p class="text-sm muted mb-4">Confidential client, 2025 to 2026. Paid AI application work. The client repository is private; an authorized walkthrough is available on request.</p>
-                            <span class="text-sm faint">Private client work; walkthrough on request.</span>
-                        </article>
-                        <article class="surface p-6">
-                            <p class="kicker mb-2">Public proof</p>
-                            <h3 class="card-title mb-2">llm-reviewer-path</h3>
-                            <p class="text-sm muted mb-3">Clone, install, and run pytest with no API key. Review eval gates, action boundaries, retrieval failures, and scoping receipts.</p>
-                            <div class="flex flex-wrap gap-2 mb-4">
-                                <span class="chip">pytest</span>
-                                <span class="chip">No API key</span>
-                            </div>
-                            <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="btn-ghost text-sm" target="_blank" rel="noopener noreferrer">GitHub &rarr;</a>
-                        </article>
+                        <h2 class="section-title mb-4">Acuity Real Estate</h2>
+                        <p class="lede mb-4">SMS lead qualification inside the client's GoHighLevel CRM, with Spanish detection and a bilingual human handoff. Client-reported 500+ inbound leads.</p>
+                        <p class="muted mb-6">FastAPI and Redis, broker-defined qualification rules, and a kill-check that paused expansion if CRM writes or Spanish handoffs failed.</p>
+                        <a href="case-studies/acuity.html" class="btn-primary">Read the case study</a>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="border-b border-gray-800">
-            <div class="site-wrap py-16 md:py-20">
-                <p class="kicker mb-3">Where to look</p>
-                <h2 class="section-title mb-10">Three next clicks</h2>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <a href="projects.html" class="surface p-6 block hover:border-clay-700">
-                        <p class="proof-metric mb-3">Portfolio</p>
-                        <h3 class="card-title mb-2">Project index</h3>
-                        <p class="text-sm muted">Flagship order first, then independent repositories as secondary proof.</p>
-                    </a>
-                    <a href="https://github.com/ChunkyTortoise" class="surface p-6 block hover:border-clay-700" target="_blank" rel="noopener noreferrer">
-                        <p class="proof-metric mb-3">GitHub</p>
-                        <h3 class="card-title mb-2">Public source</h3>
-                        <p class="text-sm muted">DocExtract and llm-reviewer-path are the first-click repos. mcp-server-toolkit is a supporting artifact on the portfolio page.</p>
-                    </a>
-                    <a href="resume/cayman-roden-ai-engineer.pdf" class="surface p-6 block hover:border-clay-700" target="_blank" rel="noopener noreferrer">
-                        <p class="proof-metric mb-3">Resume</p>
-                        <h3 class="card-title mb-2">One-pager PDF</h3>
-                        <p class="text-sm muted">One-page PDF. AI Engineer. Contract-first.</p>
-                    </a>
-                </div>
+                    <div class="hidden lg:block lg:col-span-5">
+                        <img src="assets/projects/acuity-flow.svg" alt="Acuity flow: inbound SMS lead to GoHighLevel, FastAPI qualification and CRM update, with a bilingual human handoff path." class="w-full h-auto rounded-lg border border-gray-800" loading="lazy" width="960" height="370">
+                    </div>
+                </article>
             </div>
         </section>
 
         <section>
-            <div class="site-wrap py-16 md:py-20 grid lg:grid-cols-12 gap-10 items-start">
-                <div class="lg:col-span-7">
-                    <p class="kicker mb-3">Availability</p>
-                    <h2 class="section-title mb-4">Open to remote contract work</h2>
-                    <p class="muted mb-6">AI Engineer roles centered on production LLM systems, agents, and evals. US-based; open to US remote and LA-area hybrid. Contract-first; also open to AI Engineer roles that match this stack. Recent paid work: Acuity, DocExtract, and EnterpriseHub.</p>
-                    <div class="flex flex-wrap gap-3">
-                        <a href="mailto:caymanroden@gmail.com" class="btn-primary">Email caymanroden@gmail.com</a>
-                        <a href="https://linkedin.com/in/caymanroden" class="btn-secondary" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <div class="site-wrap py-16 md:py-20">
+                <div class="surface-accent p-7 md:p-10 grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-6">
+                        <p class="kicker mb-3">Contact</p>
+                        <h2 class="section-title mb-3">Open to full-time AI Engineer roles</h2>
+                        <p class="muted">US remote or LA-area hybrid. Applied AI, AI backend and LLM platform teams.</p>
                     </div>
-                </div>
-                <div class="lg:col-span-5 surface p-6">
-                    <p class="kicker mb-4">Working stack</p>
-                    <ul class="space-y-3 text-sm muted">
-                        <li>Python and FastAPI services</li>
-                        <li>Retrieval, structured outputs, and tool use</li>
-                        <li>Offline evaluation and adversarial fixtures</li>
-                        <li>Human handoff when the model should stop</li>
-                    </ul>
+                    <div class="lg:col-span-6 flex flex-wrap gap-3 lg:justify-end">
+                        <a href="mailto:caymanroden@gmail.com" class="btn-primary">Email me</a>
+                        <a href="https://linkedin.com/in/caymanroden" class="btn-secondary" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="https://github.com/ChunkyTortoise" class="btn-secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="resume/cayman-roden-ai-engineer.pdf" class="btn-secondary" target="_blank" rel="noopener noreferrer">Resume</a>
+                    </div>
                 </div>
             </div>
         </section>
+
     </main>
 
     <footer class="site-footer">
