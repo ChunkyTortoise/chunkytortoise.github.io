@@ -119,7 +119,7 @@
                     <li>The score is a deterministic replay of committed prediction fixtures, not a live-model grade and not F1. It gives partial credit: strings by normalized Levenshtein similarity, numbers within ±1%, and half credit for a value where null was expected. The 200-case authoring corpus is a separate population from the 28 scored fixtures.</li>
                     <li>The replayed outputs are frozen, so a prompt or model change does not move the replay score. The paid live eval job measures those changes and runs only when an API key is configured in CI.</li>
                     <li>Retrieval quality (recall, support, abstention) is not measured yet.</li>
-                    <li>The eval gate reports a passing or failing check. <code>main</code> is not branch-protected, so the check does not block merges (repository audit, 2026-09-19).</li>
+                    <li>Branch protection on <code>main</code> requires the CI <code>test</code> check (since 2026-10-03). The weighted replay runs on eval-relevant pull requests and is not a universal required merge check.</li>
                     <li>Cost and latency figures in the repo are modeled until a metered run is committed.</li>
                     <li>DocExtract was built under a paid client engagement; an authorized walkthrough is available on request.</li>
                     <li>Full detail: the <a href="https://github.com/ChunkyTortoise/docextract#methodology--limits" target="_blank" rel="noopener noreferrer">Methodology &amp; limits</a> section of the README.</li>
