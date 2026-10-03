@@ -3,3 +3,5 @@ node_modules/
 .env
 *.log
 .fuse_hidden*
+__pycache__/
+*.pyc
