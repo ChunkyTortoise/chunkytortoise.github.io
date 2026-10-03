@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="400" viewBox="0 0 960 400" role="img" aria-labelledby="t d" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
   <title id="t">Tool-output injection path and the substrate fix</title>
-  <desc id="d">Attack path: untrusted tool output reaches an inline text or XML dispatch substrate, which leads to a local canary read and an outbound exfiltration attempt. Defense path: substrate_auditor flags the inline dispatch substrate as high risk, the fix is a typed tool-call substrate, and detection and benchmark gates run in CI. Redrawn from the ai-redteam-notes README diagram.</desc>
+  <desc id="d">Attack path: untrusted tool output reaches an inline text or XML dispatch substrate, which leads to a local canary read and an outbound exfiltration attempt. Defense path: substrate_auditor flags the inline dispatch substrate as high risk, the recommended fix (not yet measured at 70B) is a typed tool-call substrate, and the auditor and benchmark checks run in CI. Redrawn from the ai-redteam-notes README diagram.</desc>
   <rect width="960" height="400" rx="12" fill="#1c1917"/>
   <defs>
     <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cc785c"/></marker>
@@ -24,7 +24,7 @@
   </g>
   <line x1="366" y1="128" x2="366" y2="226" stroke="#8fb8b0" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#dh)"/>
   <text x="378" y="182" font-size="13" fill="#a8a29e">audited before deploy</text>
-  <text x="32" y="216" font-size="13" letter-spacing="1.8" fill="#8fb8b0">DEFENSE PATH</text>
+  <text x="32" y="216" font-size="13" letter-spacing="1.8" fill="#8fb8b0">RECOMMENDED DEFENSE</text>
   <g font-size="15" fill="#f5f5f4" text-anchor="middle">
     <rect x="266" y="232" width="200" height="64" rx="8" fill="#292524" stroke="#8fb8b0" stroke-width="1.5"/>
     <text x="366" y="261" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="14">substrate_auditor</text><text x="366" y="281">flags high risk</text>
