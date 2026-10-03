@@ -1,4 +1,4 @@
-"""Check hiring-page destinations as an anonymous visitor, using only stdlib."""
+"""Check public portfolio-page destinations as an anonymous visitor, using only stdlib."""
 
 from concurrent.futures import ThreadPoolExecutor
 from html.parser import HTMLParser
@@ -7,21 +7,35 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import unquote, urlsplit
 from urllib.request import Request, urlopen
 import argparse
+import time
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGES = ("index.html", "about.html", "projects.html", "blog.html")
+PAGES = (
+    "index.html",
+    "about.html",
+    "projects.html",
+    "blog.html",
+    "case-studies/docextract.html",
+    "case-studies/agent-security.html",
+    "case-studies/acuity.html",
+)
 
 
 class Links(HTMLParser):
     def __init__(self):
         super().__init__()
         self.hrefs = []
+        self.srcs = []
 
     def handle_starttag(self, tag, attrs):
         if tag == "a":
             href = dict(attrs).get("href")
             if href:
                 self.hrefs.append(href)
+        elif tag == "img":
+            src = dict(attrs).get("src")
+            if src:
+                self.srcs.append(src)
 
 
 def collect_links(root, pages):
@@ -29,7 +43,8 @@ def collect_links(root, pages):
     for page in pages:
         parser = Links()
         parser.feed((root / page).read_text())
-        for href in parser.hrefs:
+        local_srcs = [src for src in parser.srcs if not urlsplit(src).scheme]
+        for href in parser.hrefs + local_srcs:
             url = urlsplit(href)
             if url.scheme in ("http", "https"):
                 external.add(href)
@@ -44,22 +59,30 @@ def collect_links(root, pages):
     return sorted(external), errors
 
 
-def check_url(url, opener=urlopen):
-    try:
-        request = Request(url, headers={"User-Agent": "portfolio-link-check/1.0"})
-        with opener(request, timeout=20) as response:
-            status = response.status
-            final = urlsplit(response.geturl())
-            if status != 200:
-                return f"{url}: HTTP {status}"
-            if "/auth/" in final.path or "/login" in final.path:
-                return f"{url}: redirects to login ({response.geturl()})"
-    except HTTPError as error:
-        message = f"{url}: {error}"
-        error.close()
-        return message
-    except (URLError, TimeoutError, OSError) as error:
-        return f"{url}: {error}"
+RETRY_STATUSES = {429, 500, 502, 503, 504}
+
+
+def check_url(url, opener=urlopen, attempts=3, sleep=time.sleep):
+    """Return an error string for url, or None. Retries throttling and 5xx responses."""
+    for attempt in range(attempts):
+        try:
+            request = Request(url, headers={"User-Agent": "portfolio-link-check/1.0"})
+            with opener(request, timeout=20) as response:
+                status = response.status
+                final = urlsplit(response.geturl())
+                if status != 200:
+                    return f"{url}: HTTP {status}"
+                if "/auth/" in final.path or "/login" in final.path:
+                    return f"{url}: redirects to login ({response.geturl()})"
+            return None
+        except HTTPError as error:
+            message = f"{url}: {error}"
+            error.close()
+            if error.code not in RETRY_STATUSES or attempt == attempts - 1:
+                return message
+        except (URLError, TimeoutError, OSError) as error:
+            return f"{url}: {error}"
+        sleep(2 ** (attempt + 1))
     return None
 
 
@@ -74,7 +97,7 @@ def main():
     for error in errors:
         print(error)
     print(
-        f"{len(PAGES)} hiring pages, {len(urls)} external destinations, {len(errors)} failures"
+        f"{len(PAGES)} public pages, {len(urls)} external destinations, {len(errors)} failures"
     )
     return bool(errors)
 
