@@ -37,6 +37,6 @@
     <line x1="466" y1="264" x2="506" y2="264" marker-end="url(#dh)"/>
     <line x1="690" y1="264" x2="730" y2="264" marker-end="url(#dh)"/>
   </g>
-  <text x="32" y="360" font-size="13" fill="#a8a29e">Prompt scaffolding stopped some payload variants but not others. Changing the dispatch substrate is the durable fix.</text>
+  <text x="32" y="360" font-size="13" fill="#a8a29e">Prompt scaffolding stopped some payload variants but not others; the recommended fix is in the dispatch substrate.</text>
   <text x="32" y="381" font-size="11.5" fill="#78716c">Redrawn from the mermaid diagram in github.com/ChunkyTortoise/ai-redteam-notes</text>
 </svg>

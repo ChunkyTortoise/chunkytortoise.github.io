@@ -65,15 +65,15 @@
     <main id="main" class="site-wrap-narrow py-14 md:py-20">
         <p class="kicker mb-3"><a href="../projects.html" class="hover:underline">Work</a> / DocExtract</p>
         <h1 class="section-title mb-5">DocExtract: document extraction with an eval gate in CI</h1>
-        <p class="lede mb-6">Turning PDFs and scans into validated, searchable records, and catching accuracy regressions before merge instead of after.</p>
+        <p class="lede mb-6">Turning PDFs and scans into validated, searchable records, with an extraction eval that runs as a check on every relevant pull request.</p>
         <div class="link-row mb-4"><a href="https://github.com/ChunkyTortoise/docextract" class="btn-primary" target="_blank" rel="noopener noreferrer">Code</a><code class="cmd">python scripts/eval_offline_replay.py --floor 0.85</code></div>
         <div class="cs-prose">
             <h2>Problem</h2>
-            <p>Document extraction looks easy in a demo and drifts in production. A prompt tweak or a model swap can quietly drop field accuracy on invoices, receipts and statements, and nobody notices until a downstream report is wrong. DocExtract was built under a paid client engagement that needed structured fields it could trust, plus a way to know when a change made them worse.</p>
+            <p>Document extraction looks easy in a demo and drifts in production. A prompt tweak or a model swap can quietly drop field accuracy on invoices, receipts and statements, and nobody notices until a downstream report is wrong. DocExtract was built under a paid client engagement that needed structured fields it could trust, plus evals that run as checks rather than as a one-off demo.</p>
 
             <h2>Approach</h2>
             <ul>
-                <li><strong>Two-pass extraction.</strong> Pass 1 extracts fields with a confidence score. A correction pass runs only when confidence falls below a per-document-type threshold, so most documents pay for one call (<a href="https://github.com/ChunkyTortoise/docextract/blob/main/docs/adr/0003-two-pass-extraction.md" target="_blank" rel="noopener noreferrer">ADR-0003</a>).</li>
+                <li><strong>Two-pass extraction.</strong> Pass 1 extracts fields with a confidence score. A correction pass runs only when confidence falls below a per-document-type threshold (<a href="https://github.com/ChunkyTortoise/docextract/blob/main/docs/adr/0003-two-pass-extraction.md" target="_blank" rel="noopener noreferrer">ADR-0003</a>).</li>
                 <li><strong>Cost-aware routing.</strong> Haiku classifies, Sonnet extracts, prompt caching covers system prompts, and a circuit breaker falls back to Haiku.</li>
                 <li><strong>Validated output.</strong> Pydantic v2 schemas reject malformed extractions before they're stored.</li>
                 <li><strong>Search over what was extracted.</strong> Embeddings go to Postgres with pgvector, and questions run through an agentic RAG loop over vector, BM25 and hybrid tools.</li>
@@ -119,7 +119,7 @@
                     <li>The score is a deterministic replay of committed prediction fixtures, not a live-model grade and not F1. It gives partial credit: strings by normalized Levenshtein similarity, numbers within ±1%, and half credit for a value where null was expected. The 200-case authoring corpus is a separate population from the 28 scored fixtures.</li>
                     <li>The replayed outputs are frozen, so a prompt or model change does not move the replay score. The paid live eval job measures those changes and runs only when an API key is configured in CI.</li>
                     <li>Retrieval quality (recall, support, abstention) is not measured yet.</li>
-                    <li>The eval gate reports a passing or failing check. It blocks merges only where branch protection requires the check.</li>
+                    <li>The eval gate reports a passing or failing check. <code>main</code> is not branch-protected, so the check does not block merges (repository audit, 2026-09-19).</li>
                     <li>Cost and latency figures in the repo are modeled until a metered run is committed.</li>
                     <li>DocExtract was built under a paid client engagement; an authorized walkthrough is available on request.</li>
                     <li>Full detail: the <a href="https://github.com/ChunkyTortoise/docextract#methodology--limits" target="_blank" rel="noopener noreferrer">Methodology &amp; limits</a> section of the README.</li>

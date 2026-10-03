@@ -73,7 +73,7 @@
 
             <h2>Approach</h2>
             <ul>
-                <li><strong>Pre-registered hypotheses.</strong> Each experiment's hypotheses and success criteria were written down and dated before the runs, with Wilson 95% confidence intervals at n=10 (<a href="https://github.com/ChunkyTortoise/ai-redteam-notes/blob/main/docs/preregistrations/INDEX.md" target="_blank" rel="noopener noreferrer">ledger</a>).</li>
+                <li><strong>Pre-registered hypotheses.</strong> Hypotheses and success criteria were written down and dated before the runs that test them (<a href="https://github.com/ChunkyTortoise/ai-redteam-notes/blob/main/docs/preregistrations/INDEX.md" target="_blank" rel="noopener noreferrer">ledger</a>). The headline 70B grid ran n=10 per cell with Wilson 95% intervals, on Groq: a documented deviation from its frozen OpenRouter pre-registration. Earlier cells were n=5 or n=1.</li>
                 <li><strong>Controlled substrate.</strong> The same payloads ran through an inline text/XML tool-dispatch substrate and a chat-only control, so the dispatch mechanism could be isolated from the model.</li>
                 <li><strong>Safe targets only.</strong> Intentionally vulnerable benchmarks, open-weight models via public APIs and localhost harnesses. Nothing in production was tested without authorization.</li>
                 <li><strong>A tool, not just a writeup.</strong> The finding became <code>substrate_auditor.py</code>, a zero-dependency check that classifies a config or transcript as inline-XML or typed dispatch. CI runs its self-check and requires it to rate the inline-XML sample high-risk and the typed sample low-risk.</li>
