@@ -635,6 +635,10 @@ button:focus-visible {
     margin: 0;
 }
 
+.reviewer-proof {
+    margin-top: 2rem;
+}
+
 .figure img {
     width: 100%;
     height: auto;
