@@ -98,6 +98,11 @@
                     <a href="https://github.com/ChunkyTortoise" class="btn-secondary" target="_blank" rel="noopener noreferrer">GitHub</a>
                 </div>
 
+                <figure class="figure reviewer-proof max-w-4xl">
+                    <img src="assets/projects/llm-reviewer-terminal.gif" alt="Terminal capture: uv run pytest reports 36 passed, then the replay receipt prints GOOD 1.00 passing and MUTATION 0.80 failing, and the approval sequence denies without a token, rejects model text, executes once and suppresses the duplicate retry." width="860" height="470">
+                    <figcaption>Offline Python sample: a mutated label fails the eval gate, a write needs an approval token, and a duplicate retry is suppressed. Recorded 2026-10-05. <a href="assets/projects/llm-reviewer-terminal.gif" class="underline">View the full-size terminal capture</a>. <a href="https://github.com/ChunkyTortoise/llm-reviewer-path" class="underline">Clone and run it in 10 minutes</a>.</figcaption>
+                </figure>
+
                 <div class="grid md:grid-cols-3 gap-5 mt-14">
                     <div class="surface p-6">
                         <p class="pillar-num mb-2">01 · Ship it</p>
